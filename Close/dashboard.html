@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard Fin de Journée</title>
+    <!-- Defer non-critical scripts for faster initial render -->
+    <script src="html2canvas.min.js" defer></script>
+    <script src="jspdf.umd.min.js" defer></script>
+    <script src="chart.umd.min.js" defer></script>
+    <!-- Use localized FontAwesome from Mac Admin Support -->
+    <link rel="stylesheet" href="../Mac/assets/css/fontawesome.min.css" />
+    <link rel="stylesheet" href="../assets/css/shared-theme.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+
+<body class="needs-global-nav">
+    
+
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>Dashboard Fin de Journée</h1>
+            <p class="date" id="currentDate"></p>
+        </header>
+
+        <!-- Grid Layout -->
+        <div class="dashboard-grid">
+            <!-- Bilan de la Journée -->
+            <section class="bento-card" id="bilanSection">
+                <div class="card-header">
+                    <span class="icon">📦</span>
+                    <h2>Bilan de la Journée</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-row" data-field="envoi">
+                        <span class="form-row-label">Envoi au dépôt</span>
+                        <div class="form-row-controls">
+                            <div class="toggle-switch" data-toggle="envoi"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" data-field="boites">
+                        <span class="form-row-label">En attente de boîte</span>
+                        <div class="form-row-controls">
+                            <div class="stepper" id="stepper-boites">
+                                <button type="button" class="stepper-btn minus"
+                                    onclick="updateStepper('boites', -1)">−</button>
+                                <span class="stepper-value" data-value="0">0</span>
+                                <button type="button" class="stepper-btn plus"
+                                    onclick="updateStepper('boites', 1)">+</button>
+                            </div>
+                            <div class="toggle-switch" data-toggle="boites"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" data-field="deadline">
+                        <span class="form-row-label">Deadline</span>
+                        <div class="form-row-controls">
+                            <div class="toggle-switch" data-toggle="deadline"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" data-field="pieces">
+                        <span class="form-row-label">Sans commentaires</span>
+                        <div class="form-row-controls">
+                            <div class="toggle-switch" data-toggle="pieces"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" data-field="presto">
+                        <span class="form-row-label">Presto</span>
+                        <div class="form-row-controls">
+                            <div class="stepper" id="stepper-presto">
+                                <button type="button" class="stepper-btn minus"
+                                    onclick="updateStepper('presto', -1)">−</button>
+                                <span class="stepper-value" data-value="0">0</span>
+                                <button type="button" class="stepper-btn plus"
+                                    onclick="updateStepper('presto', 1)">+</button>
+                            </div>
+                            <div class="toggle-switch" data-toggle="presto"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Consignes pour le Lendemain -->
+            <section class="bento-card" id="consignesSection">
+                <div class="card-header">
+                    <span class="icon">📝</span>
+                    <h2>Consignes pour le Lendemain</h2>
+                </div>
+                <div class="card-body">
+                    <div class="form-row" data-field="triage">
+                        <span class="form-row-label">Triage</span>
+                        <div class="form-row-controls">
+                            <div class="stepper" id="stepper-triage">
+                                <button type="button" class="stepper-btn minus"
+                                    onclick="updateStepper('triage', -1)">−</button>
+                                <span class="stepper-value" data-value="0">0</span>
+                                <button type="button" class="stepper-btn plus"
+                                    onclick="updateStepper('triage', 1)">+</button>
+                            </div>
+                            <div class="toggle-switch" data-toggle="triage"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" data-field="rip">
+                        <span class="form-row-label">RIP</span>
+                        <div class="form-row-controls">
+                            <div class="stepper" id="stepper-rip">
+                                <button type="button" class="stepper-btn minus"
+                                    onclick="updateStepper('rip', -1)">−</button>
+                                <span class="stepper-value" data-value="0">0</span>
+                                <button type="button" class="stepper-btn plus"
+                                    onclick="updateStepper('rip', 1)">+</button>
+                            </div>
+                            <div class="toggle-switch" data-toggle="rip"></div>
+                        </div>
+                    </div>
+
+                    <div class="form-row" data-field="triageConsigne">
+                        <span class="form-row-label">Ready for Repair</span>
+                        <div class="form-row-controls">
+                            <div class="stepper" id="stepper-triageConsigne">
+                                <button type="button" class="stepper-btn minus"
+                                    onclick="updateStepper('triageConsigne', -1)">−</button>
+                                <span class="stepper-value" data-value="0">0</span>
+                                <button type="button" class="stepper-btn plus"
+                                    onclick="updateStepper('triageConsigne', 1)">+</button>
+                            </div>
+                            <div class="toggle-switch" data-toggle="triageConsigne"></div>
+                        </div>
+                    </div>
+
+                    <!-- Time Input Row - now always visible, positioned under Ready for Repair -->
+                    <div class="time-input-row" id="repairTimeRow">
+                        <span class="time-input-label">Heures de réparation nécessaires</span>
+                        <div class="time-input-group">
+                            <input type="text" class="time-input" id="repairHours" maxlength="2" placeholder="00"
+                                pattern="[0-9]*" inputmode="numeric">
+                            <span class="time-unit">h</span>
+                            <span class="time-separator">:</span>
+                            <input type="text" class="time-input" id="repairMinutes" maxlength="2" placeholder="00"
+                                pattern="[0-9]*" inputmode="numeric">
+                            <span class="time-unit">min</span>
+                        </div>
+                    </div>
+
+                    <div class="form-row" data-field="follow">
+                        <span class="form-row-label">Follow</span>
+                        <div class="form-row-controls">
+                            <div class="stepper" id="stepper-follow">
+                                <button type="button" class="stepper-btn minus"
+                                    onclick="updateStepper('follow', -1)">−</button>
+                                <span class="stepper-value" data-value="0">0</span>
+                                <button type="button" class="stepper-btn plus"
+                                    onclick="updateStepper('follow', 1)">+</button>
+                            </div>
+                            <div class="toggle-switch" data-toggle="follow"></div>
+                        </div>
+                    </div>
+                    </div>
+            </section>
+        </div>
+
+        <!-- Notes Supplémentaires -->
+        <section class="bento-card">
+            <div class="card-header">
+                <span class="icon">💬</span>
+                <h2>Notes Supplémentaires</h2>
+            </div>
+            <!-- Add Consigne Button -->
+            <button type="button" class="add-consigne-btn" onclick="addConsigne()">
+                <span style="font-size: 1.25rem;">+</span>
+                Ajouter une consigne
+            </button>
+            <div id="consignesList">
+                <!-- Consignes added dynamically -->
+            </div>
+            <div class="comments-section-title">Commentaires de la journée</div>
+            <textarea class="comments-area" placeholder="Commentaires, remarques urgentes..." id="comments"></textarea>
+        </section>
+
+        <!-- Validation -->
+        <section class="bento-card">
+            <div class="card-header">
+                <span class="icon">✓</span>
+                <h2>Validation</h2>
+            </div>
+            <div class="validation-row">
+                <div class="toggle-switch" id="validatedToggle"></div>
+                <label>Validé par</label>
+                <input type="text" class="validator-input" placeholder="Nom" id="validatorName">
+            </div>
+        </section>
+
+        <!-- Action Buttons -->
+        <div class="btn-group">
+            <button type="button" class="btn btn-secondary" onclick="resetForm()">
+                Réinitialiser
+            </button>
+            <button type="button" class="btn btn-primary" onclick="saveData()">
+                Sauvegarder
+            </button>
+            <button type="button" class="btn btn-success" onclick="exportPDF()">
+                Exporter PDF
+            </button>
+            <button type="button" class="btn btn-csv" onclick="showHistory()">
+                Historique
+            </button>
+        </div>
+    </div>
+
+    <!-- History Modal -->
+    <div class="modal-overlay" id="historyModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h3>Historique des Dashboards</h3>
+                <button class="modal-close" onclick="closeHistory()">×</button>
+            </div>
+            <div class="modal-body">
+                <!-- Tabs -->
+                <div class="modal-tabs">
+                    <button class="tab-btn active" onclick="switchTab('table')">Tableau</button>
+                    <button class="tab-btn" onclick="switchTab('evolution')">Évolution</button>
+                </div>
+
+                <!-- Filters -->
+                <div class="filters-group">
+                    <input type="text" id="historySearch" placeholder="Rechercher..." oninput="filterHistory()" class="filter-input" style="padding: 6px 10px; border: 1px solid rgba(0,0,0,0.1); border-radius: 8px; margin-right: 10px;">
+                    <div class="filter-buttons">
+                        <button class="filter-btn active" onclick="filterHistory('all')">Tout</button>
+                        <button class="filter-btn" onclick="filterHistory('7days')">7 Jours</button>
+                        <button class="filter-btn" onclick="filterHistory('1month')">1 Mois</button>
+                        <button class="filter-btn" onclick="filterHistory('6months')">6 Mois</button>
+                        <button class="filter-btn" onclick="filterHistory('1year')">1 An</button>
+                    </div>
+                </div>
+
+                <!-- Tab Content: Table -->
+                <div id="tab-table" class="tab-content active">
+                    <div class="modal-actions">
+                        <button type="button" class="btn btn-csv" onclick="exportCSV()">
+                            Exporter CSV
+                        </button>
+                        <button type="button" class="btn btn-secondary" onclick="clearHistory()">
+                            Effacer tout
+                        </button>
+                    </div>
+                    <div id="historyContent">
+                        <!-- Table will be generated here -->
+                    </div>
+                </div>
+
+                <!-- Tab Content: Chart -->
+                <div id="tab-evolution" class="tab-content">
+                    <div style="position: relative; height: 350px; width: 100%;">
+                        <canvas id="evolutionChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast"></div>
+
+    <script>
+        // Set current date
+        const today = new Date();
+        const options = { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' };
+        document.getElementById('currentDate').textContent = today.toLocaleDateString('fr-FR', options);
+
+        // Toggle switch functionality
+        document.querySelectorAll('.toggle-switch').forEach(toggle => {
+            toggle.addEventListener('click', function () {
+                this.classList.toggle('active');
+
+                // If this toggle has a stepper, show/hide it
+                const field = this.dataset.toggle;
+                if (field) {
+                    const stepper = document.getElementById(`stepper-${field}`);
+                    if (stepper) {
+                        if (this.classList.contains('active')) {
+                            stepper.classList.add('visible');
+                        } else {
+                            stepper.classList.remove('visible');
+                            // Reset stepper value
+                            const valueEl = stepper.querySelector('.stepper-value');
+                            valueEl.dataset.value = '0';
+                            valueEl.textContent = '0';
+                        }
+                    }
+                }
+
+                // Update repair time row visibility
+                // updateRepairTimeVisibility(); // Disabled - form is now always visible
+            });
+        });
+
+        // Check if Ready for Repair toggle is active and show/hide time row
+        // DISABLED - form is now always visible
+        /*
+        function updateRepairTimeVisibility() {
+            const triageConsigneToggle = document.querySelector('.toggle-switch[data-toggle="triageConsigne"]');
+            const timeRow = document.getElementById('repairTimeRow');
+
+            if (triageConsigneToggle && triageConsigneToggle.classList.contains('active')) {
+                timeRow.classList.add('visible');
+            } else {
+                timeRow.classList.remove('visible');
+                // Clear time inputs when hidden
+                document.getElementById('repairHours').value = '';
+                document.getElementById('repairMinutes').value = '';
+            }
+        }
+        */
+
+        // Restrict time inputs to numbers only
+        document.getElementById('repairHours').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 2);
+        });
+        document.getElementById('repairMinutes').addEventListener('input', function (e) {
+            this.value = this.value.replace(/[^0-9]/g, '').slice(0, 2);
+            // Cap minutes at 59
+            if (parseInt(this.value) > 59) this.value = '59';
+        });
+
+        // Stepper functionality
+        function updateStepper(field, delta) {
+            const stepper = document.getElementById(`stepper-${field}`);
+            const valueEl = stepper.querySelector('.stepper-value');
+            let value = parseInt(valueEl.dataset.value) || 0;
+            value = Math.max(0, value + delta);
+            valueEl.dataset.value = value;
+            valueEl.textContent = value;
+
+            // Disable minus button if value is 0
+            const minusBtn = stepper.querySelector('.minus');
+            minusBtn.disabled = value === 0;
+        }
+
+        // Consignes
+        let consigneCounter = 0;
+
+        function addConsigne() {
+            consigneCounter++;
+            const list = document.getElementById('consignesList');
+
+            const item = document.createElement('div');
+            item.className = 'consigne-item';
+            item.id = `consigne-${consigneCounter}`;
+            item.innerHTML = `
+                <button type="button" class="remove-consigne-btn" onclick="removeConsigne(${consigneCounter})">×</button>
+                <div class="consigne-header">
+                    <div class="consigne-type-wrapper">
+                    <select class="consigne-type-select">
+                        <option value="RIP">RIP</option>
+                        <option value="RFR">RFR</option>
+                        <option value="RFP">RFP</option>
+                        <option value="Triage">Triage</option>
+                        <option value="iPhoneR">iPhoneR</option>
+                        <option value="Deadline">Deadline</option>
+                        <option value="Follow">Follow</option>
+                        <option value="Follow Prio">Follow Prio</option>
+                    </select>
+                    </div>
+                    <input type="text" class="consigne-id-input" placeholder="ID/Référence" maxlength="10">
+                </div>
+                <textarea class="consigne-text" placeholder="Consignes détaillées..."></textarea>
+            `;
+
+            list.appendChild(item);
+        }
+
+        function removeConsigne(id) {
+            const item = document.getElementById(`consigne-${id}`);
+            if (item) {
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(20px)';
+                item.style.transition = 'all 0.2s ease';
+                setTimeout(() => item.remove(), 200);
+            }
+        }
+
+        // Collect form data
+        function collectData() {
+            const data = {
+                date: document.getElementById('currentDate').textContent,
+                bilan: {},
+                repairTime: {
+                    hours: document.getElementById('repairHours').value || '',
+                    minutes: document.getElementById('repairMinutes').value || ''
+                },
+                consignes: [],
+                notes: document.getElementById('comments').value,
+                validation: {
+                    validated: document.getElementById('validatedToggle').classList.contains('active'),
+                    validatorName: document.getElementById('validatorName').value
+                }
+            };
+
+            // Collect bilan data
+            document.querySelectorAll('.form-row').forEach(row => {
+                const field = row.dataset.field;
+                const toggle = row.querySelector('.toggle-switch');
+                const stepper = document.getElementById(`stepper-${field}`);
+
+                data.bilan[field] = {
+                    active: toggle ? toggle.classList.contains('active') : false,
+                    value: stepper ? parseInt(stepper.querySelector('.stepper-value').dataset.value) || 0 : null
+                };
+            });
+
+            // Collect consignes
+            document.querySelectorAll('.consigne-item').forEach(item => {
+                const type = item.querySelector('.consigne-type-select').value;
+                const id = item.querySelector('.consigne-id-input').value;
+                const text = item.querySelector('.consigne-text').value;
+
+                if (id || text) {
+                    data.consignes.push({ type, id, text });
+                }
+            });
+
+            return data;
+        }
+
+        // Initialize (moved to end)
+
+        // Safe Storage Manager to handle 'The operation is insecure' error
+        const SafeStorage = {
+            _storage: localStorage,
+            _memoryStorage: {},
+            _isAvailable: null,
+
+            checkAvailability: function () {
+                if (this._isAvailable !== null) return this._isAvailable;
+                try {
+                    const x = '__storage_test__';
+                    this._storage.setItem(x, x);
+                    this._storage.removeItem(x);
+                    this._isAvailable = true;
+                } catch (e) {
+                    this._isAvailable = false;
+                    console.warn('Storage not available, using memory fallback:', e);
+                    showToast('⚠️ Mode restreint: Stockage temporaire uniquement');
+                }
+                return this._isAvailable;
+            },
+
+            setItem: function (key, value) {
+                if (this.checkAvailability()) {
+                    this._storage.setItem(key, value);
+                } else {
+                    this._memoryStorage[key] = value;
+                }
+            },
+
+            getItem: function (key) {
+                if (this.checkAvailability()) {
+                    return this._storage.getItem(key);
+                } else {
+                    return this._memoryStorage[key] || null;
+                }
+            },
+
+            removeItem: function (key) {
+                if (this.checkAvailability()) {
+                    this._storage.removeItem(key);
+                } else {
+                    delete this._memoryStorage[key];
+                }
+            },
+
+            length: function () {
+                if (this.checkAvailability()) {
+                    return this._storage.length;
+                } else {
+                    return Object.keys(this._memoryStorage).length;
+                }
+            },
+
+            key: function (i) {
+                if (this.checkAvailability()) {
+                    return this._storage.key(i);
+                } else {
+                    return Object.keys(this._memoryStorage)[i];
+                }
+            }
+        };
+
+        // Save data
+        function saveData() {
+            const data = collectData();
+            const key = `dashboard_${today.toISOString().split('T')[0]}`;
+            try {
+                SafeStorage.setItem(key, JSON.stringify(data));
+                showToast('Données sauvegardées');
+            } catch (e) {
+                console.error('Save failed:', e);
+                showToast('Erreur de sauvegarde: ' + e.message);
+            }
+        }
+
+        // Load saved data
+        function loadSavedData() {
+            const key = `dashboard_${today.toISOString().split('T')[0]}`;
+            const saved = SafeStorage.getItem(key);
+
+            if (saved) {
+                const data = JSON.parse(saved);
+
+                // Restore bilan
+                Object.entries(data.bilan).forEach(([field, value]) => {
+                    const row = document.querySelector(`.form-row[data-field="${field}"]`);
+                    if (row) {
+                        const toggle = row.querySelector('.toggle-switch');
+                        if (toggle && value.active) {
+                            toggle.classList.add('active');
+                        }
+
+                        const stepper = document.getElementById(`stepper-${field}`);
+                        if (stepper && value.active) {
+                            stepper.classList.add('visible');
+                            const valueEl = stepper.querySelector('.stepper-value');
+                            valueEl.dataset.value = value.value || 0;
+                            valueEl.textContent = value.value || 0;
+                        }
+                    }
+                });
+
+                // Restore repair time
+                if (data.repairTime) {
+                    document.getElementById('repairHours').value = data.repairTime.hours || '';
+                    document.getElementById('repairMinutes').value = data.repairTime.minutes || '';
+                }
+
+                // Restore consignes
+                if (data.consignes) {
+                    data.consignes.forEach(consigne => {
+                        addConsigne();
+                        const items = document.querySelectorAll('.consigne-item');
+                        const lastItem = items[items.length - 1];
+                        lastItem.querySelector('.consigne-type-select').value = consigne.type;
+                        lastItem.querySelector('.consigne-id-input').value = consigne.id;
+                        lastItem.querySelector('.consigne-text').value = consigne.text;
+                    });
+                }
+
+                // Restore other fields
+                document.getElementById('comments').value = data.notes || '';
+                if (data.validation?.validated) {
+                    document.getElementById('validatedToggle').classList.add('active');
+                }
+                document.getElementById('validatorName').value = data.validation?.validatorName || '';
+
+                if (saved) showToast('Données chargées');
+            }
+        }
+
+        // Reset form
+        function resetForm() {
+            if (confirm('Réinitialiser le formulaire ?')) {
+                // Reset toggles
+                document.querySelectorAll('.toggle-switch').forEach(t => t.classList.remove('active'));
+
+                // Reset steppers
+                document.querySelectorAll('.stepper').forEach(s => {
+                    s.classList.remove('visible');
+                    const val = s.querySelector('.stepper-value');
+                    val.dataset.value = '0';
+                    val.textContent = '0';
+                });
+
+                // Clear consignes
+                document.getElementById('consignesList').innerHTML = '';
+                consigneCounter = 0;
+
+                // Clear repair time
+                document.getElementById('repairHours').value = '';
+                document.getElementById('repairMinutes').value = '';
+                document.getElementById('repairTimeRow').classList.remove('visible');
+
+                // Clear other fields
+                document.getElementById('comments').value = '';
+                document.getElementById('validatedToggle').classList.remove('active');
+                document.getElementById('validatorName').value = '';
+
+                showToast('Formulaire réinitialisé');
+            }
+        }
+
+        // Export PDF
+        async function exportPDF() {
+            showToast('Génération du PDF...');
+
+            const container = document.querySelector('.container');
+            const dateStr = today.toISOString().split('T')[0];
+            const htmlEl = document.documentElement;
+            const wasDark = htmlEl.getAttribute('data-theme') === 'dark';
+            if (wasDark) htmlEl.setAttribute('data-theme', 'light');
+
+
+            // Hide buttons
+            const btnGroup = document.querySelector('.btn-group');
+            const addBtn = document.querySelector('.add-consigne-btn');
+            const removeBtns = document.querySelectorAll('.remove-consigne-btn');
+
+            btnGroup.style.display = 'none';
+            if (addBtn) addBtn.style.display = 'none';
+            removeBtns.forEach(btn => btn.style.display = 'none');
+
+            // Replace textareas with divs to preserve line breaks
+            const textareas = container.querySelectorAll('textarea');
+            const textareaReplacements = [];
+
+            textareas.forEach(textarea => {
+                const div = document.createElement('div');
+                div.className = textarea.className + ' textarea-export-replacement';
+                div.innerHTML = textarea.value.replace(/\n/g, '<br>');
+                div.style.cssText = window.getComputedStyle(textarea).cssText;
+                div.style.whiteSpace = 'pre-wrap';
+                div.style.minHeight = textarea.offsetHeight + 'px';
+                div.style.overflow = 'visible';
+                div.style.height = 'auto';
+                
+                // Remove borders for clean PDF export
+                div.style.border = 'none';
+                div.style.outline = 'none';
+                div.style.boxShadow = 'none';
+
+                textarea.parentNode.insertBefore(div, textarea);
+                textarea.style.display = 'none';
+
+                textareaReplacements.push({ textarea, div });
+            });
+
+            try {
+                const { jsPDF } = window.jspdf;
+                const pdf = new jsPDF({
+                    orientation: 'portrait',
+                    unit: 'mm',
+                    format: 'a4'
+                });
+
+                const pageWidth = 210;
+                const pageHeight = 297;
+                const margin = 10;
+                const gap = 5;
+                const headerGap = 5;
+                const contentWidth = pageWidth - (margin * 2);
+                
+                // Column logic
+                const colWidth = (contentWidth - gap) / 2;
+
+                let currentY = margin;
+
+                // Helper to fill background
+                const fillBackground = () => {
+                    pdf.setFillColor('#F2F2F7'); // Light gray Apple background
+                    pdf.rect(0, 0, pageWidth, pageHeight, 'F');
+                };
+
+                // 1. Global Header
+                const headerEl = document.querySelector('.header');
+                const headerCanvas = await html2canvas(headerEl, { scale: 1.5, useCORS: true, logging: false, backgroundColor: '#F2F2F7' });
+                const headerImgData = headerCanvas.toDataURL('image/jpeg', 0.5);
+                const headerHeight = (headerCanvas.height * contentWidth) / headerCanvas.width;
+
+                const addHeader = () => {
+                    // Fill background first on any new page (or current if called)
+                    fillBackground();
+                    pdf.addImage(headerImgData, 'JPEG', margin, margin, contentWidth, headerHeight);
+                    currentY = margin + headerHeight + headerGap;
+                };
+
+                // Apply to first page
+                addHeader();
+                
+                // Track start Y for the grid section
+                const gridStartY = currentY;
+
+                // Function to Process a Card (Granularly)
+                // Capture entire card as a single image (CSS border-radius renders naturally)
+                // xPos, width: layout parameters
+                // return: final Y position of this column
+                const processCard = async (card, xPos, targetWidth, startY) => {
+                    let localY = startY;
+
+                    const cardCanvas = await html2canvas(card, { scale: 2, useCORS: true, logging: false, backgroundColor: '#F2F2F7' });
+                    const imgData = cardCanvas.toDataURL('image/jpeg', 0.8);
+                    const imgHeight = (cardCanvas.height * targetWidth) / cardCanvas.width;
+
+                    // Check if card fits on current page
+                    if (localY + imgHeight > pageHeight - margin) {
+                        pdf.addPage();
+                        addHeader();
+                        localY = currentY;
+                    }
+
+                    pdf.addImage(imgData, 'JPEG', xPos, localY, targetWidth, imgHeight);
+                    localY += imgHeight + 5;
+                    return localY;
+                };
+
+                // 2. Render Left Column (Bilan)
+                const bilanCard = document.getElementById('bilanSection');
+                let yLeft = await processCard(bilanCard, margin, colWidth, gridStartY);
+
+                // 3. Render Right Column (Consignes)
+                // IMPORTANT: We need to handle page breaks disjointly.
+                // If Bilan was short (P1 only), yLeft is on P1.
+                // If Consignes is long, it might go to P2. 
+                // We need to pass the *current PDF page context*? jsPDF state is global.
+                // When processCard adds a page, it advances the global cursor.
+                // ISSUE: If processCard(Bilan) added pages, then processCard(Consignes) would start on the LAST page?
+                // NO! We need to go back to Page 1 for Consignes start.
+                
+                const totalPagesAfterBilan = pdf.getNumberOfPages();
+                // Reset to Page 1 for Consignes
+                pdf.setPage(1);
+                
+                const consignesCard = document.getElementById('consignesSection');
+                let yRight = await processCard(consignesCard, margin + colWidth + gap, colWidth, gridStartY);
+
+                // 4. Calculate where to start "Others" (Notes, Validation)
+                // We need to find the lowest Y on the specific page.
+                // Since Consignes might have generated more pages than Bilan (or vice versa),
+                // we should check total pages.
+                const finalTotalPages = pdf.getNumberOfPages();
+                pdf.setPage(finalTotalPages); // Go to last page to continue
+
+                // Find max Y on the last page?
+                // This is tricky if one col ended on P1 and other on P2.
+                // If P2 exists, we start after the content on P2.
+                // If Bilan ended P1 (y=100), Consignes ended P2 (y=50).
+                // "Others" should start on P2 at y=50.
+                
+                // Determine currentY for next content. 
+                // Ideally processCard return value `localY` is sufficient IF we know which page it ended on.
+                // But `processCard` is generic.
+                
+                // Simplification: We assume Bilan fits on Page 1 (it's small).
+                // Consignes might overflow.
+                // IF Consignes overflows, it added pages. The global `pdf` object is at last page.
+                // So `yRight` is the Y position on the last page.
+                // `yLeft` is Y position on Page 1 (likely).
+                
+                // If totalPages > 1, we are on last page.
+                // If Bilan was P1 only, then on Last Page (P2+), Left is empty.
+                // So start Y is `yRight` (plus spacing).
+                
+                // If totalPages === 1: start Y is `max(yLeft, yRight)`.
+                
+                if (finalTotalPages > 1) {
+                    currentY = yRight; // Assuming Consignes is the one that grew
+                } else {
+                    currentY = Math.max(yLeft, yRight);
+                }
+
+                // 5. Render Remaining Cards (Notes, Validation) - Full Width
+                const otherCards = Array.from(container.querySelectorAll('.bento-card')).filter(c => c.id !== 'bilanSection' && c.id !== 'consignesSection');
+                
+                for (const card of otherCards) {
+                    // Capture entire card as a single image (CSS border-radius renders naturally)
+                    const cardCanvas = await html2canvas(card, { scale: 2, useCORS: true, logging: false, backgroundColor: '#F2F2F7' });
+                    const imgData = cardCanvas.toDataURL('image/jpeg', 0.8);
+                    const imgHeight = (cardCanvas.height * contentWidth) / cardCanvas.width;
+
+                    // Check if card fits on current page
+                    if (currentY + imgHeight > pageHeight - margin) {
+                        pdf.addPage();
+                        addHeader();
+                    }
+
+                    pdf.addImage(imgData, 'JPEG', margin, currentY, contentWidth, imgHeight);
+                    currentY += imgHeight + 5;
+                }
+
+                pdf.save(`Repair_Close_${dateStr}.pdf`);
+                showToast('PDF exporté avec succès!');
+
+            } catch (error) {
+                console.error('Erreur lors de la génération du PDF:', error);
+                if (error.message && error.message.includes('start_server')) {
+                    alert(error.message);
+                }
+                showToast('Erreur: ' + (error.message || error));
+            } finally {
+                if (wasDark) htmlEl.setAttribute('data-theme', 'dark');
+                // Restore textareas
+                textareaReplacements.forEach(({ textarea, div }) => {
+                    textarea.style.display = '';
+                    div.remove();
+                });
+
+                // Restore buttons
+                btnGroup.style.display = 'flex';
+                if (addBtn) addBtn.style.display = 'flex';
+                removeBtns.forEach(btn => btn.style.display = 'flex');
+            }
+        }
+
+        // Toast
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 2500);
+        }
+
+        // ===== HISTORY TRACKING FUNCTIONS =====
+
+        // Get all history entries
+        function getHistory() {
+            const history = [];
+            const len = SafeStorage.length();
+            for (let i = 0; i < len; i++) {
+                const key = SafeStorage.key(i);
+                if (key && key.startsWith('dashboard_')) {
+                    try {
+                        const data = JSON.parse(SafeStorage.getItem(key));
+                        history.push({ key, ...data });
+                    } catch (e) {
+                        console.error('Error parsing history entry:', key);
+                    }
+                }
+            }
+            // Sort by date descending
+            history.sort((a, b) => b.key.localeCompare(a.key));
+            return history;
+        }
+
+        // Show history modal
+        function showHistory() {
+            document.getElementById('historyModal').classList.add('show');
+            // Initialize with 'all' filter and 'table' tab
+            filterHistory('all');
+            switchTab('table');
+        }
+
+        // Close history modal
+        function closeHistory() {
+            document.getElementById('historyModal').classList.remove('show');
+        }
+
+        // Close modal on overlay click
+        document.getElementById('historyModal').addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeHistory();
+            }
+        });
+
+        // Export history to CSV
+        function exportCSV() {
+            // Get currently filtered data if possible, or all
+            // For export, we usually want what the user sees, or all. 
+            // Let's export ALL data for completeness unless user wants view export. 
+            // Default to ALL for now as per standard requirement.
+            const history = getHistory();
+
+            if (history.length === 0) {
+                showToast('Aucun historique à exporter');
+                return;
+            }
+
+            const headers = [
+                'Date',
+                'Envoi Dépôt',
+                'Boîtes en attente',
+                'Nombre Boîtes',
+                'Triage',
+                'Nombre Triage',
+                'RIP',
+                'Nombre RIP',
+                'Presto',
+                'Nombre Presto',
+                'Sans commentaires',
+                'Consignes',
+                'Validé',
+                'Validateur'
+            ];
+
+            const csvContent = [headers.join(',')];
+
+            history.forEach(entry => {
+                const envoi = entry.bilan?.envoi?.active ? 'Oui' : 'Non';
+                const boites = entry.bilan?.boites?.active ? 'Oui' : 'Non';
+                const boitesValue = entry.bilan?.boites?.value || 0;
+                const triage = entry.bilan?.triage?.active ? 'Oui' : 'Non';
+                const triageValue = entry.bilan?.triage?.value || 0;
+                const rip = entry.bilan?.rip?.active ? 'Oui' : 'Non';
+                const ripValue = entry.bilan?.rip?.value || 0;
+                const presto = entry.bilan?.presto?.active ? 'Oui' : 'Non';
+                const prestoValue = entry.bilan?.presto?.value || 0;
+                const pieces = entry.bilan?.pieces?.active ? 'Oui' : 'Non';
+                const consignesCount = entry.consignes?.length || 0;
+                const validated = entry.validation?.validated ? 'Oui' : 'Non';
+                const validator = entry.validation?.validatorName || '';
+
+                const row = [
+                    entry.key.replace('dashboard_', ''),
+                    envoi,
+                    boites,
+                    boitesValue,
+                    triage,
+                    triageValue,
+                    rip,
+                    ripValue,
+                    presto,
+                    prestoValue,
+                    pieces,
+                    consignesCount,
+                    validated,
+                    validator
+                ];
+                csvContent.push(row.join(','));
+            });
+
+            const blob = new Blob([csvContent.join('\n')], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.setAttribute('href', url);
+            link.setAttribute('download', `Repair_Close_Historique_${today.toISOString().split('T')[0]}.csv`);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        }
+
+        // Clear all history
+        // Clear all history
+        function clearHistory() {
+            if (confirm('Voulez-vous vraiment effacer tout l\'historique ?')) {
+                const keys = [];
+                const len = SafeStorage.length();
+                for (let i = 0; i < len; i++) {
+                    const key = SafeStorage.key(i);
+                    if (key && key.startsWith('dashboard_')) {
+                        keys.push(key);
+                    }
+                }
+                keys.forEach(key => SafeStorage.removeItem(key));
+
+                renderHistoryTable([]);
+                renderEvolutionChart([]);
+                showToast('Historique effacé');
+            }
+        }
+
+        function deleteHistoryEntry(key) {
+            if (confirm('Supprimer cette entrée ?')) {
+                SafeStorage.removeItem(key);
+                // Re-render based on current filter state
+                const activeFilterBtn = document.querySelector('.filter-btn.active');
+                const range = activeFilterBtn ? activeFilterBtn.getAttribute('onclick').match(/'([^']+)'/)[1] : 'all';
+
+                filterHistory(range);
+                showToast('Entrée supprimée');
+            }
+        }
+
+        // ===== EVOLUTION & FILTERS =====
+
+        let currentChart = null;
+
+        function switchTab(tabName) {
+            // Update Tab UI
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll(`.tab-btn[onclick="switchTab('${tabName}')"]`).forEach(btn => btn.classList.add('active'));
+
+            // Show Content
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            document.getElementById(`tab-${tabName}`).classList.add('active');
+
+            // If chart tab, re-render chart to ensure correct sizing
+            if (tabName === 'evolution') {
+                const activeFilterBtn = document.querySelector('.filter-btn.active');
+                if (activeFilterBtn) {
+                    // Re-trigger filter to render chart with current data
+                    activeFilterBtn.click();
+                }
+            }
+        }
+
+        function filterHistory(rangeArg) {
+            // Get active range if not provided
+            let range = rangeArg;
+            if (!range) {
+                const activeBtn = document.querySelector('.filter-buttons .filter-btn.active');
+                range = activeBtn ? activeBtn.getAttribute('onclick').match(/'([^']+)'/)[1] : 'all';
+            }
+
+            // Update active filter UI if range was clicked
+            if (rangeArg) {
+                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelector(`.filter-btn[onclick="filterHistory('${range}')"]`).classList.add('active');
+            }
+
+            const searchQuery = document.getElementById('historySearch').value.toLowerCase();
+            const allHistory = getHistory(); // Returns sorted descending
+            
+            // First filter by range
+            let filtered = filterDataByRange(allHistory, range);
+
+            // Then filter by search query
+            if (searchQuery) {
+                filtered = filtered.filter(entry => {
+                    const dateKey = entry.key.replace('dashboard_', '').toLowerCase();
+                    const validator = (entry.validation?.validatorName || '').toLowerCase();
+                    return dateKey.includes(searchQuery) || validator.includes(searchQuery);
+                });
+            }
+
+            // Update Table
+            renderHistoryTable(filtered);
+
+            // Update Chart
+            renderEvolutionChart(filtered);
+        }
+
+        function filterDataByRange(data, range) {
+            if (range === 'all') return data;
+
+            const now = new Date();
+            const cutoff = new Date();
+
+            switch (range) {
+                case '7days':
+                    cutoff.setDate(now.getDate() - 7);
+                    break;
+                case '1month':
+                    cutoff.setMonth(now.getMonth() - 1);
+                    break;
+                case '6months':
+                    cutoff.setMonth(now.getMonth() - 6);
+                    break;
+                case '1year':
+                    cutoff.setFullYear(now.getFullYear() - 1);
+                    break;
+            }
+
+            return data.filter(entry => {
+                const entryDate = new Date(entry.key.replace('dashboard_', ''));
+                return entryDate >= cutoff;
+            });
+        }
+
+        function renderEvolutionChart(data) {
+            const ctx = document.getElementById('evolutionChart').getContext('2d');
+
+            // Sort data ascending for chart (timeline)
+            const chronologicalData = [...data].reverse();
+
+            const labels = chronologicalData.map(d => d.key.replace('dashboard_', ''));
+            const boitesData = chronologicalData.map(d => d.bilan?.boites?.active ? d.bilan.boites.value : 0);
+            const triageData = chronologicalData.map(d => d.bilan?.triage?.active ? d.bilan.triage.value : 0);
+            const ripData = chronologicalData.map(d => d.bilan?.rip?.active ? d.bilan.rip.value : 0);
+            const prestoData = chronologicalData.map(d => d.bilan?.presto?.active ? d.bilan.presto.value : 0);
+
+            if (currentChart) {
+                currentChart.destroy();
+            }
+
+            currentChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [
+                        {
+                            label: 'Boîtes',
+                            data: boitesData,
+                            borderColor: '#FF9500', // Apple Orange
+                            backgroundColor: 'rgba(255, 149, 0, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Triage',
+                            data: triageData,
+                            borderColor: '#AF52DE', // Apple Purple
+                            backgroundColor: 'rgba(175, 82, 222, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'RIP',
+                            data: ripData,
+                            borderColor: '#007AFF', // Apple Blue
+                            backgroundColor: 'rgba(0, 122, 255, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        },
+                        {
+                            label: 'Presto',
+                            data: prestoData,
+                            borderColor: '#FF2D55', // Apple Pink
+                            backgroundColor: 'rgba(255, 45, 85, 0.1)',
+                            borderWidth: 2,
+                            tension: 0.3,
+                            fill: true
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 20,
+                                font: {
+                                    family: '-apple-system, BlinkMacSystemFont, sans-serif'
+                                }
+                            }
+                        },
+                        tooltip: {
+                            mode: 'index',
+                            intersect: false,
+                            backgroundColor: 'rgba(0, 0, 0, 0.8)',
+                            titleFont: { size: 13 },
+                            bodyFont: { size: 13 },
+                            padding: 10,
+                            cornerRadius: 8
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: '#E5E5EA'
+                            },
+                            ticks: {
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    size: 11
+                                }
+                            }
+                        }
+                    },
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    }
+                }
+            });
+        }
+
+        // Render history as spreadsheet table
+        function renderHistoryTable(data = null) {
+            // If data is null, fetch all history (default behavior for logic outside filtering)
+            const history = data || getHistory();
+            const container = document.getElementById('historyContent');
+
+            if (history.length === 0) {
+                container.innerHTML = `
+                    <div class="no-data">
+                        <div class="icon">📭</div>
+                        <p>Aucun historique disponible</p>
+                        <p style="font-size: 0.875rem; margin-top: 0.5rem;">Sauvegardez un dashboard pour commencer le suivi</p>
+                    </div>
+                `;
+                return;
+            }
+
+            let html = `
+                <table class="spreadsheet">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Envoi Dépôt</th>
+                            <th>Boîtes</th>
+                            <th>Triage</th>
+                            <th>RIP</th>
+                            <th>Presto</th>
+                            <th>Pièces</th>
+                            <th>Consignes</th>
+                            <th>Validé</th>
+                            <th>Par</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            `;
+
+            history.forEach(entry => {
+                const dateKey = entry.key.replace('dashboard_', '');
+                const envoi = entry.bilan?.envoi?.active;
+                const boites = entry.bilan?.boites?.active ? entry.bilan.boites.value : '-';
+                const triage = entry.bilan?.triage?.active ? entry.bilan.triage.value : '-';
+                const rip = entry.bilan?.rip?.active ? entry.bilan.rip.value : '-';
+                const presto = entry.bilan?.presto?.active ? entry.bilan.presto.value : '-';
+                const pieces = entry.bilan?.pieces?.active;
+                const consignesCount = entry.consignes?.length || 0;
+                const validated = entry.validation?.validated;
+                const validator = entry.validation?.validatorName || '-';
+
+                html += `
+                    <tr>
+                        <td><strong>${dateKey}</strong></td>
+                        <td class="${envoi ? 'status-yes' : 'status-no'}">${envoi ? '✓ Oui' : '✗ Non'}</td>
+                        <td class="${boites !== '-' ? 'value-cell' : ''}">${boites}</td>
+                        <td class="${triage !== '-' ? 'value-cell' : ''}">${triage}</td>
+                        <td class="${rip !== '-' ? 'value-cell' : ''}">${rip}</td>
+                        <td class="${presto !== '-' ? 'value-cell' : ''}">${presto}</td>
+                        <td class="${pieces ? 'status-yes' : 'status-no'}">${pieces ? '✓ Oui' : '✗ Non'}</td>
+                        <td class="value-cell">${consignesCount}</td>
+                        <td class="${validated ? 'status-yes' : 'status-no'}">${validated ? '✓' : '✗'}</td>
+                        <td>${validator}</td>
+                        <td><button class="delete-row" onclick="deleteHistoryEntry('${entry.key}')" title="Supprimer">×</button></td>
+                    </tr>
+                `;
+            });
+
+            html += '</tbody></table>';
+            container.innerHTML = html;
+        }
+
+        // Duplicate functions removed
+
+        // Initialize
+        loadSavedData();
+    </script>
+    <script src="../assets/js/shared-app.js"></script>
+</body>
+
+</html>

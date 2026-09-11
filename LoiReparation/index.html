@@ -1,0 +1,1403 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Loi Réparation">
+    <meta name="theme-color" content="#000000">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
+<title>Genius Bar — Guide loi de réparation</title>
+<link rel="stylesheet" href="./assets/css/shared-theme.css">
+<style>
+  :root{
+    /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
+    --bg:#f5f5f7; --surface:var(--apple-card-bg, #ffffff); --surface-2:#fbfbfd; --text:#1d1d1f;
+    --text-secondary:#86868b; --accent:#007AFF; --accent-hover:#0056CC;
+    --ac-red:#FF3B30; --ac-green:#34C759; --ac-orange:#FF9500;
+    --border:#d2d2d7; --border-soft:var(--glass-border-solid, #E5E5EA);
+    --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    color-scheme: light dark;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#000000; --surface:var(--apple-card-bg, #1d1d1f); --surface-2:#161617; --text:#f5f5f7;
+      --text-secondary:#a1a1a6; --accent:#0A84FF; --accent-hover:#4facff;
+      --ac-red:#ff453a; --ac-green:#30d158; --ac-orange:#ff9f0a;
+      --border:#3d3d3f; --border-soft:#2c2c2e;
+      --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+  }
+  *{box-sizing:border-box;} html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg); color:var(--text);
+    font-family:-apple-system,"SF Pro Display","SF Pro Text",BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    -webkit-font-smoothing:antialiased; min-height:100vh;
+  }
+  .topbar{
+    position:sticky; top:0; z-index:50;
+    backdrop-filter:saturate(180%) blur(20px); -webkit-backdrop-filter:saturate(180%) blur(20px);
+    background:color-mix(in srgb, var(--bg) 72%, transparent);
+    border-bottom:1px solid var(--border-soft);
+  }
+  .topbar-inner{ max-width:720px; margin:0 auto; padding:14px 22px; display:flex; align-items:center; gap:10px; }
+  .apple-logo{ width:15px; height:18px; flex-shrink:0; opacity:.92; }
+  .topbar-label{ font-size:13px; font-weight:600; color:var(--text-secondary); letter-spacing:-0.01em; }
+  .wrap{ max-width:720px; margin:0 auto; padding:120px 24px 64px; }
+  h1{ font-size:30px; line-height:1.1; letter-spacing:-0.015em; font-weight:600; margin:0 0 8px; text-align:center; }
+  .subtitle{ text-align:center; font-size:14px; color:var(--text-secondary); margin:0 0 36px; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.45; }
+
+  /* Select boxes */
+  .select-group{ display:flex; flex-direction:column; gap:14px; max-width:480px; margin:0 auto; }
+  .select-box{
+    position:relative; border:1.5px solid var(--border); border-radius:12px;
+    padding:9px 42px 9px 16px; background:var(--surface);
+    transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .select-box:hover{ border-color:var(--accent); }
+  .select-box:focus-within{ border-color:var(--accent); box-shadow:0 0 0 4px color-mix(in srgb, var(--accent) 16%, transparent); }
+  .select-box label{ display:block; font-size:12.5px; color:var(--text-secondary); margin-bottom:1px; }
+  .select-box select{
+    position:absolute; inset:0; width:100%; height:100%;
+    opacity:0; cursor:pointer; z-index:2;
+    appearance:none; -webkit-appearance:none; border:none; margin:0; font-family:inherit; font-size:16px;
+  }
+  .select-box select:focus{ outline:none; }
+  .select-box .value{ font-size:19px; font-weight:600; letter-spacing:-0.01em; color:var(--text); padding-top:2px; overflow:hidden; white-space:nowrap; text-overflow:ellipsis; }
+  .select-box .chevron{ position:absolute; right:16px; top:50%; transform:translateY(-50%); width:13px; height:13px; color:var(--text-secondary); pointer-events:none; }
+
+  /* Result */
+  .result-panel{ max-width:640px; margin:40px auto 0; }
+  .result-placeholder{ text-align:center; color:var(--text-secondary); font-size:14px; padding:40px 0; }
+
+  .verdict-box{ border-radius:16px; padding:18px 22px; margin-bottom:14px; display:flex; align-items:flex-start; gap:14px; }
+  .verdict-box.eligible{ background:color-mix(in srgb, var(--ac-green) 10%, var(--surface)); border:1px solid color-mix(in srgb, var(--ac-green) 25%, transparent); }
+  .verdict-box.partial{ background:color-mix(in srgb, var(--ac-orange) 10%, var(--surface)); border:1px solid color-mix(in srgb, var(--ac-orange) 25%, transparent); }
+  .verdict-box.not-eligible{ background:color-mix(in srgb, var(--ac-red) 8%, var(--surface)); border:1px solid color-mix(in srgb, var(--ac-red) 20%, transparent); }
+  .verdict-icon{ font-size:28px; line-height:1; flex-shrink:0; }
+  .verdict-box h2{ margin:0 0 4px; font-size:17px; }
+  .verdict-box p{ margin:0; font-size:13px; color:var(--text-secondary); line-height:1.4; }
+
+  .quick-card{ background:var(--surface); border:1px solid var(--border-soft); border-radius:14px; padding:16px 20px; margin-bottom:12px; box-shadow:var(--shadow); }
+  .quick-card h3{ font-size:15px; font-weight:600; margin:0 0 8px; }
+  .quick-card p{ font-size:13.5px; line-height:1.5; margin:0 0 8px; color:var(--text); }
+  .quick-card p:last-child{ margin-bottom:0; }
+  .quick-card ul{ font-size:13.5px; line-height:1.55; margin:6px 0 8px; padding-left:18px; }
+  .quick-card li{ margin-bottom:3px; }
+  .quick-card a{ color:var(--accent); text-decoration:none; font-weight:500; }
+  .quick-card a:hover{ text-decoration:underline; }
+
+  .tag{ display:inline-block; font-size:10.5px; font-weight:600; padding:2px 9px; border-radius:980px; margin-right:5px; background:color-mix(in srgb, var(--accent) 10%, transparent); color:var(--accent); }
+  .tag.red{ background:color-mix(in srgb, var(--ac-red) 10%, transparent); color:var(--ac-red); }
+  .tag.green{ background:color-mix(in srgb, var(--ac-green) 12%, transparent); color:var(--ac-green); }
+  .tag.orange{ background:color-mix(in srgb, var(--ac-orange) 12%, transparent); color:var(--ac-orange); }
+
+  /* Expandable "En savoir plus" */
+  .expand-link{
+    display:inline-block; font-size:13px; font-weight:500; color:var(--accent);
+    cursor:pointer; margin-top:6px; user-select:none;
+  }
+  .expand-link:hover{ color:var(--accent-hover); text-decoration:underline; }
+  .expand-link::after{ content:" ›"; font-size:14px; transition:transform .2s ease; display:inline-block; }
+  .expand-link.open::after{ transform:rotate(90deg); }
+  .expand-content{ display:none; margin-top:10px; padding-top:10px; border-top:1px solid var(--border-soft); }
+  .expand-content.open{ display:block; }
+  .expand-content p{ font-size:13px; line-height:1.5; margin:0 0 8px; color:var(--text-secondary); }
+  .expand-content p:last-child{ margin-bottom:0; }
+  .expand-content ul{ font-size:13px; line-height:1.55; margin:6px 0; padding-left:18px; color:var(--text-secondary); }
+  .expand-content li{ margin-bottom:3px; }
+  .expand-content a{ color:var(--accent); text-decoration:none; font-weight:500; }
+  .expand-content a:hover{ text-decoration:underline; }
+
+  .callout{
+    background:color-mix(in srgb, var(--accent) 6%, var(--surface-2));
+    border-left:3px solid var(--accent); border-radius:0 10px 10px 0;
+    padding:12px 16px; margin:10px 0; font-size:13px; line-height:1.5;
+  }
+  .callout.warn{ background:color-mix(in srgb, var(--ac-red) 6%, var(--surface-2)); border-left-color:var(--ac-red); }
+  .callout.warn strong{ color:var(--ac-red); }
+  .callout.success{ background:color-mix(in srgb, var(--ac-green) 8%, var(--surface-2)); border-left-color:var(--ac-green); }
+  .callout.success strong{ color:var(--ac-green); }
+
+  .price-table{ width:100%; border-collapse:collapse; margin:10px 0; font-size:13px; }
+  .price-table th{ text-align:left; font-size:11.5px; color:var(--text-secondary); font-weight:500; padding:6px 10px; border-bottom:1px solid var(--border-soft); }
+  .price-table td{ padding:8px 10px; border-bottom:1px solid var(--border-soft); }
+  .price-table tr:last-child td{ border-bottom:none; }
+
+  .disclaimer{ max-width:640px; margin:28px auto 0; padding:14px 4px 0; font-size:11.5px; line-height:1.5; color:var(--text-secondary); text-align:center; }
+
+  /* Scenarios */
+  .scenarios{ max-width:480px; margin:0 auto 28px; display:flex; flex-direction:column; gap:8px; }
+  .scenarios-label{ font-size:12.5px; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.02em; margin:0 0 4px; }
+  .scenario-btn{
+    display:block; width:100%; text-align:left; background:var(--surface);
+    border:1.5px solid var(--border); border-radius:12px; padding:12px 16px;
+    font-family:inherit; font-size:13.5px; color:var(--text); cursor:pointer;
+    transition:border-color .15s ease, background .15s ease; line-height:1.4;
+  }
+  .scenario-btn:hover{ border-color:var(--accent); background:var(--surface-2); }
+  .scenario-btn.active{ border-color:var(--accent); background:color-mix(in srgb, var(--accent) 6%, var(--surface)); }
+  .scenario-btn .sc-title{ font-weight:600; font-size:14px; display:block; margin-bottom:2px; }
+  .scenario-btn .sc-desc{ font-size:12px; color:var(--text-secondary); }
+  .scenario-btn .sc-icon{ display:inline-block; margin-right:6px; }
+  .footer{ text-align:center; padding:32px 24px 56px; font-size:11.5px; color:var(--text-secondary); border-top:1px solid var(--border-soft); }
+  .footer a{ color:var(--text-secondary); text-decoration:none; }
+  .footer a:hover{ color:var(--accent); text-decoration:underline; }
+  ::selection{ background:color-mix(in srgb, var(--accent) 30%, transparent); }
+
+  @media(max-width:480px){
+    
+    .wrap{ padding:88px 16px 40px; }
+    h1{ font-size:24px; }
+    .subtitle{ font-size:12.5px; margin-bottom:24px; }
+    .select-group{ gap:10px; }
+    .select-box{ padding:8px 38px 8px 14px; }
+    .select-box label{ font-size:12px; }
+    .select-box .value{ font-size:17px; }
+    .select-box .chevron{ right:14px; }
+    .quick-card{ padding:14px 16px; }
+    .verdict-box{ padding:14px 16px; }
+    .verdict-icon{ font-size:24px; }
+  }
+</style>
+</head>
+<body class="needs-global-nav loi-page">
+
+
+
+<div class="wrap">
+  <h1>Guide loi de réparation</h1>
+  <p class="subtitle">Outil d'aide à la décision pour les conseillers Genius Bar. Sélectionnez le produit et la situation du client pour connaître les droits applicables.</p>
+
+  <div class="select-group" id="questionnaire"></div>
+  <div class="result-panel" id="result-panel">
+    <div class="result-placeholder">Sélectionnez le produit et la situation du client.</div>
+  </div>
+
+  <div class="disclaimer">
+    Outil informatif non affilié à Apple Inc. Ne constitue pas un conseil juridique. Basé sur la directive (UE) 2024/1799, Service Public, les conditions générales Apple et la loi française (AGEC).
+  </div>
+</div>
+
+<div class="footer">
+  Sources : <a href="https://www.service-public.gouv.fr/particuliers/actualites/A19033" target="_blank" rel="noopener">Service Public</a> ·
+  <a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive (UE) 2024/1799</a> ·
+  <a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions Apple</a> ·
+  <a href="https://www.apple.com/legal/warranty/statutoryrights.html" target="_blank" rel="noopener">Droits consommateurs</a> ·
+  <a href="https://selfservicerepair.eu/fr-FR" target="_blank" rel="noopener">Self Service Repair</a> ·
+  <a href="https://repairprice.popalazerk.com" target="_blank" rel="noopener">Tarifs</a> ·
+  <a href="https://www.europe-consommateurs.eu/thematiques/garanties/apres-achat/reparation/" target="_blank" rel="noopener">Europe Consommateurs</a>
+</div>
+
+<script>
+// ========== QUESTIONS ==========
+const QUESTIONS = [
+  {
+    id: "product",
+    modes: ["garantie"],
+    label: "Produit",
+    options: [
+      { value: "iphone", label: "iPhone" },
+      { value: "ipad", label: "iPad" },
+      { value: "mac", label: "Mac" },
+      { value: "watch", label: "Apple Watch" },
+      { value: "airpods", label: "AirPods" },
+      { value: "vision", label: "Vision Pro" },
+      { value: "accessory", label: "Accessoires" }
+    ]
+  },
+  {
+    id: "retract",
+    modes: ["retour"],
+    label: "Retour / rétractation",
+    options: [
+      { value: "none", label: "Non — le client veut faire réparer" },
+      { value: "store-return", label: "Achat en magasin physique — retour sur site" },
+      { value: "remote-intact", label: "Achat à distance (en ligne/phone) — scellé, non descellé" },
+      { value: "remote-open", label: "Achat à distance — emballage ouvert/descellé" },
+      { value: "remote-store-click", label: "Commandé en ligne, retourné en magasin (click & collect)" },
+      { value: "store-online", label: "Achat en magasin — retour envoyé par voie postale" },
+      { value: "customized", label: "Produit personnalisé (gravure, config…) ou logiciel descellé" }
+    ]
+  },
+  {
+    id: "enseigne",
+    modes: ["retour"],
+    label: "Enseigne d'achat",
+    options: [
+      { value: "none", label: "Non concerné / pas de question retour" },
+      { value: "apple", label: "Apple (Store en ligne ou physique)" },
+      { value: "amazon", label: "Amazon (vendu + expédié par Amazon)" },
+      { value: "amazon-mp", label: "Amazon Marketplace (vendeur tiers)" },
+      { value: "fnac-darty", label: "Fnac / Darty" },
+      { value: "boulanger", label: "Boulanger" },
+      { value: "cdiscount", label: "Cdiscount" },
+      { value: "operateur", label: "Opérateur télécom (Orange, SFR, Free, Bouygues)" },
+      { value: "autre", label: "Autre enseigne / revendeur" }
+    ]
+  },
+  {
+    id: "bonus-status",
+    modes: ["bonus"],
+    label: "Statut du client",
+    options: [
+      { value: "particulier", label: "Particulier (achat et usage personnel)" },
+      { value: "professionnel", label: "Professionnel (appareil d'une entreprise, SARL, micro-entreprise…)" }
+    ]
+  },
+  {
+    id: "bonus-product",
+    modes: ["bonus"],
+    label: "Produit à réparer",
+    options: [
+      { value: "iphone", label: "iPhone" },
+      { value: "ipad", label: "iPad" },
+      { value: "mac-portable", label: "Mac (portable)" },
+      { value: "mac-fixe", label: "Mac (fixe / tout-en-un)" },
+      { value: "moniteur", label: "Moniteur Apple (Studio Display…)" }
+    ]
+  },
+  {
+    id: "bonus-warranty",
+    modes: ["bonus"],
+    label: "Statut de garantie",
+    options: [
+      { value: "hors-garantie", label: "Hors garantie (légale, constructeur et AppleCare expirés)" },
+      { value: "garantie-legale", label: "Sous garantie légale de conformité (moins de 2 ans)" },
+      { value: "garantie-constructeur", label: "Sous garantie constructeur ou AppleCare+" }
+    ]
+  },
+  {
+    id: "bonus-repair",
+    modes: ["bonus"],
+    label: "Nature de l'intervention",
+    options: [
+      { value: "ecran", label: "Remplacement d'écran cassé" },
+      { value: "batterie", label: "Remplacement de batterie inamovible" },
+      { value: "casse", label: "Casse empêchant le fonctionnement (châssis, vitre…)" },
+      { value: "panne", label: "Panne fonctionnelle (carte mère, composant interne…)" },
+      { value: "connectique", label: "Connectique (port USB, entrée, chargeur…)" },
+      { value: "verre-arriere", label: "Dommage sur le verre arrière" },
+      { value: "esthetique", label: "Réparation esthétique uniquement (coque, rayure…)" },
+      { value: "logicielle", label: "Panne logicielle / maintenance système" },
+      { value: "consommable", label: "Consommable ou accessoire (cartouche, chargeur, câble…)" }
+    ]
+  },
+  {
+    id: "bonus-cause",
+    modes: ["bonus"],
+    label: "Contexte de la panne",
+    options: [
+      { value: "normale", label: "Panne ou casse normale d'usage" },
+      { value: "externe", label: "Facteur externe (défaut électrique, installation, environnement)" },
+      { value: "usage", label: "Usage non conforme du client" },
+      { value: "assurance", label: "Dommage couvert par une assurance" }
+    ]
+  },
+
+  {
+    id: "purchase",
+    modes: ["garantie"],
+    label: "Lieu d'achat",
+    options: [
+      { value: "apple-store", label: "Apple Store (ou Apple via Amazon)" },
+      { value: "other", label: "Autre vendeur (Fnac, Darty, Amazon, revendeur agréé…)" },
+      { value: "secondhand", label: "Occasion" }
+    ]
+  },
+  {
+    id: "age",
+    modes: ["garantie"],
+    label: "Âge de l'appareil",
+    options: [
+      { value: "under-1", label: "1ère année (0–12 mois)" },
+      { value: "1-2", label: "2ème année (12–24 mois)" },
+      { value: "2-5", label: "Entre 2 et 5 ans" },
+      { value: "5-10", label: "Entre 5 et 10 ans" },
+      { value: "over-10", label: "Plus de 10 ans" }
+    ]
+  },
+  {
+    id: "condition",
+    modes: ["garantie"],
+    label: "Motif de la visite",
+    options: [
+      { value: "defect", label: "Panne / défaut de fabrication" },
+      { value: "accidental", label: "Dommage accidentel" },
+      { value: "liquid", label: "Dommage liquide" },
+      { value: "battery", label: "Batterie (< 80%)" }
+    ]
+  },
+  {
+    id: "prior-repair",
+    modes: ["garantie"],
+    label: "Historique de l'appareil",
+    options: [
+      { value: "none", label: "Jamais réparé ni remplacé" },
+      { value: "apple-repair", label: "Réparé par Apple / CSAA" },
+      { value: "apple-replace", label: "Remplacé par Apple (sous garantie)" },
+      { value: "third-party", label: "Réparé par un tiers" },
+      { value: "self", label: "Self Service Repair" }
+    ]
+  }
+];
+
+// ========== PRODUCT DATA ==========
+const PRODUCTS = {
+  iphone:   { name:"iPhone",      annexII:true,  reg:"2023/1670",  acScreen:"29€", acOther:"99€",  batteryFree:true },
+  ipad:     { name:"iPad",        annexII:true,  reg:"2023/1670",  acScreen:"29€", acOther:"49–99€", batteryFree:true },
+  mac:      { name:"Mac",         annexII:false, reg:null,         acScreen:"99€", acOther:"259€", batteryFree:true },
+  watch:    { name:"Apple Watch", annexII:false, reg:null,         acScreen:"65–75€", acOther:"65–75€", batteryFree:true },
+  airpods:  { name:"AirPods",     annexII:false, reg:null,         acScreen:"—",   acOther:"29€",  batteryFree:false },
+  vision:   { name:"Vision Pro",  annexII:false, reg:null,         acScreen:"—",   acOther:"299€", batteryFree:false },
+  accessory:{ name:"Accessoires", annexII:false, reg:null,         acScreen:"—",   acOther:"—",    batteryFree:false }
+};
+
+// ========== RESULT ENGINE =========
+function getResult(s) {
+  const p = PRODUCTS[s.product];
+  let cards = [];
+
+  // --- ÉLIGIBILITÉ EN APPLE STORE ( Genius Bar perspective ) ---
+  // Apple Store peut réparer sous loi EU si:
+  // 1. Apple Store est le VENDEUR (achat sur place ou revendeur agréé) + < 2 ans + défaut → GRATUIT
+  // 2. Apple est le FABRICANT + produit Annexe II + 2-10 ans + défaut → PAYANT (droit à la réparation)
+  // 3. Remplacement antérieur sous garantie → garantie renouvelée 2 ans → GRATUIT
+
+  const isAppleVendor = (s.purchase === "apple-store");
+  const isAnnexII = p.annexII;
+  const isDefect = (s.condition === "defect" || s.condition === "battery");
+  const isAccidental = (s.condition === "accidental" || s.condition === "liquid");
+  const isUnderWarranty = (s.age === "under-1" || s.age === "1-2");
+  const isYear1 = s.age === "under-1";
+  const isYear2 = s.age === "1-2";
+
+  // Can Apple Store process this under EU law or manufacturer warranty?
+  let canStore = false;
+  let storeReason = "";
+  let storeCost = "";
+
+  if (isYear1 && isDefect) {
+    // 1ère année : garantie constructeur Apple (1 an) + garantie légale si Apple est vendeur
+    canStore = true;
+    if (isAppleVendor) {
+      storeReason = "<strong>Garantie légale de conformité</strong> (2 ans, vendeur) + <strong>garantie constructeur Apple</strong> (1 an). Apple Store est le vendeur et le fabricant — réparation gratuite.";
+    } else {
+      storeReason = "<strong>Garantie constructeur Apple</strong> (1 an) — Apple répare gratuitement quel que soit le lieu d'achat. La garantie légale reste à la charge du vendeur d'origine, mais le client peut choisir l'Apple Store.";
+    }
+    storeCost = "Gratuit";
+  } else if (isYear2 && isDefect) {
+    // 2ème année : seule la garantie légale s'applique (vendeur)
+    if (isAppleVendor) {
+      canStore = true;
+      storeReason = "<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le <strong>vendeur</strong>. Le client doit prouver que le défaut existait à la livraison. Garantie constructeur expirée (1 an).";
+      storeCost = "Gratuit";
+    } else {
+      canStore = false;
+      // Pas Apple Store — le vendeur d'origine est responsable
+    }
+  } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
+    canStore = true;
+    storeReason = `Apple est le <strong>fabricant</strong> — droit à la réparation (directive 2024/1799). ${p.name} dans l'Annexe II (règlement ${p.reg}).`;
+    storeCost = "Payant — prix raisonnable";
+  } else if (s["prior-repair"] === "apple-replace" && isDefect) {
+    canStore = true;
+    storeReason = "Appareil remplacé sous garantie — garantie légale <strong>renouvelée 2 ans</strong>. Réparation gratuite.";
+    storeCost = "Gratuit";
+  } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
+    canStore = true;
+    storeReason = "Appareil réparé sous garantie — garantie légale <strong>prolongée d'un an</strong>. Réparation gratuite.";
+    storeCost = "Gratuit";
+  }
+
+  // --- VERDICT PRINCIPAL ---
+  let verdict, title, summary;
+  if (canStore) {
+    verdict = "eligible";
+    if (isYear1 && isDefect && isAppleVendor) {
+      title = "Éligible garantie constructeur + garantie légale";
+      summary = `<strong>Garantie constructeur Apple</strong> (1 an) + <strong>garantie légale de conformité</strong> (2 ans, vendeur). Apple Store est vendeur et fabricant — réparation gratuite. Coût : <strong>${storeCost}</strong>.`;
+    } else if (isYear1 && isDefect && !isAppleVendor) {
+      title = "Éligible garantie constructeur Apple";
+      summary = `<strong>Garantie constructeur Apple</strong> (1 an) — Apple répare gratuitement quel que soit le lieu d'achat. La garantie légale reste à la charge du vendeur d'origine. Coût : <strong>${storeCost}</strong>.`;
+    } else if (isYear2 && isDefect && isAppleVendor) {
+      title = "Éligible garantie légale de conformité";
+      summary = `<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le vendeur. Garantie constructeur expirée (1 an). Le client doit prouver l'antériorité du défaut. Coût : <strong>${storeCost}</strong>.`;
+    } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
+      title = "Éligible droit à la réparation — Loi européenne";
+      summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
+    } else if (s["prior-repair"] === "apple-replace" && isDefect) {
+      title = "Éligible garantie légale renouvelée";
+      summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
+    } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
+      title = "Éligible garantie légale prolongée";
+      summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
+    } else {
+      title = "Réparation possible en Apple Store";
+      summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
+    }
+  } else {
+    verdict = "not-eligible";
+    if (isYear2 && !isAppleVendor && isDefect) {
+      title = "Garantie constructeur expirée — rediriger vers le vendeur";
+      summary = `Garantie constructeur Apple expirée (1 an). Le <strong>vendeur d'origine</strong> reste responsable de la garantie légale (2ème année). Le client doit prouver l'antériorité du défaut.`;
+    } else if (isAccidental) {
+      title = "Non couvert par la garantie (constructeur ou légale)";
+      summary = "Dommage accidentel/liquide non couvert. AppleCare+ avec franchise ou tarif hors garantie.";
+    } else if (!isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
+      title = "Hors Annexe II — pas d'obligation légale";
+      summary = `${p.name} hors Annexe II de la directive 2024/1799. Apple n'est pas tenue d'accepter la réparation hors garantie.`;
+    } else if (s.age === "over-10") {
+      title = "Garanties expirées";
+      summary = "Garantie constructeur (1 an), garantie légale (2 ans) et droit à la réparation (5–10 ans) expirés. Aucune obligation légale.";
+    } else {
+      title = "Non éligible en Apple Store";
+      summary = "Cette situation n'est pas couverte par la garantie constructeur, la garantie légale ou le droit à la réparation en Apple Store.";
+    }
+  }
+
+  // --- CARTES ---
+
+  // 0. ACTION IMMÉDIATE (Genius Bar)
+  if (canStore) {
+    cards.push({ title:"Action sur place", tag:"green", tagLabel:storeCost, body:`
+      <p><strong>Procéder à la réparation.</strong> ${storeReason}</p>
+      <p>Prendre rendez-vous : <a href="https://www.apple.com/fr/shop/repair" target="_blank" rel="noopener">apple.com/fr/shop/repair</a></p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        ${isAppleVendor && isUnderWarranty ? `
+        <p><strong>1ère année (0–12 mois) :</strong> présomption que le défaut existait à la livraison — réparation/remplacement gratuit, au vendeur de prouver le contraire.</p>
+        <p><strong>2ème année (12–24 mois) :</strong> le <strong>client doit prouver</strong> que le défaut existait au moment de l'achat.</p>
+        <p><strong>Si réparation choisie :</strong> garantie prolongée d'un an. <strong>Si remplacement imposé :</strong> garantie renouvelée 2 ans.</p>
+        <p><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F11094" target="_blank" rel="noopener">Garantie légale — Service Public</a></p>
+        ` : isAnnexII ? `
+        <p>La directive (UE) 2024/1799 impose au <strong>fabricant</strong> (Apple) de réparer les produits de l'Annexe II à un prix raisonnable, pendant 5 à 10 ans après l'achat.</p>
+        <p>Apple ne peut pas refuser pour : coût des pièces, réparation antérieure par un tiers.</p>
+        <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799</a> · <a href="https://www.service-public.gouv.fr/particuliers/actualites/A19033" target="_blank" rel="noopener">Service Public</a></p>
+        ` : ''}
+      </div>
+    `});
+  } else {
+    let redirectBody = "";
+    if (isYear2 && !isAppleVendor && isDefect) {
+      redirectBody = `
+        <p><strong>Rediriger vers le vendeur d'origine.</strong> La garantie constructeur Apple (1 an) est expirée. Seul le vendeur est responsable de la garantie légale (2ème année).</p>
+        <p>Le vendeur (${s.purchase === "other" ? "Fnac, Darty, Amazon…" : "vendeur d'occasion professionnel"}) doit réparer ou remplacer gratuitement si le client prouve que le défaut existait à la livraison.</p>
+        <p>L'Apple Store peut proposer une réparation <strong>payante</strong> hors garantie, mais le client n'a pas à payer pour un défaut couvert par la garantie légale.</p>
+        <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+        <div class="expand-content">
+          <p><strong>2ème année (12–24 mois) :</strong> la garantie constructeur Apple (1 an) est expirée. La garantie légale de conformité (2 ans) continue mais le client doit prouver que le défaut existait au moment de l'achat.</p>
+          <p>La garantie légale oppose le client au <strong>vendeur</strong>, pas au fabricant. Si le client a acheté son iPhone chez Fnac, c'est Fnac qui doit réparer ou remplacer gratuitement.</p>
+          <p>Le client peut faire valoir la garantie légale auprès de son vendeur : <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F11094" target="_blank" rel="noopener">Service Public</a></p>
+          <p>Si le vendeur refuse : <a href="https://www.europe-consommateurs.eu/thematiques/garanties/" target="_blank" rel="noopener">Europe Consommateurs</a> · <a href="https://signal.conso.gouv.fr/" target="_blank" rel="noopener">SignalConso</a></p>
+        </div>
+      `;
+    } else if (isAccidental) {
+      redirectBody = `
+        <p><strong>Dommage non couvert par la loi européenne.</strong> La garantie légale et le droit à la réparation ne couvrent que les défauts de conformité, pas les dommages accidentels ou liquides.</p>
+        <p>Options : <strong>AppleCare+</strong> (franchise ${p.acScreen} écran / ${p.acOther} autre) · <strong>Tarif hors garantie</strong> · <a href="https://repairprice.popalazerk.com" target="_blank" rel="noopener">Voir les tarifs</a></p>
+        <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+        <div class="expand-content">
+          <p>La garantie légale de conformité couvre uniquement les défauts existant au moment de la livraison. Un écran cassé ou un dommage liquide n'est pas un défaut de conformité.</p>
+          <p>AppleCare+ couvre les dommages accidentels avec franchise (2 incidents/12 mois). Sans AppleCare+, le tarif hors garantie s'applique.</p>
+          <table class="price-table">
+            <tr><th>Produit</th><th>Écran/verre</th><th>Autre dommage</th></tr>
+            <tr><td>iPhone</td><td>29 €</td><td>99 €</td></tr>
+            <tr><td>iPad</td><td>29 €</td><td>49–99 €</td></tr>
+            <tr><td>Mac</td><td>99 €</td><td>259 €</td></tr>
+            <tr><td>MacBook Neo</td><td>59 €</td><td>179 €</td></tr>
+            <tr><td>Apple Watch</td><td>—</td><td>65–75 €</td></tr>
+            <tr><td>AirPods</td><td>—</td><td>29 €</td></tr>
+            <tr><td>Vision Pro</td><td>—</td><td>299 €</td></tr>
+          </table>
+        </div>
+      `;
+    } else if (!isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
+      redirectBody = `
+        <p><strong>${p.name} hors Annexe II.</strong> Apple n'est pas tenue d'accepter la réparation hors garantie pour ce produit.</p>
+        <p>Alternatives : <a href="https://www.apple.com/fr/shop/repair" target="_blank" rel="noopener">Devis Apple Store</a> (payant) · <a href="https://www.label-qualirepar.fr/" target="_blank" rel="noopener">Réparateur QualiRépar</a> (bonus 15–60€) · Réparateur indépendant</p>
+        <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+        <div class="expand-content">
+          <p>La directive (UE) 2024/1799 ne couvre que les produits listés à l'Annexe II (smartphones, tablettes, réfrigérateurs, lave-linge, etc.). Les ${p.name}, Apple Watch, AirPods et Vision Pro ne figurent pas dans cette liste.</p>
+          <p>Apple peut accepter une réparation payante à sa discrétion, mais n'y est pas obligée par la loi.</p>
+          <p>En France, le <strong>bonus réparation</strong> (15–60€) est disponible chez les réparateurs labellisés QualiRépar pour 73 catégories de produits.</p>
+          <p><a href="https://www.label-qualirepar.fr/" target="_blank" rel="noopener">QualiRépar</a> · <a href="https://epargnonsnosressources.gouv.fr/" target="_blank" rel="noopener">Plateforme ADEME</a></p>
+        </div>
+      `;
+    } else if (s.age === "over-10") {
+      redirectBody = `
+        <p><strong>Aucune obligation légale.</strong> Garantie légale (2 ans) et droit à la réparation (5–10 ans) expirés.</p>
+        <p>Alternatives : <a href="https://www.label-qualirepar.fr/" target="_blank" rel="noopener">Réparateur QualiRépar</a> (bonus 15–60€) · <a href="https://epargnonsnosressources.gouv.fr/" target="_blank" rel="noopener">Plateforme ADEME</a> · Réparateur indépendant</p>
+        <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+        <div class="expand-content">
+          <p>Au-delà de 10 ans, aucune loi n'oblige Apple ou un vendeur à réparer le produit. La réparation est toujours possible à titre commercial, mais au prix fixé par le réparateur.</p>
+          <p>Le bonus réparation français (loi AGEC) reste disponible chez les réparateurs QualiRépar, quelle que soit l'ancienneté du produit.</p>
+        </div>
+      `;
+    } else {
+      redirectBody = `
+        <p><strong>Pas d'éligibilité en Apple Store sous la loi européenne.</strong></p>
+        <p>Alternatives : <a href="https://www.label-qualirepar.fr/" target="_blank" rel="noopener">Réparateur QualiRépar</a> · <a href="https://epargnonsnosressources.gouv.fr/" target="_blank" rel="noopener">Plateforme ADEME</a> · <a href="https://www.apple.com/fr/shop/repair" target="_blank" rel="noopener">Devis Apple Store</a></p>
+      `;
+    }
+    cards.push({ title:"Rediriger le client", tag:"red", tagLabel:"Non éligible", body: redirectBody });
+  }
+
+  // 1. ÉLIGIBILITÉ CHEZ LE REVENDEUR (loi européenne)
+  let revendeurEligible = false;
+  let revendeurReason = "";
+  let revendeurCost = "";
+
+  if (isUnderWarranty && isDefect && s.purchase !== "secondhand") {
+    revendeurEligible = true;
+    revendeurReason = `Le <strong>vendeur</strong> (${s.purchase === "apple-store" ? "Apple Store" : "le magasin d'achat"}) est responsable de la garantie légale de conformité (2 ans).`;
+    revendeurCost = "Gratuit";
+  } else if (isUnderWarranty && isDefect && s.purchase === "secondhand") {
+    revendeurEligible = true;
+    revendeurReason = "Si achat à un <strong>professionnel</strong> : garantie légale de 2 ans. Si achat entre particuliers : pas de garantie légale.";
+    revendeurCost = "Gratuit (si pro)";
+  } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
+    revendeurEligible = true;
+    revendeurReason = `Le <strong>fabricant</strong> (Apple) doit réparer ${p.name} (Annexe II) à prix raisonnable. Le revendeur peut servir d'intermédiaire.`;
+    revendeurCost = "Payant — prix raisonnable";
+  }
+
+  if (revendeurEligible) {
+    cards.push({ title:"Éligibilité chez le revendeur — Loi européenne", tag:"green", tagLabel:revendeurCost, body:`
+      <p>${revendeurReason}</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        ${isUnderWarranty ? `
+        <p><strong>Garantie légale de conformité (2 ans) :</strong> le vendeur doit réparer ou remplacer gratuitement tout défaut de conformité existant au moment de la livraison.</p>
+        <p><strong>1ère année :</strong> présomption d'antériorité du défaut — au vendeur de prouver le contraire. <strong>2ème année :</strong> le client doit prouver l'antériorité.</p>
+        <p><strong>Si réparation choisie :</strong> garantie prolongée d'un an (directive 2024/1799).</p>
+        <p><strong>Si remplacement imposé :</strong> garantie renouvelée 2 ans.</p>
+        <p><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F11094" target="_blank" rel="noopener">Service Public</a> · <a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000032225325/" target="_blank" rel="noopener">Code de la consommation</a></p>
+        ` : `
+        <p><strong>Droit à la réparation (directive 2024/1799) :</strong> le fabricant (Apple) doit réparer à prix raisonnable pendant 5 à 10 ans après l'achat, pour les produits de l'Annexe II.</p>
+        <p>Le revendeur n'est pas obligé de faire la réparation lui-même, mais peut orienter le client vers Apple ou un réparateur agréé.</p>
+        <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799</a></p>
+        `}
+      </div>
+    `});
+  } else if (!canStore) {
+    cards.push({ title:"Éligibilité chez le revendeur — Loi européenne", tag:"red", tagLabel:"Non éligible", body:`
+      <p>Aucune obligation légale de réparation pour le revendeur dans cette situation.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        ${isAccidental ? "<p>Les dommages accidentels et liquides ne sont couverts ni par la garantie légale, ni par le droit à la réparation. Le revendeur n'a aucune obligation.</p>" : ""}
+        ${!isAnnexII && (s.age === "2-5" || s.age === "5-10") ? `<p>${p.name} n'étant pas dans l'Annexe II, le fabricant n'est pas obligé de réparer. Le revendeur non plus.</p>` : ""}
+        ${s.age === "over-10" ? "<p>Garantie légale (2 ans) et droit à la réparation (5–10 ans) expirés. Aucune obligation pour le revendeur.</p>" : ""}
+        <p>Une réparation <strong>commerciale</strong> (payante) reste possible chez le revendeur ou un réparateur indépendant.</p>
+      </div>
+    `});
+  }
+
+  // 2. BATTERY SPECIFIC
+  if (s.condition === "battery") {
+    cards.push({ title:"Batterie < 80%", tag:"green", tagLabel:"Batterie", body:`
+      <p><strong>Sous garantie (< 2 ans) :</strong> batterie < 80% = défaut de conformité probable → remplacement gratuit par le vendeur.</p>
+      <p><strong>Avec AppleCare+ / One :</strong> remplacement gratuit.</p>
+      <p><strong>Hors garantie, sans AppleCare :</strong> remplacement payant au tarif forfaitaire.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p>Apple remplace gratuitement la batterie lorsqu'elle conserve moins de 80% de sa capacité originale, avec la garantie légale, AppleCare+ ou AppleCare One.</p>
+        <p><strong>Sous garantie légale :</strong> une batterie qui tombe sous 80% avant 2 ans peut être considérée comme un défaut de conformité. En 1ère année, c'est au vendeur de prouver qu'il s'agit d'usure normale. En 2ème année, le client doit prouver l'antériorité du défaut.</p>
+        <p>Sans AppleCare et hors garantie, le remplacement est payant (ex: 89€ iPhone, 289€ MacBook Pro 16"). Voir <a href="https://repairprice.popalazerk.com" target="_blank" rel="noopener">l'outil de tarifs</a>.</p>
+      </div>
+    `});
+  }
+
+  // 3. DOMMAGES ACCIDENTELS / LIQUIDE
+  if (s.condition === "accidental" || s.condition === "liquid") {
+    const fee = s.condition === "liquid" ? p.acOther : p.acOther;
+    cards.push({ title:"Dommage accidentel / liquide", tag:"orange", tagLabel:"Hors garantie", body:`
+      <p><strong>Garantie légale :</strong> ne couvre pas. <strong>AppleCare+ :</strong> franchise ${p.acScreen} (écran) / ${p.acOther} (autre). <strong>Sans AppleCare :</strong> tarif hors garantie.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p>La garantie légale de conformité couvre uniquement les défauts existant au moment de la livraison — pas les dommages accidentels ou liquides.</p>
+        <p>AppleCare+ et AppleCare One couvrent les dommages accidentels avec une franchise fixe au lieu du tarif complet hors garantie.</p>
+        <table class="price-table">
+          <tr><th>Produit</th><th>Écran/verre</th><th>Autre dommage</th></tr>
+          <tr><td>iPhone</td><td>29 €</td><td>99 €</td></tr>
+          <tr><td>iPad</td><td>29 €</td><td>49–99 €</td></tr>
+          <tr><td>Mac</td><td>99 €</td><td>259 €</td></tr>
+          <tr><td>MacBook Neo</td><td>59 €</td><td>179 €</td></tr>
+          <tr><td>Apple Watch</td><td>—</td><td>65–75 €</td></tr>
+          <tr><td>AirPods</td><td>—</td><td>29 €</td></tr>
+          <tr><td>Vision Pro</td><td>—</td><td>299 €</td></tr>
+        </table>
+        <p>AppleCare One (20,99€/mois, 3 produits) inclut aussi la garantie perte ou vol : franchise 129€ (iPhone/iPad), 119€ (Apple Watch).</p>
+        <p><a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions générales Apple</a> · <a href="https://repairprice.popalazerk.com" target="_blank" rel="noopener">Tarifs complets</a></p>
+      </div>
+    `});
+  }
+
+  // 4. RÉPARATION OU REMPLACEMENT ANTÉRIEUR
+  const pr = s["prior-repair"];
+  if (pr === "apple-repair") {
+    cards.push({ title:"Réparation antérieure par Apple", tag:"green", tagLabel:"Voir détail", body:`
+      <p><strong>Si la réparation était sous garantie légale (défaut de conformité, 2 ans) :</strong> garantie prolongée d'<strong>un an</strong> (directive 2024/1799, art. 17). <strong>Le vendeur</strong> reste responsable de cette extension, pas Apple en tant que fabricant.</p>
+      <p><strong>Si la réparation était hors garantie (payante) :</strong> pas de prolongation de garantie légale. Garantie commerciale Apple de 90 jours sur la réparation uniquement.</p>
+      <p><strong>Garantie service Apple (90 jours)</strong> : s'ajoute dans les deux cas — Apple garantit la réparation effectuée pendant 90 jours.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <h4 style="font-size:13px;font-weight:600;margin:0 0 6px;">Réparation sous garantie légale (art. 17)</h4>
+        <p>Si le client a choisi la réparation plutôt que le remplacement pendant la garantie légale de conformité (2 ans), la garantie est <strong>prolongée d'un an</strong> à compter de la restitution.</p>
+        <p><strong>Qui est responsable de l'extension ?</strong> Le <strong>vendeur</strong> (Apple Store si achat sur place, Fnac/Darty si achat ailleurs). L'article 17 modifie la directive 2019/771 sur la vente de biens — c'est la relation vendeur-acheteur qui est concernée, pas le fabricant.</p>
+        <p>Exemple : achat en janvier 2026 chez Fnac, défaut en juin 2027 (sous garantie), Fnac envoie chez Apple pour réparation → garantie prolongée jusqu'en juin 2028. <strong>Fnac reste responsable</strong> de cette extension. Le client s'adresse à Fnac en cas de nouveau défaut.</p>
+        <p>Exemple : achat en janvier 2026 en Apple Store, défaut en juin 2027 → garantie prolongée jusqu'en juin 2028. <strong>Apple Store est responsable</strong> (vendeur et fabricant).</p>
+        <h4 style="font-size:13px;font-weight:600;margin:12px 0 6px;">Réparation hors garantie (art. 4)</h4>
+        <p>Une réparation payante effectuée après la période de garantie (droit à la réparation) ne prolonge <strong>pas</strong> la garantie légale. L'article 17 ne s'applique pas.</p>
+        <p>Exemple : achat en janvier 2024, écran cassé en juin 2026 (hors garantie), réparation payante → pas de prolongation. Garantie Apple de 90 jours sur la réparation uniquement.</p>
+        <h4 style="font-size:13px;font-weight:600;margin:12px 0 6px;">Garantie service Apple (90 jours)</h4>
+        <p>Dans tous les cas, Apple garantit la réparation effectuée pendant 90 jours (ou jusqu'à la fin de la garantie légale si plus longue). Cette garantie est <strong>contractuelle</strong> (Apple en tant que réparateur), indépendante de la garantie légale.</p>
+        <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799, art. 4 et 17</a> · <a href="https://www.service-public.gouv.fr/particuliers/actualites/A19033" target="_blank" rel="noopener">Service Public</a> · <a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions Apple</a></p>
+      </div>
+    `});
+  } else if (pr === "apple-replace") {
+    cards.push({ title:"Remplacement antérieur par Apple", tag:"green", tagLabel:"Garantie renouvelée", body:`
+      <p><strong>Effet sur la garantie :</strong> si le vendeur a <strong>imposé</strong> le remplacement pendant la garantie légale, celle-ci est <strong>renouvelée pour 2 ans</strong> sur l'appareil de remplacement.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p>Le remplacement imposé par le vendeur (et non choisi par le client) renouvelle la garantie légale de conformité pour <strong>2 ans</strong> à compter de la date de remplacement (art. L217-11 du Code de la consommation).</p>
+        <p>Exemple : achat en janvier 2026, remplacement imposé en juin 2026 → garantie sur le nouvel appareil jusqu'en juin 2028.</p>
+        <p><strong>Neuf ou reconditionné ?</strong> Apple fournit un appareil « constitué de pièces d'origine Apple neuves et/ou précédemment utilisées, testées et répondant aux exigences fonctionnelles d'Apple ». En pratique, la majorité des remplacements sont des appareils reconditionnés équivalents au modèle du client.</p>
+        <p><a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000032225325/" target="_blank" rel="noopener">Art. L217-11 Code de la consommation</a> · <a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions Apple</a></p>
+      </div>
+    `});
+  } else if (pr === "third-party" || pr === "self") {
+    const isSelf = pr === "self";
+    cards.push({ title:`Réparation antérieure ${isSelf ? "(self-service)" : "(tiers)"}`, tag:"orange", tagLabel:"Attention", body:`
+      <p><strong>Directive 2024/1799 :</strong> Apple ne peut pas refuser une réparation au seul motif qu'un tiers a déjà réparé. Informer Apple de toute modification.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p>La directive interdit aux fabricants de refuser une réparation parce qu'un tiers (ou le consommateur lui-même) a déjà réparé le produit.</p>
+        <p>Apple peut toutefois facturer un diagnostic (jusqu'à 100€ dans l'UE) si : le produit ne requiert pas de réparation, la panne résulte de logiciels ou de pièces non-Apple, ou des dommages accidentels. La garantie n'est pas affectée par une réparation Self Service Repair (si les instructions Apple sont suivies), mais tout dommage causé pendant l'opération ne sera pas couvert. Une réparation par un tiers non agréé peut affecter la garantie pour les dommages causés par cette réparation.</p>
+        <p>Apple doit être informée de toute modification non autorisée ou réparation par un tiers lors de la commande de service.</p>
+        <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive, considérant 24</a> · <a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions Apple</a></p>
+      </div>
+    `});
+  }
+
+  // 5. DURÉE DE GARANTIE APRÈS RÉPARATION (contextuel selon le scénario)
+  let garantApresBody = "";
+  if (isYear1 && isDefect && isAppleVendor) {
+    // Achat Apple Store + réparation 1ère année = sous garantie légale
+    garantApresBody = `
+      <table class="price-table">
+        <tr><th></th><th>Garantie légale</th><th>Garantie Apple</th></tr>
+        <tr><td><strong>Réparation choisie</strong></td><td><strong>+1 an</strong> (art. 17, directive UE)<br>à compter de la réparation<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
+        <tr><td><strong>Remplacement imposé</strong></td><td><strong>Renouvelée 2 ans</strong> (art. L217-11)<br>à compter du remplacement<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
+      </table>
+      <p>Apple Store est <strong>vendeur et fabricant</strong> : la réparation est effectuée sous garantie légale de conformité. L'art. 17 s'applique → garantie prolongée d'un an.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p>La réparation sous garantie légale prolonge la garantie d'<strong>un an</strong> (art. 17, directive 2024/1799). Apple Store étant le vendeur, il est responsable de cette extension.</p>
+        <p>Exemple : achat en Apple Store en janvier 2026, défaut en juin 2026, réparation → garantie jusqu'en juin 2028 (2 ans + 1 an).</p>
+        <p>Si le vendeur impose le remplacement : garantie renouvelée 2 ans à compter du remplacement (art. L217-11).</p>
+        <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799, art. 17</a> · <a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000032225325/" target="_blank" rel="noopener">Art. L217-11</a></p>
+      </div>
+    `;
+  } else if (isYear1 && isDefect && !isAppleVendor) {
+    // Achat ailleurs + réparation en Apple Store 1ère année = sous garantie constructeur
+    garantApresBody = `
+      <table class="price-table">
+        <tr><th></th><th>Garantie légale (vendeur)</th><th>Garantie Apple (constructeur)</th></tr>
+        <tr><td><strong>Après réparation en Apple Store</strong></td><td><strong>Inchangée</strong> — continue jusqu'à 2 ans<br>Responsable : ${s.purchase === "other" ? "le magasin d'achat" : "le vendeur d'origine"}<br>(art. 17 ne s'applique pas)</td><td><strong>90 jours</strong> sur la réparation</td></tr>
+      </table>
+      <div class="callout warn"><p><strong>Attention :</strong> la réparation est effectuée sous <strong>garantie constructeur Apple</strong> (1 an), pas sous garantie légale. L'art. 17 (prolongation +1 an) ne s'applique pas car la réparation n'est pas faite dans le cadre de la garantie légale de conformité.</p></div>
+      <p>La garantie légale avec le vendeur d'origine (${s.purchase === "other" ? "Fnac, Darty…" : "vendeur"}) <strong>continue normalement</strong> jusqu'à 2 ans après l'achat. En cas de nouveau défaut, le client doit s'adresser à son vendeur.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p><strong>Pourquoi l'art. 17 ne s'applique pas ?</strong> L'article 17 modifie la directive 2019/771 sur la vente de biens — il prolonge la garantie légale de conformité <strong>uniquement</strong> lorsqu'une réparation est effectuée "dans le cadre de la garantie légale" (art. 10, directive 2019/771). Ici, la réparation est faite sous la garantie constructeur Apple (contractuelle, 1 an), pas sous la garantie légale. L'extension ne s'applique donc pas.</p>
+        <p><strong>Garantie légale (vendeur) :</strong> continue jusqu'à 2 ans après l'achat, sans prolongation. Le client conserve tous ses droits auprès de son vendeur.</p>
+        <p><strong>Garantie Apple (constructeur) :</strong> 90 jours sur la réparation effectuée. Expire 1 an après l'achat (déjà expirée si la réparation est en fin de 1ère année).</p>
+        <p>Exemple : achat chez Fnac en janvier 2026, panne en juin 2026, réparation en Apple Store (garantie constructeur) → garantie légale Fnac jusqu'en janvier 2028 (inchangée). Garantie Apple 90 jours sur la réparation. En cas de nouveau défaut en 2027, le client s'adresse à Fnac (garantie légale, 2ème année).</p>
+        <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799, art. 17</a> · <a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions Apple</a></p>
+      </div>
+    `;
+  } else if (isYear2 && isDefect && isAppleVendor) {
+    // Achat Apple Store + réparation 2ème année = sous garantie légale
+    garantApresBody = `
+      <table class="price-table">
+        <tr><th></th><th>Garantie légale</th><th>Garantie Apple</th></tr>
+        <tr><td><strong>Réparation choisie</strong></td><td><strong>+1 an</strong> (art. 17, directive UE)<br>à compter de la réparation<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
+        <tr><td><strong>Remplacement imposé</strong></td><td><strong>Renouvelée 2 ans</strong> (art. L217-11)<br>à compter du remplacement<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
+      </table>
+      <p>Apple Store est le <strong>vendeur</strong> : la réparation est sous garantie légale. L'art. 17 s'applique → garantie prolongée d'un an. Garantie constructeur expirée (1 an).</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p>La réparation sous garantie légale prolonge la garantie d'<strong>un an</strong> (art. 17). Apple Store étant le vendeur, il est responsable.</p>
+        <p>Exemple : achat en Apple Store en janvier 2026, défaut en juin 2027 (2ème année), réparation → garantie jusqu'en juin 2028.</p>
+        <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799, art. 17</a></p>
+      </div>
+    `;
+  } else if ((s.age === "2-5" || s.age === "5-10") && isDefect) {
+    // Hors garantie — réparation payante
+    garantApresBody = `
+      <table class="price-table">
+        <tr><th></th><th>Garantie légale</th><th>Garantie Apple</th></tr>
+        <tr><td><strong>Réparation payante (hors garantie)</strong></td><td><strong>Aucune prolongation</strong> (art. 4, pas art. 17)</td><td><strong>90 jours</strong> sur la réparation</td></tr>
+      </table>
+      <p>La réparation est <strong>payante</strong> (droit à la réparation, art. 4). L'art. 17 ne s'applique pas — pas de prolongation de garantie légale. Apple garantit uniquement la réparation pendant 90 jours.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p>L'art. 17 prolonge la garantie légale uniquement pour les réparations effectuées <strong>dans le cadre de la garantie légale de conformité</strong> (pendant les 2 ans). Une réparation payante hors garantie relève de l'art. 4 (droit à la réparation) — pas de prolongation.</p>
+        <p>Apple offre une garantie commerciale de 90 jours sur la réparation effectuée, indépendante de la garantie légale.</p>
+        <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799, art. 4 et 17</a></p>
+      </div>
+    `;
+  } else if (isAccidental) {
+    // Dommage accidentel — pas de garantie légale
+    garantApresBody = `
+      <table class="price-table">
+        <tr><th></th><th>Garantie légale (vendeur d'origine)</th><th>Garantie Apple</th></tr>
+        <tr><td><strong>Remplacement payant (dommage accidentel)</strong></td><td><strong>Inchangée</strong> — le vendeur d'origine reste responsable<br>Apple ne devient PAS le nouveau vendeur<br>(art. 17 et L217-11 ne s'appliquent pas)</td><td><strong>90 jours</strong> sur le remplacement</td></tr>
+      </table>
+      <div class="callout warn"><p><strong>Important :</strong> un remplacement payant pour dommage accidentel est un <strong>contrat de service commercial</strong> avec Apple, pas un acte de garantie légale. Le client n'a pas "acheté" un nouvel iPhone — il a payé un service. Le vendeur d'origine (ex: Fnac) reste le seul responsable de la garantie légale de conformité.</p></div>
+      <p>Apple garantit l'appareil de remplacement pendant <strong>90 jours</strong> (garantie commerciale). La garantie légale avec le vendeur d'origine <strong>continue normalement</strong> jusqu'à expiration des 2 ans après l'achat initial.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p><strong>Pourquoi le vendeur d'origine reste-t-il responsable ?</strong> La garantie légale de conformité lie le client au vendeur pour la durée de 2 ans. Un remplacement payant hors garantie n'est pas un achat — c'est un service de réparation. Le vendeur original conserve donc sa responsabilité sur le produit d'origine (ou ses 2 ans).</p>
+        <p><strong>Pourquoi l'art. 17 ne s'applique pas ?</strong> L'art. 17 prolonge la garantie uniquement pour les réparations effectuées "dans le cadre de la garantie légale de conformité" (défaut de conformité, pas dommage accidentel).</p>
+        <p><strong>Pourquoi l'art. L217-11 ne s'applique pas ?</strong> Cet article renouvelle la garantie 2 ans uniquement si le <strong>vendeur impose</strong> le remplacement pendant la garantie légale. Un remplacement payant pour dommage accidentel n'est pas imposé par le vendeur — c'est une prestation commerciale.</p>
+        <p><strong>Et si le remplacement est sous AppleCare+ ?</strong> Même logique : AppleCare+ est un contrat commercial, pas la garantie légale. Le remplacement est payé via la franchise AppleCare+. Le vendeur d'origine reste responsable de la garantie légale, Apple garantit le remplacement 90 jours.</p>
+        <p><a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions générales Apple</a> · <a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000032225325/" target="_blank" rel="noopener">Art. L217-11 Code de la consommation</a></p>
+      </div>
+    `;
+  } else {
+    // Cas par défaut
+    garantApresBody = `
+      <table class="price-table">
+        <tr><th>Type de réparation</th><th>Garantie légale</th><th>Garantie Apple</th></tr>
+        <tr><td>Réparation sous garantie légale (défaut, achat Apple Store)</td><td><strong>+1 an</strong> (art. 17, directive UE)<br>à compter de la réparation — vendeur responsable</td><td>90 jours</td></tr>
+        <tr><td>Réparation sous garantie constructeur (achat ailleurs, 1ère année)</td><td><strong>Inchangée</strong> — art. 17 ne s'applique pas</td><td>90 jours</td></tr>
+        <tr><td>Réparation hors garantie (payante)</td><td><strong>Aucune prolongation</strong></td><td>90 jours</td></tr>
+        <tr><td>Remplacement imposé sous garantie (achat Apple Store)</td><td><strong>Renouvelée 2 ans</strong> (art. L217-11)</td><td>90 jours</td></tr>
+        <tr><td>Remplacement payant (dommage accidentel)</td><td><strong>Inchangée</strong> — vendeur d'origine reste responsable<br>Apple ne devient pas vendeur</td><td>90 jours</td></tr>
+      </table>
+    `;
+  }
+
+  cards.push({ title:"Durée de garantie après réparation", tag:"", tagLabel:"", body: garantApresBody });
+
+  // 6. DÉFINITIONS (toujours affichées)
+  cards.push({ title:"Définitions utiles", tag:"", tagLabel:"", body:`
+    <p><strong>Garantie légale (2 ans)</strong> = obligation légale gratuite, couvre les défauts de fabrication. <strong>AppleCare+ = contrat payant</strong> optionnel, couvre aussi les dommages accidentels avec franchise.</p>
+    <p><strong>Remplacement</strong> = Apple fournit un appareil neuf <strong>ou reconditionné</strong> (pièces d'origine Apple neuves et/ou précédemment utilisées, testées).</p>
+    <p><strong>Amazon :</strong> vérifier la mention « Vendu et expédié par ». Si Apple est le vendeur → Apple Store (garantie légale + constructeur). Si Amazon est le vendeur → Autre vendeur (Amazon responsable de la garantie légale, Apple responsable de la garantie constructeur uniquement).</p>
+    <p><strong>Achat à l'étranger (UE + EEE) :</strong> la garantie légale s'applique dans toute l'UE (27 pays) + EEE (Norvège, Islande, Liechtenstein). Durée variable : 2 ans (France, Allemagne, Italie), 3 ans (Espagne, Portugal, Suède), 5 ans (Norvège, Islande), 6 ans (Irlande, Finlande). Le vendeur étranger est responsable. Garantie constructeur Apple valable dans toute l'UE. Litige transfrontalier : <a href="https://www.europe-consommateurs.eu/" target="_blank" rel="noopener">Centre Européen des Consommateurs</a>.</p>
+    <p><strong>Date d'application du droit à la réparation (art. 4) :</strong> la directive (UE) 2024/1799 s'applique aux <strong>achats effectués à partir du 31 juillet 2026</strong>. Pour les achats antérieurs, seule la garantie légale de conformité (2 ans) et la garantie constructeur (1 an) s'appliquent. L'obligation du fabricant de réparer les produits de l'Annexe II (iPhone, iPad…) au-delà de la garantie s'applique donc uniquement aux appareils achetés après cette date.</p>
+    <p><strong>Prolongation après réparation :</strong> la prolongation démarre à la <strong>date de réparation</strong> (pas la date d'achat). Depuis le 31 juillet 2026, la garantie est prolongée de <strong>1 an</strong> (directive UE art. 17, transposée en France — <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F11094" target="_blank" rel="noopener">service-public.gouv.fr</a>, contre 6 mois précédemment). Le remplacement imposé par le vendeur renouvelle la garantie <strong>2 ans à compter du remplacement</strong> (art. L217-11).</p>
+    <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+    <div class="expand-content">
+      <h4 style="font-size:13px;font-weight:600;margin:0 0 6px;">Garantie légale vs garantie constructeur</h4>
+      <table class="price-table">
+        <tr><th></th><th>Garantie légale</th><th>AppleCare+ / One</th></tr>
+        <tr><td>Obligation</td><td>Légale (UE + FR)</td><td>Contractuelle</td></tr>
+        <tr><td>Durée</td><td>2 ans (+1 si réparation)</td><td>Tant que l'abonnement est actif</td></tr>
+        <tr><td>Prix</td><td>Gratuit</td><td>1,49–20,99 €/mois</td></tr>
+        <tr><td>Couverture</td><td>Défauts uniquement</td><td>Défauts + accidentel (2 incidents/12 mois)</td></tr>
+        <tr><td>Responsable</td><td>Le vendeur</td><td>Apple</td></tr>
+        <tr><td>Franchise</td><td>Aucune</td><td>29–299 €</td></tr>
+      </table>
+      <h4 style="font-size:13px;font-weight:600;margin:12px 0 6px;">Remplacement : neuf ou reconditionné ?</h4>
+      <p>Apple : « pièces ou produits constitués de pièces d'origine Apple neuves et/ou précédemment utilisées, qui ont été testées et répondent aux exigences fonctionnelles d'Apple. »</p>
+      <p>En pratique, la majorité des remplacements hors Apple Store sont des appareils reconditionnés équivalents au modèle du client. Si le vendeur impose le remplacement pendant la garantie légale, celle-ci est renouvelée 2 ans.</p>
+      <h4 style="font-size:13px;font-weight:600;margin:12px 0 6px;">Entités Apple en France</h4>
+      <p><strong>Apple Retail France EURL</strong> (société française) exploite les Apple Store physiques en France — c'est le vendeur pour la garantie légale en magasin.</p>
+      <p><strong>Apple Distribution International Ltd.</strong> (société irlandaise, Cork) exploite l'Apple Store en ligne, l'app et le téléphone — c'est le vendeur en ligne et le responsable de la garantie constructeur pour toute l'Europe.</p>
+      <p><strong>Sur Amazon :</strong> si « Vendu par Apple », le vendeur est probablement Apple Distribution International (Irlande). La garantie légale française s'applique (règles de Rome I : droit du pays de résidence du consommateur).</p>
+      <p><a href="https://www.apple.com/fr/legal/sales-support/sales-policies/retail_fr.html" target="_blank" rel="noopener">Conditions de vente Apple Store</a> · <a href="https://www.apple.com/fr/legal/warranty/warranty-obligor/fr/" target="_blank" rel="noopener">Obligation de garantie par pays</a></p>
+      <h4 style="font-size:13px;font-weight:600;margin:12px 0 6px;">Achat transfrontalier (UE + EEE)</h4>
+      <p>La garantie légale de conformité s'applique dans toute l'<strong>UE (27 pays) + EEE (Norvège, Islande, Liechtenstein)</strong>. Le vendeur étranger est responsable de la garantie légale. La garantie constructeur Apple (1 an) est valable dans toute l'UE via Apple Distribution International.</p>
+      <p>En cas de litige avec un vendeur dans un autre pays : le <a href="https://www.europe-consommateurs.eu/" target="_blank" rel="noopener">Centre Européen des Consommateurs (CEC)</a> aide à résoudre le litige à l'amiable.</p>
+      <table class="price-table">
+        <tr><th>Pays</th><th>Durée garantie</th><th>Présomption (charge de la preuve)</th></tr>
+        <tr><td>France</td><td>2 ans</td><td>1 an</td></tr>
+        <tr><td>Allemagne</td><td>2 ans</td><td>1 an (depuis 2022)</td></tr>
+        <tr><td>Belgique</td><td>2 ans</td><td><strong>2 ans (toute la durée)</strong></td></tr>
+        <tr><td>Pays-Bas</td><td>2 ans + durée de vie raisonnable</td><td><strong>2 ans</strong></td></tr>
+        <tr><td>Espagne</td><td>3 ans</td><td>2 mois pour informer</td></tr>
+        <tr><td>Portugal</td><td>3 ans</td><td>2 mois pour informer</td></tr>
+        <tr><td>Italie</td><td>2 ans</td><td>2 mois pour informer</td></tr>
+        <tr><td>Suède</td><td><strong>3 ans</strong></td><td><strong>3 ans (toute la durée)</strong></td></tr>
+        <tr><td>Finlande</td><td><strong>Jusqu'à 6 ans</strong> (durée de vie)</td><td><strong>Toute la durée</strong></td></tr>
+        <tr><td>Irlande</td><td><strong>6 ans</strong></td><td>—</td></tr>
+        <tr><td>Norvège (EEE)</td><td><strong>5 ans</strong> (produits durables)</td><td>2 ans</td></tr>
+        <tr><td>Islande (EEE)</td><td><strong>5 ans</strong> (produits durables)</td><td>1 an</td></tr>
+      </table>
+      <p><strong>Après réparation :</strong> en France, la garantie est suspendue pendant la réparation + extension de 6 mois (avant directive 2024/1799) ou 1 an (après). En Belgique, Italie, Pays-Bas, Norvège : garantie suspendue pendant réparation. En Autriche, Croatie, Grèce, Islande : garantie renouvelée 2 ans après réparation.</p>
+      <p><strong>Quel droit s'applique ?</strong> Achat en magasin → droit du pays d'achat. Achat en ligne vers la France → droit français si le vendeur vise la clientèle française (site .fr, français, livraison France). Sinon → droit du pays du vendeur.</p>
+      <p><a href="https://europa.eu/youreurope/citizens/consumers/shopping/guarantees/index_fr.htm" target="_blank" rel="noopener">Your Europe — Garanties UE</a> · <a href="https://www.europe-consommateurs.eu/thematiques/garanties/apres-achat/conformite/" target="_blank" rel="noopener">CEC — Garantie de conformité</a> · <a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32019L0771" target="_blank" rel="noopener">Directive 2019/771</a></p>
+      <p><a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions générales Apple</a> · <a href="https://www.apple.com/legal/warranty/statutoryrights.html" target="_blank" rel="noopener">Droits consommateurs</a></p>
+    </div>
+  `});
+
+  // 6. MESURES FRANÇAISES (si pertinent)
+  if (verdict !== "not-eligible" || s.age === "5-10" || s.age === "over-10") {
+    cards.push({ title:"Mesures françaises", tag:"", tagLabel:"", body:`
+      <p><strong>Bonus réparation :</strong> 15–60€ de réduction chez un réparateur <a href="https://www.label-qualirepar.fr/" target="_blank" rel="noopener">QualiRépar</a>. <strong>Obsolescence programmée :</strong> délit pénal (2 ans prison, 300 000€ amende).</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p><strong>Bonus réparation (loi AGEC 2020) :</strong> financé par le dispositif pollueur-payeur. Réduit le coût de 15€ à 60€ chez les réparateurs labellisés QualiRépar. 73 produits éligibles dont téléphones, TV, ordinateurs. Liste sur <a href="https://www.ecosystem.eco/fr/article/qualirepar-equipements-concernes" target="_blank" rel="noopener">écosystème.eco</a>.</p>
+        <p><strong>Indice de réparabilité (2021) :</strong> score 1–10 obligatoire pour smartphones, ordinateurs, TVs, etc. <strong>Indice de durabilité (2025) :</strong> plus complet, pour téléviseurs et lave-linge.</p>
+        <p><strong>Obsolescence programmée :</strong> toute technique (y compris logicielle) rendant impossible la réparation par un tiers est interdite. Peine : 2 ans de prison et 300 000€ d'amende (<a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000032225325/" target="_blank" rel="noopener">art. L.441-2 Code de la consommation</a>).</p>
+        <p><strong>Plateforme ADEME :</strong> <a href="https://epargnonsnosressources.gouv.fr/" target="_blank" rel="noopener">epargnonsnosressources.gouv.fr</a> pour trouver un réparateur.</p>
+        <p><a href="https://www.europe-consommateurs.eu/thematiques/garanties/apres-achat/reparation/" target="_blank" rel="noopener">Europe Consommateurs</a> · <a href="https://www.ecologie.gouv.fr/indice-reparabilite" target="_blank" rel="noopener">Indice de réparabilité</a></p>
+      </div>
+    `});
+  }
+
+  // 7. ANNEXE II INFO (si produit Apple concerné)
+  if (p.annexII) {
+    cards.push({ title:`${p.name} — Annexe II`, tag:"green", tagLabel:"Produit concerné", body:`
+      <p>${p.name} figure dans l'Annexe II (règlement ${p.reg}). Pièces disponibles, prix raisonnable, pas de parts pairing.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p>Le règlement (UE) ${p.reg} impose à Apple : disponibilité des pièces de rechange, accès aux informations de réparation, outils de diagnostic, prix raisonnable, interdiction des techniques entravant la réparation (parts pairing).</p>
+        <p>En avril 2025, Apple a autorisé l'utilisation de <strong>pièces d'occasion</strong> pour les réparations d'iPhone — un changement lié à la pression réglementaire européenne.</p>
+        <p>Self Service Repair couvre ${p.name === "iPhone" ? "65 produits (iPhone 12+)" : "iPad Air M2+, iPad Pro M4, iPad mini A17 Pro, iPad A16"} dans 34 pays. Location d'outils : 59,95€/semaine.</p>
+        <p><a href="https://selfservicerepair.eu/fr-FR" target="_blank" rel="noopener">Self Service Repair</a> · <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:32023R1670" target="_blank" rel="noopener">Règlement ${p.reg}</a></p>
+      </div>
+    `});
+  }
+
+  // 6 ter. CONDITIONS DE RETOUR PAR ENSEIGNE (dropdown dédié)
+  // Sources : CGV officielles des enseignes (vérifiées le 05/09/2026)
+  if (s.enseigne && s.enseigne !== "none") {
+    const RET_BASE = `<p><strong>Rappel légal transverse :</strong> quelle que soit l'enseigne, la <strong>garantie légale de conformité (2 ans, Code conso art. L217-3 et s.)</strong> s'applique toujours au vendeur — même produit soldé, déballé ou en promotion. Un défaut dans les 12 mois est présumé antérieur à la livraison (art. L217-10).</p>`;
+    let eTitle, eTag, eTagLabel, eBody;
+    if (s.enseigne === "apple") {
+      eTitle = "Apple — conditions de retour";
+      eTag = "green"; eTagLabel = "CGV Apple";
+      eBody = `
+        <p><strong>Apple Store physique (France) :</strong> retour/échange dans les <strong>14 jours calendaires</strong> suivant le retrait, sur présentation du reçu, produit dans son état d'origine avec pièces, accessoires et emballages. Remboursement selon le mode de paiement initial ; &gt; 1 019 € en espèces → virement bancaire.</p>
+        <p><strong>Apple Store en ligne :</strong> 14 jours à compter de la prise de possession (droit légal de rétractation). Formulaire type, ligne 0800 046 046 ou contactus.fr@euro.apple.com. Retour du produit + facture + emballage d'origine + accessoires ; remboursement dans les 14 jours après récupération ou preuve d'expédition.</p>
+        <p><strong>Non retournables (sauf défaut) :</strong> téléchargements de logiciels commencés avec renonciation exprès, cartes cadeaux Apple/iTunes, services entièrement exécutés, logiciels sous emballage scellé ouverts.</p>
+        <p><strong>Zeiss Optical Inserts :</strong> retours acceptés 14 jours après réception.</p>
+        <p>Les produits achetés auprès d'un <strong>revendeur</strong> doivent lui être retournés selon ses propres conditions.</p>
+        <p><a href="https://www.apple.com/fr/legal/sales-support/sales-policies/retail_fr.html" target="_blank" rel="noopener">CGV Apple Store France</a> · <a href="https://www.apple.com/fr/shop/help/returns_refund" target="_blank" rel="noopener">Retours &amp; remboursement</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "amazon") {
+      eTitle = "Amazon (vendu et expédié par Amazon)";
+      eTag = "green"; eTagLabel = "30 jours";
+      eBody = `
+        <p><strong>Double protection :</strong> droit légal de rétractation <strong>14 jours</strong> (remboursement prix + frais de livraison, retour gratuit pour produits expédiés par Amazon) <strong>+ politique commerciale 30 jours</strong>.</p>
+        <p><strong>De 15 à 30 jours après réception :</strong> Amazon rembourse le <strong>prix du produit</strong>, mais <strong>ni les frais de port</strong> ni les frais de retour. Déduction possible pour <strong>dépréciation</strong> liée à la manipulation (produit non neuf incomplet ou marqué).</p>
+        <p><strong>Remboursement :</strong> sous 14 jours après la demande ; peut être différé jusqu'à réception du produit ou preuve d'expédition.</p>
+        <p><strong>Exclusions (30 jours) :</strong> produits personnalisés (gravure), CD/vinyl/DVD/jeux descellés (sauf défaut), logiciels descellés, cartes cadeaux activées.</p>
+        <p><a href="https://www.amazon.fr/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7" target="_blank" rel="noopener">Politique de retour Amazon 30 jours</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "amazon-mp") {
+      eTitle = "Amazon Marketplace (vendeur tiers)";
+      eTag = "amber"; eTagLabel = "Obligations vendeur";
+      eBody = `
+        <p><strong>Les vendeurs Marketplace sont tenus d'offrir au minimum une politique de retour de 30 jours</strong> (exigence Amazon).</p>
+        <p><strong>Dans les 14 jours :</strong> droit légal de rétractation — remboursement prix + frais de livraison. Frais de retour : à la charge du client, <strong>sauf</strong> mode Fashion, retours Prime &lt; 22,6 kg depuis la France, ou politique plus favorable du vendeur.</p>
+        <p><strong>De 15 à 30 jours :</strong> remboursement du prix du produit (pas les ports). Le vendeur peut déduire les frais d'étiquette prépayée du remboursement.</p>
+        <p><strong>Problème produit</strong> (défectueux, non conforme, abîmé) : garantie légale 2 ans — frais de retour <strong>à la charge du vendeur</strong>.</p>
+        <p><strong>Recours :</strong> garantie A-to-z d'Amazon si le vendeur ne répond pas.</p>
+        <p><a href="https://www.amazon.fr/gp/help/customer/display.html?nodeId=GV38326YW5JX9V9X" target="_blank" rel="noopener">Retours Marketplace</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "fnac-darty") {
+      eTitle = "Fnac / Darty — 15 jours pour changer d'avis";
+      eTag = "green"; eTagLabel = "15 jours";
+      eBody = `
+        <p><strong>Darty (art. 4.1 CGV) :</strong> <strong>15 jours</strong> suivant l'achat en magasin ou la réception (darty.com) pour changer d'avis. Produit dans son état d'origine, emballage + accessoires. Retour <strong>gratuit en magasin</strong>, à vos frais par voie postale.</p>
+        <p><strong>Darty en magasin :</strong> emballage non ouvert → remboursement ; ouvert mais non utilisé → <strong>échange</strong> ; produit utilisé → non repris. Produits techniques : vérification possible en atelier avant remboursement.</p>
+        <p><strong>Non repris par Darty si déballés :</strong> produits hygiéniques (rasoirs, tondeuses, épilateurs, brosses à dents), papiers photo, jeux vidéo/logiciels/contenus téléchargeables déballés.</p>
+        <p><strong>Fnac :</strong> CGV Fnac Direct — rétractation légale 14 jours ; Marketplace Fnac-Darty : délai légal 14 jours, libre au vendeur de prolonger ; renvoi sous 14 jours après réception de l'adresse de retour.</p>
+        <p><strong>Bonus Darty :</strong> remboursement de la différence si trouvé moins cher ailleurs dans les <strong>10 jours</strong> (Carte Cadeau).</p>
+        <p><a href="https://www.darty.com/res3/services/contrat-de-confiance/pdf/conditions-generales-de-vente.pdf" target="_blank" rel="noopener">CGV Darty</a> · <a href="https://www.fnac.com/Help/cgv-fnac" target="_blank" rel="noopener">CGV Fnac.com</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "boulanger") {
+      eTitle = "Boulanger — 15 jours pour changer d'avis";
+      eTag = "green"; eTagLabel = "15 jours";
+      eBody = `
+        <p><strong>Politique « Retour sous 15 jours » :</strong> Boulanger <strong>rembourse ou échange</strong> le produit dans les <strong>15 jours</strong> suivant la réception (achat en ligne) — engagement commercial affiché sur tout le site.</p>
+        <p><strong>Conditions :</strong> produit dans son état et emballage d'origine, complets (accessoires, notice). Retour gratuit en magasin ; étiquette de retour en ligne selon le mode d'achat.</p>
+        <p><strong>Certaines catégories</strong> bénéficient d'un délai prolongé jusqu'à 30 jours (consultation du produit concerné) ; produits déballés non reprendables si hygiène ou descellage (identique aux règles sectorielles).</p>
+        <p><strong>Rétractation légale</strong> (achat à distance) : 14 jours, remboursement complet selon la loi.</p>
+        <p><a href="https://www.boulanger.com/evenement/retourner-produit" target="_blank" rel="noopener">Retour sous 15 jours — Boulanger</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "cdiscount") {
+      eTitle = "Cdiscount — retour 14 jours (+ allongements)";
+      eTag = "amber"; eTagLabel = "14 + bonus";
+      eBody = `
+        <p><strong>Droit légal :</strong> rétractation <strong>14 jours</strong> après livraison (retour à la charge du client ; si étiquette prépayée utilisée, frais déduits du remboursement).</p>
+        <p><strong>Période des fêtes :</strong> tout produit commandé et livré entre le 1ᵉʳ novembre et le 31 décembre peut être retourné <strong>jusqu'au 8 janvier</strong> (expédié par Cdiscount) ou jusqu'à <strong>30 jours</strong> après livraison (Marketplace).</p>
+        <p><strong>Marketplace Cdiscount :</strong> les vendeurs tiers doivent offrir <strong>au moins 30 jours</strong> pour la rétractation pendant la période des fêtes (1ᵉʳ nov → 31 déc) — engagement spécifique du guide acheteur/vendeur.</p>
+        <p><strong>Procédure :</strong> Espace client → Mes commandes → demander le retour → télécharger l'étiquette.</p>
+        <p><a href="https://clients.cdiscount.com/frequentlyaskedquestions.html" target="_blank" rel="noopener">Aide au retour Cdiscount</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "operateur") {
+      eTitle = "Opérateurs télécom (Orange, SFR, Free, Bouygues)";
+      eTag = "amber"; eTagLabel = "14 jours";
+      eBody = `
+        <p><strong>Rétractation légale 14 jours</strong> — point de départ : <strong>signature du contrat</strong> pour l'abonnement, <strong>réception du mobile/box</strong> pour l'équipement.</p>
+        <p><strong>Orange :</strong> exercer via le service client + formulaire de rétractation obligatoire pour retour matériel ; remboursement sous 14 jours après restitution ou preuve d'expédition ; facturation au prorata de l'usage du forfait.</p>
+        <p><strong>SFR :</strong> 14 jours depuis signature/réception ; si le service a déjà été utilisé, part de forfait au prorata ; refuser le colis à la livraison si non encore reçu.</p>
+        <p><strong>Free :</strong> recommandé avec AR ; remboursement des frais sous 14 jours ; mobile remboursé sous 14 jours après retour du téléphone.</p>
+        <p><strong>Bouygues :</strong> service Suivi de Commande (09 81 66 26 66) ; renvoi colis complet avec cadeaux reçus ; frais de retour à la charge du client ; remboursement ~1 semaine.</p>
+        <p><strong>⚠️ En boutique physique : PAS de rétractation légale</strong> — au mieux annulation à la convenance du responsable (souvent en avoir).</p>
+        ${RET_BASE}`;
+    } else {
+      eTitle = "Autre enseigne / revendeur";
+      eTag = "amber"; eTagLabel = "Règles générales";
+      eBody = `
+        <p><strong>En magasin physique :</strong> <strong>pas de droit de rétractation légal</strong> — le retour dépend de la politique commerciale de l'enseigne (souvent échange ou avoir).</p>
+        <p><strong>À distance (web, téléphone) :</strong> <strong>14 jours minimum obligatoires</strong> (remboursement intégral, retour à la charge du client, prolongation si non-information).</p>
+        <p><strong>Produit défectueux :</strong> la <strong>garantie légale de conformité</strong> (2 ans) s'applique chez TOUS les vendeurs, quelle que soit l'enseigne — c'est le vendeur, pas Apple, qui doit réparer/remplacer/rembourser.</p>
+        <p><strong>Astuce Genius Bar :</strong> orienter le client vers son vendeur d'origine avec sa facture ; Apple n'intervient sous garantie légale que s'il est le vendeur.</p>
+        ${RET_BASE}`;
+    }
+    cards.push({ title: eTitle, tag: eTag, tagLabel: eTagLabel, body: eBody });
+  }
+
+  return { verdict, title, summary, cards };
+}
+
+function getResultRetour(s) {
+  const cards = [];
+  let verdict, title, summary;
+  if (s.retract === "remote-intact") {
+    verdict = "eligible";
+    title = "Retour accepté — droit de rétractation (14 jours)";
+    summary = `Achat à distance : le client peut renvoyer le produit <strong>sans motif</strong> dans les <strong>14 jours</strong> suivant la livraison — remboursement intégral (produit + livraison standard).`;
+  } else if (s.retract === "remote-open") {
+    verdict = "partial";
+    title = "Retour possible — à évaluer selon l'état";
+    summary = `L'ouverture de l'emballage n'exclut pas la rétractation tant que le produit reste revendable (hygiène/santé). Vérifier complétude et état d'origine.`;
+  } else if (s.retract === "store-return") {
+    verdict = "partial";
+    title = "Retour sur site — politique commerciale de l'enseigne";
+    summary = `En <strong>magasin physique</strong>, il n'existe <strong>aucun droit de rétractation légal</strong>. Le retour sur site dépend de la politique commerciale de l'enseigne — Apple Retail accepte le retour <strong>14 jours</strong> sur présentation du reçu, en état d'origine complet.`;
+  } else if (s.retract === "remote-store-click") {
+    verdict = "eligible";
+    title = "Achat en ligne, retour en magasin — droit légal maintenu";
+    summary = `Le produit a été vendu <strong>à distance</strong> : le <strong>droit de rétractation de 14 jours s'applique pleinement</strong>, même si le client choisit de rendre le produit <strong>en magasin</strong> (click &amp; collect, retrait en boutique). Remboursement intégral légal requis.`;
+  } else if (s.retract === "store-online") {
+    verdict = "partial";
+    title = "Achat en magasin, retour postal — courtoisie seulement";
+    summary = `Achat <strong>en magasin physique</strong> = pas de rétractation légale. Un retour par voie postale n'est possible que si l'enseigne l'accepte <strong>commercialement</strong> (Apple : retour dans le pays d'achat ; en pratique, privilégier le retour sur site).`;
+  } else if (s.retract === "customized") {
+    verdict = "not-eligible";
+    title = "Produit exclu du droit de rétractation";
+    summary = `Biens personnalisés ou logiciels descellés : rétractation exclue (art. L221-28). La garantie légale de conformité reste applicable si défaut.`;
+  } else {
+    verdict = "partial";
+    title = "Droit de retour — informations";
+    summary = `Droit légal : <strong>14 jours</strong> pour tout achat <strong>à distance</strong> (remboursement intégral, retour à la charge du client). En magasin : politique commerciale de l'enseigne. Choisissez une option retour et/ou une enseigne pour le détail.`;
+    cards.push({ title: "Rétractation 14 jours — l'essentiel", tag: "green", tagLabel: "Droit légal", body: `
+      <p><strong>Où ça s'applique :</strong> achats en ligne, par téléphone, correspondance ou démarchage — <strong>pas</strong> en magasin physique.</p>
+      <p><strong>Délai :</strong> 14 jours à compter du <strong>lendemain de la livraison</strong> ; prolongé au premier jour ouvrable si fin week-end/férié ; <strong>+12 mois</strong> si le vendeur n'a pas informé le client du droit.</p>
+      <p><strong>Remboursement :</strong> sous 14 jours après notification (produit + livraison standard) ; peut différer jusqu'à récupération du bien. Frais de retour à la charge du client.</p>
+      <p><strong>Exclusions (art. L221-28) :</strong> produits personnalisés, biens périssables, descellés non revendables (hygiène), logiciels/enregistrements descellés.</p>
+      <p><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F10485" target="_blank" rel="noopener">Service-public.fr — Rétractation</a></p>`});
+  }
+
+  // 6 bis. RETOUR / RÉTRACTATION — 14 JOURS (dropdown dédié)
+  // Loi : directive 2011/83/UE art. 9-13 → Code conso FR art. L221-18 à L221-28 (achat à distance)
+  // Politique Apple : retour de courtoisie 14 jours en Apple Store (gracieuseté, pas une obligation légale)
+  if (s.retract && s.retract !== "none") {
+    const RETRACT_LAW = `
+      <p><strong>Délai :</strong> 14 jours minimum à compter du <strong>lendemain de la livraison</strong> (ou de la prise de possession). Si le délai expire un samedi, un dimanche ou un jour férié, il est prolongé au premier jour ouvrable. Le professionnel peut offrir plus, jamais moins.</p>
+      <p><strong>Si le client n'a pas été informé</strong> de son droit de rétractation : délai prolongé de <strong>12 mois</strong> (14 jours supplémentaires si l'information arrive entre-temps).</p>
+      <p><strong>Remboursement :</strong> toutes les sommes (produit + livraison standard) dans les <strong>14 jours</strong> suivant la notification ; le vendeur peut différer jusqu'à récupération du bien ou preuve d'expédition. Remboursement sur le mode de paiement d'origine.</p>
+      <p><strong>Frais de retour :</strong> à la charge du client (sauf si le vendeur les prend en charge ou ne les a pas signalés avant l'achat).</p>
+      <p><strong>Exclusions légales (art. L221-28 Code conso) :</strong> biens confectionnés/personnalisés (gravure, config sur mesure), biens périssables, biens descellés après livraison non renvoyables pour raisons d'hygiène, logiciels/enregistrements descellés.</p>
+      <p><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F10485" target="_blank" rel="noopener">Service-public.fr — Rétractation</a></p>`;
+    let rTitle, rTag, rTagLabel, rBody;
+    if (s.retract === "remote-intact") {
+      rTitle = "Rétractation acceptée — droit légal (14 jours)";
+      rTag = "green"; rTagLabel = "Droit légal";
+      rBody = `
+        <p><strong>Achat à distance = droit de rétractation obligatoire (directive 2011/83/UE, art. L221-18 Code conso).</strong> Le client peut renvoyer le produit <strong>sans motif</strong> dans les 14 jours suivant la livraison — même s'il a ouvert l'appareil pour l'examiner, tant que l'emballage n'est pas descellé de manière le rendant non revendable pour raisons d'hygiène.</p>
+        <p><strong>Action :</strong> accepter le retour et rembourser intégralement (produit + frais de livraison standard). Le remboursement intervient dans les 14 jours après notification (ou après récupération du bien).</p>
+        ${RETRACT_LAW}`;
+    } else if (s.retract === "remote-open") {
+      rTitle = "Emballage ouvert — à évaluer au cas par cas";
+      rTag = "amber"; rTagLabel = "À évaluer";
+      rBody = `
+        <p>Le droit de rétractation s'applique <strong>même si le client a ouvert l'emballage</strong>, tant qu'il a simplement examiné le produit. La seule limite : si l'ouverture le rend <strong>non revendable</strong> pour raisons d'hygiène ou de santé.</p>
+        <p><strong>Concrètement :</strong> un appareil déballé mais complet (accessoires, câbles, emballage) est en principe <strong>repris et remboursé</strong> — chaque enseigne applique sa propre appréciation (politique de retour ou délai commercial). Un produit avec accessoires descellés à usage hygiénique (écouteurs intra-auriculaires, protections auditives) peut être <strong>refusé au retour</strong> si l'hygiène est compromise.</p>
+        <p><strong>Astuce :</strong> vérifier que toutes les pièces sont présentes ; si un élément manque, un remboursement réduit peut être appliqué (responsabilité de l'utilisateur, art. L221-23).</p>
+        ${RETRACT_LAW}`;
+    } else if (s.retract === "store-return") {
+      rTitle = "Retour sur site en magasin — politique commerciale";
+      rTag = "amber"; rTagLabel = "Politique commerciale";
+      rBody = `
+        <p><strong>Attention : en magasin physique, il n'y a PAS de droit de rétractation légal.</strong> Le droit de 14 jours ne s'applique qu'aux achats <strong>à distance</strong> (en ligne, téléphone, démarchage).</p>
+        <p><strong>La politique de l'enseigne s'applique</strong> (sélectionnez l'enseigne ci-dessous pour les conditions détaillées) : Apple Retail accepte volontairement 14 jours (reçu + état d'origine), Fnac/Darty/Boulanger offrent 15 jours, d'autres uniquement un échange ou un avoir.</p>
+        <p><strong>Conditions communes :</strong> état d'origine, complet, avec facture/reçu. Les produits achetés chez un revendeur doivent être retournés <strong>chez ce revendeur</strong>.</p>`;
+    } else if (s.retract === "remote-store-click") {
+      rTitle = "Commandé en ligne, retourné en magasin — droit légal";
+      rTag = "green"; rTagLabel = "Droit légal 14 j";
+      rBody = `
+        <p>Le produit a été vendu <strong>à distance</strong> (commande en ligne, retrait en magasin, click &amp; collect) : le <strong>droit de rétractation de 14 jours s'applique intégralement</strong>, peu importe le mode de retour choisi par le client.</p>
+        <p><strong>Retourner en magasin :</strong> l'enseigne peut accepter le retour sur site — le client conserve tous ses droits légaux (remboursement intégral : produit + frais de livraison standard, sous 14 jours).</p>
+        <p><strong>Chez Apple :</strong> un produit commandé sur apple.com peut être retourné <strong>en Apple Store</strong> ou par voie postale (formulaire en ligne, 0800 046 046). Le remboursement suit le mode de paiement d'origine.</p>
+        <p><strong>Piège à éviter :</strong> si le vendeur refuse le retour en magasin en invoquant l'absence de rétractation « en boutique », il se trompe — c'est le <strong>mode de vente</strong> (à distance) qui compte, pas le lieu du retour.</p>
+        ${RETRACT_LAW}`;
+    } else if (s.retract === "store-online") {
+      rTitle = "Achat en magasin, retour par voie postale — courtoisie";
+      rTag = "amber"; rTagLabel = "Hors rétractation";
+      rBody = `
+        <p>L'achat a été fait <strong>en magasin physique</strong> : <strong>pas de droit de rétractation légal</strong>, quel que soit le canal de retour utilisé ensuite.</p>
+        <p><strong>Retour postal :</strong> uniquement si l'enseigne l'accepte <strong>commercialement</strong> (Apple exige par exemple le retour dans le pays d'achat — en pratique, un achat fait en Apple Store se retourne <strong>sur place</strong>).</p>
+        <p><strong>Si l'enseigne refuse :</strong> le client ne peut pas exiger un retour postal légal. Seules options : négociation commerciale (échange, avoir) ou, si le produit est <strong>défectueux</strong>, la garantie légale de conformité (2 ans) chez le vendeur.</p>
+        <p><strong>Astuce Genius Bar :</strong> pour un client qui veut renvoyer un produit acheté en magasin, l'orienter vers le magasin d'origine avec sa facture — ou vérifier s'il a en fait commandé en ligne (dans ce cas, rétractation applicable).</p>
+        ${RETRACT_LAW}`;
+    } else if (s.retract === "customized") {
+      rTitle = "Pas de rétractation — produit exclu de la loi";
+      rTag = "red"; rTagLabel = "Exclusion légale";
+      rBody = `
+        <p>Les biens <strong>confectionnés selon les spécifications du client ou nettement personnalisés</strong> (gravure, configuration spécifique commandée), ainsi que les <strong>logiciels/enregistrements descellés</strong>, sont <strong>exclus du droit de rétractation</strong> (art. L221-28 Code conso).</p>
+        <p><strong>Exception :</strong> si le produit est <strong>défectueux ou non conforme</strong>, la <strong>garantie légale de conformité</strong> s'applique normalement (réparation/remplacement, puis remboursement si impossible).</p>
+        ${RETRACT_LAW}`;
+    }
+    cards.push({ title: rTitle, tag: rTag, tagLabel: rTagLabel, body: rBody });
+  }
+
+  // 6 ter. CONDITIONS DE RETOUR PAR ENSEIGNE (dropdown dédié)
+  // Sources : CGV officielles des enseignes (vérifiées le 05/09/2026)
+  if (s.enseigne && s.enseigne !== "none") {
+    const RET_BASE = `<p><strong>Rappel légal transverse :</strong> quelle que soit l'enseigne, la <strong>garantie légale de conformité (2 ans, Code conso art. L217-3 et s.)</strong> s'applique toujours au vendeur — même produit soldé, déballé ou en promotion. Un défaut dans les 12 mois est présumé antérieur à la livraison (art. L217-10).</p>`;
+    let eTitle, eTag, eTagLabel, eBody;
+    if (s.enseigne === "apple") {
+      eTitle = "Apple — conditions de retour";
+      eTag = "green"; eTagLabel = "CGV Apple";
+      eBody = `
+        <p><strong>Apple Store physique (France) :</strong> retour/échange dans les <strong>14 jours calendaires</strong> suivant le retrait, sur présentation du reçu, produit dans son état d'origine avec pièces, accessoires et emballages. Remboursement selon le mode de paiement initial ; &gt; 1 019 € en espèces → virement bancaire.</p>
+        <p><strong>Apple Store en ligne :</strong> 14 jours à compter de la prise de possession (droit légal de rétractation). Formulaire type, ligne 0800 046 046 ou contactus.fr@euro.apple.com. Retour du produit + facture + emballage d'origine + accessoires ; remboursement dans les 14 jours après récupération ou preuve d'expédition.</p>
+        <p><strong>Non retournables (sauf défaut) :</strong> téléchargements de logiciels commencés avec renonciation exprès, cartes cadeaux Apple/iTunes, services entièrement exécutés, logiciels sous emballage scellé ouverts.</p>
+        <p><strong>Zeiss Optical Inserts :</strong> retours acceptés 14 jours après réception.</p>
+        <p>Les produits achetés auprès d'un <strong>revendeur</strong> doivent lui être retournés selon ses propres conditions.</p>
+        <p><a href="https://www.apple.com/fr/legal/sales-support/sales-policies/retail_fr.html" target="_blank" rel="noopener">CGV Apple Store France</a> · <a href="https://www.apple.com/fr/shop/help/returns_refund" target="_blank" rel="noopener">Retours &amp; remboursement</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "amazon") {
+      eTitle = "Amazon (vendu et expédié par Amazon)";
+      eTag = "green"; eTagLabel = "30 jours";
+      eBody = `
+        <p><strong>Double protection :</strong> droit légal de rétractation <strong>14 jours</strong> (remboursement prix + frais de livraison, retour gratuit pour produits expédiés par Amazon) <strong>+ politique commerciale 30 jours</strong>.</p>
+        <p><strong>De 15 à 30 jours après réception :</strong> Amazon rembourse le <strong>prix du produit</strong>, mais <strong>ni les frais de port</strong> ni les frais de retour. Déduction possible pour <strong>dépréciation</strong> liée à la manipulation (produit non neuf incomplet ou marqué).</p>
+        <p><strong>Remboursement :</strong> sous 14 jours après la demande ; peut être différé jusqu'à réception du produit ou preuve d'expédition.</p>
+        <p><strong>Exclusions (30 jours) :</strong> produits personnalisés (gravure), CD/vinyl/DVD/jeux descellés (sauf défaut), logiciels descellés, cartes cadeaux activées.</p>
+        <p><a href="https://www.amazon.fr/gp/help/customer/display.html?nodeId=GKM69DUUYKQWKWX7" target="_blank" rel="noopener">Politique de retour Amazon 30 jours</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "amazon-mp") {
+      eTitle = "Amazon Marketplace (vendeur tiers)";
+      eTag = "amber"; eTagLabel = "Obligations vendeur";
+      eBody = `
+        <p><strong>Les vendeurs Marketplace sont tenus d'offrir au minimum une politique de retour de 30 jours</strong> (exigence Amazon).</p>
+        <p><strong>Dans les 14 jours :</strong> droit légal de rétractation — remboursement prix + frais de livraison. Frais de retour : à la charge du client, <strong>sauf</strong> mode Fashion, retours Prime &lt; 22,6 kg depuis la France, ou politique plus favorable du vendeur.</p>
+        <p><strong>De 15 à 30 jours :</strong> remboursement du prix du produit (pas les ports). Le vendeur peut déduire les frais d'étiquette prépayée du remboursement.</p>
+        <p><strong>Problème produit</strong> (défectueux, non conforme, abîmé) : garantie légale 2 ans — frais de retour <strong>à la charge du vendeur</strong>.</p>
+        <p><strong>Recours :</strong> garantie A-to-z d'Amazon si le vendeur ne répond pas.</p>
+        <p><a href="https://www.amazon.fr/gp/help/customer/display.html?nodeId=GV38326YW5JX9V9X" target="_blank" rel="noopener">Retours Marketplace</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "fnac-darty") {
+      eTitle = "Fnac / Darty — 15 jours pour changer d'avis";
+      eTag = "green"; eTagLabel = "15 jours";
+      eBody = `
+        <p><strong>Darty (art. 4.1 CGV) :</strong> <strong>15 jours</strong> suivant l'achat en magasin ou la réception (darty.com) pour changer d'avis. Produit dans son état d'origine, emballage + accessoires. Retour <strong>gratuit en magasin</strong>, à vos frais par voie postale.</p>
+        <p><strong>Darty en magasin :</strong> emballage non ouvert → remboursement ; ouvert mais non utilisé → <strong>échange</strong> ; produit utilisé → non repris. Produits techniques : vérification possible en atelier avant remboursement.</p>
+        <p><strong>Non repris par Darty si déballés :</strong> produits hygiéniques (rasoirs, tondeuses, épilateurs, brosses à dents), papiers photo, jeux vidéo/logiciels/contenus téléchargeables déballés.</p>
+        <p><strong>Fnac :</strong> CGV Fnac Direct — rétractation légale 14 jours ; Marketplace Fnac-Darty : délai légal 14 jours, libre au vendeur de prolonger ; renvoi sous 14 jours après réception de l'adresse de retour.</p>
+        <p><strong>Bonus Darty :</strong> remboursement de la différence si trouvé moins cher ailleurs dans les <strong>10 jours</strong> (Carte Cadeau).</p>
+        <p><a href="https://www.darty.com/res3/services/contrat-de-confiance/pdf/conditions-generales-de-vente.pdf" target="_blank" rel="noopener">CGV Darty</a> · <a href="https://www.fnac.com/Help/cgv-fnac" target="_blank" rel="noopener">CGV Fnac.com</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "boulanger") {
+      eTitle = "Boulanger — 15 jours pour changer d'avis";
+      eTag = "green"; eTagLabel = "15 jours";
+      eBody = `
+        <p><strong>Politique « Retour sous 15 jours » :</strong> Boulanger <strong>rembourse ou échange</strong> le produit dans les <strong>15 jours</strong> suivant la réception (achat en ligne) — engagement commercial affiché sur tout le site.</p>
+        <p><strong>Conditions :</strong> produit dans son état et emballage d'origine, complets (accessoires, notice). Retour gratuit en magasin ; étiquette de retour en ligne selon le mode d'achat.</p>
+        <p><strong>Certaines catégories</strong> bénéficient d'un délai prolongé jusqu'à 30 jours (consultation du produit concerné) ; produits déballés non reprendables si hygiène ou descellage (identique aux règles sectorielles).</p>
+        <p><strong>Rétractation légale</strong> (achat à distance) : 14 jours, remboursement complet selon la loi.</p>
+        <p><a href="https://www.boulanger.com/evenement/retourner-produit" target="_blank" rel="noopener">Retour sous 15 jours — Boulanger</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "cdiscount") {
+      eTitle = "Cdiscount — retour 14 jours (+ allongements)";
+      eTag = "amber"; eTagLabel = "14 + bonus";
+      eBody = `
+        <p><strong>Droit légal :</strong> rétractation <strong>14 jours</strong> après livraison (retour à la charge du client ; si étiquette prépayée utilisée, frais déduits du remboursement).</p>
+        <p><strong>Période des fêtes :</strong> tout produit commandé et livré entre le 1ᵉʳ novembre et le 31 décembre peut être retourné <strong>jusqu'au 8 janvier</strong> (expédié par Cdiscount) ou jusqu'à <strong>30 jours</strong> après livraison (Marketplace).</p>
+        <p><strong>Marketplace Cdiscount :</strong> les vendeurs tiers doivent offrir <strong>au moins 30 jours</strong> pour la rétractation pendant la période des fêtes (1ᵉʳ nov → 31 déc) — engagement spécifique du guide acheteur/vendeur.</p>
+        <p><strong>Procédure :</strong> Espace client → Mes commandes → demander le retour → télécharger l'étiquette.</p>
+        <p><a href="https://clients.cdiscount.com/frequentlyaskedquestions.html" target="_blank" rel="noopener">Aide au retour Cdiscount</a></p>
+        ${RET_BASE}`;
+    } else if (s.enseigne === "operateur") {
+      eTitle = "Opérateurs télécom (Orange, SFR, Free, Bouygues)";
+      eTag = "amber"; eTagLabel = "14 jours";
+      eBody = `
+        <p><strong>Rétractation légale 14 jours</strong> — point de départ : <strong>signature du contrat</strong> pour l'abonnement, <strong>réception du mobile/box</strong> pour l'équipement.</p>
+        <p><strong>Orange :</strong> exercer via le service client + formulaire de rétractation obligatoire pour retour matériel ; remboursement sous 14 jours après restitution ou preuve d'expédition ; facturation au prorata de l'usage du forfait.</p>
+        <p><strong>SFR :</strong> 14 jours depuis signature/réception ; si le service a déjà été utilisé, part de forfait au prorata ; refuser le colis à la livraison si non encore reçu.</p>
+        <p><strong>Free :</strong> recommandé avec AR ; remboursement des frais sous 14 jours ; mobile remboursé sous 14 jours après retour du téléphone.</p>
+        <p><strong>Bouygues :</strong> service Suivi de Commande (09 81 66 26 66) ; renvoi colis complet avec cadeaux reçus ; frais de retour à la charge du client ; remboursement ~1 semaine.</p>
+        <p><strong>⚠️ En boutique physique : PAS de rétractation légale</strong> — au mieux annulation à la convenance du responsable (souvent en avoir).</p>
+        ${RET_BASE}`;
+    } else {
+      eTitle = "Autre enseigne / revendeur";
+      eTag = "amber"; eTagLabel = "Règles générales";
+      eBody = `
+        <p><strong>En magasin physique :</strong> <strong>pas de droit de rétractation légal</strong> — le retour dépend de la politique commerciale de l'enseigne (souvent échange ou avoir).</p>
+        <p><strong>À distance (web, téléphone) :</strong> <strong>14 jours minimum obligatoires</strong> (remboursement intégral, retour à la charge du client, prolongation si non-information).</p>
+        <p><strong>Produit défectueux :</strong> la <strong>garantie légale de conformité</strong> (2 ans) s'applique chez TOUS les vendeurs, quelle que soit l'enseigne — c'est le vendeur, pas Apple, qui doit réparer/remplacer/rembourser.</p>
+        <p><strong>Astuce Genius Bar :</strong> orienter le client vers son vendeur d'origine avec sa facture ; Apple n'intervient sous garantie légale que s'il est le vendeur.</p>
+        ${RET_BASE}`;
+    }
+    cards.push({ title: eTitle, tag: eTag, tagLabel: eTagLabel, body: eBody });
+  }
+
+  return { verdict, title, summary, cards };
+}
+
+// ========== UI ==========
+const state = { mode:"garantie", product:"", purchase:"", age:"", condition:"", "prior-repair":"", retract:"none", enseigne:"none" };
+
+function toggleExpand(link) {
+  const content = link.nextElementSibling;
+  link.classList.toggle('open');
+  content.classList.toggle('open');
+}
+
+function applyScenario(btn, s) {
+  // Highlight active scenario
+  document.querySelectorAll('.scenario-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  // Apply state
+  Object.assign(state, s);
+  if (!s.mode) state.mode = "garantie";
+  buildQuestionnaire();
+  // Update all dropdowns to reflect the scenario
+  QUESTIONS.forEach(q => {
+    const sel = document.getElementById(q.id + '-select');
+    const val = document.getElementById(q.id + '-value');
+    if (sel && val) {
+      sel.value = s[q.id];
+      const opt = q.options.find(o => o.value === s[q.id]);
+      if (opt) val.textContent = opt.label;
+    }
+  });
+  renderResult();
+}
+
+function buildQuestionnaire() {
+  const container = document.getElementById('questionnaire');
+  container.innerHTML = "";
+  // Sélecteur de mode (garantie vs retour)
+  const modeBox = document.createElement('div');
+  modeBox.className = 'select-box mode-box';
+  modeBox.innerHTML = `
+      <label for="mode-select">Type de demande</label>
+      <div class="value" id="mode-value">—</div>
+      <select id="mode-select" aria-label="Type de demande">
+        <option value="garantie">Garantie légale &amp; réparation</option>
+        <option value="retour">Retour 14 jours &amp; rétractation</option>
+        <option value="bonus">Bonus réparation</option>
+      </select>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    `;
+  container.appendChild(modeBox);
+  const modeSel = modeBox.querySelector('select');
+  const modeVal = modeBox.querySelector('.value');
+  modeSel.value = state.mode;
+  modeVal.textContent = state.mode === 'retour' ? 'Retour 14 jours & rétractation' : state.mode === 'bonus' ? 'Bonus réparation' : 'Garantie légale & réparation';
+  modeSel.addEventListener('change', e => {
+    state.mode = e.target.value;
+    buildQuestionnaire();
+    renderResult();
+  });
+  QUESTIONS.forEach(q => {
+    if (!q.modes || !q.modes.includes(state.mode)) return;
+    const box = document.createElement('div');
+    box.className = 'select-box';
+    box.innerHTML = `
+      <label for="${q.id}-select">${q.label}</label>
+      <div class="value" id="${q.id}-value">—</div>
+      <select id="${q.id}-select" aria-label="${q.label}">
+        <option value="" disabled selected>Sélectionnez…</option>
+        ${q.options.map(o => `<option value="${o.value}">${o.label}</option>`).join('')}
+      </select>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+    `;
+    container.appendChild(box);
+    const sel = box.querySelector('select');
+    const val = box.querySelector('.value');
+    sel.addEventListener('change', e => {
+      state[q.id] = e.target.value;
+      val.textContent = q.options.find(o => o.value === e.target.value).label;
+      renderResult();
+    });
+  });
+}
+
+function getResultBonus(s) {
+  // Validation d'éligibilité au Bonus Réparation en Apple Store (labellisé QualiRépar 07/2025)
+  // Règles : ecosystem (fonds Réparation) — PARTICULIERS uniquement, hors garantie, panne éligible
+  const bs = s["bonus-status"];
+  const bp = s["bonus-product"], bw = s["bonus-warranty"];
+  let br = s["bonus-repair"];
+  let bc = s["bonus-cause"];
+
+  // ===== BLOCAGE 0 : professionnel =====
+  if (bs === "professionnel") {
+    return { verdict: "not-eligible", title: "Client professionnel — bonus non applicable",
+      summary: `Le <strong>Bonus Réparation est réservé aux particuliers</strong> : le critère officiel du fonds est l'appareil « <strong>détenu par un ménage</strong> » — les équipements d'une entreprise (SARL, EURL, micro-entreprise, société…) ou d'une organisation sont exclus. Exemples officiels de refus : sèche-linge d'un <strong>salon de coiffure</strong>, cafetière d'un <strong>club sportif</strong>. Sources : PDF ecosystem doc/257, ADEME, ecologie.gouv.fr.`,
+      cards: [
+        { title: "Que faire pour un appareil professionnel", tag: "blue", tagLabel: "Alternatives", body: `
+          <p><strong>Réparation payante classique</strong> en Apple Store ou chez un prestataire agréé — facturée à l'entreprise, souvent récupérable en charges (TVA déductible sur le devis).</p>
+          <p><strong>Vérifier les garanties :</strong> garantie légale de conformité (2 ans, également due aux professionnels non-éclairés pour certains biens), garantie constructeur, ou extension d'entreprise.</p>
+          <p><strong>Assurance / flotte :</strong> si l'entreprise couvre ses équipements (multirisque pro, flotte AppleCare for Business), orienter vers la déclaration de sinistre.</p>
+          <p><strong>À noter :</strong> un artisan ou commerçant <em>réparateur</em> peut se faire labelliser QualiRépar pour proposer le bonus <em>à ses clients particuliers</em> — mais jamais pour son propre équipement.</p>
+          <p><a href="https://entreprendre.service-public.gouv.fr/vosdroits/F37980" target="_blank" rel="noopener">Service-public Entreprendre — fonds réparation</a></p>` } ] };
+  }
+
+  const amounts = { "iphone": ["iPhone", "25 €"], "ipad": ["iPad", "25 €"], "mac-portable": ["Mac portable", "50 €"], "mac-fixe": ["Mac fixe / tout-en-un", "50 €"], "moniteur": ["Moniteur", "30 €"] };
+  const thresholds = { "mac-portable": 150, "mac-fixe": 150, "moniteur": 100 };
+  const pLabel = amounts[bp] ? amounts[bp][0] : "l'appareil";
+  const pAmount = amounts[bp] ? amounts[bp][1] : "";
+  const cards = [];
+
+  // ===== BLOCAGE 1 : garantie =====
+  if (bw === "garantie-legale") {
+    return { verdict: "not-eligible", title: "Sous garantie légale de conformité — bonus non applicable",
+      summary: `L'appareil est couvert par la <strong>garantie légale de conformité</strong> (2 ans, art. L217-3 et s.) : la réparation doit être <strong>prise en charge par le vendeur</strong>, gratuitement pour le client. Le Bonus Réparation n'intervient que pour les appareils <strong>hors garantie</strong>.`,
+      cards: [
+        { title: "Que faire en Genius Bar", tag: "blue", tagLabel: "Procédure", body: `
+          <p><strong>Orienter le client vers le vendeur</strong> (Apple si acheté sur apple.com/Apple Store, sinon l'enseigne d'achat) avec sa facture. La présomption de défaut est renforcée les 12 premiers mois (art. L217-10, 24 mois pour les biens neufs à compter du 1er janvier 2026).</p>
+          <p>Si le vendeur refuse ou que le client veut accélérer : la réparation payante hors garantie reste possible, mais <strong>sans bonus</strong> tant que la garantie légale court.</p>
+          ${RETRACT_LAW}` } ] };
+  }
+  if (bw === "garantie-constructeur") {
+    return { verdict: "not-eligible", title: "Sous garantie constructeur / AppleCare+ — prise en charge gratuite",
+      summary: `L'appareil est couvert par la <strong>garantie constructeur ou AppleCare+</strong> : la panne (si couverte) est réparée <strong>gratuitement</strong> par Apple. Le Bonus Réparation ne s'applique qu'aux réparations <strong>payantes hors garantie</strong>.`,
+      cards: [
+        { title: "Que faire en Genius Bar", tag: "blue", tagLabel: "Procédure", body: `
+          <p>Vérifier la couverture (numéro de série → coverage.apple.com ou reçu). Si la panne est couverte : réparation <strong>0 €</strong> pour le client — inutile de parler bonus.</p>
+          <p>Si la panne n'est <strong>pas couverte</strong> (casse hors AppleCare+ Loss/Theft, dégâts non couverts) : la réparation devient payante → <strong>le bonus peut alors s'appliquer</strong> si la panne est éligible. Refaire le questionnaire en « hors garantie » pour l'intervention concernée.</p>` } ] };
+  }
+
+  // ===== HORS GARANTIE : vérifier la panne =====
+  // Verre arrière endommagé : ÉLIGIBLE direct (25 €) — le module lentille photo / MagSafe
+  // qu'il contient est fonctionnel, Apple prend la réparation en charge
+  if (br === "esthetique" || br === "logicielle" || br === "consommable") {
+    const reasons = {
+      "esthetique": "une réparation <strong>esthétique</strong> ne nuit pas au fonctionnement de l'appareil",
+      "logicielle": "une opération de <strong>maintenance logicielle</strong> (système, réinstallation, défaut logiciel)",
+      "consommable": "le remplacement d'un <strong>consommable ou accessoire</strong> (cartouche, chargeur, câble, batterie amovible)"
+    };
+    return { verdict: "not-eligible", title: "Intervention non éligible au Bonus Réparation",
+      summary: `Le Fonds Réparation exclut ${reasons[br]} : la grille ecosystem cible les réparations qui <strong>prolongent la vie de l'appareil</strong> face à une panne ou une casse fonctionnelle.`,
+      cards: [
+        { title: "Alternatives pour le client", tag: "blue", tagLabel: "À proposer", body: `
+          <p>Vérifier si l'intervention relève d'une <strong>garantie restante</strong> (légale 2 ans chez le vendeur), d'une <strong>assurance</strong> habitation ou d'une extension constructeur.</p>
+          <p>À défaut : la réparation reste possible aux frais du client, chez Apple ou un réparateur indépendant — simplement <strong>sans réduction bonus</strong>.</p>` } ] };
+  }
+
+  // Connectique = "entrée connectique" = facteur externe (PDF ecosystem doc/257)
+  if (br === "connectique" && bc !== "assurance") bc = "externe";
+
+  if (bc === "assurance") {
+    return { verdict: "not-eligible", title: "Dommage couvert par une assurance — bonus exclu",
+      summary: `Les appareils couverts par une <strong>assurance</strong> (habitation, multidémie, extension) sont exclus du Bonus Réparation : le dommage doit d'abord être déclaré à l'assureur, qui prend en charge selon le contrat.`,
+      cards: [
+        { title: "Procédure", tag: "blue", tagLabel: "Procédure", body: `
+          <p>Conseiller au client de <strong>déclarer le sinistre</strong> à son assureur avant toute réparation payante (franchise souvent plus basse que le coût de réparation).</p>
+          <p>Si l'assurance <strong>refuse</strong> la prise en charge (exclusion, franchise élevée) : la réparation redevient « normale » → le bonus peut s'appliquer si la panne est éligible.</p>` } ] };
+  }
+
+  // ===== PANNE ÉLIGIBLE : calculer le montant =====
+  // Seuils officiels (Mac ≥ 150 €, moniteur ≥ 100 €) : systématiquement atteints en Apple Store → non posés
+  const isEligiblePanne = ["ecran", "batterie", "casse", "panne", "verre-arriere"].includes(br);
+  const passed = isEligiblePanne && bc !== "externe" && bc !== "usage";
+  const verdict = passed ? "eligible" : "not-eligible";
+  const title = passed ? `Bonus réparation applicable — ${pAmount} pour ${pLabel}` : "Contexte de panne incompatible avec le bonus";
+  const summary = passed
+    ? `<strong>${pLabel} hors garantie</strong> + intervention éligible + contexte normal : le bonus de <strong>${pAmount}</strong> est <strong>déduit automatiquement de la facture</strong> en Apple Store (labellisé QualiRépar).`
+    : `Un dommage causé par un <strong>facteur externe</strong> (défaut électrique, installation, <strong>oxydation/immersion</strong>, connectique, mauvais entretien) ou un <strong>usage non conforme</strong> du client n'ouvre pas droit au bonus.`;
+
+  cards.push({ title: `Récapitulatif — ${pLabel} (${pAmount})`, tag: verdict === "eligible" ? "green" : verdict === "partial" ? "amber" : "red", tagLabel: verdict === "eligible" ? "Bonus OK" : verdict === "partial" ? "Seuil" : "Refusé", body: `
+    <p><strong>Client :</strong> particulier ✓ (le bonus est réservé aux particuliers — les équipements d'entreprise sont exclus).</p>
+    <p><strong>Produit :</strong> ${pLabel} — bonus de référence ${pAmount}.</p>
+    <p><strong>Statut :</strong> hors garantie (légale et constructeur) ✓</p>
+    <p><strong>Intervention :</strong> ${ { "ecran": "remplacement d'écran (éligible depuis 2024 pour les téléphones, désormais TV et écrans)", "batterie": "batterie inamovible (éligible)", "casse": "casse empêchant le fonctionnement (éligible)", "panne": "panne fonctionnelle (éligible)", "verre-arriere": "verre arrière endommagé — module lentille photo / MagSafe touché, composant fonctionnel : Apple le prend en charge" }[br] || "" }</p>
+    <p><strong>Contexte :</strong> ${ bc === "normale" ? "panne normale d'usage ✓" : "facteur externe ou usage non conforme → excluant" }.</p>
+    <p><strong>Résultat :</strong> ${ passed ? `bonus de <strong>${pAmount}</strong> déduit immédiatement de la facture Apple Store.` : "bonus non applicable." }</p>
+    ${ thresholds[bp] ? `<p><em>Seuil officiel de déclenchement : ${thresholds[bp]} € (${pLabel}) — systématiquement dépassé en Apple Store.</em></p>` : "" }` });
+
+  cards.push({ title: "Grille officielle d'éligibilité (exemples ecosystem)", tag: null, tagLabel: "PDF doc/257", body: `
+    <p><strong>✅ Acceptées (exemples officiels) :</strong> écran cassé de téléphone/ordinateur, dalle TV cassée, <strong>batterie soudée ou collée</strong> à l'appareil (téléphone, ordinateur — le cas iPhone/Mac), poignée de hublot, joint de lave-linge fuyard, <strong>ventilateur d'un ordinateur portable</strong> ou d'une console, clayette de réfrigérateur, enrouleur d'aspirateur.</p>
+    <p><strong>❌ Refusées (exemples officiels) :</strong> dommage esthétique ou n'empêchant pas le fonctionnement (revêtement griffé, impact sur porte — le <strong>verre arrière endommagé</strong> reste éligible chez Apple : il intègre le module lentille photo / MagSafe, composant fonctionnel), batterie <strong>amovible</strong> (VAE, outillage), chargeur/câble amovible, cartouche, ampoule/LED (y compris barre de LED de TV), objectif photo, vente de pièce seule sans acte de réparation, mises à jour et logiciels, <strong>port USB HS (entrée connectique)</strong>, <strong>oxydation / immersion</strong>, pièce coincée / circuit encrassé (mauvais entretien), défaut de montage, appareil acheté à l'étranger ou marque non distribuée en France, rappel de parc constructeur.</p>
+    <p><strong>Conditions produit :</strong> plaque signalétique ou IMEI lisible (plaque effacée / marquée « HS » → refus), appareil détenu par un <strong>ménage</strong>, non couvert par une assurance, conforme à la réglementation.</p>
+    <p><a href="https://www.ecosystem.eco/document/257" target="_blank" rel="noopener">PDF officiel — appareil et panne éligibles (exemples)</a> · <a href="https://www.ecosystem.eco/document/56" target="_blank" rel="noopener">Grille des montants (PDF)</a></p>` });
+
+  cards.push({ title: "Application en Apple Store", tag: "green", tagLabel: "QualiRépar", body: `
+    <p>Les Apple Store de France sont <strong>labellisés QualiRépar depuis juillet 2025</strong> : le bonus est appliqué <strong>automatiquement</strong> à la facture, sans démarche du client, pour les réparations éligibles <strong>hors garantie</strong>.</p>
+    <p><strong>Garantie de la réparation :</strong> 3 mois minimum chez un réparateur QualiRépar (90 jours chez Apple sur les réparations payantes).</p>
+    <p><a href="https://www.ecosystem.eco/comprendre/bonus-reparation" target="_blank" rel="noopener">Grille officielle ecosystem</a> · <a href="https://www.apple.com/fr/legal/sales-support/sales-policies/retail_fr.html" target="_blank" rel="noopener">CGV Apple Store France</a></p>` });
+
+  return { verdict, title, summary, cards };
+}
+
+function renderResult() {
+  const panel = document.getElementById('result-panel');
+  const panel2 = panel;
+  if (state.mode === "bonus") {
+    const bp = state["bonus-product"];
+    const bc = state["bonus-context"];
+    const bss = state["bonus-status"], bws = state["bonus-warranty"], brs = state["bonus-repair"], bcs = state["bonus-cause"];
+    // Refus IMMÉDIAT si statut professionnel (bloquant avant toutes les autres questions)
+    if (bss === "professionnel") {
+      showResult(panel2, getResultBonus(state));
+      return;
+    }
+    const bAns = [bss, bp, bws, brs, bcs].filter(Boolean).length;
+    if (bAns < 5) {
+      panel.innerHTML = `<div class="result-placeholder">Questionnaire d'éligibilité — ${5 - bAns} question${5 - bAns > 1 ? 's' : ''} restante${5 - bAns > 1 ? 's' : ''} pour valider le bonus.</div>`;
+      return;
+    }
+    showResult(panel2, getResultBonus(state));
+    return;
+  }
+  if (state.mode === "retour") {
+    const hasRetract = state.retract && state.retract !== "none";
+    const hasEnseigne = state.enseigne && state.enseigne !== "none";
+    if (!hasRetract && !hasEnseigne) {
+      panel.innerHTML = `<div class="result-placeholder">Choisissez la <strong>situation de retour</strong> et/ou l'<strong>enseigne d'achat</strong> pour afficher les conditions applicables.</div>`;
+      return;
+    }
+    showResult(panel2, getResultRetour(state));
+    return;
+  }
+  const visible = QUESTIONS.filter(q => q.modes && q.modes.includes("garantie"));
+  const answered = visible.filter(q => state[q.id]).length;
+  const remaining = visible.length - answered;
+  if (answered < visible.length) {
+    panel.innerHTML = `<div class="result-placeholder">Répondez aux ${remaining} question${remaining > 1 ? 's' : ''} restante${remaining > 1 ? 's' : ''}.</div>`;
+    return;
+  }
+  showResult(panel2, getResult(state));
+}
+
+function showResult(panel, r) {
+  const icons = { "eligible":"✅", "partial":"⚠️", "not-eligible":"❌" };
+  const classes = { "eligible":"eligible", "partial":"partial", "not-eligible":"not-eligible" };
+  let html = `<div class="verdict-box ${classes[r.verdict]}"><div class="verdict-icon">${icons[r.verdict]}</div><div><h2>${r.title}</h2><p>${r.summary}</p></div></div>`;
+  r.cards.forEach(c => {
+    html += `<div class="quick-card"><h3>${c.tag ? `<span class="tag ${c.tag}">${c.tagLabel}</span>` : ""}${c.title}</h3>${c.body}</div>`;
+  });
+  panel.innerHTML = html;
+}
+
+buildQuestionnaire();
+</script>
+  <script src="./assets/js/shared-app.js?v=2"></script>
+</body>
+</html>

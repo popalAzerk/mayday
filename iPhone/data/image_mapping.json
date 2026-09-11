@@ -1,0 +1,609 @@
+{
+  "iphone_se_3rd_screw.html": {
+    "device_image": "models/iPhone SE (3rd:2nd gen)/diagram/SE3rdgen_screws.webp",
+    "screw_diagrams": [
+      "models/iPhone SE (3rd:2nd gen)/diagram/SE3rdgen_screws.webp"
+    ]
+  },
+  "iphone_se_2nd_screw.html": {
+    "device_image": "models/iPhone SE (3rd:2nd gen)/diagram/SE3rdgen_screws.webp",
+    "screw_diagrams": [
+      "models/iPhone SE (3rd:2nd gen)/diagram/SE3rdgen_screws.webp"
+    ]
+  },
+  "iphone_11_screw.html": {
+    "device_image": "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp",
+      "models/iPhone_11/diagram/iPhone 11 - screw diagram.webp"
+    ]
+  },
+  "iphone_11_pro_screw.html": {
+    "device_image": "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp",
+      "models/iPhone_11_Pro/diagram/iPhone 11 Pro - screw diagram.webp"
+    ]
+  },
+  "iphone_11_pro_max_screw.html": {
+    "device_image": "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp",
+      "models/iPhone_11_Pro_Max/diagram/iPhone 11 Pro Max - screw diagram.webp"
+    ]
+  },
+  "iphone_12_screw.html": {
+    "device_image": "models/iPhone_12/diagram/iPhone 12 - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_12/diagram/iPhone 12 - screw diagram.webp",
+      "models/iPhone_12/diagram/iPhone 12 - screw diagram.webp"
+    ]
+  },
+  "iphone_12_mini_screw.html": {
+    "device_image": "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp",
+      "models/iPhone_12_Mini/diagram/iPhone 12 mini - screw diagram.webp"
+    ]
+  },
+  "iphone_12_pro_screw.html": {
+    "device_image": "models/iPhone_12_Pro/diagram/12Pro_Screw_chart.webp",
+    "screw_diagrams": [
+      "models/iPhone_12_Pro/diagram/12Pro_Screw_chart.webp",
+      "models/iPhone_12_Pro/diagram/12Pro_Screw_chart.webp"
+    ]
+  },
+  "iphone_12_pro_max_screw.html": {
+    "device_image": "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+    "screw_diagrams": [
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp",
+      "models/iPhone_12_Pro_Max/diagram/iphone 12 max screws.webp"
+    ]
+  },
+  "iphone_13_screw.html": {
+    "device_image": "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+    "screw_diagrams": [
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp",
+      "models/iPhone_13/diagram/D17_Screws_Locator-New.webp"
+    ]
+  },
+  "iphone_13_mini_screw.html": {
+    "device_image": "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+    "screw_diagrams": [
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp",
+      "models/iPhone_13_Mini/diagram/D16_Camera_Locator 4.webp"
+    ]
+  },
+  "iphone_13_pro_screw.html": {
+    "device_image": "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+    "screw_diagrams": [
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp",
+      "models/iPhone_13_Pro/diagram/13Pro_Screws_Locator.webp"
+    ]
+  },
+  "iphone_13_pro_max_screw.html": {
+    "device_image": "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+    "screw_diagrams": [
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp",
+      "models/iPhone_13_Pro_Max/diagram/D64_13pro max screw chart_03.webp"
+    ]
+  },
+  "iphone_14_screw.html": {
+    "device_image": "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+    "screw_diagrams": [
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp",
+      "models/iPhone_14/diagram/TP2137_Screw_Chart_V4_2X.webp"
+    ]
+  },
+  "iphone_14_plus_screw.html": {
+    "device_image": "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+    "screw_diagrams": [
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp",
+      "models/iPhone_14_Plus/diagram/TP2142_Screw_Chart.webp"
+    ]
+  },
+  "iphone_14_pro_screw.html": {
+    "device_image": "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+    "screw_diagrams": [
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp",
+      "models/iPhone_14_Pro/diagram/TP2146_Screw_Chart - New.webp"
+    ]
+  },
+  "iphone_14_pro_max_screw.html": {
+    "device_image": "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+    "screw_diagrams": [
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp",
+      "models/iPhone_14_Pro_Max/diagram/TP2149_Screw_Chart_V3_2x.webp"
+    ]
+  },
+  "iphone_15_screw.html": {
+    "device_image": "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp",
+      "models/iPhone_15/diagram/iPhone 15 - screw diagram.webp"
+    ]
+  },
+  "iphone_15_plus_screw.html": {
+    "device_image": "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp",
+      "models/iPhone_15_Plus/diagram/iPhone 15 Plus - screw diagram.webp"
+    ]
+  },
+  "iphone_15_pro_screw.html": {
+    "device_image": "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp",
+      "models/iPhone_15_Pro/diagram/iPhone 15 Pro - screw diagram.webp"
+    ]
+  },
+  "iphone_15_pro_max_screw.html": {
+    "device_image": "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp",
+      "models/iPhone_15_Pro_Max/diagram/iPhone 15 Pro Max - screw diagram.webp"
+    ]
+  },
+  "iphone_16_screw.html": {
+    "device_image": "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp",
+      "models/iPhone_16/diagram/iPhone 16 - screw diagram.webp"
+    ]
+  },
+  "iphone_16_plus_screw.html": {
+    "device_image": "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp",
+      "models/iPhone_16_Plus/diagram/iPhone 16 Plus - screw diagram.webp"
+    ]
+  },
+  "iphone_16_pro_screw.html": {
+    "device_image": "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp",
+      "models/iPhone_16_Pro/diagram/iPhone 16 Pro - screw diagram.webp"
+    ]
+  },
+  "iphone_16_pro_max_screw.html": {
+    "device_image": "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp",
+      "models/iPhone_16_Pro_Max/diagram/iPhone 16 Pro Max - screw diagram.webp"
+    ]
+  },
+  "iphone_16e_screw.html": {
+    "device_image": "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp",
+      "models/iPhone_16e/diagram/iphone_16e_screw_diagram.webp"
+    ]
+  },
+  "iphone_17_screw.html": {
+    "device_image": "models/iPhone_17/diagram/Display/123048_Display_Screw_Diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_17/diagram/Display/123048_Display_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Back_Glass/123038_Back_Glass_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Battery/Battery_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Camera/123039_Camera_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/True_Depth/123041_Front_Camera_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Top_Speaker/123040_Top_Speaker_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Bottom_speaker/123046_Bottom_Speaker_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Taptic_Engine/123045_Taptic_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Micro/123047_MainMic_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Logic_Board/123042_Logic_Board_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Enclosure/123049_Enclosure_Screw_Diagram.webp"
+    ]
+  },
+  "iphone_17e_screw.html": {
+    "device_image": "models/iPhone_17/diagram/Display/123048_Display_Screw_Diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_17/diagram/Display/123048_Display_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Back_Glass/123038_Back_Glass_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Battery/Battery_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Camera/123039_Camera_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Taptic_Engine/123045_Taptic_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Bottom_speaker/123046_Bottom_Speaker_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Top_Speaker/123040_Top_Speaker_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/True_Depth/123041_Front_Camera_Screw_Diagram.webp",
+      "models/iPhone_17/diagram/Micro/123047_MainMic_Screw_Diagram.webp"
+    ]
+  },
+  "iphone_17_pro_screw.html": {
+    "device_image": "models/iPhone_17_Pro/diagram/Display/123365_Display_Screw_Diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_17_Pro/diagram/Display/123365_Display_Screw_Diagram.webp",
+      "models/iPhone_17_Pro/diagram/Back_Glass/123366_Back_Glass_Screw_Diagram.webp",
+      "models/iPhone_17_Pro/diagram/Battery/123367_Battery_Screw_Diagram.webp",
+      "models/iPhone_17_Pro/diagram/Camera/123368_Camera_Screw_Diagram.webp",
+      "models/iPhone_17_Pro/diagram/True_Depth/123369_TrueDepth_Camera_Screw_Diagram-1.webp",
+      "models/iPhone_17_Pro/diagram/Top_Speaker/123370_Top_Speaker_Screw_Diagram.webp",
+      "models/iPhone_17_Pro/diagram/Bottom_speaker/123371_Bottom_Speaker_pSIM_Screw_Diagram.webp",
+      "models/iPhone_17_Pro/diagram/Taptic_Engine/123372_Taptic_Engine_K_Screw_Diagram.webp",
+      "models/iPhone_17_Pro/diagram/Micro/123373_Main_Mic_pSIM_Screw_Diagram.webp",
+      "models/iPhone_17_Pro/diagram/Logic_Board/123375_Logic_Board_K_Screw_Diagram.webp",
+      "models/iPhone_17_Pro/diagram/Enclosure/123376_Enclosure_Screw_NK_Diagram.webp"
+    ]
+  },
+  "iphone_17_pro_max_screw.html": {
+    "device_image": "models/iPhone_17_Pro_Max/diagram/Display/123385_Display_Screw_Diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_17_Pro_Max/diagram/Display/123385_Display_Screw_Diagram.webp",
+      "models/iPhone_17_Pro_Max/diagram/BackGlass/123386_Back_Glass_Screw_Diagram.webp",
+      "models/iPhone_17_Pro_Max/diagram/Batterie/123387_Battery_Screw_Diagram.webp",
+      "models/iPhone_17_Pro_Max/diagram/Camera/123388_Camera_Screw_Diagram.webp",
+      "models/iPhone_17_Pro_Max/diagram/Camera trueDepth/123389_TrueDepth_Camera_Screw_Diagram.webp",
+      "models/iPhone_17_Pro_Max/diagram/Top_Speaker/123390_Top_Speaker_Screw_Diagram.webp",
+      "models/iPhone_17_Pro_Max/diagram/Bottom_Speaker/123391_Bottom_Speaker_pSIM_Screw_Guide.webp",
+      "models/iPhone_17_Pro_Max/diagram/TapTic_Engine/123392_Taptic_Engine_K_Screw_Diagram.webp",
+      "models/iPhone_17_Pro_Max/diagram/Microphone/123393_Main_Mic_pSIM_Screw_Diagram.webp",
+      "models/iPhone_17_Pro_Max/diagram/Logic_Board/123395_Logic_Board_K_Screw_Diagram.webp",
+      "models/iPhone_17_Pro_Max/diagram/Enclosure/123396_Enclosure_Screw_NK_Diagram.webp"
+    ]
+  },
+  "iphone_6s_screw.html": {
+    "device_image": "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp",
+      "models/iPhone_6s/diagram/iPhone 6s - screw diagram.webp"
+    ]
+  },
+  "iphone_6s_plus_screw.html": {
+    "device_image": "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp",
+      "models/iPhone_6s_Plus/diagram/iPhone 6s Plus - screw diagram.webp"
+    ]
+  },
+  "iphone_7_screw.html": {
+    "device_image": "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp",
+      "models/iPhone_7/diagram/iPhone 7 - screw diagram.webp"
+    ]
+  },
+  "iphone_7_plus_screw.html": {
+    "device_image": "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp",
+      "models/iPhone_7_Plus/diagram/iPhone 7 Plus - screw diagram.webp"
+    ]
+  },
+  "iphone_8_screw.html": {
+    "device_image": "models/iPhone_8/diagram/iPhone 8 SE 2 SE 3 - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_8/diagram/iPhone 8 SE 2 SE 3 - screw diagram.webp",
+      "models/iPhone_8/diagram/iPhone 8 SE 2 SE 3 - screw diagram (super screw).webp"
+    ]
+  },
+  "iphone_8_plus_screw.html": {
+    "device_image": "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp",
+      "models/iPhone_8_Plus/diagram/iPhone 8 Plus - screw diagram.webp"
+    ]
+  },
+  "iphone_air_screw.html": {
+    "device_image": "models/iPhone_Air/diagram/Display/123066_Display_Screw_Diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_Air/diagram/Display/123066_Display_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/Back_Glass/Back_Glass_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/Battery/Back_Glass_for_battery_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/Camera/123058_Camera_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/True_Depth/Front_Camera_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/Top_Speaker/123059_Top_Speaker_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/Taptic_Engine/123063_Taptic_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/Micro Principal/123064_Main_Mic_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/Micro Aux/123065_Aux_Mic_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/Logic_Board/123061_LogicBoard_Screw_Diagram.webp",
+      "models/iPhone_Air/diagram/Enclosure/123067_Enclosure_Screw_Diagram.webp"
+    ]
+  },
+  "iphone_x_screw.html": {
+    "device_image": "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp",
+      "models/iPhone_X/diagram/iPhone X - screw diagram.webp"
+    ]
+  },
+  "iphone_xr_screw.html": {
+    "device_image": "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp",
+      "models/iPhone_XR/diagram/iPhone XR - screw diagram.webp"
+    ]
+  },
+  "iphone_xs_screw.html": {
+    "device_image": "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp",
+      "models/iPhone_XS/diagram/iPhone XS - screw diagram.webp"
+    ]
+  },
+  "iphone_xs_max_screw.html": {
+    "device_image": "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+    "screw_diagrams": [
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp",
+      "models/iPhone_XS_max/diagram/iPhone XS Max - screw diagram.webp"
+    ]
+  }
+}

@@ -1,0 +1,1210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>iPhone Screw Diagrams</title>
+    <script>(function(){try{var t=localStorage.getItem('apple-hub-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+    <!-- Master Portal Shared Theme -->
+    <link rel="stylesheet" href="../assets/css/shared-theme.css">
+    <style>
+        html, body {
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+            background-color: var(--apple-bg);
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 65px 24px 10px; /* Reduced for more space */
+            height: 100vh; /* Fixed height to prevent scroll */
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            z-index: 1;
+            overflow: visible;
+        }
+        
+        .header-section {
+            margin-top: 30px;
+            margin-bottom: 8px; /* Reduced from 10px */
+            text-align: center;
+            flex-shrink: 0;
+            animation: fadeInDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .header-section h1 {
+            font-size: 24px;
+            letter-spacing: -1.5px;
+            font-weight: 700;
+            margin-bottom: 2px;
+            background: linear-gradient(135deg, var(--apple-text) 0%, var(--apple-gray-3) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .series-container-wrapper {
+            position: relative;
+            margin: 0 auto;
+            flex-grow: 1;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            overflow: visible;
+            width: 100%;
+        }
+
+        .series-grid {
+            display: grid;
+            grid-template-rows: repeat(2, 1fr);
+            grid-auto-flow: column;
+            grid-auto-columns: 180px;
+            gap: 32px 16px;
+            margin-left: 0;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            padding: 20px 40px 28px 160px;
+            scroll-behavior: smooth;
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        .series-grid::-webkit-scrollbar {
+            display: none;
+        }
+
+        .series-card {
+            width: 100%;
+            box-sizing: border-box;
+            height: auto;
+            scroll-snap-align: start;
+            position: relative;
+            text-decoration: none;
+            color: var(--apple-text);
+            transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), background 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: var(--apple-card-bg);
+            border-radius: 16px;
+            padding: 12px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .series-card:hover {
+            transform: scale(1.03) translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .series-card:last-child {
+            margin-right: 24px;
+        }
+
+        .series-card:nth-child(1) { animation-delay: 0.05s; }
+        .series-card:nth-child(2) { animation-delay: 0.1s; }
+        .series-card:nth-child(3) { animation-delay: 0.15s; }
+        .series-card:nth-child(4) { animation-delay: 0.2s; }
+        .series-card:nth-child(5) { animation-delay: 0.25s; }
+        .series-card:nth-child(6) { animation-delay: 0.3s; }
+        .series-card:nth-child(7) { animation-delay: 0.35s; }
+        .series-card:nth-child(8) { animation-delay: 0.4s; }
+        .series-card:nth-child(9) { animation-delay: 0.45s; }
+        .series-card:nth-child(10) { animation-delay: 0.5s; }
+        .series-card:nth-child(11) { animation-delay: 0.55s; }
+        .series-card:nth-child(12) { animation-delay: 0.6s; }
+        .series-card:nth-child(13) { animation-delay: 0.65s; }
+        .series-card:nth-child(14) { animation-delay: 0.7s; }
+        .series-card:nth-child(15) { animation-delay: 0.75s; }
+        .series-card:nth-child(16) { animation-delay: 0.8s; }
+
+.card-image-box {
+            width: 100%;
+            height: 130px;
+            padding: 0;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 8px;
+            position: relative;
+            background: var(--apple-card-bg);
+            backdrop-filter: none;
+            -webkit-backdrop-filter: none;
+            box-shadow: none;
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+            border: none !important;
+        }
+
+        .series-card:hover .series-image {
+            transform: scale(1.05);
+        }
+
+        .series-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px;
+            transition: transform 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            background: transparent !important;
+        }
+        
+        .img-contain {
+            object-fit: contain;
+            padding: 20px;
+        }
+        
+        .image-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.6), transparent);
+            color: white;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 10px 8px 6px;
+            text-align: center;
+            pointer-events: none;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .card-info {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+
+        .series-title {
+            font-size: 13px;
+            font-weight: 600;
+            margin: 6px 0 4px 0;
+            letter-spacing: -0.3px;
+            color: var(--apple-text);
+            line-height: 1.2;
+        }
+
+        .model-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 6px;
+            margin-top: 0;
+        }
+
+        .model-pill {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 3px 8px;
+            font-size: 9px;
+            font-weight: 500;
+            border-radius: 980px;
+            text-decoration: none;
+            transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+            background: var(--apple-gray-6);
+            color: var(--apple-blue);
+            border: 0.5px solid transparent;
+            white-space: nowrap;
+        }
+
+        .model-pill.outline {
+            background: transparent;
+            border-color: var(--apple-blue);
+        }
+
+        .model-pill:hover {
+            background: var(--apple-blue);
+            color: white;
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        .model-pill:active {
+            transform: scale(0.95);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hamburger Menu & Overlay */
+        .header-left {
+            position: fixed;
+            top: 20px; /* Aligned with floating nav */
+            left: 20px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            z-index: 20000; /* Above everything */
+        }
+
+        .hamburger-btn {
+            background: var(--apple-glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            color: var(--apple-text);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .hamburger-btn:hover {
+            transform: scale(1.1);
+            background: var(--apple-card-bg);
+        }
+
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            z-index: 2000;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .hamburger-menu {
+            position: fixed;
+            top: 0;
+            left: -320px;
+            width: 320px;
+            max-width: 85vw;
+            height: 100vh;
+            background: var(--apple-bg);
+            z-index: 2001;
+            transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+            overflow-y: auto;
+            border-right: 1px solid var(--glass-border);
+        }
+
+        .hamburger-menu.open {
+            transform: translateX(320px);
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--glass-border);
+            position: sticky;
+            top: 0;
+            background: var(--apple-glass-bg);
+            backdrop-filter: blur(20px);
+            z-index: 10;
+        }
+
+        .menu-title { font-weight: 600; font-size: 18px; }
+        .close-menu { 
+            background: none; border: none; color: var(--apple-blue); 
+            font-size: 16px; font-weight: 500; cursor: pointer; 
+        }
+
+        .menu-content { padding: 20px 0; }
+        .menu-section { margin-bottom: 24px; }
+        .menu-section-title { 
+            padding: 0 20px 10px; font-size: 12px; 
+            text-transform: uppercase; color: var(--apple-text-secondary); 
+            letter-spacing: 1px;
+        }
+
+        /* Dropdown Styles for Menu */
+        .dropdown { margin-bottom: 4px; }
+        .dropdown-header {
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .dropdown-header:hover { background: var(--apple-gray-6); }
+        .dropdown-arrow { transition: transform 0.3s; color: var(--apple-text-secondary); }
+        .dropdown.open .dropdown-arrow { transform: rotate(90deg); }
+        
+        .dropdown-content {
+            display: none;
+            background: var(--apple-gray-6);
+        }
+        .dropdown.open .dropdown-content { display: block; }
+
+        .dropdown-item {
+            padding: 10px 20px 10px 35px;
+            display: flex;
+            justify-content: space-between;
+            text-decoration: none;
+            color: var(--apple-text);
+            font-size: 15px;
+        }
+        .dropdown-item:hover { background: var(--apple-gray-5); }
+        .dropdown-item-chevron { color: var(--apple-text-secondary); opacity: 0.5; }
+
+        /* Submenu inside dropdown */
+        .dropdown-item-wrapper { border-top: 0.5px solid var(--glass-border); }
+        .dropdown-item-header {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 20px 10px 35px;
+        }
+        .header-dropdown-item-link { text-decoration: none; color: var(--apple-text); flex-grow: 1; }
+        .submenu-toggle { cursor: pointer; padding: 0 10px; font-size: 10px; }
+        .submenu { display: none; padding-bottom: 10px; }
+        .submenu.open { display: block; }
+        .submenu-item {
+            display: block;
+            padding: 6px 20px 6px 50px;
+            text-decoration: none;
+            color: var(--apple-text-secondary);
+            font-size: 14px;
+        }
+        .submenu-item:hover { color: var(--apple-text); }
+
+        @media (max-width: 600px) {
+            html, body { overflow-y: auto !important; height: auto !important; overflow-x: hidden !important; }
+            .container { padding: 80px 10px 40px !important; height: auto !important; max-width: 100% !important; }
+            .series-container-wrapper { overflow: visible !important; -webkit-mask-image: none !important; mask-image: none !important; width: 100% !important; }
+            
+            /* Horizontal Scroll Grid for Mobile */
+            .series-grid { 
+                display: grid !important;
+                grid-template-rows: repeat(2, 1fr) !important; /* Two rows horizontally scrolling */
+                grid-auto-flow: column !important;
+                grid-auto-columns: 160px !important; /* Slightly narrower cards for mobile */
+                gap: 16px !important;
+                margin: 0 !important;
+                padding: 20px 24px 40px !important;
+                width: 100% !important;
+                overflow-x: auto !important;
+                scroll-snap-type: x mandatory !important;
+                -webkit-overflow-scrolling: touch !important;
+            }
+            
+            .series-card { 
+                scroll-snap-align: center !important;
+                margin: 0 !important; /* Reset any margins */
+            }
+            
+            .series-card:first-child {
+                margin-left: 0 !important;
+            }
+            
+            .series-card:last-child { 
+                margin-right: 24px !important; 
+            }
+
+            
+            .header-section { margin-top: 20px !important; margin-bottom: 20px !important; }
+            .header-section h1 { font-size: 24px !important; letter-spacing: -0.5px !important; }
+            .header-section p { font-size: 13px !important; }
+            .header-left { top: 15px !important; left: 10px !important; }
+        }
+
+                /* Component Grid - 3x3 centered layout for guides */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            border-radius: 12px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .component-card {
+            background: var(--apple-card-bg);
+            border-radius: 12px;
+            padding: 0;
+            text-decoration: none;
+            color: var(--apple-text);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: flex-start;
+            text-align: left;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            min-height: 80px;
+            overflow: hidden;
+        }
+
+        .component-card.card-large {
+            grid-column: span 1;
+            min-height: 120px;
+        }
+
+        .component-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 122, 255, 0.3);
+        }
+
+        .component-card-text {
+            flex: 1;
+            padding: 12px 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .component-card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0 0 4px 0;
+            line-height: 1.3;
+        }
+
+        .component-metadata {
+            font-size: 12px;
+            color: var(--apple-text-secondary);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .component-metadata-spec {
+            font-size: 11px;
+            opacity: 0.8;
+        }
+
+        .component-icon-svg {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 768px) {
+            .component-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                padding: 8px 10px;
+            }
+
+            .component-card {
+                min-height: 70px;
+                border-radius: 10px;
+            }
+
+            .component-card.card-large {
+                min-height: 100px;
+            }
+
+            .component-card-text {
+                padding: 8px 10px;
+            }
+
+            .component-card-title {
+                font-size: 13px;
+            }
+
+            .component-metadata {
+                font-size: 11px;
+            }
+
+            .component-icon-svg {
+                width: 60px;
+                height: 60px;
+                border-radius: 0 10px 10px 0;
+            }
+        }
+</style>
+
+
+</head>
+<body class="needs-global-nav">
+
+    <div class="bg-glow"></div>
+
+    <div class="header-left">
+        <button class="hamburger-btn" id="hamburgerButton" aria-label="Menu">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+        </button>
+    </div>
+
+    <div class="menu-overlay" id="menuOverlay"></div>
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="menu-header">
+            <span class="menu-title">Modèles iPhone</span>
+            <button class="close-menu" id="closeMenu">OK</button>
+        </div>
+        <div class="menu-content" id="hamburgerMenuContent">
+                        <div class="menu-section">
+                <div class="menu-section-title">Latest Models</div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 17 Series <span class="new-badge">New</span></span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item-wrapper">
+                            <div class="dropdown-item-header">
+                                <a href="guides/iphone_17_pro_max_screw.html" class="header-dropdown-item-link">iPhone 17 Pro Max</a>
+                                <span class="submenu-toggle" onclick="toggleSubmenu(event, this)" style="color: #FF3B30;">▼</span>
+                            </div>
+                            <div class="submenu">
+                                <a href="guides/iphone_17_pro_max_screw.html#img=0" class="submenu-item" onclick="event.stopPropagation();">Display</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=1" class="submenu-item" onclick="event.stopPropagation();">Back Glass</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=2" class="submenu-item" onclick="event.stopPropagation();">Battery</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=3" class="submenu-item" onclick="event.stopPropagation();">Camera</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=4" class="submenu-item" onclick="event.stopPropagation();">TrueDepth Camera</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=5" class="submenu-item" onclick="event.stopPropagation();">Top Speaker</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=6" class="submenu-item" onclick="event.stopPropagation();">Bottom Speaker</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=7" class="submenu-item" onclick="event.stopPropagation();">Taptic Engine</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=8" class="submenu-item" onclick="event.stopPropagation();">Main Microphone</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=9" class="submenu-item" onclick="event.stopPropagation();">Logic Board</a>
+<a href="guides/iphone_17_pro_max_screw.html#img=10" class="submenu-item" onclick="event.stopPropagation();">Enclosure</a>
+
+                            </div>
+                        </div>
+                        <div class="dropdown-item-wrapper">
+                            <div class="dropdown-item-header">
+                                <a href="guides/iphone_17_pro_screw.html" class="header-dropdown-item-link">iPhone 17 Pro</a>
+                                <span class="submenu-toggle" onclick="toggleSubmenu(event, this)" style="color: #FF3B30;">▼</span>
+                            </div>
+                            <div class="submenu">
+                                <a href="guides/iphone_17_pro_screw.html#img=0" class="submenu-item" onclick="event.stopPropagation();">Display</a>
+<a href="guides/iphone_17_pro_screw.html#img=1" class="submenu-item" onclick="event.stopPropagation();">Back Glass</a>
+<a href="guides/iphone_17_pro_screw.html#img=2" class="submenu-item" onclick="event.stopPropagation();">Battery</a>
+<a href="guides/iphone_17_pro_screw.html#img=3" class="submenu-item" onclick="event.stopPropagation();">Camera</a>
+<a href="guides/iphone_17_pro_screw.html#img=4" class="submenu-item" onclick="event.stopPropagation();">TrueDepth Camera</a>
+<a href="guides/iphone_17_pro_screw.html#img=5" class="submenu-item" onclick="event.stopPropagation();">Top Speaker</a>
+<a href="guides/iphone_17_pro_screw.html#img=6" class="submenu-item" onclick="event.stopPropagation();">Bottom Speaker</a>
+<a href="guides/iphone_17_pro_screw.html#img=7" class="submenu-item" onclick="event.stopPropagation();">Taptic Engine</a>
+<a href="guides/iphone_17_pro_screw.html#img=8" class="submenu-item" onclick="event.stopPropagation();">Main Microphone</a>
+<a href="guides/iphone_17_pro_screw.html#img=9" class="submenu-item" onclick="event.stopPropagation();">Logic Board</a>
+<a href="guides/iphone_17_pro_screw.html#img=10" class="submenu-item" onclick="event.stopPropagation();">Enclosure</a>
+
+                            </div>
+                        </div>
+                        <div class="dropdown-item-wrapper">
+                            <div class="dropdown-item-header">
+                                <a href="guides/iphone_17_screw.html" class="header-dropdown-item-link">iPhone 17</a>
+                                <span class="submenu-toggle" onclick="toggleSubmenu(event, this)" style="color: #FF3B30;">▼</span>
+                            </div>
+                            <div class="submenu">
+                                <a href="guides/iphone_17_screw.html#img=0" class="submenu-item" onclick="event.stopPropagation();">Display</a>
+<a href="guides/iphone_17_screw.html#img=1" class="submenu-item" onclick="event.stopPropagation();">Back Glass</a>
+<a href="guides/iphone_17_screw.html#img=2" class="submenu-item" onclick="event.stopPropagation();">Battery</a>
+<a href="guides/iphone_17_screw.html#img=3" class="submenu-item" onclick="event.stopPropagation();">Camera</a>
+<a href="guides/iphone_17_screw.html#img=4" class="submenu-item" onclick="event.stopPropagation();">TrueDepth Camera</a>
+<a href="guides/iphone_17_screw.html#img=5" class="submenu-item" onclick="event.stopPropagation();">Top Speaker</a>
+<a href="guides/iphone_17_screw.html#img=6" class="submenu-item" onclick="event.stopPropagation();">Bottom Speaker</a>
+<a href="guides/iphone_17_screw.html#img=7" class="submenu-item" onclick="event.stopPropagation();">Taptic Engine</a>
+<a href="guides/iphone_17_screw.html#img=8" class="submenu-item" onclick="event.stopPropagation();">Main Microphone</a>
+<a href="guides/iphone_17_screw.html#img=9" class="submenu-item" onclick="event.stopPropagation();">Logic Board</a>
+<a href="guides/iphone_17_screw.html#img=10" class="submenu-item" onclick="event.stopPropagation();">Enclosure</a>
+                            </div>
+                        </div>
+
+                        <div class="dropdown-item-wrapper">
+                            <div class="dropdown-item-header">
+                                <a href="guides/iphone_17e_screw.html" class="header-dropdown-item-link">iPhone 17e</a>
+                                <span class="submenu-toggle" onclick="toggleSubmenu(event, this)" style="color: #FF3B30;">▼</span>
+                            </div>
+                            <div class="submenu">
+                                <a href="guides/iphone_17e_screw.html#img=0" class="submenu-item" onclick="event.stopPropagation();">Display</a>
+<a href="guides/iphone_17e_screw.html#img=1" class="submenu-item" onclick="event.stopPropagation();">Back Glass</a>
+<a href="guides/iphone_17e_screw.html#img=2" class="submenu-item" onclick="event.stopPropagation();">Battery</a>
+<a href="guides/iphone_17e_screw.html#img=3" class="submenu-item" onclick="event.stopPropagation();">Camera</a>
+<a href="guides/iphone_17e_screw.html#img=4" class="submenu-item" onclick="event.stopPropagation();">TrueDepth Camera</a>
+<a href="guides/iphone_17e_screw.html#img=5" class="submenu-item" onclick="event.stopPropagation();">Taptic Engine</a>
+<a href="guides/iphone_17e_screw.html#img=6" class="submenu-item" onclick="event.stopPropagation();">Bottom Speaker</a>
+<a href="guides/iphone_17e_screw.html#img=7" class="submenu-item" onclick="event.stopPropagation();">Top Speaker</a>
+<a href="guides/iphone_17e_screw.html#img=8" class="submenu-item" onclick="event.stopPropagation();">Main Microphone</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone Air <span class="new-badge">New</span></span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_air_screw.html#img=0" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Display</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=1" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Back Glass</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=2" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Battery</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=3" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Camera</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=4" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>TrueDepth Camera</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=5" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Top Speaker</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=6" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Taptic Engine</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=7" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Main Mic</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=8" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Aux Mic</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=9" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Logic Board</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_air_screw.html#img=10" class="dropdown-item" onclick="event.stopPropagation();">
+                            <span>Enclosure</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-section">
+                <div class="menu-section-title">Recent (2024)</div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 16 Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_16_pro_max_screw.html" class="dropdown-item">
+                            <span>iPhone 16 Pro Max</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_16_pro_screw.html" class="dropdown-item">
+                            <span>iPhone 16 Pro</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_16_plus_screw.html" class="dropdown-item">
+                            <span>iPhone 16 Plus</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_16_screw.html" class="dropdown-item">
+                            <span>iPhone 16</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_16e_screw.html" class="dropdown-item">
+                            <span>iPhone 16e</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-section">
+                <div class="menu-section-title">Previous Models</div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 15 Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_15_pro_max_screw.html" class="dropdown-item">
+                            <span>iPhone 15 Pro Max</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_15_pro_screw.html" class="dropdown-item">
+                            <span>iPhone 15 Pro</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_15_plus_screw.html" class="dropdown-item">
+                            <span>iPhone 15 Plus</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_15_screw.html" class="dropdown-item">
+                            <span>iPhone 15</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 14 Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_14_pro_max_screw.html" class="dropdown-item">
+                            <span>iPhone 14 Pro Max</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_14_pro_screw.html" class="dropdown-item">
+                            <span>iPhone 14 Pro</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_14_plus_screw.html" class="dropdown-item">
+                            <span>iPhone 14 Plus</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_14_screw.html" class="dropdown-item">
+                            <span>iPhone 14</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 13 Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_13_pro_max_screw.html" class="dropdown-item">
+                            <span>iPhone 13 Pro Max</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_13_pro_screw.html" class="dropdown-item">
+                            <span>iPhone 13 Pro</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_13_mini_screw.html" class="dropdown-item">
+                            <span>iPhone 13 Mini</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_13_screw.html" class="dropdown-item">
+                            <span>iPhone 13</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 12 Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_12_pro_max_screw.html" class="dropdown-item">
+                            <span>iPhone 12 Pro Max</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_12_pro_screw.html" class="dropdown-item">
+                            <span>iPhone 12 Pro</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_12_mini_screw.html" class="dropdown-item">
+                            <span>iPhone 12 Mini</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_12_screw.html" class="dropdown-item">
+                            <span>iPhone 12</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 11 Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_11_pro_max_screw.html" class="dropdown-item">
+                            <span>iPhone 11 Pro Max</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_11_pro_screw.html" class="dropdown-item">
+                            <span>iPhone 11 Pro</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_11_screw.html" class="dropdown-item">
+                            <span>iPhone 11</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone SE Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_se_3rd_screw.html" class="dropdown-item">
+                            <span>iPhone SE (3rd gen)</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_se_2nd_screw.html" class="dropdown-item">
+                            <span>iPhone SE (2nd gen)</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone XS/XR Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_xs_max_screw.html" class="dropdown-item">
+                            <span>iPhone XS Max</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_xs_screw.html" class="dropdown-item">
+                            <span>iPhone XS</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_xr_screw.html" class="dropdown-item">
+                            <span>iPhone XR</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_x_screw.html" class="dropdown-item">
+                            <span>iPhone X</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 8 Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_8_plus_screw.html" class="dropdown-item">
+                            <span>iPhone 8 Plus</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_8_screw.html" class="dropdown-item">
+                            <span>iPhone 8</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 7 Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_7_plus_screw.html" class="dropdown-item">
+                            <span>iPhone 7 Plus</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_7_screw.html" class="dropdown-item">
+                            <span>iPhone 7</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 6S Series</span>
+                        <span class="dropdown-arrow">›</span>
+                    </div>
+                    <div class="dropdown-content">
+                        <a href="guides/iphone_6s_plus_screw.html" class="dropdown-item">
+                            <span>iPhone 6S Plus</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                        <a href="guides/iphone_6s_screw.html" class="dropdown-item">
+                            <span>iPhone 6S</span>
+                            <span class="dropdown-item-chevron">›</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    </div>
+
+    <div class="container">
+        <header class="header-section">
+            <h1>Screw Diagrams</h1>
+            <p class="text-secondary">Base de connaissances pour les réparations d'iPhone</p>
+        </header>
+        
+        <div class="series-container-wrapper">
+            <div class="series-grid">
+                <!-- iPhone 17 Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_17_Pro_Max/iphone_17pro__t1j902iw6kya_large_2x.webp" class="series-image" alt="iPhone 17 Pro Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 17 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_17_pro_max_screw.html" class="model-pill">MAX</a>
+                            <a href="guides/iphone_17_pro_screw.html" class="model-pill">PRO</a>
+                            <a href="guides/iphone_17_screw.html" class="model-pill">17</a>
+                            <a href="guides/iphone_17e_screw.html" class="model-pill">17E</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone Air -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_Air/iphone_air__b5qmgl05ojyq_large_2x.webp" class="series-image" alt="iPhone Air">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone Air</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_air_screw.html" class="model-pill">AIR</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 16 Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_16/iphone_16__b6tkv86m2gc2_large_2x.webp" class="series-image" alt="iPhone 16 Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 16 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_16_pro_max_screw.html" class="model-pill">MAX</a>
+                            <a href="guides/iphone_16_pro_screw.html" class="model-pill">PRO</a>
+                            <a href="guides/iphone_16_plus_screw.html" class="model-pill">PLUS</a>
+                            <a href="guides/iphone_16_screw.html" class="model-pill">16</a>
+                            <a href="guides/iphone_16e_screw.html" class="model-pill">16E</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 15 Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_15_Pro_Max/iPhone_15_Series.webp" class="series-image" alt="iPhone 15 Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 15 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_15_pro_max_screw.html" class="model-pill">MAX</a>
+                            <a href="guides/iphone_15_pro_screw.html" class="model-pill">PRO</a>
+                            <a href="guides/iphone_15_plus_screw.html" class="model-pill">PLUS</a>
+                            <a href="guides/iphone_15_screw.html" class="model-pill">15</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 14 Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_14_Pro_Max/iPhone_14_Series.webp" class="series-image" alt="iPhone 14 Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 14 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_14_pro_max_screw.html" class="model-pill">MAX</a>
+                            <a href="guides/iphone_14_pro_screw.html" class="model-pill">PRO</a>
+                            <a href="guides/iphone_14_plus_screw.html" class="model-pill">PLUS</a>
+                            <a href="guides/iphone_14_screw.html" class="model-pill">14</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 13 Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_13_Pro_Max/iPhone_13_Series.webp" class="series-image" alt="iPhone 13 Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 13 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_13_pro_max_screw.html" class="model-pill">MAX</a>
+                            <a href="guides/iphone_13_pro_screw.html" class="model-pill">PRO</a>
+                            <a href="guides/iphone_13_mini_screw.html" class="model-pill">MINI</a>
+                            <a href="guides/iphone_13_screw.html" class="model-pill">13</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 12 Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_12_Pro_Max/iPhone_12_Series.webp" class="series-image" alt="iPhone 12 Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 12 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_12_pro_max_screw.html" class="model-pill">MAX</a>
+                            <a href="guides/iphone_12_pro_screw.html" class="model-pill">PRO</a>
+                            <a href="guides/iphone_12_mini_screw.html" class="model-pill">MINI</a>
+                            <a href="guides/iphone_12_screw.html" class="model-pill">12</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone SE Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_SE_3/iPhone_SE_Series.webp" class="series-image" alt="iPhone SE Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone SE Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_se_3rd_screw.html" class="model-pill">GEN3</a>
+                            <a href="guides/iphone_se_2nd_screw.html" class="model-pill">GEN2</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- iPhone 11 Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_11_Pro_Max/iPhone_11_Series.webp" class="series-image" alt="iPhone 11 Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 11 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_11_pro_max_screw.html" class="model-pill">MAX</a>
+                            <a href="guides/iphone_11_pro_screw.html" class="model-pill">PRO</a>
+                            <a href="guides/iphone_11_screw.html" class="model-pill">11</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone X/XS Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_X/iPhone_X_Series.webp" class="series-image" alt="iPhone X/XS Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone X Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_xs_max_screw.html" class="model-pill">MAX</a>
+                            <a href="guides/iphone_xs_screw.html" class="model-pill">XS</a>
+                            <a href="guides/iphone_xr_screw.html" class="model-pill">XR</a>
+                            <a href="guides/iphone_x_screw.html" class="model-pill">X</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 8 Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_8_Plus/iPhone_8_Series.webp" class="series-image" alt="iPhone 8 Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 8 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_8_plus_screw.html" class="model-pill">PLUS</a>
+                            <a href="guides/iphone_8_screw.html" class="model-pill">8</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 7 Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_7_Plus/iPhone_7_Series.webp" class="series-image" alt="iPhone 7 Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 7 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_7_plus_screw.html" class="model-pill">PLUS</a>
+                            <a href="guides/iphone_7_screw.html" class="model-pill">7</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- iPhone 6S Series -->
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_6s_Plus/iPhone_6s_Series.webp" class="series-image" alt="iPhone 6S Series">
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 6 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_6s_plus_screw.html" class="model-pill">PLUS</a>
+                            <a href="guides/iphone_6s_screw.html" class="model-pill">6S</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- The shared JS script injecting global nav and handling theme toggle -->
+    <script src="../assets/js/shared-app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburgerButton');
+            const closeMenuBtn = document.getElementById('closeMenu');
+            const menu = document.getElementById('hamburgerMenu');
+            const overlay = document.getElementById('menuOverlay');
+
+            function toggleMenu() {
+                menu.classList.toggle('open');
+                overlay.classList.toggle('open');
+            }
+
+            if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+            if (overlay) overlay.addEventListener('click', toggleMenu);
+
+            // Dropdown logic for hamburger menu
+            document.querySelectorAll('.dropdown-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const dropdown = header.parentElement;
+                    dropdown.classList.toggle('open');
+                });
+            });
+
+            // Submenu toggle logic (global for onclick)
+            window.toggleSubmenu = function(event, element) {
+                event.preventDefault();
+                event.stopPropagation();
+                const wrapper = element.closest('.dropdown-item-wrapper');
+                const submenu = wrapper.querySelector('.submenu');
+                if (submenu) {
+                    submenu.classList.toggle('open');
+                    element.innerHTML = submenu.classList.contains('open') ? '▲' : '▼';
+                }
+            };
+        });
+    </script>
+</body>
+</html>

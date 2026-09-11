@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siri AI &amp; le Contexte — MAYDAY</title>
+    <script>(function(){try{var t=localStorage.getItem('apple-hub-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+    <link rel="stylesheet" href="./assets/css/shared-theme.css">
+    <style>
+        .context-container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 120px 24px 120px;
+            animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .context-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .context-header .icon-brain {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #FF9F0A 0%, #FF375F 50%, #BF5AF2 100%);
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            box-shadow: 0 12px 32px rgba(191, 90, 242, 0.25);
+        }
+
+        .context-header .icon-brain svg {
+            width: 44px;
+            height: 44px;
+            fill: #fff;
+        }
+
+        .context-header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            color: var(--apple-text);
+            margin: 0 0 8px;
+        }
+
+        .context-header .subtitle {
+            font-size: 17px;
+            color: var(--apple-text-secondary);
+            font-weight: 400;
+        }
+
+        .context-header .last-update {
+            font-size: 13px;
+            color: var(--apple-text-tertiary);
+            margin-top: 12px;
+        }
+
+        .context-section {
+            margin-bottom: 40px;
+        }
+
+        .context-section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+            color: var(--apple-text);
+            margin: 0 0 12px;
+            padding-top: 24px;
+            border-top: 1px solid var(--apple-separator);
+        }
+
+        .context-section:first-of-type h2 {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .context-section p,
+        .context-section li {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--apple-text-secondary);
+            margin: 0 0 12px;
+        }
+
+        .context-section ul,
+        .context-section ol {
+            padding-left: 20px;
+            margin: 8px 0 16px;
+        }
+
+        .context-section li {
+            margin-bottom: 6px;
+        }
+
+        .context-section strong {
+            color: var(--apple-text);
+            font-weight: 600;
+        }
+
+        .context-section a {
+            color: var(--apple-blue);
+            text-decoration: none;
+        }
+
+        .context-section a:hover {
+            text-decoration: underline;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 24px;
+            font-size: 14px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--apple-separator);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--apple-separator);
+        }
+
+        .data-table th {
+            background: var(--apple-gray-6);
+            color: var(--apple-text);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table td {
+            color: var(--apple-text-secondary);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            white-space: nowrap;
+        }
+
+        .badge-local {
+            background: rgba(52, 199, 89, 0.15);
+            color: #248A3D;
+        }
+
+        html[data-theme="dark"] .badge-local {
+            color: #30D158;
+        }
+
+        .badge-pcc {
+            background: rgba(0, 122, 255, 0.12);
+            color: #0066CC;
+        }
+
+        html[data-theme="dark"] .badge-pcc {
+            color: #64B5FF;
+        }
+
+        .callout {
+            background: var(--apple-gray-6);
+            border-radius: 14px;
+            padding: 16px 20px;
+            margin: 16px 0 24px;
+            font-size: 14px;
+            line-height: 1.6;
+            color: var(--apple-text-secondary);
+            border-left: 3px solid var(--apple-blue);
+        }
+
+        .callout strong { color: var(--apple-text); }
+
+        .source-list {
+            list-style: none;
+            padding: 0 !important;
+            margin: 16px 0 0;
+        }
+
+        .source-list li {
+            padding: 12px 16px;
+            border: 1px solid var(--apple-separator);
+            border-radius: 12px;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .source-list .src-title {
+            display: block;
+            font-weight: 600;
+            color: var(--apple-text);
+            margin-bottom: 2px;
+        }
+
+        .source-list .src-meta {
+            font-size: 12px;
+            color: var(--apple-text-tertiary);
+        }
+
+        .context-footer {
+            margin-top: 56px;
+            padding-top: 24px;
+            border-top: 1px solid var(--apple-separator);
+            text-align: center;
+        }
+
+        .context-footer p {
+            font-size: 12px;
+            color: var(--apple-text-tertiary);
+        }
+
+        @media (max-width: 600px) {
+            .context-container { padding: 100px 16px 80px; }
+            .context-header h1 { font-size: 30px; }
+            .context-section h2 { font-size: 18px; }
+            .data-table { font-size: 12px; }
+            .data-table th, .data-table td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body class="needs-global-nav">
+
+    <div class="context-container">
+
+        <header class="context-header">
+            <div class="icon-brain">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2a5 5 0 0 0-5 5v.1A5 5 0 0 0 3 12a5 5 0 0 0 2.2 4.1A4.5 4.5 0 0 0 9.5 22a4.5 4.5 0 0 0 2.5-.76A4.5 4.5 0 0 0 14.5 22a4.5 4.5 0 0 0 4.3-5.9A5 5 0 0 0 21 12a5 5 0 0 0-4-4.9V7a5 5 0 0 0-5-5zm-1 4.5a1 1 0 1 1 2 0v11a1 1 0 1 1-2 0v-11zM8 9a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1zm8 0a1 1 0 0 1 1 1v4a1 1 0 1 1-2 0v-4a1 1 0 0 1 1-1z"/>
+                </svg>
+            </div>
+            <h1>Siri AI &amp; le Contexte</h1>
+            <p class="subtitle">Comment Apple Intelligence comprend votre contexte personnel — et où vos données sont traitées.</p>
+            <p class="last-update">Basé exclusivement sur la documentation officielle Apple — Juillet 2026</p>
+        </header>
+
+        <section class="context-section">
+            <h2>1. Qu'est-ce que le « contexte » ?</h2>
+            <p>Dans le cadre d'Apple Intelligence, le <strong>contexte personnel</strong> (personal context) désigne l'ensemble des informations présentes sur votre appareil que le système peut comprendre et relier entre elles pour vous aider : vos messages, e-mails, photos, événements de calendrier, apps fréquemment utilisées, et le contenu affiché à l'écran.</p>
+            <p>Apple documente officiellement que le système utilise « les informations sur votre appareil, y compris à travers vos apps, comme vos prochains événements de calendrier et vos apps fréquemment utilisées » pour personnaliser l'expérience.</p>
+            <p>Concrètement, ce contexte est organisé par un <strong>index sémantique</strong> (Spotlight semantic indexing) construit et stocké localement sur l'appareil. C'est lui qui permet à Siri de retrouver « une recommandation de restaurant qu'un ami a envoyée par message, un numéro de confirmation d'hôtel dans un vieil e-mail, ou des photos d'un voyage récent ».</p>
+            <div class="callout">
+                <strong>En résumé :</strong> le contexte = vos données personnelles indexées localement + ce qui est visible à l'écran (onscreen awareness) + l'historique de la conversation en cours avec Siri.
+            </div>
+        </section>
+
+        <section class="context-section">
+            <h2>2. Comment Siri AI utilise ce contexte</h2>
+            <p>Annoncé par Apple en juin 2026 (WWDC26), <strong>Siri AI</strong> est décrit comme « un assistant profondément plus capable et conversationnel, avec compréhension du contexte personnel, connaissance étendue du monde et conscience de l'écran ». Il est déployé avec iOS 27, iPadOS 27, macOS 27 et visionOS 27.</p>
+            <ul>
+                <li><strong>Compréhension du contexte personnel :</strong> recherche croisée dans vos messages, e-mails, photos et apps pour répondre à des questions naturelles (« quel est le numéro de résa de l'hôtel ? »).</li>
+                <li><strong>Conscience de l'écran (onscreen awareness) :</strong> Siri peut répondre à des questions sur le contenu affiché et agir dessus.</li>
+                <li><strong>Apps tierces :</strong> le contexte s'étend aux apps tierces quand les développeurs adoptent <strong>App Intents</strong>, <strong>App Entities</strong> et l'indexation sémantique Spotlight.</li>
+                <li><strong>Orchestration :</strong> un orchestrateur système local analyse chaque requête et décide quel modèle l'exécute (voir section 3).</li>
+            </ul>
+        </section>
+
+        <section class="context-section">
+            <h2>3. Local ou Private Cloud Compute ?</h2>
+            <p>Le principe officiel d'Apple : <strong>le traitement sur l'appareil est la règle, le cloud l'exception</strong>. « Quand c'est possible, les modèles d'Apple Intelligence s'exécutent entièrement sur l'appareil, afin qu'une tâche soit accomplie sans que les données quittent votre appareil. »</p>
+            <p>Quand une requête dépasse les capacités locales, un modèle sur l'appareil détermine si un modèle serveur plus grand est nécessaire. Dans ce cas, <strong>seules les données pertinentes pour la requête</strong> sont envoyées à <strong>Private Cloud Compute (PCC)</strong>, des serveurs Apple silicon dédiés.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr><th>Élément</th><th>Traitement</th><th>Détail (source Apple)</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Index sémantique (contexte personnel)</td>
+                        <td><span class="badge badge-local">Local</span></td>
+                        <td>Construit et stocké sur l'appareil ; jamais envoyé en bloc au cloud.</td>
+                    </tr>
+                    <tr>
+                        <td>Orchestrateur / App Toolbox</td>
+                        <td><span class="badge badge-local">Local</span></td>
+                        <td>Décide sur l'appareil du routage de chaque requête.</td>
+                    </tr>
+                    <tr>
+                        <td>Résumés (mails, messages, notifications)</td>
+                        <td><span class="badge badge-local">Local</span></td>
+                        <td>Cités par Apple comme exemples de modèles 100 % locaux.</td>
+                    </tr>
+                    <tr>
+                        <td>Requêtes complexes (raisonnement long, rédaction avancée)</td>
+                        <td><span class="badge badge-pcc">PCC</span></td>
+                        <td>Seules les données pertinentes à la requête sont transmises, chiffrées de bout en bout vers des nœuds attestés.</td>
+                    </tr>
+                    <tr>
+                        <td>Connaissance du monde (web)</td>
+                        <td><span class="badge badge-pcc">PCC</span></td>
+                        <td>Modèles serveur plus larges sur Apple silicon.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="callout">
+                <strong>Ce qu'Apple voit :</strong> uniquement des métadonnées limitées — « la taille approximative de la requête et de la réponse, quelles fonctionnalités sont utilisées, et la durée de traitement ». Jamais le contenu. Les données envoyées à PCC « ne sont ni stockées ni accessibles à Apple », et sont supprimées après la réponse.
+            </div>
+        </section>
+
+        <section class="context-section">
+            <h2>4. Les 5 garanties techniques de PCC</h2>
+            <p>Apple a publié l'architecture de sécurité de PCC sur son blog Security Research (juin 2024). Cinq exigences fondamentales, <em>techniquement vérifiables</em> et non de simples promesses :</p>
+            <ol>
+                <li><strong>Calcul sans état (stateless computation) :</strong> les données sont traitées uniquement pour la requête puis supprimées — aucune trace via logs ou debug.</li>
+                <li><strong>Garanties applicables (enforceable guarantees) :</strong> la sécurité repose sur des mécanismes techniques analysables, pas sur des politiques internes.</li>
+                <li><strong>Aucun accès privilégié :</strong> pas de shell distant ni d'outil de debug interactif sur les nœuds PCC — même les administrateurs Apple ne peuvent pas contourner les protections.</li>
+                <li><strong>Non-ciblabilité :</strong> un attaquant ne peut pas viser les données d'un utilisateur spécifique sans compromettre l'ensemble du système.</li>
+                <li><strong>Transparence vérifiable :</strong> chaque build de production de PCC est publié ; l'appareil n'envoie ses données qu'aux nœuds dont les mesures cryptographiques correspondent au journal de transparence public. Les chercheurs disposent d'un environnement de recherche virtuel (VRE) et d'un guide de sécurité complet.</li>
+            </ol>
+            <p>Techniquement : l'appareil chiffre la requête <strong>directement vers les clés publiques des nœuds PCC attestés</strong> (chiffrement de bout en bout appareil → nœud), et la Secure Enclave régénère des clés aléatoires à chaque redémarrage sans les persister (effacement cryptographique).</p>
+        </section>
+
+        <section class="context-section">
+            <h2>5. Vérifier par vous-même</h2>
+            <ul>
+                <li><strong>Rapport Apple Intelligence :</strong> Réglages &gt; Confidentialité et sécurité &gt; Rapport Apple Intelligence — journal exportable montrant quelles requêtes ont été traitées et comment (activable sur iOS, iPadOS, visionOS).</li>
+                <li><strong>Audit externe :</strong> Apple déclare que « des experts extérieurs peuvent vérifier cette promesse de confidentialité à tout moment » via les images logicielles PCC publiées.</li>
+            </ul>
+        </section>
+
+        <section class="context-section">
+            <h2>6. Sources officielles</h2>
+            <p>Toutes les informations de cette page proviennent exclusivement de documents publiés par Apple :</p>
+            <ul class="source-list">
+                <li>
+                    <span class="src-title"><a href="https://www.apple.com/newsroom/2026/06/apple-introduces-siri-ai-a-profoundly-more-capable-and-personal-assistant/" target="_blank" rel="noopener">Apple introduces Siri AI, a profoundly more capable and personal assistant</a></span>
+                    <span class="src-meta">Apple Newsroom — juin 2026 (annonce officielle Siri AI, iOS 27 / iPadOS 27 / macOS 27 / visionOS 27)</span>
+                </li>
+                <li>
+                    <span class="src-title"><a href="https://www.apple.com/newsroom/2024/06/introducing-apple-intelligence-for-iphone-ipad-and-mac/" target="_blank" rel="noopener">Introducing Apple Intelligence for iPhone, iPad, and Mac</a></span>
+                    <span class="src-meta">Apple Newsroom — juin 2024 (annonce fondatrice : on-device + PCC)</span>
+                </li>
+                <li>
+                    <span class="src-title"><a href="https://security.apple.com/blog/private-cloud-compute/" target="_blank" rel="noopener">Private Cloud Compute: A new frontier for AI privacy in the cloud</a></span>
+                    <span class="src-meta">Apple Security Research — juin 2024 (architecture technique, 5 garanties, attestation)</span>
+                </li>
+                <li>
+                    <span class="src-title"><a href="https://security.apple.com/blog/pcc-security-research/" target="_blank" rel="noopener">Security research on Private Cloud Compute</a></span>
+                    <span class="src-meta">Apple Security Research — 2024 (VRE, guide de sécurité, images publiées pour audit)</span>
+                </li>
+                <li>
+                    <span class="src-title"><a href="https://www.apple.com/legal/privacy/data/en/intelligence-engine/" target="_blank" rel="noopener">Apple Intelligence &amp; Privacy</a></span>
+                    <span class="src-meta">Apple Legal (données utilisées, métadonnées collectées, politique de rétention)</span>
+                </li>
+                <li>
+                    <span class="src-title"><a href="https://support.apple.com/guide/iphone/apple-intelligence-and-privacy-iphe3f499e0e/ios" target="_blank" rel="noopener">Apple Intelligence and privacy on iPhone</a></span>
+                    <span class="src-meta">Apple Support — Guide utilisateur iPhone (Rapport Apple Intelligence, transparence)</span>
+                </li>
+                <li>
+                    <span class="src-title"><a href="https://www.apple.com/apple-intelligence/" target="_blank" rel="noopener">Apple Intelligence and Siri</a></span>
+                    <span class="src-meta">Apple.com — page produit officielle</span>
+                </li>
+            </ul>
+        </section>
+
+        <footer class="context-footer">
+            <p>Page informative interne MAYDAY. Contenu rédigé uniquement à partir des publications officielles Apple listées ci-dessus — aucune rumeur ni source non vérifiée.</p>
+        </footer>
+    </div>
+
+    <script src="./assets/js/shared-app.js"></script>
+</body>
+</html>

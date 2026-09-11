@@ -1,0 +1,2036 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>iPhone 17 Pro Max Screw Diagram</title>
+    <style>
+        /* Basic Reset and Font Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
+            background-color: #efeeefff;
+            color: #1d1d1f;
+            line-height: 1.5;
+            line-height: 1.5;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            padding-top: 48px;
+            /* Space for fixed global header */
+        }
+
+        body.menu-open {
+            overflow: hidden;
+        }
+
+        /* Global Header Override */
+        .global-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 48px;
+            padding: 0 16px;
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            z-index: 1000;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+
+        .global-title {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #4f46e5;
+            text-decoration: none;
+        }
+
+        .global-title i {
+            font-size: 1.5rem;
+        }
+
+        .global-title h1 {
+            font-size: 1rem;
+            font-weight: 700;
+            color: #1f2937;
+            margin: 0;
+        }
+
+        .global-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            border-left: 1px solid #d1d5db;
+            padding-left: 1rem;
+            margin-left: 1rem;
+        }
+
+        .global-nav a {
+            color: #9ca3af;
+            transition: color 0.15s;
+        }
+
+        .global-nav a:hover {
+            color: #4f46e5;
+        }
+
+        .global-nav i {
+            font-size: 1.25rem;
+        }
+
+        /* Header Styling - iOS Style */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 8px;
+            background-color: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.12);
+            position: sticky;
+            top: 48px;
+            /* Shifted for global header */
+            z-index: 100;
+            height: 44px;
+        }
+
+        .header-left {
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .header-right {
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            min-width: 44px;
+        }
+
+        .icon {
+            background: none;
+            border: none;
+            padding: 0;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            border-radius: 10px;
+            color: #007AFF;
+            width: 44px;
+            height: 44px;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .icon:active {
+            transform: scale(0.95);
+            opacity: 0.6;
+        }
+
+        .header-center {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            text-align: center;
+            font-weight: 600;
+            font-size: 17px;
+            color: #1d1d1f;
+            letter-spacing: -0.4px;
+            width: max-content;
+            pointer-events: none;
+            /* Allows clicking through if needed, though usually title isn't clickable except for home link */
+        }
+
+        .header-center a {
+            pointer-events: auto;
+        }
+
+        /* Menu Overlay */
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 998;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1),
+                visibility 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Hamburger Menu */
+        .hamburger-menu {
+            position: fixed;
+            top: 0;
+            left: -100%;
+            width: 280px;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 999;
+            transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow-y: auto;
+            overflow-x: hidden;
+            box-shadow: 0 0 60px rgba(0, 0, 0, 0.3);
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .hamburger-menu.open {
+            left: 0;
+        }
+
+        .menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            background: #ffffff;
+            z-index: 10;
+        }
+
+        .menu-logo {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .menu-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.4px;
+        }
+
+        .close-menu {
+            background: none;
+            border: none;
+            color: #007AFF;
+            font-size: 17px;
+            cursor: pointer;
+            padding: 0;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.15s ease;
+            font-weight: 600;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .close-menu:active {
+            transform: scale(0.95);
+            opacity: 0.5;
+        }
+
+        .menu-content {
+            padding: 20px 0 40px 0;
+        }
+
+        .menu-section {
+            margin-bottom: 32px;
+        }
+
+        .menu-section-title {
+            color: #86868b;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            padding: 0 20px 8px 20px;
+        }
+
+        /* iOS-Style Menu Item */
+        .menu-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #1d1d1f;
+            text-decoration: none;
+            padding: 14px 20px;
+            font-size: 17px;
+            transition: background-color 0.15s ease;
+            letter-spacing: -0.4px;
+            -webkit-tap-highlight-color: transparent;
+            background: white;
+            margin: 0 12px 2px 12px;
+            border-radius: 12px;
+        }
+
+        .menu-item:active {
+            background-color: #f0f0f0;
+        }
+
+        .menu-item.active {
+            background-color: #e8f4ff;
+            color: #007AFF;
+            font-weight: 500;
+        }
+
+        .menu-item-text {
+            flex: 1;
+        }
+
+        .menu-item-chevron {
+            color: #c7c7cc;
+            font-size: 14px;
+            margin-left: 8px;
+        }
+
+        /* New Badge - iOS Style */
+        .new-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FF3B30 0%, #FF2D55 100%);
+            color: white;
+            font-size: 10px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 12px;
+            margin-left: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            vertical-align: middle;
+            box-shadow: 0 2px 6px rgba(255, 59, 48, 0.3);
+        }
+
+        /* iOS-Style Dropdown */
+        .dropdown {
+            background: white;
+            margin: 0 12px 2px 12px;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.15s ease;
+        }
+
+        .dropdown-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 20px;
+            cursor: pointer;
+            color: #1d1d1f;
+            font-size: 17px;
+            user-select: none;
+            letter-spacing: -0.4px;
+            transition: background-color 0.15s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .dropdown-header:active {
+            background-color: #f0f0f0;
+        }
+
+        .dropdown-arrow {
+            transition: transform 0.25s ease;
+            color: #c7c7cc;
+            font-size: 14px;
+        }
+
+        .dropdown.open .dropdown-arrow {
+            transform: rotate(90deg);
+        }
+
+        .dropdown-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            background-color: #f9f9f9;
+        }
+
+        .dropdown.open .dropdown-content {
+            max-height: 600px;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: #1d1d1f;
+            text-decoration: none;
+            padding: 12px 20px 12px 40px;
+            font-size: 15px;
+            transition: background-color 0.15s ease;
+            letter-spacing: -0.3px;
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.05);
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .dropdown-item:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-item:active {
+            background-color: #e8e8e8;
+        }
+
+        .dropdown-item-chevron {
+            color: #c7c7cc;
+            font-size: 12px;
+        }
+
+        /* Main Content Styling */
+        main {
+            padding: 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+            min-height: calc(100vh - 152px);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            color: #333;
+            margin: 0 0 20px 0;
+            padding: 0 40px;
+        }
+
+        .image-title {
+            text-align: center;
+            font-size: 20px;
+            color: #555;
+            margin: 10px 0 20px 0;
+            font-weight: 500;
+        }
+
+        /* Container for image and buttons */
+        .diagram-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+            margin: 0 auto;
+            max-width: 1000px;
+            /* Increased from 650px */
+        }
+
+        .image-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: fit-content;
+            max-width: 900px;
+        }
+
+        .diagram-image {
+            max-width: 100%;
+            max-height: 85vh;
+            /* Increased from 600px to viewport based */
+            height: auto;
+            object-fit: contain;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            border-radius: 12px;
+            box-shadow:
+                0 2px 4px rgba(0, 0, 0, 0.05),
+                0 4px 8px rgba(0, 0, 0, 0.08),
+                0 8px 16px rgba(0, 0, 0, 0.1),
+                0 16px 32px rgba(0, 0, 0, 0.12);
+        }
+
+        .overlay-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding-top: 0;
+        }
+
+        .overlay-button {
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .overlay-button:hover {
+            background: #f5f5f7;
+            transform: scale(1.05);
+        }
+
+        .overlay-button:active {
+            transform: scale(0.95);
+        }
+
+        .overlay-button svg {
+            width: 20px;
+            height: 20px;
+            stroke: #333;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        /* Navigation indicators */
+        .nav-indicators {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+
+        .nav-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #ddd;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .nav-dot.active {
+            background: #007aff;
+            transform: scale(1.2);
+        }
+
+        /* Fullscreen Modal */
+        .fullscreen-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.95);
+            z-index: 9999;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .fullscreen-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .fullscreen-content {
+            max-width: 95vw;
+            max-height: 95vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .fullscreen-image {
+            max-width: 100%;
+            max-height: 95vh;
+            object-fit: contain;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .fullscreen-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border: none;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            z-index: 10000;
+        }
+
+        .fullscreen-close:hover {
+            background: #ffffff;
+            transform: scale(1.1);
+        }
+
+        .fullscreen-close svg {
+            width: 24px;
+            height: 24px;
+            stroke: #333;
+            stroke-width: 2;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: white;
+            border-top: 0.5px solid rgba(0, 0, 0, 0.08);
+            padding: 12px 20px;
+            margin-top: 80px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+
+
+        footer p {
+            margin: 0;
+            color: #888;
+            font-size: 12px;
+        }
+
+        /* Notes Modal */
+        .notes-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+
+        .notes-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .notes-modal-content {
+            background: white;
+            border-radius: 20px;
+            max-width: 480px;
+            width: 90%;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .notes-modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+        }
+
+        .notes-modal-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: white;
+            letter-spacing: -0.5px;
+        }
+
+        .notes-modal-close {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            border-radius: 50%;
+            width: 36px;
+            height: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            color: white;
+        }
+
+        .notes-modal-close:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+        .notes-modal-close svg {
+            width: 20px;
+            height: 20px;
+            stroke: white;
+            stroke-width: 2.5;
+        }
+
+        .notes-modal-body {
+            padding: 16px;
+            overflow-y: auto;
+            flex: 1;
+        }
+
+        .notes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 12px;
+        }
+
+        .notes-card {
+            background: white;
+            border: 2px solid #e5e5e5;
+            border-radius: 12px;
+            aspect-ratio: 1;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 12px;
+            gap: 8px;
+        }
+
+        .notes-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0, 122, 255, 0.2);
+            border-color: #007AFF;
+        }
+
+        .notes-card-title {
+            font-size: 9px;
+            text-align: center;
+            color: #1d1d1f;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .notes-card:active {
+            transform: translateY(-2px);
+        }
+
+        .notes-card-icon {
+            width: 50%;
+            height: 50%;
+            object-fit: contain;
+        }
+
+        .notes-card-badge {
+            position: absolute;
+            bottom: 6px;
+            right: 6px;
+            background: linear-gradient(135deg, #007AFF 0%, #0051D5 100%);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0, 122, 255, 0.4);
+        }
+
+        .notes-card-badge svg {
+            width: 11px;
+            height: 11px;
+            stroke: white;
+            stroke-width: 2;
+            fill: none;
+        }
+
+        .notes-warning {
+            margin-top: 20px;
+            font-size: 13px;
+            color: #666;
+            line-height: 1.4;
+            padding: 12px;
+            background: #f5f5f7;
+            border-radius: 8px;
+        }
+
+        .notes-warning p {
+            margin-bottom: 8px;
+        }
+
+        .notes-warning p:last-child {
+            margin-bottom: 0;
+        }
+
+        .copy-toast {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%) translateY(100px);
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 14px 24px;
+            border-radius: 12px;
+            font-size: 15px;
+            font-weight: 600;
+            z-index: 10001;
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .copy-toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        .copy-toast-icon {
+            width: 18px;
+            height: 18px;
+            color: #30D158;
+        }
+
+        @media (max-width: 768px) {
+            .notes-modal-content {
+                width: 95%;
+                max-height: 70vh;
+                max-width: 320px;
+            }
+
+            .notes-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 8px;
+            }
+
+            .notes-modal-header {
+                padding: 12px 16px;
+            }
+
+            .notes-modal-title {
+                font-size: 16px;
+            }
+
+            .notes-modal-body {
+                padding: 10px;
+            }
+
+            .notes-card {
+                border-radius: 8px;
+                padding: 8px;
+                border-width: 1.5px;
+            }
+
+            .notes-card-badge {
+                width: 18px;
+                height: 18px;
+                bottom: 4px;
+                right: 4px;
+            }
+
+            .notes-card-badge svg {
+                width: 9px;
+                height: 9px;
+            }
+        }
+
+
+        /* iOS-Style Scrollbar */
+        .hamburger-menu::-webkit-scrollbar {
+            width: 3px;
+        }
+
+        .hamburger-menu::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        .hamburger-menu::-webkit-scrollbar-thumb {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+        }
+
+        .hamburger-menu::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Header Dropdown */
+        .header-dropdown {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+
+        .header-dropdown-title {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 12px;
+            border-radius: 8px;
+            transition: all 0.2s;
+            background-color: #007AFF;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+        }
+
+        .header-dropdown-title:hover {
+            background-color: #005bb5;
+        }
+
+        .header-dropdown-title:active {
+            transform: scale(0.98);
+        }
+
+        .header-dropdown-arrow {
+            font-size: 10px;
+            transition: transform 0.2s;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .header-dropdown.active .header-dropdown-arrow {
+            transform: rotate(180deg);
+        }
+
+        .header-dropdown-content {
+            position: absolute;
+            top: 100%;
+            right: 0;
+            left: auto;
+            transform: scale(0.95);
+            transform-origin: top right;
+            margin-top: 8px;
+            background-color: white;
+            min-width: 220px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+            border-radius: 12px;
+            padding: 8px 0;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 1000;
+            border: 0.5px solid rgba(0, 0, 0, 0.1);
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .header-dropdown.active .header-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+
+        .header-dropdown-item {
+            display: block;
+            padding: 10px 16px;
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.15s;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .header-dropdown-item:hover {
+            background-color: #f5f5f7;
+        }
+
+        .header-dropdown-item.current {
+            color: #007AFF;
+            font-weight: 500;
+            background-color: #f0f8ff;
+        }
+
+        /* Submenu Styles */
+        .dropdown-item-wrapper {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .dropdown-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 16px;
+            cursor: pointer;
+            transition: background-color 0.15s;
+        }
+
+        .dropdown-item-header:hover {
+            background-color: #f5f5f7;
+        }
+
+        .dropdown-item-header.current {
+            background-color: #f0f8ff;
+        }
+
+        .dropdown-item-header.current .header-dropdown-item-link {
+            color: #007AFF;
+            font-weight: 500;
+        }
+
+        .header-dropdown-item-link {
+            color: #1d1d1f;
+            text-decoration: none;
+            font-size: 14px;
+            flex-grow: 1;
+        }
+
+        .submenu-toggle {
+            font-size: 10px;
+            color: #86868b;
+            padding: 4px;
+            transition: transform 0.2s;
+        }
+
+        .submenu-toggle.rotated {
+            transform: rotate(180deg);
+        }
+
+        .submenu {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background-color: #fafafa;
+        }
+
+        .submenu.open {
+            max-height: 500px;
+            /* Adjust as needed */
+            transition: max-height 0.5s ease-in;
+        }
+
+        .submenu-item {
+            display: block;
+            padding: 8px 16px 8px 32px;
+            /* Indented */
+            color: #424245;
+            text-decoration: none;
+            font-size: 13px;
+            transition: color 0.15s;
+            border-left: 2px solid transparent;
+        }
+
+        .submenu-item:hover {
+            color: #007AFF;
+            background-color: #f0f0f0;
+        }
+
+        /* Hamburger Menu Submenu Styles */
+        .hamburger-menu .submenu {
+            background-color: #f9f9f9;
+            margin: 0 12px 2px 12px;
+            border-radius: 0 0 12px 12px;
+        }
+
+        .hamburger-menu .dropdown-item-wrapper {
+            margin: 0 12px 2px 12px;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .hamburger-menu .dropdown-item-header {
+            padding: 14px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .hamburger-menu .submenu-item {
+            padding-left: 30px;
+            /* More indentation for side menu */
+        }
+
+        /* Component Grid Styles */
+        .component-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 12px 20px;
+            margin-bottom: 20px;
+            /* background-color: #f5f5f7; Removed to match page background */
+            border-radius: 12px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .component-card {
+            background: white;
+            border-radius: 12px;
+            padding: 0;
+            text-decoration: none;
+            color: #1d1d1f;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            justify-content: space-between;
+            text-align: left;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            min-height: 70px;
+            max-height: 70px;
+            overflow: hidden;
+        }
+
+        .component-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            border-color: rgba(0, 122, 255, 0.3);
+        }
+
+        .component-card-title {
+            font-size: 15px;
+            font-weight: 600;
+            margin: 0;
+            line-height: 1.4;
+            flex: 1;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .component-card-icon {
+            font-size: 24px;
+            color: #007AFF;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 0 16px;
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .component-icon-svg {
+            width: 70px;
+            height: 70px;
+            object-fit: cover;
+            flex-shrink: 0;
+            border-left: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 0 12px 12px 0;
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .title {
+                font-size: 24px;
+                padding: 0 20px;
+            }
+
+            .component-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px;
+                padding: 8px 10px;
+            }
+
+            .component-card {
+                padding: 0;
+                border-radius: 10px;
+                box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+                min-height: 56px;
+                max-height: 56px;
+            }
+
+            .component-card:hover {
+                transform: none;
+            }
+
+            .component-card:active {
+                transform: scale(0.98);
+                box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            }
+
+            .component-card-title {
+                font-size: 13px;
+                line-height: 1.2;
+                padding: 0 10px;
+                display: flex;
+                align-items: center;
+            }
+
+            .component-card-icon {
+                font-size: 18px;
+                padding: 0 8px;
+            }
+
+            .component-icon-svg {
+                width: 56px;
+                height: 56px;
+                border-radius: 0 10px 10px 0;
+            }
+
+
+
+            /* Stack vertically on mobile */
+            .diagram-container {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+                max-width: 100%;
+                /* Ensure full width availability */
+            }
+
+            .image-wrapper {
+                max-width: 100%;
+            }
+
+            .diagram-image {
+                max-height: 60vh;
+                /* Slightly smaller on tablet/mobile to see controls */
+            }
+
+            /* Buttons below image on mobile */
+            .overlay-buttons {
+                flex-direction: row;
+                justify-content: center;
+                gap: 12px;
+                padding-top: 0;
+            }
+
+            .overlay-button {
+                width: 44px;
+                height: 44px;
+            }
+
+            main {
+                padding: 24px 16px;
+            }
+
+            .hamburger-menu {
+                width: 85%;
+                max-width: 320px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header {
+                padding: 0 15px;
+            }
+
+            main {
+                padding: 16px 0;
+                /* Remove side padding to allow full width */
+            }
+
+            .title {
+                font-size: 20px;
+                padding: 0 20px;
+            }
+
+            .image-title {
+                font-size: 18px;
+            }
+
+            .header-center {
+                font-size: 15px;
+            }
+
+            .hamburger-menu {
+                width: 85%;
+            }
+
+            /* Full width for image on XS */
+            .diagram-container {
+                width: 100%;
+                margin: 0;
+            }
+
+            .image-wrapper {
+                width: 100%;
+                padding: 0;
+            }
+
+            .diagram-image {
+                width: 100%;
+                max-width: 100%;
+                border-radius: 0;
+                /* Remove border radius for edge-to-edge look */
+                max-height: none;
+                /* Allow height to grow as needed */
+                box-shadow: none;
+                /* Optional: cleaner look for edge-to-edge */
+            }
+        }
+
+        /* Safe Area Insets for iPhone notch */
+        @supports (padding: max(0px)) {
+            header {
+                padding-left: max(16px, env(safe-area-inset-left));
+                padding-right: max(16px, env(safe-area-inset-right));
+            }
+
+            .hamburger-menu {
+                padding-bottom: env(safe-area-inset-bottom);
+            }
+        }
+    </style>
+    <!-- Use localized FontAwesome from Mac Admin Support -->
+    <link rel="stylesheet" href="../Mac_Admin_Support/assets/css/fontawesome.min.css" />
+</head>
+
+<body>
+    <!-- Global Header -->
+    <div class="global-header">
+        <div style="display: flex; align-items: center;">
+            <a href="../Mac_Admin_Support/index.html" class="global-title">
+                <i class="fa-solid fa-screwdriver-wrench"></i>
+                <h1>Mac Admin Compagnon</h1>
+            </a>
+            <div class="global-nav">
+                <a href="../Mac_Admin_Support/index.html" title="Mac Admin Support">
+                    <i class="fa-solid fa-laptop"></i>
+                </a>
+                <a href="./index.html" title="iPhone Screw Diagrams" style="color: #4f46e5;">
+                    <i class="fa-solid fa-mobile-screen-button"></i>
+                </a>
+                <a href="../EOD_Close/dashboard.html" title="EOD Close">
+                    <i class="fa-solid fa-lock"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- Hamburger Menu -->
+    <div class="hamburger-menu" id="hamburgerMenu">
+        <div class="menu-header">
+            <div class="menu-logo">
+                <span class="menu-title">Menu</span>
+            </div>
+            <button class="close-menu" id="closeMenu" aria-label="Close menu">Done</button>
+        </div>
+        <div class="menu-content">
+            <!-- HAMBURGER_MENU_CONTENT_PLACEHOLDER -->
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header>
+        <div class="header-left">
+            <button class="icon" id="hamburgerButton" aria-label="Menu">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <line x1="3" y1="12" x2="21" y2="12"></line>
+                    <line x1="3" y1="18" x2="21" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        <div class="header-center"><a href="index.html" style="text-decoration: none; color: inherit;">iPhone Screw
+                Diagram</a></div>
+        <div class="header-right"><!-- HEADER_DROPDOWN_PLACEHOLDER --></div>
+    </header>
+
+    <main>
+        <h1 class="title">iPhone 17 Pro Max</h1>
+
+        <!-- Component Grid View -->
+        <div class="component-grid" id="componentGrid">
+            <!-- COMPONENT_GRID_PLACEHOLDER -->
+        </div>
+
+        <div class="image-title">Display Screw Diagram</div>
+
+        <div class="diagram-container" id="diagramContainer">
+            <div class="image-wrapper">
+                <img src="https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123385_Display_Screw_Diagram.png"
+                    alt="Screw Diagram" class="diagram-image" id="diagramImage">
+            </div>
+
+            <div class="overlay-buttons">
+                <button class="overlay-button icon-prev" aria-label="Previous diagram">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="overlay-button icon-fullscreen" aria-label="Toggle fullscreen">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3">
+                        </path>
+                    </svg>
+                </button>
+                <button class="overlay-button icon-rotate" aria-label="Rotate image">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M21.5 2v6h-6M2.5 22v-6h6M2 11.5a10 10 0 0 1 18.8-4.3M22 12.5a10 10 0 0 1-18.8 4.2">
+                        </path>
+                    </svg>
+                </button>
+                <button class="overlay-button icon-note" aria-label="Show notes">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </button>
+                <button class="overlay-button icon-next" aria-label="Next diagram">
+                    <svg viewBox="0 0 24 24">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="nav-indicators" id="navIndicators"></div>
+    </main>
+
+    <!-- Fullscreen Modal -->
+    <div class="fullscreen-modal" id="fullscreenModal">
+        <button class="fullscreen-close" id="closeFullscreen" aria-label="Close fullscreen">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </button>
+        <div class="fullscreen-content">
+            <img src="https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123385_Display_Screw_Diagram.png"
+                alt="Fullscreen diagram" class="fullscreen-image" id="fullscreenImage">
+        </div>
+    </div>
+
+    <!-- Prerequisites Popover Container -->
+    <div id="prereq-container" class="prereq-container" style="display: none;"></div>
+
+    <footer>
+        <p>Made by (José Fuste) Apple Confluence for all Repair Rooms</p>
+        <p>© 2025 Apple Inc. All rights reserved.</p>
+    </footer>
+
+    <!-- Notes Modal -->
+    <div class="notes-modal" id="notesModal">
+        <div class="notes-modal-content">
+            <div class="notes-modal-header">
+                <div class="notes-modal-title">Repair Notes</div>
+                <button class="notes-modal-close" id="closeNotesModal" aria-label="Close notes">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="notes-modal-body">
+                <div class="notes-grid" id="notesGrid">
+                    <!-- Component cards will be dynamically inserted here -->
+                </div>
+                <div class="notes-warning">
+                    <p><strong>Note :</strong> Les notes pré-écrites fournies constituent un support
+                        général et n’interdisent en aucun cas l’ajout ou l’utilisation de notes personnelles et
+                        spécifiques de votre part.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Toast Notification -->
+    <div class="copy-toast" id="copyToast">
+        <svg class="copy-toast-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M20 6L9 17L4 12" stroke-width="3"></path>
+        </svg>
+        <span>Copied to clipboard!</span>
+    </div>
+
+    <script>
+        // Repair text data from QRCode CSV
+        const repairData = {
+            'Display': `- Display replaced 
+- Display added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> 20 mins left`,
+
+            'Back Glass': `- Back glass replaced 
+- Back glass added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> 20 mins left`,
+
+            'Battery': `- Battery replaced
+- Battery added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> 20 mins left`,
+
+            'Rear Camera': `- Rear camera replaced
+- Rear camera added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> Camera diags
+> 20 mins left`,
+
+            'TrueDepth Camera': `- TrueDepth camera replaced 
+- TrueDepth camera added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> Camera diags
+> 20 mins left`,
+
+            'Top Speaker': `- Top Speaker replaced
+- Speaker added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> Audio Diags
+> 20 mins left`,
+
+            'Bottom Speaker': `- Bottom Speaker replaced
+- Speaker added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> Audio Diags
+> 20 mins left`,
+
+            'Taptic Engine': `- Taptic Engine replaced
+- Taptic Engine added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> 20 mins left`,
+
+            'Main Microphone': `- Main Microphone replaced
+- Micro added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> 20 mins left`,
+
+            'Logic Board': `- Logic Board replaced
+- Logic Board added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> Audio Diags
+> Camera diags
+> 20 mins left`,
+
+            'Enclosure': `- Enclosure replaced
+- Enclosure added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+- Test Needed:
+- Configuration system 
+> Post Repair diags
+> Audio Diags
+> Camera diags 
+> 20 mins left`,
+
+            'Rear System': `- Rear system replaced 
+- Rear system added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+Configuration system in progress
+> 30 mins left`,
+
+            'Mid System': `- Mid system replaced 
+-  Mid system added to parts used
+- New adhesive pressed
+- Device closed and pressed
+- Screwed security screws
+
+Configuration system in progress
+> 30 mins left`,
+
+            'Diags OK / RFP': `- Post repair diagnostics succeed
+- iPhone and parts moved to > RFP`,
+
+            'Post Diags Failed': `- Post repair diagnostics failed 
+> proceeding with necessary procedure
+> 30 mins left`
+        };
+
+        // Map component names to icon filenames
+        const componentIcons = {
+            'Display': 'icons_repair/Display.svg',
+            'Back Glass': 'icons_repair/Back_Glass.svg',
+            'Battery': 'icons_repair/Battery.svg',
+            'Rear Camera': 'icons_repair/Camera.svg',
+            'TrueDepth Camera': 'icons_repair/True_Depth.svg',
+            'Top Speaker': 'icons_repair/Top_Speaker.svg',
+            'Bottom Speaker': 'icons_repair/Bottom_Speaker.svg',
+            'Taptic Engine': 'icons_repair/Taptic_Engine.svg',
+            'Main Microphone': 'icons_repair/Main_microphone.svg',
+            'Logic Board': 'icons_repair/Logic_Board.svg',
+            'Enclosure': 'icons_repair/enclosure.svg',
+            'Rear System': 'icons_repair/Rear_system.svg',
+            'Mid System': 'icons_repair/Mid_system.svg',
+            'Diags OK / RFP': 'icons_repair/Post_Diags_OK.svg',
+            'Post Diags Failed': 'icons_repair/Post_Diags_Failed.svg'
+        };
+
+        // Notes Modal Functionality
+        const notesModal = document.getElementById('notesModal');
+        const closeNotesModalBtn = document.getElementById('closeNotesModal');
+        const notesGrid = document.getElementById('notesGrid');
+        const copyToast = document.getElementById('copyToast');
+        const body = document.body;
+
+        function openNotesModal() {
+            notesModal.classList.add('active');
+            body.style.overflow = 'hidden';
+            generateNotesCards();
+        }
+
+        function closeNotesModal() {
+            notesModal.classList.remove('active');
+            body.style.overflow = '';
+        }
+
+        function generateNotesCards() {
+            notesGrid.innerHTML = '';
+
+            // Fixed list of components to show
+            const componentsToShow = [
+                'Display',
+                'Battery',
+                'Rear System',
+                'Mid System',
+                'Back Glass',
+                'TrueDepth Camera',
+                'Bottom Speaker',
+                'Main Microphone',
+                'Top Speaker',
+                'Taptic Engine',
+                'Rear Camera',
+                'Logic Board',
+                'Enclosure',
+                'Diags OK / RFP',
+                'Post Diags Failed'
+            ];
+
+            // Create a card for each component
+            componentsToShow.forEach(componentName => {
+                const card = document.createElement('div');
+                card.className = 'notes-card';
+
+                // Use default text if not in map, though all should be there now
+                let textToCopy = repairData[componentName] || `Repair notes for ${componentName}`;
+
+                card.onclick = () => copyRepairText(componentName, textToCopy);
+
+                const iconPath = componentIcons[componentName];
+                if (iconPath) {
+                    card.innerHTML = `
+                        <img src="${iconPath}" alt="${componentName}" class="notes-card-icon">
+                        <div class="notes-card-title">${componentName}</div>
+                    `;
+                    notesGrid.appendChild(card);
+                }
+            });
+        }
+
+        async function copyRepairText(componentName, text) {
+            // Check mapping first
+            let repairText = repairData[componentName];
+
+            // If not found in direct mapping (shouldn't happen with fixed list but good safety), use passed text
+            if (!repairText) repairText = text;
+
+            try {
+                await navigator.clipboard.writeText(repairText);
+                showCopyToast();
+            } catch (err) {
+                // Fallback
+                const textArea = document.createElement('textarea');
+                textArea.value = repairText;
+                textArea.style.position = 'fixed';
+                textArea.style.left = '-999999px';
+                document.body.appendChild(textArea);
+                textArea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopyToast();
+                } catch (err2) {
+                    console.error('Failed to copy:', err2);
+                }
+                document.body.removeChild(textArea);
+            }
+        }
+
+        function showCopyToast() {
+            copyToast.classList.add('show');
+            setTimeout(() => {
+                copyToast.classList.remove('show');
+            }, 2000);
+        }
+
+        // Event listeners for notes modal
+        document.querySelector('.icon-note').addEventListener('click', openNotesModal);
+        closeNotesModalBtn.addEventListener('click', closeNotesModal);
+        notesModal.addEventListener('click', (e) => {
+            if (e.target === notesModal) {
+                closeNotesModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && notesModal.classList.contains('active')) {
+                closeNotesModal();
+            }
+        });
+
+        let currentIndex = 0;
+        let currentRotation = 0;
+        let fullscreenRotation = 0;
+
+        const images = [
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123385_Display_Screw_Diagram.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123386_Back_Glass_Screw_Diagram.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123387_Battery_Screw_Diagram.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123388_Camera_Screw_Diagram.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123389_TrueDepth_Camera_Screw_Diagram.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123390_Top_Speaker_Screw_Diagram.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123391_Bottom_Speaker_pSIM_Screw_Guide.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123392_Taptic_Engine_K_Screw_Diagram.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123393_Main_Mic_pSIM_Screw_Diagram.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123395_Logic_Board_NK_Screw_Diagram.png',
+            'https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/iphone-screw-diagrams/123396_Enclosure_Screw_K_Diagram.png'
+        ];
+        const titles = [
+            "Display Screw Diagram",
+            "Back Glass Screw Diagram",
+            "Battery Screw Diagram",
+            "Camera Screw Diagram",
+            "TrueDepth Camera Screw Diagram",
+            "Top Speaker Screw Diagram",
+            "Bottom Speaker pSIM Screw Guide",
+            "Taptic Engine K Screw Diagram",
+            "Main Mic pSIM Screw Diagram",
+            "Logic Board NK Screw Diagram",
+            "Enclosure Screw K Diagram"
+        ];
+
+        // Menu functionality
+        const hamburgerButton = document.getElementById('hamburgerButton');
+        const hamburgerMenu = document.getElementById('hamburgerMenu');
+        const menuOverlay = document.getElementById('menuOverlay');
+        const closeMenuButton = document.getElementById('closeMenu');
+
+        function openMenu() {
+            hamburgerMenu.classList.add('open');
+            menuOverlay.classList.add('open');
+            body.classList.add('menu-open');
+        }
+
+        function closeMenu() {
+            hamburgerMenu.classList.remove('open');
+            menuOverlay.classList.remove('open');
+            body.classList.remove('menu-open');
+        }
+
+        hamburgerButton.addEventListener('click', openMenu);
+        closeMenuButton.addEventListener('click', closeMenu);
+        menuOverlay.addEventListener('click', closeMenu);
+
+        // Dropdown functionality in hamburger menu
+        document.querySelectorAll('.hamburger-menu .dropdown').forEach(dropdown => {
+            const header = dropdown.querySelector('.dropdown-header');
+            header.addEventListener('click', () => {
+                dropdown.classList.toggle('open');
+            });
+        });
+
+        // Close menu on ESC key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                if (hamburgerMenu.classList.contains('open')) {
+                    closeMenu();
+                } else if (fullscreenModal.classList.contains('active')) {
+                    closeFullscreen();
+                }
+            }
+        });
+
+        // Prevent body scroll when menu is open
+        hamburgerMenu.addEventListener('touchmove', (e) => {
+            e.stopPropagation();
+        }, { passive: false });
+
+        // Initialize navigation indicators
+        function initNavIndicators() {
+            const container = document.getElementById('navIndicators');
+            images.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.className = 'nav-dot';
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => goToImage(index));
+                container.appendChild(dot);
+            });
+        }
+
+        function updateNavIndicators() {
+            document.querySelectorAll('.nav-dot').forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        function goToImage(index) {
+            currentIndex = index;
+            updateImage();
+        }
+
+        // Update the image and title
+        function updateImage() {
+            const img = document.getElementById('diagramImage');
+            const title = document.querySelector('.image-title');
+
+            // Fade out
+            img.style.opacity = '0';
+
+            setTimeout(() => {
+                img.src = images[currentIndex];
+                img.style.transform = `rotate(${currentRotation}deg)`;
+
+                // Update title if available
+                if (typeof imageTitles !== 'undefined' && imageTitles[currentIndex]) {
+                    title.textContent = imageTitles[currentIndex];
+                }
+
+                // Fade in
+                img.style.opacity = '1';
+
+                // Update hash without scrolling
+                // history.replaceState(null, null, `#img=${currentIndex}`);
+                updateNavIndicators(); // Ensure indicators are updated after image change
+            }, 150);
+        }
+
+        // Hash handling for direct linking and grid view
+        function handleHashChange() {
+            const hash = window.location.hash;
+            const componentGrid = document.getElementById('componentGrid');
+            const diagramContainer = document.getElementById('diagramContainer');
+            const imageTitle = document.querySelector('.image-title');
+            const navIndicators = document.getElementById('navIndicators');
+
+            // Check if we have a grid (i.e., if the placeholder was replaced with content)
+            const hasGrid = componentGrid && componentGrid.children.length > 0 && !componentGrid.innerHTML.includes('COMPONENT_GRID_PLACEHOLDER');
+
+            if (hash.startsWith('#img=')) {
+                // Show Single Image View
+                const index = parseInt(hash.substring(5));
+                if (!isNaN(index) && index >= 0 && index < images.length) {
+                    goToImage(index);
+                    if (hasGrid) {
+                        componentGrid.style.display = 'none';
+                        diagramContainer.style.display = 'flex';
+                        imageTitle.style.display = 'block';
+                        if (navIndicators) navIndicators.style.display = 'flex';
+                    }
+                }
+            } else if (hasGrid) {
+                // Show Grid View
+                componentGrid.style.display = 'grid';
+                diagramContainer.style.display = 'none';
+                imageTitle.style.display = 'none';
+                if (navIndicators) navIndicators.style.display = 'none';
+            } else {
+                // Default to first image if no grid and no hash
+                if (images.length > 0) {
+                    goToImage(0);
+                    diagramContainer.style.display = 'flex';
+                    imageTitle.style.display = 'block';
+                    if (navIndicators) navIndicators.style.display = 'flex';
+                }
+            }
+        }
+
+        // Listen for hash changes
+        window.addEventListener('hashchange', handleHashChange);
+
+        // Check hash on initial load
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initial check
+            handleHashChange();
+
+            // If we have a grid, add a back button to the single view
+            const componentGrid = document.getElementById('componentGrid');
+            const hasGrid = componentGrid && componentGrid.children.length > 0 && !componentGrid.innerHTML.includes('COMPONENT_GRID_PLACEHOLDER');
+
+            if (hasGrid) {
+                const backBtn = document.createElement('button');
+                backBtn.className = 'nav-btn';
+                backBtn.innerHTML = '← Grid';
+                backBtn.style.marginBottom = '20px';
+                backBtn.onclick = () => {
+                    history.pushState("", document.title, window.location.pathname + window.location.search);
+                    handleHashChange();
+                };
+
+                // Insert before image title or container
+                const container = document.querySelector('main');
+                const title = document.querySelector('.image-title');
+                if (container && title) {
+                    // container.insertBefore(backBtn, title); // Optional: decide placement
+                }
+            }
+        });
+
+        // Previous button
+        document.querySelector('.icon-prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + images.length) % images.length;
+            updateImage();
+        });
+
+        // Next button
+        document.querySelector('.icon-next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % images.length;
+            updateImage();
+        });
+
+        // Rotate button
+        document.querySelector('.icon-rotate').addEventListener('click', () => {
+            const img = document.getElementById('diagramImage');
+            currentRotation = (currentRotation + 90) % 360;
+            img.style.transform = `rotate(${currentRotation}deg)`;
+        });
+
+        // Fullscreen functionality
+        const fullscreenModal = document.getElementById('fullscreenModal');
+        let fullscreenImage = document.getElementById('fullscreenImage');
+        const closeFullscreenBtn = document.getElementById('closeFullscreen');
+
+        function openFullscreen() {
+            const imgSrc = images[currentIndex];
+
+            // Clone and replace the image element to force a fresh load in Safari
+            const newImg = fullscreenImage.cloneNode(true);
+            newImg.src = imgSrc;
+            newImg.style.transform = `rotate(${currentRotation}deg)`;
+
+            fullscreenImage.parentNode.replaceChild(newImg, fullscreenImage);
+            fullscreenImage = newImg; // Update reference
+
+            fullscreenRotation = currentRotation;
+            fullscreenModal.classList.add('active');
+            body.style.overflow = 'hidden';
+        }
+
+        function closeFullscreen() {
+            fullscreenModal.classList.remove('active');
+            body.style.overflow = '';
+        }
+
+        document.querySelector('.icon-fullscreen').addEventListener('click', openFullscreen);
+        closeFullscreenBtn.addEventListener('click', closeFullscreen);
+        fullscreenModal.addEventListener('click', (e) => {
+            if (e.target === fullscreenModal) {
+                closeFullscreen();
+            }
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (!hamburgerMenu.classList.contains('open') && !fullscreenModal.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + images.length) % images.length;
+                    updateImage();
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % images.length;
+                    updateImage();
+                } else if (e.key === 'r' || e.key === 'R') {
+                    document.querySelector('.icon-rotate').click();
+                }
+            }
+        });
+
+        // Initialize
+        // For single-image pages, initNavIndicators will be removed
+        // but we still need to initialize the first image
+        if (typeof initNavIndicators === 'function') {
+            initNavIndicators();
+        } else {
+            // For single-image pages, ensure the first image is loaded
+            if (images.length > 0 && currentIndex === 0) {
+                const img = document.getElementById('diagramImage');
+                const fullscreenImg = document.getElementById('fullscreenImage');
+                if (img) {
+                    // Always set the first image for single-image pages
+                    img.src = images[0];
+                }
+                // Also set the fullscreen image source
+                if (fullscreenImg) {
+                    fullscreenImg.src = images[0];
+                }
+            }
+        }
+        // Toggle Submenu Function (Global)
+        function toggleSubmenu(e, element) {
+            e.preventDefault();
+            e.stopPropagation();
+            const submenu = element.parentElement.nextElementSibling;
+            submenu.classList.toggle('open');
+            element.classList.toggle('rotated');
+        }
+    </script>
+</body>
+
+</html>

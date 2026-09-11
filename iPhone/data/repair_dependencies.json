@@ -1,0 +1,2125 @@
+{
+    "iPhone 17 Pro": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display",
+                "Battery"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Battery"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display",
+                "Battery"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display",
+                "pSIM"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "pSIM",
+                "Bottom Speaker"
+            ]
+        },
+        "Main Microphone": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Display",
+                "pSIM",
+                "Bottom Speaker",
+                "Taptic Engine"
+            ]
+        },
+        "Logic Board": {
+            "name_fr": "Carte logique",
+            "prerequisites": [
+                "Display",
+                "Battery",
+                "Camera",
+                "TrueDepth Camera",
+                "Top Speaker"
+            ]
+        },
+        "Enclosure": {
+            "name_fr": "Boîtier",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Battery",
+                "Top Speaker",
+                "TrueDepth Camera",
+                "Camera",
+                "Logic Board"
+            ]
+        }
+    },
+    "iPhone 17 Pro Max": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display",
+                "Battery"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Battery"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display",
+                "Battery"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display",
+                "Battery",
+                "pSIM"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Battery",
+                "pSIM",
+                "Bottom Speaker"
+            ]
+        },
+        "Main Microphone": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Display",
+                "Battery",
+                "pSIM",
+                "Bottom Speaker",
+                "Taptic Engine"
+            ]
+        },
+        "Logic Board": {
+            "name_fr": "Carte logique",
+            "prerequisites": [
+                "Display",
+                "Battery",
+                "Camera",
+                "TrueDepth Camera",
+                "Top Speaker"
+            ]
+        },
+        "Enclosure": {
+            "name_fr": "Boîtier",
+            "prerequisites": [
+                "Display",
+                "Back Glass",
+                "Battery",
+                "TrueDepth Camera",
+                "Top Speaker"
+            ]
+        }
+    },
+    "iPhone 17": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "Camera"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Main Microphone": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Logic Board": {
+            "name_fr": "Carte logique",
+            "prerequisites": [
+                "Back Glass",
+                "Camera",
+                "Top Speaker"
+            ]
+        },
+        "Enclosure": {
+            "name_fr": "Boîtier",
+            "prerequisites": [
+                "Display",
+                "Back Glass",
+                "Battery",
+                "Camera",
+                "Logic Board"
+            ]
+        }
+    },
+    "iPhone Air": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Main Mic": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine"
+            ]
+        },
+        "Aux Mic": {
+            "name_fr": "Microphone auxiliaire",
+            "prerequisites": [
+                "Back Glass",
+                "Battery",
+                "Taptic Engine"
+            ]
+        },
+        "Logic Board": {
+            "name_fr": "Carte logique",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera",
+                "Camera",
+                "Top Speaker"
+            ]
+        },
+        "Enclosure": {
+            "name_fr": "Boîtier",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera",
+                "Camera",
+                "Top Speaker",
+                "Battery",
+                "Display",
+                "Logic Board"
+            ]
+        }
+    },
+    "iPhone 17e": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Main Microphone": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Back Glass",
+                "Bottom Speaker",
+                "Taptic Engine"
+            ]
+        },
+        "Logic Board": {
+            "name_fr": "Carte logique",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera",
+                "Camera",
+                "Top Speaker"
+            ]
+        },
+        "Enclosure": {
+            "name_fr": "Boîtier",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera",
+                "Camera",
+                "Top Speaker",
+                "Battery",
+                "Display",
+                "Logic Board"
+            ]
+        }
+    },
+    "iPhone 16 Pro Max": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine",
+                "Bottom Speaker"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine"
+            ]
+        },
+        "Main Microphone": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Système Central",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 16 Pro": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine",
+                "Bottom Speaker"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Système Central",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 16": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Main Microphone": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Back Glass",
+                "Bottom Speaker",
+                "Taptic Engine"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Systeme Centrale",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        }
+    },
+    "iPhone 16e": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Main Microphone": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Back Glass",
+                "Bottom Speaker",
+                "Taptic Engine"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Systeme Centrale",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        }
+    },
+    "iPhone 16 Plus": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display",
+                "Battery"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine"
+            ]
+        },
+        "Main Microphone": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Back Glass",
+                "Bottom Speaker",
+                "Taptic Engine"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Systeme Centrale",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        }
+    },
+    "iPhone 15 Pro Max": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur inférieur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Top Speaker"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Bottom Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Systeme Centrale",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        }
+    },
+    "iPhone 15 Pro": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur inférieur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Top Speaker"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Bottom Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        },
+        "Mid System Module": {
+            "name_fr": "Module Système Central",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 15": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass",
+                "Camera"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display",
+                "Battery"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Systeme Centrale",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        }
+    },
+    "iPhone 15 Plus": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass",
+                "Camera"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "TrueDepth Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Main Microphone": {
+            "name_fr": "Microphone principal",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine",
+                "Bottom Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Systeme Centrale",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
+        },
+        "Back Glass": {
+            "name_fr": "Dos en verre",
+            "prerequisites": []
+        }
+    },
+    "iPhone 14 Pro Max": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur inférieur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Top Speaker"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Bottom Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 14 Pro": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur inférieur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Top Speaker"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Bottom Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 14": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass",
+                "Caméra"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "Camera",
+                "TrueDepth Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Systeme Centrale",
+            "prerequisites": [
+                "Display",
+                "Back Glass",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 14 Plus": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Back Glass",
+                "Caméra"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Back Glass",
+                "Camera",
+                "TrueDepth Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Back Glass"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Back Glass",
+                "Taptic Engine"
+            ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Systeme Centrale",
+            "prerequisites": [
+                "Display",
+                "Back Glass",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 13 Pro Max": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur inférieur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Top Speaker"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Bottom Speaker"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone 13 Pro": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur inférieur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Top Speaker"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Top Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 13": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur inférieur"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Top Speaker"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display",
+                "Logic Board"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 13 Mini": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur inférieur"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Top Speaker"
+            ]
+        },
+        "Top Speaker": {
+            "name_fr": "Haut-parleur supérieur",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine",
+                "Logic Board"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 12 Pro Max": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Bottom Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 12 Pro": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Bottom Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 12": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Bottom Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone 12 Mini": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Rear System Module": {
+            "name_fr": "Module Systeme Arriere",
+            "prerequisites": [
+                "Display",
+                "Camera"
+            ]
+        }
+    },
+    "iPhone SE (3rd gen)": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        }
+    },
+    "iPhone 11 Pro Max": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone 11 Pro": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone 11": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display",
+                "Battery"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone XS Max": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone XS": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone XR": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Battery",
+                "Bottom Speaker",
+                "Taptic Engine"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone X": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Haut-parleur",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "TrueDepth Camera": {
+            "name_fr": "Caméra avant",
+            "prerequisites": [
+                "Display",
+                "Battery",
+                "Bottom Speaker",
+                "Taptic Engine"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display",
+                "Bottom Speaker"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone SE (2nd gen)": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        }
+    },
+    "iPhone 8 Plus": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        }
+    },
+    "iPhone 8": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        }
+    },
+    "iPhone 7 Plus": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        }
+    },
+    "iPhone 7": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Camera": {
+            "name_fr": "Caméra",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        }
+    },
+    "iPhone 6S Plus": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone 6S": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display",
+                "Taptic Engine"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone 6 Plus": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone 6": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    },
+    "iPhone SE (1st Gen)": {
+        "Display": {
+            "name_fr": "Écran",
+            "prerequisites": []
+        },
+        "Battery": {
+            "name_fr": "Batterie",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Taptic Engine": {
+            "name_fr": "Taptic Engine",
+            "prerequisites": [
+                "Display"
+            ]
+        },
+        "Bottom Speaker": {
+            "name_fr": "Haut-parleur inférieur",
+            "prerequisites": [
+                "Display"
+            ]
+        }
+    }
+}

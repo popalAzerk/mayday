@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Politique de Confidentialité — MAYDAY</title>
+    <script>(function(){try{var t=localStorage.getItem('apple-hub-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+    <link rel="stylesheet" href="./assets/css/shared-theme.css">
+    <style>
+        .privacy-container {
+            max-width: 740px;
+            margin: 0 auto;
+            padding: 120px 24px 120px;
+            animation: fadeUp 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .privacy-header {
+            text-align: center;
+            margin-bottom: 56px;
+        }
+
+        .privacy-header .icon-shield {
+            width: 80px;
+            height: 80px;
+            background: #000;
+            border-radius: 22px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin: 0 auto 24px;
+        }
+
+        .privacy-header .icon-shield img {
+            height: 100%;
+            width: auto;
+            transform: translateX(-21%);
+        }
+
+        .privacy-header h1 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -1.2px;
+            color: var(--apple-text);
+            margin: 0 0 8px;
+        }
+
+        .privacy-header .subtitle {
+            font-size: 17px;
+            color: var(--apple-text-secondary);
+            font-weight: 400;
+        }
+
+        .privacy-header .last-update {
+            font-size: 13px;
+            color: var(--apple-text-tertiary);
+            margin-top: 12px;
+        }
+
+        .privacy-section {
+            margin-bottom: 40px;
+        }
+
+        .privacy-section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            letter-spacing: -0.4px;
+            color: var(--apple-text);
+            margin: 0 0 12px;
+            padding-top: 24px;
+            border-top: 1px solid var(--apple-separator);
+        }
+
+        .privacy-section:first-of-type h2 {
+            border-top: none;
+            padding-top: 0;
+        }
+
+        .privacy-section p,
+        .privacy-section li {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--apple-text-secondary);
+            margin: 0 0 12px;
+        }
+
+        .privacy-section ul {
+            padding-left: 20px;
+            margin: 8px 0 16px;
+        }
+
+        .privacy-section li {
+            margin-bottom: 6px;
+        }
+
+        .privacy-section strong {
+            color: var(--apple-text);
+            font-weight: 600;
+        }
+
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0 24px;
+            font-size: 14px;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid var(--apple-separator);
+        }
+
+        .data-table th,
+        .data-table td {
+            padding: 12px 16px;
+            text-align: left;
+            border-bottom: 1px solid var(--apple-separator);
+        }
+
+        .data-table th {
+            background: var(--apple-gray-6);
+            color: var(--apple-text);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .data-table td {
+            color: var(--apple-text-secondary);
+        }
+
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 600;
+        }
+
+        .badge-green {
+            background: rgba(52, 199, 89, 0.15);
+            color: #34C759;
+        }
+
+        .badge-orange {
+            background: rgba(255, 149, 0, 0.15);
+            color: #FF9500;
+        }
+
+        .badge-blue {
+            background: rgba(0, 122, 255, 0.15);
+            color: #007AFF;
+        }
+
+        .alert-box {
+            padding: 16px 20px;
+            border-radius: 12px;
+            margin: 16px 0;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .alert-warning {
+            background: rgba(255, 149, 0, 0.1);
+            border: 1px solid rgba(255, 149, 0, 0.2);
+            color: var(--apple-text-secondary);
+        }
+
+        .alert-info {
+            background: rgba(0, 122, 255, 0.08);
+            border: 1px solid rgba(0, 122, 255, 0.15);
+            color: var(--apple-text-secondary);
+        }
+
+        .contact-card {
+            background: var(--apple-gray-6);
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 16px;
+        }
+
+        .contact-card p {
+            margin: 0 0 8px;
+            color: var(--apple-text-secondary);
+            font-size: 14px;
+        }
+
+        .contact-card strong {
+            color: var(--apple-text);
+        }
+
+        .privacy-footer {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--apple-separator);
+            margin-top: 48px;
+        }
+
+        .privacy-footer p {
+            font-size: 13px;
+            color: var(--apple-text-tertiary);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--apple-blue);
+            text-decoration: none;
+            margin-bottom: 32px;
+            transition: opacity 0.2s;
+        }
+
+        .back-link:hover {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            .privacy-container { padding: 80px 16px 80px; }
+            .privacy-header h1 { font-size: 28px; }
+            .privacy-section h2 { font-size: 18px; }
+            .data-table { font-size: 12px; }
+            .data-table th, .data-table td { padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body class="needs-global-nav">
+
+    <div class="privacy-container">
+
+        <a href="./index.html" class="back-link">← Retour à MAYDAY</a>
+
+        <header class="privacy-header">
+            <div class="icon-shield">
+                <img src="https://www.apple.com/newsroom/images/live-action/wwdc-2023/standard/privacy/Apple-WWDC23-privacy-logo-230605_big.jpg.large_2x.jpg" alt="Apple Privacy">
+            </div>
+            <h1>Politique de Confidentialité</h1>
+            <p class="subtitle">MAYDAY — In-Store Repair Room Support Tool</p>
+            <p class="last-update">Dernière mise à jour : 29 avril 2026</p>
+        </header>
+
+        <section class="privacy-section">
+            <h2>1. Responsable du traitement</h2>
+            <p>MAYDAY est un outil de formation et de support interne développé pour les équipes Repair Room. Il est hébergé et exécuté <strong>localement</strong> sur les postes de travail des collaborateurs. Aucun serveur central ne collecte de données.</p>
+            <div class="contact-card">
+                <p><strong>Contact :</strong> Équipe Repair Room</p>
+                <p><strong>Hébergement :</strong> Exécution locale (file:// ou serveur HTTP local)</p>
+                <p><strong>Nature :</strong> Outil interne de formation — usage exclusif en environnement professionnel</p>
+            </div>
+        </section>
+
+        <section class="privacy-section">
+            <h2>2. Données collectées et stockage</h2>
+            <p>MAYDAY <strong>ne collecte aucune donnée personnelle</strong> (nom, email, identifiant). Les seules données stockées sont des préférences techniques, conservées dans le navigateur via <code>localStorage</code>.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Module</th>
+                        <th>Donnée</th>
+                        <th>Finalité</th>
+                        <th>Risque</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Tous</td>
+                        <td>Thème (clair/sombre)</td>
+                        <td>Préférence d'affichage</td>
+                        <td><span class="badge badge-green">Nul</span></td>
+                    </tr>
+                    <tr>
+                        <td>GeniusAcademy</td>
+                        <td>Clé API Google</td>
+                        <td>Accès au moteur IA</td>
+                        <td><span class="badge badge-orange">Modéré</span></td>
+                    </tr>
+                    <tr>
+                        <td>GeniusAcademy</td>
+                        <td>Modèle IA sélectionné</td>
+                        <td>Configuration du simulateur</td>
+                        <td><span class="badge badge-green">Nul</span></td>
+                    </tr>
+                    <tr>
+                        <td>GeniusAcademy</td>
+                        <td>Consentement Mode Live</td>
+                        <td>Preuve de consentement RGPD</td>
+                        <td><span class="badge badge-green">Nul</span></td>
+                    </tr>
+                    <tr>
+                        <td>Mac Compagnon</td>
+                        <td>Planifications de réparation</td>
+                        <td>Gestion de capacité</td>
+                        <td><span class="badge badge-blue">Faible</span></td>
+                    </tr>
+                    <tr>
+                        <td>EOD Close</td>
+                        <td>Historiques de clôture</td>
+                        <td>Bilan de fin de journée</td>
+                        <td><span class="badge badge-blue">Faible</span></td>
+                    </tr>
+                    <tr>
+                        <td>iPhone</td>
+                        <td>Langue des notes</td>
+                        <td>Affichage bilingue</td>
+                        <td><span class="badge badge-green">Nul</span></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert-info">
+                <strong>ℹ️ Important :</strong> Toutes ces données sont stockées exclusivement dans votre navigateur. Elles ne sont jamais transmises à un serveur distant (sauf le Mode Live, décrit ci-dessous).
+            </div>
+        </section>
+
+        <section class="privacy-section">
+            <h2>3. Transferts de données hors UE</h2>
+            <p>Le module <strong>Genius Bar Academy — Mode Live</strong> transmet un flux audio en temps réel vers les serveurs de Google LLC pour la simulation vocale IA.</p>
+
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Élément</th>
+                        <th>Détail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Données envoyées</strong></td>
+                        <td>Flux audio microphone (PCM 16kHz)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Destinataire</strong></td>
+                        <td>Google LLC — generativelanguage.googleapis.com</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Localisation serveurs</strong></td>
+                        <td>États-Unis</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Finalité</strong></td>
+                        <td>Simulation de formation interne (jeu de rôle client)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Base légale</strong></td>
+                        <td>Consentement explicite (Art. 6.1.a RGPD)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Conservation</strong></td>
+                        <td>Aucune — flux temps réel, non enregistré</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Garanties</strong></td>
+                        <td>EU-US Data Privacy Framework (DPF) — Google LLC est certifié</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div class="alert-warning">
+                <strong>⚠️ Usage strictement limité :</strong> Le Mode Live ne doit jamais être utilisé lors d'interactions réelles avec des clients Apple sans leur consentement explicite et écrit.
+            </div>
+        </section>
+
+        <section class="privacy-section">
+            <h2>4. Consentement et droits</h2>
+            <p>Le Mode Live nécessite un <strong>consentement actif</strong> (opt-in via checkbox) avant toute activation. Ce consentement est :</p>
+            <ul>
+                <li><strong>Libre :</strong> l'utilisation de MAYDAY n'est pas conditionnée au Mode Live</li>
+                <li><strong>Éclairé :</strong> les informations sur le destinataire et la finalité sont affichées</li>
+                <li><strong>Spécifique :</strong> il ne concerne que le traitement audio</li>
+                <li><strong>Révocable :</strong> vous pouvez retirer votre consentement à tout moment</li>
+            </ul>
+
+            <h3 style="font-size: 17px; font-weight: 600; margin: 24px 0 8px; color: var(--apple-text);">Vos droits (RGPD Art. 15-22)</h3>
+            <ul>
+                <li><strong>Droit d'accès :</strong> consultez vos données dans les paramètres de chaque module</li>
+                <li><strong>Droit de rectification :</strong> modifiez vos préférences à tout moment</li>
+                <li><strong>Droit à l'effacement :</strong> utilisez les boutons « Purger mes données » disponibles dans chaque module</li>
+                <li><strong>Droit de retrait du consentement :</strong> désactivez le Mode Live à tout moment ; votre consentement expire automatiquement après 6 mois</li>
+                <li><strong>Droit à la portabilité :</strong> exportez vos données via les fonctions d'export (CSV, JSON)</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section">
+            <h2>5. Comment supprimer vos données</h2>
+            <p>Chaque module offre un mécanisme de suppression :</p>
+            <ul>
+                <li><strong>GeniusAcademy :</strong> Paramètres → « Réinitialiser Cache & Clé »</li>
+                <li><strong>Mac Compagnon :</strong> Menu → « Purger les données locales »</li>
+                <li><strong>EOD Close :</strong> Historique → « Effacer tout »</li>
+                <li><strong>Global :</strong> Videz le localStorage de votre navigateur (DevTools → Application → Local Storage → Clear)</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section">
+            <h2>6. Cookies et trackers</h2>
+            <p>MAYDAY <strong>n'utilise aucun cookie</strong> et <strong>aucun service de tracking tiers</strong> (pas de Google Analytics, Facebook Pixel, ou équivalent). Toutes les ressources (polices, icônes, styles) sont servies localement.</p>
+        </section>
+
+        <section class="privacy-section">
+            <h2>7. Sécurité</h2>
+            <p>Les mesures de sécurité suivantes sont en place :</p>
+            <ul>
+                <li>Les clés API sont stockées dans le navigateur uniquement, jamais transmises à un tiers (hors API Google autorisée)</li>
+                <li>Aucune donnée personnelle n'est collectée ni stockée</li>
+                <li>L'application fonctionne en mode local (file:// ou localhost)</li>
+                <li>Les entrées utilisateur sont échappées pour prévenir les attaques XSS</li>
+            </ul>
+        </section>
+
+        <section class="privacy-section">
+            <h2>8. Modifications</h2>
+            <p>Cette politique peut être mise à jour. La date de dernière modification est indiquée en haut de cette page. En cas de changement substantiel, une notification sera affichée dans l'application.</p>
+        </section>
+
+        <footer class="privacy-footer">
+            <p>© 2026 MAYDAY — In-Store Repair Room Support Tool</p>
+            <p>Outil de formation interne — Données traitées conformément au RGPD (Règlement UE 2016/679)</p>
+        </footer>
+
+    </div>
+
+    <script src="./assets/js/shared-app.js"></script>
+</body>
+</html>

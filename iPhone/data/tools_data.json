@@ -1,0 +1,694 @@
+{
+    "screws": {
+        "cruciforme": {
+            "name": "Cruciforme",
+            "name_en": "Crosshead",
+            "part_numbers": [
+                "923-0246",
+                "923-09177",
+                "923-10727"
+            ],
+            "description": "Vis cruciforme standard"
+        },
+        "pentalobe": {
+            "name": "Pentalobe",
+            "name_en": "Pentalobe",
+            "part_numbers": [
+                "923-0247"
+            ],
+            "description": "Vis de sécurité Pentalobe PL1.1"
+        },
+        "super_vis": {
+            "name": "Super-vis",
+            "name_en": "Super Screw",
+            "part_numbers": [
+                "923-02066",
+                "923-09962"
+            ],
+            "description": "Super-vis pour composants internes"
+        },
+        "trilobee": {
+            "name": "Trilobée",
+            "name_en": "Trilobe",
+            "part_numbers": [
+                "923-01290"
+            ],
+            "description": "Vis trilobée Microstix"
+        },
+        "torx_plus": {
+            "name": "Torx Plus",
+            "name_en": "Torx Plus",
+            "part_numbers": [
+                "923-07594"
+            ],
+            "description": "Torx Plus 4IP"
+        }
+    },
+    "screwdrivers": {
+        "reglable": {
+            "name": "Réglable",
+            "name_en": "Adjustable",
+            "part_number": "923-02995",
+            "torque": "10-34 Ncm",
+            "color": "#333333"
+        },
+        "noir": {
+            "name": "Noir",
+            "name_en": "Black",
+            "part_number": "923-0248",
+            "torque": "0,35 kgf/cm",
+            "color": "#1D1D1F"
+        },
+        "vert": {
+            "name": "Vert",
+            "name_en": "Green",
+            "part_number": "923-00105",
+            "torque": "0,45 kgf/cm",
+            "color": "#34C759"
+        },
+        "gris": {
+            "name": "Gris",
+            "name_en": "Gray",
+            "part_number": "923-00738",
+            "torque": "0,55 kgf/cm",
+            "color": "#8E8E93"
+        },
+        "bleu": {
+            "name": "Bleu",
+            "name_en": "Blue",
+            "part_number": "923-0448",
+            "torque": "0,65 kgf/cm",
+            "color": "#007AFF"
+        },
+        "sarcelle": {
+            "name": "Sarcelle",
+            "name_en": "Teal",
+            "part_number": "923-08085",
+            "torque": "0,75 kgf/cm",
+            "color": "#5AC8FA"
+        },
+        "orange": {
+            "name": "Orange",
+            "name_en": "Orange",
+            "part_number": "923-08131",
+            "torque": "0,85 kgf/cm",
+            "color": "#FF9500"
+        }
+    },
+    "models": {
+        "iPhone 17 Pro Max": {
+            "support_url": "https://support.apple.com/fr-fr/124250",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "super_vis",
+                "trilobee",
+                "torx_plus"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone 17 Pro": {
+            "support_url": "https://support.apple.com/fr-fr/124250",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "super_vis",
+                "trilobee",
+                "torx_plus"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone 17": {
+            "support_url": "https://support.apple.com/fr-fr/124250",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "super_vis",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone Air": {
+            "support_url": "https://support.apple.com/fr-fr/124250",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "super_vis",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone 16 Pro Max": {
+            "support_url": "https://support.apple.com/fr-fr/121325",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "super_vis",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone 16 Pro": {
+            "support_url": "https://support.apple.com/fr-fr/121325",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "super_vis",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone 16 Plus": {
+            "support_url": "https://support.apple.com/fr-fr/121325",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle"
+            ]
+        },
+        "iPhone 16": {
+            "support_url": "https://support.apple.com/fr-fr/121325",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle"
+            ]
+        },
+        "iPhone 16e": {
+            "support_url": "https://support.apple.com/fr-fr/121325",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 15 Pro Max": {
+            "support_url": "https://support.apple.com/fr-fr/111823",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "super_vis",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone 15 Pro": {
+            "support_url": "https://support.apple.com/fr-fr/111823",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "super_vis",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone 15 Plus": {
+            "support_url": "https://support.apple.com/fr-fr/111823",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle"
+            ]
+        },
+        "iPhone 15": {
+            "support_url": "https://support.apple.com/fr-fr/111823",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle"
+            ]
+        },
+        "iPhone 14 Pro Max": {
+            "support_url": "https://support.apple.com/fr-fr/HT213524",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone 14 Pro": {
+            "support_url": "https://support.apple.com/fr-fr/HT213524",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle",
+                "orange"
+            ]
+        },
+        "iPhone 14 Plus": {
+            "support_url": "https://support.apple.com/fr-fr/HT213524",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 14": {
+            "support_url": "https://support.apple.com/fr-fr/HT213524",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "reglable",
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone SE 3": {
+            "support_url": "https://support.apple.com/fr-fr/HT213012",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 13 Pro Max": {
+            "support_url": "https://support.apple.com/fr-fr/HT213012",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle"
+            ]
+        },
+        "iPhone 13 Pro": {
+            "support_url": "https://support.apple.com/fr-fr/HT213012",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu",
+                "sarcelle"
+            ]
+        },
+        "iPhone 13 Mini": {
+            "support_url": "https://support.apple.com/fr-fr/HT213012",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 13": {
+            "support_url": "https://support.apple.com/fr-fr/HT213012",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 12 Pro Max": {
+            "support_url": "https://support.apple.com/fr-fr/HT212145",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 12 Pro": {
+            "support_url": "https://support.apple.com/fr-fr/HT212145",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 12 Mini": {
+            "support_url": "https://support.apple.com/fr-fr/HT212145",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 12": {
+            "support_url": "https://support.apple.com/fr-fr/HT212145",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone SE 2": {
+            "support_url": "https://support.apple.com/fr-fr/HT211677",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris"
+            ]
+        },
+        "iPhone 11 Pro Max": {
+            "support_url": "https://support.apple.com/fr-fr/HT211677",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 11 Pro": {
+            "support_url": "https://support.apple.com/fr-fr/HT211677",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone 11": {
+            "support_url": "https://support.apple.com/fr-fr/HT211677",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris",
+                "bleu"
+            ]
+        },
+        "iPhone XS Max": {
+            "support_url": "https://support.apple.com/fr-fr/HT209086",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris"
+            ]
+        },
+        "iPhone XS": {
+            "support_url": "https://support.apple.com/fr-fr/HT209086",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris"
+            ]
+        },
+        "iPhone XR": {
+            "support_url": "https://support.apple.com/fr-fr/HT209086",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris"
+            ]
+        },
+        "iPhone X": {
+            "support_url": "https://support.apple.com/fr-fr/HT208161",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert",
+                "gris"
+            ]
+        },
+        "iPhone 8 Plus": {
+            "support_url": "https://support.apple.com/fr-fr/HT208045",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert"
+            ]
+        },
+        "iPhone 8": {
+            "support_url": "https://support.apple.com/fr-fr/HT208045",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert"
+            ]
+        },
+        "iPhone 7 Plus": {
+            "support_url": "https://support.apple.com/fr-fr/HT207124",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert"
+            ]
+        },
+        "iPhone 7": {
+            "support_url": "https://support.apple.com/fr-fr/HT207124",
+            "screws": [
+                "pentalobe",
+                "cruciforme",
+                "trilobee"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert"
+            ]
+        },
+        "iPhone 6S Plus": {
+            "support_url": "https://support.apple.com/fr-fr/HT205355",
+            "screws": [
+                "pentalobe",
+                "cruciforme"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert"
+            ]
+        },
+        "iPhone 6S": {
+            "support_url": "https://support.apple.com/fr-fr/HT205355",
+            "screws": [
+                "pentalobe",
+                "cruciforme"
+            ],
+            "screwdrivers": [
+                "noir",
+                "vert"
+            ]
+        }
+    }
+}

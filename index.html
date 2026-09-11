@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAYDAY - In-Store Repair Room Support Tool</title>
+    <script>(function(){try{var t=localStorage.getItem('apple-hub-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+    <link rel="stylesheet" href="./assets/css/shared-theme.css">
+    <style>
+        /* Specific layout for the IRRST Portal */
+        .hub-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 120px 24px 80px;
+            display: flex;
+            flex-direction: column;
+            gap: 60px;
+        }
+        
+        .hub-header {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 16px;
+            animation: fadeDown 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+        }
+
+        .hub-header h1 {
+            font-size: 56px;
+            letter-spacing: -1.8px;
+            font-weight: 700;
+            margin: 0;
+            background: linear-gradient(135deg, var(--apple-text) 0%, var(--apple-gray-3) 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hub-header p {
+            font-size: 21px;
+            color: var(--apple-text-secondary);
+            font-weight: 500;
+            letter-spacing: -0.3px;
+            max-width: 600px;
+            margin: 0;
+        }
+
+        .hub-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            opacity: 0;
+            animation: fadeUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards 0.2s;
+        }
+
+        /* Enhanced Bento sizing and styling for master hub */
+        .hub-grid .bento-card {
+            padding: 36px 24px 32px;
+            align-items: center;
+            text-align: center;
+            min-height: 260px;
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(40px);
+            -webkit-backdrop-filter: blur(40px);
+        }
+
+        html[data-theme="dark"] .hub-grid .bento-card {
+            background: rgba(30, 30, 32, 0.6);
+        }
+
+        .bento-icon-wrapper {
+            background: var(--apple-gray-6);
+            border-radius: 22px;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 32px auto;
+            color: var(--apple-blue);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+        }
+
+        .bento-card:hover .bento-icon-wrapper {
+            transform: scale(1.1) translateY(-6px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.1);
+        }
+
+        .bento-icon-wrapper svg {
+            width: 36px;
+            height: 36px;
+            fill: currentColor;
+        }
+
+        .bento-title {
+            font-size: 24px;
+            margin-bottom: 12px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+        
+        .bento-text {
+            color: var(--apple-text-secondary);
+            font-size: 15px;
+            line-height: 1.5;
+            font-weight: 400;
+        }
+        
+        /* Subtle background glow */
+        .bg-glow {
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 120%;
+            height: 120%;
+            background: radial-gradient(circle at 50% 0%, var(--apple-glass-bg) 0%, transparent 60%);
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        html[data-theme="dark"] .bg-glow {
+            background: radial-gradient(circle at 50% 0%, rgba(10, 132, 255, 0.08) 0%, transparent 60%);
+        }
+
+        @keyframes fadeDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 900px) {
+            .hub-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+            .hub-grid .bento-card {
+                padding: 32px 20px 28px;
+                min-height: 200px;
+            }
+            .bento-icon-wrapper {
+                width: 60px; height: 60px;
+                border-radius: 16px;
+                margin-bottom: 20px;
+            }
+            .bento-icon-wrapper svg { width: 26px; height: 26px; }
+            .bento-title { font-size: 18px; }
+            .bento-text { font-size: 13px; }
+        }
+
+        @media (max-width: 540px) {
+            .hub-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .hub-grid .bento-card {
+                padding: 24px 14px 20px;
+                min-height: 160px;
+            }
+            .bento-icon-wrapper {
+                width: 48px; height: 48px;
+                border-radius: 13px;
+                margin-bottom: 14px;
+            }
+            .bento-icon-wrapper svg { width: 22px; height: 22px; }
+            .bento-title { font-size: 15px; margin-bottom: 6px; }
+            .bento-text { font-size: 11px; line-height: 1.4; }
+            .hub-header h1 { font-size: 36px; }
+            .hub-header p { font-size: 14px; }
+            .hub-container { padding: 80px 16px 40px; gap: 32px; }
+        }
+    </style>
+</head>
+<body class="needs-global-nav">
+
+    <div class="bg-glow"></div>
+
+    <div class="hub-container">
+        
+        <header class="hub-header">
+            <h1>MAYDAY</h1>
+            <p>In-Store Repair Room Support Tool</p>
+        </header>
+
+        <main class="hub-grid">
+            
+            <a href="./Mac/index.html" class="bento-link bento-card">
+                <div class="bento-icon-wrapper" style="background: linear-gradient(135deg, rgba(255, 59, 48, 0.2) 0%, rgba(255, 105, 97, 0.1) 100%); color: #FF3B30;">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M20 18C21.1046 18 22 17.1046 22 16V6C22 4.89543 21.1046 4 20 4H4C2.89543 4 2 4.89543 2 6V16C2 17.1046 2.89543 18 4 18M20 18H22V20C22 20.5523 21.5523 21 21 21H3C2.44772 21 2 20.5523 2 20V18H4M20 18H4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 18V21" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                        <rect x="5" y="7" width="14" height="8" rx="1" fill="currentColor" fill-opacity="0.15"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="bento-title">Mac Admin Compagnon</h2>
+                    <p class="bento-text">Outil d'aide à la planification. Gérez la capacité journalière des Mac en Repair Room et accédez aux tests nécessaires à chaque réparation </p>
+                </div>
+            </a>
+
+            <a href="./iPhone/index.html" class="bento-link bento-card">
+                <div class="bento-icon-wrapper" style="background: linear-gradient(135deg, rgba(0, 122, 255, 0.2) 0%, rgba(100, 180, 255, 0.1) 100%); color: #007AFF;">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect x="6" y="2" width="12" height="20" rx="3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11 4H13" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M7 19H17" stroke="currentColor" stroke-width="1" stroke-opacity="0.3"/>
+                        <circle cx="12" cy="18" r="1" fill="currentColor" fill-opacity="0.2"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="bento-title">iPhone Diagrams</h2>
+                    <p class="bento-text">Base de connaissances offline contenant les guides de réparation officiels Apple et aux diagrammes des vis pour chaque modèle.</p>
+                </div>
+            </a>
+
+
+<a href="./Close/dashboard.html" class="bento-link bento-card">
+                <div class="bento-icon-wrapper" style="background: linear-gradient(135deg, rgba(52, 199, 89, 0.2) 0%, rgba(48, 209, 88, 0.1) 100%); color: #34C759;">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 12L11 15L16 9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle cx="12" cy="12" r="5" fill="currentColor" fill-opacity="0.1"/>
+                    </svg>
+                </div>
+                <div>
+                    <h2 class="bento-title">EOD Close</h2>
+                    <p class="bento-text">Formulaire de bilan de fin de journée pour les Genius Admin. Enregistrement, historique et export en PDF.</p>
+                </div>
+            </a>
+
+        </main>
+    </div>
+
+    <!-- The shared-app.js will dynamically inject the unified global navbar -->
+    <script src="./assets/js/shared-app.js"></script>
+</body>
+</html>

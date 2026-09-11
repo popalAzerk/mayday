@@ -1,0 +1,356 @@
+/* Liquid Glass Keyframes & Apple HIG Theme System */
+:root {
+    /* Liquid Glass Color Palette - Light Theme */
+    --apple-blue: #007AFF;
+    --apple-blue-dark: #0056CC;
+    --apple-green: #34C759;
+    --apple-red: #FF3B30;
+    --apple-orange: #FF9500;
+    --apple-gray-1: rgba(0, 0, 0, 0.5);
+    --apple-gray-2: rgba(0, 0, 0, 0.4);
+    --apple-gray-3: rgba(0, 0, 0, 0.3);
+    --apple-gray-4: rgba(0, 0, 0, 0.2);
+    --apple-gray-5: rgba(0, 0, 0, 0.1);
+    --apple-gray-6: rgba(0, 0, 0, 0.05);
+    
+    --apple-bg: #f5f5f7;
+    --apple-glass-bg: rgba(255, 255, 255, 0.65);
+    --apple-card-bg: rgba(255, 255, 255, 0.75);
+    --apple-text: #1d1d1f;
+    --apple-text-secondary: #86868b;
+    
+    --glass-border: rgba(255, 255, 255, 0.5);
+    --glass-border-solid: #E5E5EA;
+    --glass-glow: rgba(255, 255, 255, 0.3);
+    
+    /* Shadows */
+    --bento-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    --bento-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.12);
+}
+
+/* Dark Theme Variables */
+html[data-theme="dark"] {
+    --apple-bg: #000000;
+    --apple-glass-bg: rgba(28, 28, 30, 0.65);
+    --apple-card-bg: rgba(44, 44, 46, 0.75);
+    --apple-text: #f5f5f7;
+    --apple-text-secondary: #a1a1a6;
+    
+    --apple-gray-1: rgba(255, 255, 255, 0.5);
+    --apple-gray-2: rgba(255, 255, 255, 0.4);
+    --apple-gray-3: rgba(255, 255, 255, 0.3);
+    --apple-gray-4: rgba(255, 255, 255, 0.2);
+    --apple-gray-5: rgba(255, 255, 255, 0.1);
+    --apple-gray-6: rgba(255, 255, 255, 0.05);
+    
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --glass-border-solid: #3a3a3c;
+    --glass-glow: rgba(255, 255, 255, 0.05);
+    
+    --bento-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+    --bento-shadow-hover: 0 16px 48px rgba(0, 0, 0, 0.6);
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Fira Code", "Fira Sans", "Segoe UI", sans-serif;
+    background-color: var(--apple-bg);
+    color: var(--apple-text);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+}
+
+/* Bento Card Style */
+.bento-card {
+    background: var(--apple-card-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 24px;
+    box-shadow: var(--bento-shadow);
+    transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.bento-card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: var(--bento-shadow-hover);
+}
+
+.bento-link {
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Gemini Dark Mode Toggle Style */
+.gemini-toggle {
+    width: 60px;
+    height: 32px;
+    border-radius: 40px;
+    background: var(--apple-gray-5);
+    border: 1px solid var(--glass-border);
+    position: relative;
+    cursor: pointer;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: background 0.4s ease;
+    display: flex;
+    align-items: center;
+    padding: 0 4px;
+    justify-content: space-between;
+}
+
+html[data-theme="dark"] .gemini-toggle {
+    background: #007AFF; /* Deep sleek blue on dark state */
+    box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
+}
+
+.gemini-toggle .toggle-thumb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    left: 4px;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FF9500;
+}
+
+html[data-theme="dark"] .gemini-toggle .toggle-thumb {
+    transform: translateX(28px);
+    background: #1c1c1e;
+    color: #ffffff;
+}
+
+.gemini-toggle svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+    transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+/* Floating Navigation Bar (Master Link) */
+.global-floating-nav {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--apple-glass-bg);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid var(--glass-border);
+    padding: 8px 16px;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    z-index: 9999;
+}
+
+.global-floating-nav a {
+    text-decoration: none;
+    color: var(--apple-text);
+    font-size: 14px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    transition: background 0.2s ease;
+}
+
+.global-floating-nav a:hover {
+    background: var(--apple-gray-5);
+}
+
+.global-floating-nav a.active {
+    background: var(--apple-text);
+    color: var(--apple-bg);
+}
+
+.svg-icon {
+    width: 18px;
+    height: 18px;
+    fill: currentColor;
+}
+
+/* Footer Theme Toggle */
+.global-footer-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.global-footer-toggle .rgpd-btn {
+    width: 32px;
+    height: 32px;
+    background: var(--apple-glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--apple-text);
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.global-footer-toggle .rgpd-btn:hover {
+    transform: scale(1.05);
+    background: var(--apple-gray-5);
+}
+
+.global-footer-toggle .rgpd-btn.active {
+    background: var(--apple-text);
+    color: var(--apple-bg);
+}
+
+.global-footer-toggle .rgpd-btn svg {
+    width: 14px;
+    height: 14px;
+    fill: currentColor;
+}
+
+.global-footer-toggle .gemini-toggle {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--apple-glass-bg);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid var(--glass-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: transform 0.2s ease;
+}
+
+.global-footer-toggle .gemini-toggle:hover {
+    transform: scale(1.05);
+}
+
+.global-footer-toggle .gemini-toggle svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--apple-text);
+}
+
+.global-footer-toggle .toggle-thumb {
+    display: none;
+}
+
+/* Responsive Hub Bar - Icons only on smaller screens or when hub-icons-only class is present on body */
+@media (max-width: 600px) {
+    .global-floating-nav {
+        padding: 6px 10px !important;
+        gap: 8px !important;
+    }
+    
+    .global-floating-nav a {
+        padding: 6px !important;
+        font-size: 0 !important;
+        gap: 0 !important; /* Remove gap to ensure icon centering */
+        justify-content: center;
+    }
+    
+    .global-floating-nav a .svg-icon {
+        width: 20px !important;
+        height: 20px !important;
+    }
+    
+    .gemini-toggle {
+        padding: 4px !important;
+    }
+    
+    .gemini-toggle .toggle-thumb {
+        display: none !important;
+    }
+    
+    .gemini-toggle svg {
+        width: 20px !important;
+        height: 20px !important;
+    }
+}
+
+/* Force icons-only mode if body has .hub-icons-only class */
+body.hub-icons-only .global-floating-nav {
+    padding: 6px 10px !important;
+    gap: 8px !important;
+}
+
+body.hub-icons-only .global-floating-nav a {
+    padding: 6px !important;
+    font-size: 0 !important;
+    gap: 0 !important;
+    justify-content: center;
+}
+
+body.hub-icons-only .global-floating-nav a .svg-icon {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+@media (max-width: 400px) {
+    .global-floating-nav {
+        padding: 4px 8px;
+        gap: 4px;
+    }
+    
+    .global-floating-nav a {
+        padding: 4px;
+    }
+}
+
+/* SVG Animations applied via CSS */
+@keyframes spin-slow {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes pulse-soft {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+@keyframes float-up-down {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+    100% { transform: translateY(0); }
+}
+
+.anim-spin:hover svg { animation: spin-slow 4s linear infinite; }
+.anim-pulse:hover svg { animation: pulse-soft 2s ease-in-out infinite; }
+.anim-float:hover svg { animation: float-up-down 2s ease-in-out infinite; }
+
+/* Global Utilities */
+h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
+.text-secondary { color: var(--apple-text-secondary); }

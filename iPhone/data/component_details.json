@@ -1,0 +1,32 @@
+{
+    "Display": {
+        "size": "large",
+        "specs": "Super Retina XDR",
+        "detail": "6.9\" OLED"
+    },
+    "Battery": {
+        "size": "large",
+        "specs": "Li-ion Rechargeable",
+        "detail": "4676 mAh"
+    },
+    "Logic Board": {
+        "size": "large",
+        "specs": "Apple A19 Pro",
+        "detail": "8-core CPU"
+    },
+    "Camera": {
+        "size": "normal",
+        "specs": "48MP Main",
+        "detail": "f/1.78"
+    },
+    "Back Glass": {
+        "size": "normal",
+        "specs": "Ceramic Shield",
+        "detail": "Matte Finish"
+    },
+    "Enclosure": {
+        "size": "normal",
+        "specs": "Titanium",
+        "detail": "Grade 5"
+    }
+}
