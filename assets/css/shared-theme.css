@@ -354,3 +354,16 @@ body.hub-icons-only .global-floating-nav a .svg-icon {
 /* Global Utilities */
 h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 .text-secondary { color: var(--apple-text-secondary); }
+
+/* === Fix mobile: pillule vs éléments locaux des apps === */
+@media (max-width: 640px) {
+    .global-floating-nav {
+        top: 10px;
+        padding: 6px 10px;
+        max-width: calc(100vw - 130px);
+    }
+    .global-floating-nav .nav-item {
+        padding: 8px 10px;
+        font-size: 12px;
+    }
+}

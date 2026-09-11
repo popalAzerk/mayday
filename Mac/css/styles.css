@@ -483,3 +483,11 @@ html[data-theme="dark"] .timeline-container {
   background: linear-gradient(135deg, rgba(191, 90, 242, 0.12) 0%, rgba(94, 92, 230, 0.15) 100%);
   border-color: rgba(191, 90, 242, 0.25);
 }
+@media (max-width: 640px) {
+  header {
+    position: sticky;
+    top: 0;
+    padding-top: 66px; /* place pour la pillule MAYDAY flottante */
+    background: transparent;
+  }
+}
