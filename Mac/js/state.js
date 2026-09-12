@@ -150,6 +150,25 @@ window.saveScheduleToStorage = async function () {
     // 1. Always save to LocalStorage (Backup/Offline)
     localStorage.setItem('genius-scheduler-repairs', JSON.stringify(data));
 
+    // 1b. Historique: snapshot quotidien (7 derniers jours)
+    try {
+        const today = new Date().toISOString().split('T')[0];
+        const hist = JSON.parse(localStorage.getItem('mayday-schedule-history') || '{}');
+        if (data.length > 0) {
+            hist[today] = {
+                date: today,
+                count: data.length,
+                totalMin: data.reduce((s, r) => s + (r.totalTime || 0), 0),
+                ripCount: data.filter(r => r.status === 'rip').length,
+                models: data.map(r => `${r.modelName} — ${r.partsNames || ''} (${r.totalTime}m)`).slice(0, 30)
+            };
+            // Garder les 7 derniers jours
+            const days = Object.keys(hist).sort();
+            while (days.length > 7) delete hist[days.shift()];
+            localStorage.setItem('mayday-schedule-history', JSON.stringify(hist));
+        }
+    } catch (e) { /* ignore */ }
+
     // 2. Try to save to Server
     if (window.isServerAvailable) {
         try {

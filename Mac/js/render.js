@@ -273,20 +273,41 @@ window.renderRepairInfo = function () {
       <div style="display:flex; gap:8px; margin-bottom:20px;">
         <button onclick="showRepairDetails()" class="btn" style="flex:1;">Test</button>
         <button onclick="addRepairToSchedule()" class="btn btn-primary" style="flex:2;">Au Planning</button>
+        ${window.getGuideUrl ? `<a href="${window.getGuideUrl()}" target="_blank" rel="noopener" class="btn" style="flex:1; text-align:center; text-decoration:none;"><i class="fa-solid fa-book"></i> Guide</a>` : ''}
       </div>
       `}
     </div>
   `;
 };
 
+window.getPlanningTotal = function () {
+  const totalMin = window.state.scheduledRepairs.reduce((sum, r) => sum + (r.totalTime || 0), 0);
+  return totalMin;
+};
+
 window.renderScheduledRepairs = function () {
+  // Bandeau total cumulé (vs heures d'ouverture)
+  const totalMin = window.getPlanningTotal();
+  const openH = window.settings.workHours || 8;
+  const pct = Math.min(100, Math.round((totalMin / (openH * 60)) * 100));
+  const pctColor = pct > 100 ? 'var(--apple-red)' : pct > 80 ? 'var(--apple-orange, #ff9500)' : 'var(--apple-green)';
+  const totalHtml = `
+    <div id="planning-total" style="margin-bottom:12px; padding:10px 12px; background: rgba(120,120,128,0.08); border-radius:10px;">
+      <div style="display:flex; justify-content:space-between; align-items:center; font-size:12px;">
+        <span class="text-muted">Charge de la journée</span>
+        <span class="font-mono font-bold" style="font-size:13px;">${Math.floor(totalMin/60)}h${String(totalMin%60).padStart(2,'0')} / ${openH}h</span>
+      </div>
+      <div style="margin-top:6px; height:6px; border-radius:3px; background: rgba(120,120,128,0.15); overflow:hidden;">
+        <div style="height:100%; width:${pct}%; background:${pctColor}; border-radius:3px; transition: width .3s;"></div>
+      </div>
+    </div>`;
   if (window.state.scheduledRepairs.length === 0) {
-    window.elements.scheduledRepairsContainer.innerHTML = `<div class="text-center text-muted" style="margin: auto; padding-top:40px;"><i class="fa-solid fa-clipboard-list" style="font-size:32px; margin-bottom:8px;"></i><p>Aucune intervention</p></div>`;
+    window.elements.scheduledRepairsContainer.innerHTML = totalHtml + `<div class="text-center text-muted" style="margin: auto; padding-top:40px;"><i class="fa-solid fa-clipboard-list" style="font-size:32px; margin-bottom:8px;"></i><p>Aucune intervention</p></div>`;
     window.elements.repairCount.textContent = "0";
     return;
   }
   window.elements.repairCount.textContent = window.state.scheduledRepairs.length;
-  window.elements.scheduledRepairsContainer.innerHTML = window.state.scheduledRepairs.map((repair, index) => `
+  window.elements.scheduledRepairsContainer.innerHTML = totalHtml + window.state.scheduledRepairs.map((repair, index) => `
     <div class="repair-card">
       <input type="text" class="input-standard" style="margin-bottom:8px;" maxlength="20" placeholder="Nom du produit ou cas" value="${_esc(repair.productName||'')}" oninput="updateProductName(${index}, this)">
       <div style="display:flex; justify-content:space-between; align-items:flex-start;">

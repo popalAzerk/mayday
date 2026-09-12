@@ -97,6 +97,16 @@ function initGlobalNav() {
         `;
         
         document.body.insertAdjacentHTML('afterbegin', navHtml);
+
+        // Badge EOD: point vert sur l'item Close si l'EOD du jour a été sauvegardé
+        try {
+            const today = new Date();
+            const key = 'dashboard_' + today.toISOString().split('T')[0];
+            const navCloseItem = document.querySelector('.global-floating-nav a[title="Close"]');
+            if (navCloseItem && (localStorage.getItem(key) || localStorage.getItem('eod_' + today.toISOString().split('T')[0]))) {
+                navCloseItem.insertAdjacentHTML('beforeend', '<span class="eod-badge"></span>');
+            }
+        } catch (e) { /* ignore */ }
         document.body.insertAdjacentHTML('beforeend', footerHtml);
     }
 }

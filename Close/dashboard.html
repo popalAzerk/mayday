@@ -11,7 +11,7 @@
     <script src="chart.umd.min.js" defer></script>
     <!-- Use localized FontAwesome from Mac Admin Support -->
     <link rel="stylesheet" href="../Mac/assets/css/fontawesome.min.css" />
-    <link rel="stylesheet" href="../assets/css/shared-theme.css">
+    <link rel="stylesheet" href="../assets/css/shared-theme.css?v=3">
     <link rel="stylesheet" href="css/dashboard.css">
 </head>
 
@@ -780,7 +780,7 @@
                     currentY += imgHeight + 5;
                 }
 
-                pdf.save(`Repair_Close_${dateStr}.pdf`);
+                pdf.save(`EOD-${dateStr}.pdf`);
                 showToast('PDF exporté avec succès!');
 
             } catch (error) {
@@ -1237,7 +1237,7 @@
         // Initialize
         loadSavedData();
     </script>
-    <script src="../assets/js/shared-app.js"></script>
+    <script src="../assets/js/shared-app.js?v=3"></script>
 </body>
 
 </html>

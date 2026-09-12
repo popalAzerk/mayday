@@ -37,6 +37,12 @@ window.selectModel = function (catKey, subcatKey, modelKey) {
     subcatKey,
     modelKey
   };
+  // Persistance (mode Genius): la sélection survit à la fermeture d'onglet
+  try {
+    localStorage.setItem('mayday-current-repair', JSON.stringify({
+      modelData, selectedParts: {}, catKey, subcatKey, modelKey
+    }));
+  } catch (e) { /* quota */ }
 
   window.navigateTo([catKey, subcatKey, modelKey]);
   window.elements.searchInput.blur();
@@ -79,11 +85,13 @@ window.resetCurrentSelection = function () {
   window.state.sizeFilter = null;
   window.state.searchQuery = '';
   window.elements.searchInput.value = '';
+  localStorage.removeItem('mayday-current-repair');
   window.render(window.macData);
 };
 
 window.closeCurrentRepair = function () {
   window.state.currentRepair = null;
+  localStorage.removeItem('mayday-current-repair');
   window.goBack();
 };
 
@@ -549,4 +557,31 @@ window.showPostTest = function () {
     ${window.getGuideUrl() ? `<div class="card"><a href="${window.getGuideUrl()}" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration:none;"><i class="fa-solid fa-book"></i> Guide officiel Apple</a></div>` : ''}
   `;
   window.openModal('repair-details-modal');
+};
+
+
+// === Historique 7 jours (Mac Admin) ===
+window.openHistoryModal = function () {
+  const body = document.getElementById('history-body');
+  let hist = {};
+  try { hist = JSON.parse(localStorage.getItem('mayday-schedule-history') || '{}'); } catch (e) {}
+  const days = Object.keys(hist).sort().reverse();
+  if (!days.length) {
+    body.innerHTML = '<p class="text-muted text-center" style="padding:24px;">Aucun historique pour le moment.<br>L\'historique se remplit à chaque sauvegarde du planning.</p>';
+  } else {
+    const fmt = (iso) => new Date(iso + 'T12:00:00').toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long' });
+    body.innerHTML = days.map(d => {
+      const e = hist[d];
+      const hh = Math.floor(e.totalMin / 60), mm = e.totalMin % 60;
+      const items = (e.models || []).map(m => `<li style="font-size:12px; color:var(--apple-text-muted, #8e8e93);">${m}</li>`).join('');
+      return `<div style="padding:12px; background: rgba(120,120,128,0.08); border-radius:12px;">
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <strong style="font-size:13px; text-transform:capitalize;">${fmt(d)}</strong>
+          <span class="font-mono" style="font-size:12px;">${e.count} intervention${e.count > 1 ? 's' : ''} · ${hh}h${String(mm).padStart(2,'0')}</span>
+        </div>
+        <ul style="margin:8px 0 0; padding-left:18px;">${items}</ul>
+      </div>`;
+    }).join('');
+  }
+  window.openModal('history-modal');
 };

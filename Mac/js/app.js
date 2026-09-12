@@ -11,6 +11,16 @@ window.init = function () {
         // Initialize DOM elements
         window.initElements();
     window.setAppMode(window.appMode);
+    // Restaurer la sélection courante (mode Genius)
+    if (window.appMode === 'genius') {
+      try {
+        const saved = JSON.parse(localStorage.getItem('mayday-current-repair') || 'null');
+        if (saved && saved.modelData) {
+          window.state.currentRepair = saved;
+          if (typeof window.renderRepairInfo === 'function') window.renderRepairInfo();
+        }
+      } catch (e) { /* ignore */ }
+    }
 
         // Load settings from localStorage
         window.loadSettings();

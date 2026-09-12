@@ -367,3 +367,17 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
         font-size: 12px;
     }
 }
+
+
+/* Badge EOD: point vert sur l'item Close quand l'EOD du jour est sauvegardé */
+.eod-badge {
+  position: absolute;
+  top: 6px;
+  right: 10px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--apple-green, #34c759);
+  box-shadow: 0 0 4px rgba(52, 199, 89, 0.6);
+}
+.global-floating-nav .nav-item { position: relative; }

@@ -7,7 +7,7 @@
     <script>(function(){try{var t=localStorage.getItem('apple-hub-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
     <link rel="stylesheet" href="./assets/css/fontawesome.min.css" />
     <!-- Shared Master Theme CSS (for dark mode + basic vars if needed) -->
-    <link rel="stylesheet" href="../assets/css/shared-theme.css">
+    <link rel="stylesheet" href="../assets/css/shared-theme.css?v=3">
     <!-- Local specific Dashboard styles -->
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
@@ -71,6 +71,9 @@ body.mode-genius .dashboard-wrapper {
             <!-- Gemini Toggle injected by shared-app.js -->
             <button onclick="openModal('dashboard-modal')" class="btn btn-icon" title="Dashboard">
                 <i class="fa-solid fa-chart-pie"></i>
+            </button>
+            <button onclick="openHistoryModal()" class="btn btn-icon" title="Historique 7 jours">
+                <i class="fa-solid fa-clock-rotate-left"></i>
             </button>
             <button onclick="saveSchedule()" class="btn btn-icon btn-primary" title="Cmd+S pour Sauvegarder">
                 <i class="fa-solid fa-save"></i>
@@ -213,9 +216,20 @@ body.mode-genius .dashboard-wrapper {
         </div>
     </div>
 
+    <!-- History Modal (7 derniers jours) -->
+    <div id="history-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+                <h2>Historique — 7 derniers jours</h2>
+                <button onclick="closeModal('history-modal')" class="btn btn-icon"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <div id="history-body" style="display: flex; flex-direction: column; gap: 12px; max-height: 60vh; overflow-y: auto;"></div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <!-- Shared App injects Global Nav and manages Dark Mode -->
-    <script src="../assets/js/shared-app.js"></script>
+    <script src="../assets/js/shared-app.js?v=3"></script>
     <script src="./js/config.js"></script>
     <script src="./js/mac-guides.js"></script>
     <script src="./js/diagnostics-data.js"></script>
