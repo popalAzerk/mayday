@@ -504,3 +504,49 @@ document.addEventListener('keydown', function(event) {
         }
     }
 });
+
+
+// === Mode Genius: Guides + Pré/Post tests ===
+window.getGuideUrl = function () {
+  const cr = window.state.currentRepair;
+  if (!cr) return null;
+  const key = `${cr.catKey}.subcategories.${cr.subcatKey}.models.${cr.modelKey}`;
+  return window.MAC_GUIDES?.[key] || window.MAC_GUIDES?.[cr.modelKey] || null;
+};
+
+window.showPreTest = function () {
+  const cr = window.state.currentRepair;
+  if (!cr || Object.keys(cr.selectedParts).length === 0) return;
+  const pre = window.diagnosticsData?.preDiagnostics || {};
+  const items = Object.values(pre).map(d => `<li>${d.name} <span class="text-muted font-mono">(${d.duration} min)</span></li>`).join('');
+  const parts = Object.values(cr.selectedParts).map(p => `<li>${p.name}</li>`).join('');
+  window.elements.detailsTitle.textContent = `Pré-test: ${cr.modelData.name}`;
+  window.elements.detailsBody.innerHTML = `
+    <div class="card" style="align-items:flex-start; text-align:left;">
+      <h4 class="font-semibold" style="margin-bottom:8px;">Réparation prévue:</h4>
+      <ul style="margin:0; padding-left:16px;">${parts}</ul>
+    </div>
+    <div class="card" style="align-items:flex-start; text-align:left; background: rgba(0, 122, 255, 0.05); border-color: rgba(0, 122, 255, 0.2);">
+      <h4 class="font-semibold text-blue" style="margin-bottom:8px;">Tests AVANT réparation:</h4>
+      <ul style="margin:0; padding-left:16px;">${items}</ul>
+    </div>
+    ${window.getGuideUrl() ? `<div class="card"><a href="${window.getGuideUrl()}" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration:none;"><i class="fa-solid fa-book"></i> Guide officiel Apple</a></div>` : ''}
+  `;
+  window.openModal('repair-details-modal');
+};
+
+window.showPostTest = function () {
+  const cr = window.state.currentRepair;
+  if (!cr || Object.keys(cr.selectedParts).length === 0) return;
+  const diags = window.calculateDynamicDiagnostics(cr.modelData, cr.selectedParts, cr.catKey);
+  const items = diags.map(d => `<li>${d.name} <span class="text-muted font-mono">(${d.duration} min)</span></li>`).join('');
+  window.elements.detailsTitle.textContent = `Post-test: ${cr.modelData.name}`;
+  window.elements.detailsBody.innerHTML = `
+    <div class="card" style="align-items:flex-start; text-align:left; background: rgba(52, 199, 89, 0.05); border-color: rgba(52, 199, 89, 0.2);">
+      <h4 class="font-semibold" style="color: var(--apple-green); margin-bottom:8px;">Tests APRÈS réparation:</h4>
+      <ul style="margin:0; padding-left:16px;">${items}</ul>
+    </div>
+    ${window.getGuideUrl() ? `<div class="card"><a href="${window.getGuideUrl()}" target="_blank" rel="noopener" class="btn btn-primary" style="text-decoration:none;"><i class="fa-solid fa-book"></i> Guide officiel Apple</a></div>` : ''}
+  `;
+  window.openModal('repair-details-modal');
+};

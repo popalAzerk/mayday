@@ -256,3 +256,15 @@ window.importData = function (event) {
     event.target.value = '';
 };
 
+
+// === Mode Admin / Genius ===
+window.appMode = localStorage.getItem('mayday-mac-mode') || 'admin';
+window.setAppMode = function (mode) {
+  window.appMode = mode;
+  localStorage.setItem('mayday-mac-mode', mode);
+  document.body.classList.toggle('mode-genius', mode === 'genius');
+  document.getElementById('mode-admin')?.classList.toggle('active', mode === 'admin');
+  document.getElementById('mode-genius')?.classList.toggle('active', mode === 'genius');
+  if (typeof window.renderRepairInfo === 'function') window.renderRepairInfo();
+  if (typeof window.renderScheduledRepairs === 'function') window.renderScheduledRepairs();
+};

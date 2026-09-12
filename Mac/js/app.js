@@ -10,6 +10,7 @@ window.init = function () {
     try {
         // Initialize DOM elements
         window.initElements();
+    window.setAppMode(window.appMode);
 
         // Load settings from localStorage
         window.loadSettings();
@@ -55,3 +56,5 @@ if (document.readyState === 'loading') {
 } else {
     window.init();
 }
+
+// Init mode Admin/Genius via l'app (après initElements)

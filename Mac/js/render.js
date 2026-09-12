@@ -263,10 +263,18 @@ window.renderRepairInfo = function () {
         </div>
       </div>
       
+      ${window.appMode === 'genius' ? `
+      <div style="display:flex; gap:8px; margin-bottom:20px;">
+        <button onclick="showPreTest()" class="btn" style="flex:1;"><i class="fa-solid fa-stethoscope"></i> Pré-test</button>
+        <button onclick="showPostTest()" class="btn" style="flex:1;"><i class="fa-solid fa-clipboard-check"></i> Post-test</button>
+        ${window.getGuideUrl ? `<a href="${window.getGuideUrl()}" target="_blank" rel="noopener" class="btn" style="flex:1; text-align:center; text-decoration:none;"><i class="fa-solid fa-book"></i> Guide</a>` : ''}
+      </div>
+      ` : `
       <div style="display:flex; gap:8px; margin-bottom:20px;">
         <button onclick="showRepairDetails()" class="btn" style="flex:1;">Test</button>
         <button onclick="addRepairToSchedule()" class="btn btn-primary" style="flex:2;">Au Planning</button>
       </div>
+      `}
     </div>
   `;
 };

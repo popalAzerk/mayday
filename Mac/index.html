@@ -11,6 +11,45 @@
     <!-- Local specific Dashboard styles -->
     <link rel="stylesheet" href="./css/styles.css">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
+
+
+
+<style>
+/* === Mode Admin / Genius === */
+.mode-toggle {
+  display: flex;
+  background: var(--glass-bg, rgba(120,120,128,0.12));
+  border-radius: 20px;
+  padding: 3px;
+  gap: 2px;
+}
+.mode-btn {
+  border: none;
+  background: transparent;
+  padding: 6px 14px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted, #8e8e93);
+  cursor: pointer;
+  transition: all .2s;
+}
+.mode-btn.active {
+  background: var(--apple-blue, #007aff);
+  color: #fff;
+}
+/* Mode Genius: pas de planning ni d'occupation */
+body.mode-genius #planning-panel,
+body.mode-genius #occupation-panel {
+  display: none !important;
+}
+body.mode-genius .dashboard-wrapper {
+  grid-template-columns: 1fr 1fr 0 !important;
+}
+@media (max-width: 1024px) {
+  body.mode-genius .dashboard-wrapper { grid-template-columns: 1fr !important; }
+}
+</style>
 </head>
 
 <body class="needs-global-nav">
@@ -24,6 +63,11 @@
             <!-- Global Nav injected by shared-app.js will reside around here or as floating -->
         </div>
         <div class="header-actions">
+            <!-- Mode Admin/Genius -->
+            <div class="mode-toggle" id="mode-toggle" title="Basculer Admin / Genius">
+                <button id="mode-admin" class="mode-btn active" onclick="setAppMode('admin')">Admin</button>
+                <button id="mode-genius" class="mode-btn" onclick="setAppMode('genius')">Genius</button>
+            </div>
             <!-- Gemini Toggle injected by shared-app.js -->
             <button onclick="openModal('dashboard-modal')" class="btn btn-icon" title="Dashboard">
                 <i class="fa-solid fa-chart-pie"></i>
@@ -93,7 +137,7 @@
             </div>
             
             <!-- Dashboard Timeline / Occupation UI built here -->
-            <div class="timeline-container" style="border-radius: 0; border-top: 1px solid var(--border-color);">
+            <div class="timeline-container" id="occupation-panel" style="border-radius: 0; border-top: 1px solid var(--border-color);">
                 <div style="display: flex; justify-content: space-between; margin-bottom: 8px;">
                     <strong>Occupation du Planning</strong>
                     <span id="stats-used-minutes-main" class="font-mono text-blue font-bold">0 min</span>
@@ -108,7 +152,7 @@
         </div>
 
         <!-- Right Panel: Scheduled Repairs & Planning -->
-        <div class="bento-panel">
+        <div class="bento-panel" id="planning-panel">
             <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
                 <h3 style="margin:0;">Planning</h3>
                 <span id="repair-count" style="background: var(--apple-blue); color: white; border-radius: 12px; padding: 2px 8px; font-size: 12px;">0</span>
@@ -173,6 +217,7 @@
     <!-- Shared App injects Global Nav and manages Dark Mode -->
     <script src="../assets/js/shared-app.js"></script>
     <script src="./js/config.js"></script>
+    <script src="./js/mac-guides.js"></script>
     <script src="./js/diagnostics-data.js"></script>
     <script src="./data/mac-data-raw.js"></script>
     <script src="./js/part-diagnostics.js"></script>
