@@ -263,8 +263,8 @@ window.renderRepairInfo = function () {
         </div>
       </div>
       
-      <div style="display:flex; gap:8px;">
-        <button onclick="showRepairDetails()" class="btn" style="flex:1;">Détails</button>
+      <div style="display:flex; gap:8px; margin-bottom:20px;">
+        <button onclick="showRepairDetails()" class="btn" style="flex:1;">Test</button>
         <button onclick="addRepairToSchedule()" class="btn btn-primary" style="flex:2;">Au Planning</button>
       </div>
     </div>
