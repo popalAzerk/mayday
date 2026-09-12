@@ -169,6 +169,9 @@ html[data-theme="dark"] .btn-primary:hover { background: #0a7aff; }
 @media (max-width: 1024px) {
   .dashboard-wrapper { grid-template-columns: 1fr; overflow-y: auto; height: auto; min-height: calc(100vh - 54px); }
   .bento-panel { min-height: 400px; }
+  /* Contenu dynamique: le panel suit la hauteur du contenu (évite le chevauchement
+     des boutons avec le bloc Occupation du Planning) */
+  .bento-panel > .panel-body { height: auto; flex: none; }
 }
 
 /* Panels */
