@@ -564,6 +564,35 @@
 [data-theme="dark"] .menu-search input { background: rgba(120,120,128,0.2); color: #fff; }
 .menu-section.filtered-out, .dropdown.filtered-out { display: none !important; }
 </style>
+<style>
+.new-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 9px;
+  background: var(--apple-red, #ff3b30);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  vertical-align: middle;
+  line-height: 1.3;
+}
+.dropdown-header { position: relative; cursor: pointer; }
+.dropdown-header::after {
+  content: '\203A';
+  position: absolute;
+  right: 2px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  color: var(--apple-text-muted, #8e8e93);
+  transition: transform 0.25s ease;
+  pointer-events: none;
+}
+.dropdown.open > .dropdown-header::after { transform: translateY(-50%) rotate(90deg); }
+[data-theme="dark"] .dropdown-header::after { color: #98989d; }
+</style>
 </head>
 <body class="needs-global-nav">
 
@@ -593,7 +622,32 @@
                 <div class="menu-section-title">Latest Models</div>
                 <div class="dropdown">
                     <div class="dropdown-header">
-                        <span>iPhone 17 Series <span class="new-badge">New</span></span>
+                        <span>iPhone 18 Series <span class="new-badge">New</span></span>
+                    </div>
+                    <div class="dropdown-content">
+                        <div class="dropdown-item-wrapper">
+                            <div class="dropdown-item-header">
+                                <a class="header-dropdown-item-link" onclick="event.preventDefault();">iPhone 18 Pro Max</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item-wrapper">
+                            <div class="dropdown-item-header">
+                                <a class="header-dropdown-item-link" onclick="event.preventDefault();">iPhone 18 Pro</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-item-wrapper">
+                            <div class="dropdown-item-header">
+                                <a class="header-dropdown-item-link" onclick="event.preventDefault();">iPhone Duo</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu-section">
+                <div class="menu-section-title">Recent (2025)</div>
+                <div class="dropdown">
+                    <div class="dropdown-header">
+                        <span>iPhone 17 Series</span>
                         
                     </div>
                     <div class="dropdown-content">
@@ -678,7 +732,7 @@
                 </div>
                 <div class="dropdown">
                     <div class="dropdown-header">
-                        <span>iPhone Air <span class="new-badge">New</span></span>
+                        <span>iPhone Air</span>
                         
                     </div>
                     <div class="dropdown-content">
@@ -730,7 +784,7 @@
                 </div>
             </div>
             <div class="menu-section">
-                <div class="menu-section-title">Recent (2024)</div>
+                <div class="menu-section-title">Previous Models</div>
                 <div class="dropdown">
                     <div class="dropdown-header">
                         <span>iPhone 16 Series</span>
@@ -759,9 +813,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
-            <div class="menu-section">
-                <div class="menu-section-title">Previous Models</div>
                 <div class="dropdown">
                     <div class="dropdown-header">
                         <span>iPhone 15 Series</span>
@@ -969,8 +1020,6 @@
             </div>
 
         </div>
-    </div>
-
     </div>
 
     <div class="container">
