@@ -1001,8 +1001,9 @@ footer p {
 /* ---- Body ---- */
 .notes-modal-body {
     padding: 16px 20px 24px;
-    overflow-y: visible; /* Prevent scrolling inside body if content fits */
-    flex-shrink: 0;
+    overflow-y: auto; /* Scrollable si le contenu dépasse max-height 85vh (écrans courts) — cartes du bas toujours cliquables */
+    flex-shrink: 1;
+    min-height: 0;
     -webkit-overflow-scrolling: touch;
 }
 
