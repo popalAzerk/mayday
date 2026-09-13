@@ -1,61 +1,39 @@
-// iPhone Index Page Logic
-const hamburgerButton = document.getElementById('hamburgerButton');
-const hamburgerMenu = document.getElementById('hamburgerMenu');
-const menuOverlay = document.getElementById('menuOverlay');
-const closeMenuButton = document.getElementById('closeMenu');
-const body = document.body;
+// iPhone Index Page Logic (chargé par index.html — source unique)
+document.addEventListener('DOMContentLoaded', () => {
+            const hamburgerBtn = document.getElementById('hamburgerButton');
+            const closeMenuBtn = document.getElementById('closeMenu');
+            const menu = document.getElementById('hamburgerMenu');
+            const overlay = document.getElementById('menuOverlay');
 
-function openMenu() {
-    hamburgerMenu.classList.add('open');
-    menuOverlay.classList.add('open');
-    body.classList.add('menu-open');
-}
+            function toggleMenu() {
+                menu.classList.toggle('open');
+                overlay.classList.toggle('open');
+            }
 
-function closeMenu() {
-    hamburgerMenu.classList.remove('open');
-    menuOverlay.classList.remove('open');
-    body.classList.remove('menu-open');
-}
+            if (hamburgerBtn) hamburgerBtn.addEventListener('click', toggleMenu);
+            if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
+            if (overlay) overlay.addEventListener('click', toggleMenu);
 
-// Event listeners
-hamburgerButton.addEventListener('click', openMenu);
-closeMenuButton.addEventListener('click', closeMenu);
-menuOverlay.addEventListener('click', closeMenu);
+            // Dropdown logic for hamburger menu
+            document.querySelectorAll('.dropdown-header').forEach(header => {
+                header.addEventListener('click', () => {
+                    const dropdown = header.parentElement;
+                    dropdown.classList.toggle('open');
+                });
+            });
 
-// Dropdown functionality in hamburger menu
-document.querySelectorAll('.dropdown').forEach(dropdown => {
-    const header = dropdown.querySelector('.dropdown-header');
-    if (header) {
-        header.addEventListener('click', () => {
-            dropdown.classList.toggle('open');
+            // Submenu toggle logic (global for onclick)
+            window.toggleSubmenu = function(event, element) {
+                event.preventDefault();
+                event.stopPropagation();
+                const wrapper = element.closest('.dropdown-item-wrapper');
+                const submenu = wrapper.querySelector('.submenu');
+                if (submenu) {
+                    submenu.classList.toggle('open');
+                }
+            };
         });
-    }
-});
-
-// Toggle Submenu Function (Global)
-window.toggleSubmenu = function(event, element) {
-    event.preventDefault();
-    event.stopPropagation();
-    const submenu = element.parentElement.nextElementSibling;
-    if (submenu) {
-        submenu.classList.toggle('open');
-        element.classList.toggle('rotated');
-    }
-};
-
-// Close menu on ESC key
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && hamburgerMenu.classList.contains('open')) {
-        closeMenu();
-    }
-});
-
-// Prevent body scroll when menu is open
-hamburgerMenu.addEventListener('touchmove', (e) => {
-    e.stopPropagation();
-}, {passive: false});
-
-
+    
 // === Recherche dans le menu hamburger ===
 (function () {
   const input = document.getElementById('menuSearchInput');
