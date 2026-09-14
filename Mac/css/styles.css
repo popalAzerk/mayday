@@ -480,3 +480,15 @@ html[data-theme="dark"] .timeline-container {
     background: transparent;
   }
 }
+
+/* === RGPD + thème: intégrés à la pillule d'actions du header === */
+.header-actions .global-footer-toggle {
+  position: static !important;
+  bottom: auto;
+  right: auto;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-left: 6px;
+  border-left: 1px solid var(--border-color);
+}
