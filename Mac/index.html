@@ -114,7 +114,11 @@ body.mode-genius .dashboard-wrapper {
                 <button id="mode-genius" class="mode-btn" onclick="setAppMode('genius')">Genius</button>
             </div>
         </div>
-        <div class="header-actions">
+        <div class="header-actions" id="header-actions">
+            <button class="actions-trigger" onclick="toggleHeaderActions(this)" title="Actions" aria-expanded="false">
+                <i class="fa-solid fa-ellipsis-h"></i>
+            </button>
+            <div class="actions-inner">
             <!-- Gemini Toggle injected by shared-app.js -->
             <button onclick="openModal('dashboard-modal')" class="btn btn-icon" title="Dashboard">
                 <i class="fa-solid fa-chart-pie"></i>
@@ -128,6 +132,7 @@ body.mode-genius .dashboard-wrapper {
             <button onclick="resetCurrentSelection()" class="btn btn-icon" title="Reset">
                 <i class="fa-solid fa-house"></i>
             </button>
+            </div>
         </div>
     </header>
 

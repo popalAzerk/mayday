@@ -15,14 +15,15 @@ window.init = function () {
             const ft = document.querySelector('.global-footer-toggle');
             const actions = document.querySelector('.header-actions');
             if (ft && actions) {
-                actions.insertBefore(ft, actions.firstChild);
+                const trig = actions.querySelector('.actions-trigger');
+                if (trig) trig.after(ft); else actions.appendChild(ft);
             } else if (!ft) {
                 // shared-app.js attend DOMContentLoaded: réessayer brièvement
                 let tries = 0;
                 const t = setInterval(() => {
                     const f = document.querySelector('.global-footer-toggle');
                     const ac = document.querySelector('.header-actions');
-                    if (f && ac) { ac.insertBefore(f, ac.firstChild); clearInterval(t); }
+                    if (f && ac) { const tr = ac.querySelector('.actions-trigger'); if (tr) tr.after(f); else ac.appendChild(f); clearInterval(t); }
                     else if (++tries > 20) clearInterval(t);
                 }, 100);
             }

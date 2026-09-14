@@ -481,6 +481,41 @@ html[data-theme="dark"] .timeline-container {
   }
 }
 
+
+/* === Pillule d'actions à ouverture dynamique === */
+.header-actions { overflow: hidden; }
+.header-actions .actions-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  max-width: 0;
+  opacity: 0;
+  transform: translateX(8px);
+  transition: max-width .35s cubic-bezier(.2,.8,.2,1), opacity .25s ease, transform .35s cubic-bezier(.2,.8,.2,1);
+  white-space: nowrap;
+}
+.header-actions.open .actions-inner {
+  max-width: 340px;
+  opacity: 1;
+  transform: translateX(0);
+}
+.actions-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  border-radius: 50%;
+  border: none;
+  background: transparent;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: background .2s;
+}
+.actions-trigger:hover { background: rgba(0, 122, 255, 0.08); }
+.header-actions.open .actions-trigger { background: var(--apple-blue); color: #fff; }
+
 /* === RGPD + thème: intégrés à la pillule d'actions du header === */
 .header-actions .global-footer-toggle {
   position: static !important;
