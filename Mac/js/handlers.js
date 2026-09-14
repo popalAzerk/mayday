@@ -110,6 +110,15 @@ window.validateParts = function () {
     localStorage.setItem('mayday-current-repair', JSON.stringify(cr));
   } catch (e) { /* quota */ }
   window.render(window.macData);
+  // Direction automatique vers le panneau suivant (Intervention sélectionnée):
+  // défilement doux + pulse lumineux pour guider l'œil (desktop = panel visible
+  // pulse; mobile = la vue glisse jusqu'au panneau).
+  const panel = document.getElementById('repair-info-panel')?.closest('.bento-panel');
+  if (panel) {
+    panel.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    panel.classList.add('panel-flash');
+    setTimeout(() => panel.classList.remove('panel-flash'), 1400);
+  }
   window.showToast('Pièces validées');
 };
 
