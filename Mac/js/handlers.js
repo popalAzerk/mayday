@@ -65,6 +65,7 @@ window.togglePartSelection = function (partKey) {
     selectedParts[partKey] = part;
   }
   window.render(window.macData);
+  window.updatePartsValidateOverlay();
 };
 
 window.setSizeFilter = function (size) {
@@ -93,6 +94,21 @@ window.closeCurrentRepair = function () {
   window.state.currentRepair = null;
   localStorage.removeItem('mayday-current-repair');
   window.goBack();
+};
+
+// Overlay « Valider les pièces » (mode Genius): fige la sélection et affiche
+// le panneau suivant (Intervention sélectionnée: temps + Pré-test/Post-test/Guide).
+window.validateParts = function () {
+  if (!window.state.currentRepair || Object.keys(window.state.currentRepair.selectedParts).length === 0) return;
+  const el = window.elements.partsValidateOverlay;
+  if (el) el.classList.remove('show');
+  // Panneau suivant = Intervention sélectionnée (renderRepairInfo) + persistance
+  try {
+    const cr = window.state.currentRepair;
+    localStorage.setItem('mayday-current-repair', JSON.stringify(cr));
+  } catch (e) { /* quota */ }
+  window.render(window.macData);
+  window.showToast('Pièces validées');
 };
 
 // Helper to calculate dynamic diagnostics

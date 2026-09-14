@@ -18,7 +18,8 @@ window.elements = {
   saveSettingsBtn: null, resetSettingsBtn: null,
   statsUsedMain: null, statsMacCapacityMain: null, capacityBarMain: null,
   scheduledRepairsContainer: null, repairCount: null, emptyState: null,
-  detailsTitle: null, detailsBody: null
+  detailsTitle: null, detailsBody: null,
+  partsValidateOverlay: null, partsValidateCount: null
 };
 
 window.initElements = function () {
@@ -57,6 +58,8 @@ window.initElements = function () {
   
   window.elements.detailsTitle = q('details-title');
   window.elements.detailsBody = q('details-body');
+  window.elements.partsValidateOverlay = q('parts-validate-overlay');
+  window.elements.partsValidateCount = q('parts-validate-count');
 };
 
 window.render = function (macData) {
@@ -87,7 +90,20 @@ window.render = function (macData) {
 
   window.renderRepairInfo();
   window.renderScheduledRepairs();
+  window.updatePartsValidateOverlay();
   if (typeof window.updateDashboardStats === 'function') window.updateDashboardStats();
+};
+
+// Overlay « Valider les pièces » (mode Genius): visible uniquement sur l'écran
+// des pièces quand au moins une pièce est sélectionnée.
+window.updatePartsValidateOverlay = function () {
+  const el = window.elements.partsValidateOverlay;
+  if (!el) return;
+  const onPartsScreen = window.state.path.length === 3 && !window.state.searchQuery;
+  const n = window.state.currentRepair ? Object.keys(window.state.currentRepair.selectedParts).length : 0;
+  const show = window.appMode === 'genius' && onPartsScreen && n > 0;
+  el.classList.toggle('show', show);
+  if (show) window.elements.partsValidateCount.textContent = n;
 };
 
 window.renderCategories = function (macData) {
@@ -200,6 +216,7 @@ window.renderParts = function (macData, catKey, subcatKey, modelKey) {
       `;
     }).join('');
   }
+  window.updatePartsValidateOverlay();
 };
 
 window.renderBreadcrumb = function (macData) {
