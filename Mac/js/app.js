@@ -16,6 +16,7 @@ window.init = function () {
       try {
         const saved = JSON.parse(localStorage.getItem('mayday-current-repair') || 'null');
         if (saved && saved.modelData) {
+          if (saved.validated === undefined) saved.validated = false;
           window.state.currentRepair = saved;
           if (typeof window.renderRepairInfo === 'function') window.renderRepairInfo();
         }

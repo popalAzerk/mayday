@@ -40,7 +40,7 @@ window.selectModel = function (catKey, subcatKey, modelKey) {
   // Persistance (mode Genius): la sélection survit à la fermeture d'onglet
   try {
     localStorage.setItem('mayday-current-repair', JSON.stringify({
-      modelData, selectedParts: {}, catKey, subcatKey, modelKey
+      modelData, selectedParts: {}, catKey, subcatKey, modelKey, validated: false
     }));
   } catch (e) { /* quota */ }
 
@@ -64,6 +64,7 @@ window.togglePartSelection = function (partKey) {
   } else {
     selectedParts[partKey] = part;
   }
+  if (window.state.currentRepair.validated) window.state.currentRepair.validated = false;
   window.render(window.macData);
   window.updatePartsValidateOverlay();
 };
@@ -103,6 +104,7 @@ window.validateParts = function () {
   const el = window.elements.partsValidateOverlay;
   if (el) el.classList.remove('show');
   // Panneau suivant = Intervention sélectionnée (renderRepairInfo) + persistance
+  window.state.currentRepair.validated = true;
   try {
     const cr = window.state.currentRepair;
     localStorage.setItem('mayday-current-repair', JSON.stringify(cr));

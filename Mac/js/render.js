@@ -100,8 +100,9 @@ window.updatePartsValidateOverlay = function () {
   const el = window.elements.partsValidateOverlay;
   if (!el) return;
   const onPartsScreen = window.state.path.length === 3 && !window.state.searchQuery;
-  const n = window.state.currentRepair ? Object.keys(window.state.currentRepair.selectedParts).length : 0;
-  const show = window.appMode === 'genius' && onPartsScreen && n > 0;
+  const cr = window.state.currentRepair;
+  const n = cr ? Object.keys(cr.selectedParts).length : 0;
+  const show = window.appMode === 'genius' && onPartsScreen && n > 0 && !cr.validated;
   el.classList.toggle('show', show);
   if (show) window.elements.partsValidateCount.textContent = n;
 };
@@ -250,8 +251,15 @@ window.renderSearchResults = function (macData) {
 };
 
 window.renderRepairInfo = function () {
-  if (!window.state.currentRepair || Object.keys(window.state.currentRepair.selectedParts).length === 0) {
-    window.elements.repairInfoPanel.innerHTML = `<div class="text-center text-muted" style="margin: auto;"><i class="fa-solid fa-gears" style="font-size:32px; margin-bottom:8px;"></i><p>Sélectionnez un Mac</p></div>`;
+  const cr = window.state.currentRepair;
+  const hasParts = cr && Object.keys(cr.selectedParts).length > 0;
+  // Admin: panneau live dès la 1ʳᵉ pièce. Genius: panneau masqué tant que les
+  // pièces ne sont pas validées (bouton overlay « Valider les pièces »).
+  if (!hasParts || (window.appMode === 'genius' && !cr.validated)) {
+    const msg = window.appMode === 'genius' && cr && hasParts
+      ? 'Sélectionnez vos pièces puis validez-les'
+      : 'Sélectionnez un Mac';
+    window.elements.repairInfoPanel.innerHTML = `<div class="text-center text-muted" style="margin: auto;"><i class="fa-solid fa-gears" style="font-size:32px; margin-bottom:8px;"></i><p>${msg}</p></div>`;
     return;
   }
   const { modelData, selectedParts } = window.state.currentRepair;
