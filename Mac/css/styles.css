@@ -94,15 +94,6 @@ header > * {
 
 .header-left { display: flex; align-items: center; gap: 16px; }
 
-.header-identity {
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  color: var(--text-main);
-  padding: 6px 2px;
-  opacity: 0.85;
-}
-
 .header-title i {
   color: var(--apple-blue);
 }

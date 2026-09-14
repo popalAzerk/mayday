@@ -18,9 +18,13 @@
 /* === Mode Admin / Genius === */
 .mode-toggle {
   display: flex;
-  background: var(--glass-bg, rgba(120,120,128,0.12));
+  background: var(--panel-bg);
+  backdrop-filter: blur(24px) saturate(180%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow);
   border-radius: 20px;
-  padding: 3px;
+  padding: 6px 3px;
   gap: 2px;
 }
 .mode-btn {
@@ -56,14 +60,12 @@ body.mode-genius .dashboard-wrapper {
     <!-- Header -->
     <header>
         <div class="header-left">
-            <div class="header-identity">Mac Admin</div>
-        </div>
-        <div class="header-actions">
-            <!-- Mode Admin/Genius -->
             <div class="mode-toggle" id="mode-toggle" title="Basculer Admin / Genius">
                 <button id="mode-admin" class="mode-btn active" onclick="setAppMode('admin')">Admin</button>
                 <button id="mode-genius" class="mode-btn" onclick="setAppMode('genius')">Genius</button>
             </div>
+        </div>
+        <div class="header-actions">
             <!-- Gemini Toggle injected by shared-app.js -->
             <button onclick="openModal('dashboard-modal')" class="btn btn-icon" title="Dashboard">
                 <i class="fa-solid fa-chart-pie"></i>
