@@ -516,6 +516,28 @@ html[data-theme="dark"] .timeline-container {
 .actions-trigger:hover { background: rgba(0, 122, 255, 0.08); }
 .header-actions.open .actions-trigger { background: var(--apple-blue); color: #fff; }
 
+
+/* === Mobile: pillule déployée en grille verticale compacte === */
+@media (max-width: 640px) {
+  .header-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    max-width: 46vw;   /* jamais plus large que la moitié: Admin/Genius dégagé */
+  }
+  .header-actions .actions-inner {
+    flex-wrap: wrap;
+    max-width: none;
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .header-actions.open .actions-inner {
+    max-width: none;
+  }
+  .header-actions .actions-trigger { width: 30px; height: 30px; }
+  .header-actions .btn-icon { width: 30px; height: 30px; padding: 6px; }
+  .header-actions .global-footer-toggle { padding-left: 4px; gap: 4px; }
+}
+
 /* === RGPD + thème: intégrés à la pillule d'actions du header === */
 .header-actions .global-footer-toggle {
   position: static !important;
@@ -526,4 +548,10 @@ html[data-theme="dark"] .timeline-container {
   gap: 6px;
   padding-left: 6px;
   border-left: 1px solid var(--border-color);
+}
+
+/* Mobile: quand la pillule est ouverte, le header grandit et reste au-dessus */
+@media (max-width: 640px) {
+  header { z-index: 100; }
+  .header-actions.open { position: relative; z-index: 2; }
 }
