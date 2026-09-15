@@ -517,25 +517,58 @@ html[data-theme="dark"] .timeline-container {
 .header-actions.open .actions-trigger { background: var(--apple-blue); color: #fff; }
 
 
-/* === Mobile: pillule déployée en grille verticale compacte === */
+/* === Mobile: la pillule devient un menu hamburger (dropdown) === */
 @media (max-width: 640px) {
-  .header-actions {
-    flex-wrap: wrap;
-    justify-content: flex-end;
-    max-width: 46vw;   /* jamais plus large que la moitié: Admin/Genius dégagé */
+  /* Masque la hiérarchie (ex: Accueil > Laptops > MacBook) sur mobile */
+  #breadcrumb-container { display: none; }
+
+  .header-actions.open {
+    overflow: visible;          /* le dropdown doit déborder de la pillule */
+    position: relative;
+    z-index: 2;
   }
-  .header-actions .actions-inner {
-    flex-wrap: wrap;
-    max-width: none;
-    width: 100%;
-    justify-content: flex-end;
-  }
-  .header-actions.open .actions-inner {
-    max-width: none;
-  }
+  /* Poignée hamburger compacte */
   .header-actions .actions-trigger { width: 30px; height: 30px; }
-  .header-actions .btn-icon { width: 30px; height: 30px; padding: 6px; }
-  .header-actions .global-footer-toggle { padding-left: 4px; gap: 4px; }
+
+  /* Dropdown: panneau flottant sous la poignée, aligné à droite */
+  .header-actions.open .actions-inner {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    width: 190px;
+    max-width: none;
+    transform: translateY(-6px);
+    background: var(--panel-bg);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow);
+    border-radius: 16px;
+    padding: 8px;
+  }
+  .header-actions.open .actions-inner .btn-icon,
+  .header-actions.open .actions-inner .global-footer-toggle {
+    width: 100%;
+    height: 38px;
+    border-radius: 10px;
+    justify-content: flex-start;
+    padding: 0 12px;
+    gap: 10px;
+  }
+  /* RGPD/thème → groupe final du menu, séparé par un filet */
+  .header-actions.open .actions-inner .global-footer-toggle {
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+    border-radius: 0 0 10px 10px;
+    padding-top: 6px;
+    margin-top: 4px;
+  }
+}
+@media (max-width: 640px) {
+  header { z-index: 100; }
 }
 
 /* === RGPD + thème: intégrés à la pillule d'actions du header === */
@@ -550,8 +583,3 @@ html[data-theme="dark"] .timeline-container {
   border-left: 1px solid var(--border-color);
 }
 
-/* Mobile: quand la pillule est ouverte, le header grandit et reste au-dessus */
-@media (max-width: 640px) {
-  header { z-index: 100; }
-  .header-actions.open { position: relative; z-index: 2; }
-}
