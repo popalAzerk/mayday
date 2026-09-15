@@ -520,7 +520,7 @@ html[data-theme="dark"] .timeline-container {
 /* === Mobile: la pillule devient un menu hamburger (dropdown) === */
 @media (max-width: 640px) {
   /* Masque la hiérarchie (ex: Accueil > Laptops > MacBook) sur mobile */
-  #breadcrumb-container { display: none; }
+  #breadcrumb-container { display: none !important; }
 
   .header-actions.open {
     overflow: visible;          /* le dropdown doit déborder de la pillule */
@@ -560,11 +560,19 @@ html[data-theme="dark"] .timeline-container {
   }
   /* RGPD/thème → groupe final du menu, séparé par un filet */
   .header-actions.open .actions-inner .global-footer-toggle {
+    flex-direction: row;
+    justify-content: space-between;
     border-left: none;
     border-top: 1px solid var(--border-color);
     border-radius: 0 0 10px 10px;
-    padding-top: 6px;
+    padding: 6px 12px 2px;
     margin-top: 4px;
+  }
+  .header-actions.open .actions-inner .global-footer-toggle .rgpd-btn,
+  .header-actions.open .actions-inner .global-footer-toggle .gemini-toggle {
+    width: auto;
+    height: 34px;
+    padding: 0 10px;
   }
 }
 @media (max-width: 640px) {
