@@ -572,10 +572,13 @@ html[data-theme="dark"] .timeline-container {
     z-index: 10000;         /* au-dessus de la nav globale (9999) */
     margin: 0;
     width: auto;
+    height: auto;
+    max-height: none;
     min-width: 0;
     flex-direction: column;   /* ☰ (1er enfant) en haut */
     align-items: center;      /* colonne centrée */
     gap: 4px;
+    border-radius: 18px;      /* barre verticale: coins doux réguliers */
   }
   .header-actions.open .actions-inner {
     flex-direction: column;   /* items empilés */
@@ -584,6 +587,11 @@ html[data-theme="dark"] .timeline-container {
     max-width: none;
     width: 28px;              /* largeur exacte d'une pastille */
     min-width: 0;
+    height: auto;
+    max-height: none;
+    transform: none;
+    transition: opacity .25s ease;   /* pas d'anim max-width/transform en vertical */
+    padding: 0;
   }
   /* Items: icônes seules, rondes, sans marges larges */
   .header-actions.open .actions-inner .btn-icon {
