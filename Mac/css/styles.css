@@ -530,15 +530,27 @@ html[data-theme="dark"] .timeline-container {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    font-size: 12px;
-    line-height: 1;
     padding: 0;
     border: none;
   }
-  .header-actions .actions-trigger i {
+  /* Icône hamburger dessinée en CSS: 3 barres parfaitement centrées
+     (le glyphe fa-bars est décentré verticalement par construction) */
+  .header-actions .actions-trigger i { display: none; }
+  .header-actions .actions-trigger::before {
+    content: "";
     display: block;
-    line-height: 1;
-    transform: translateY(0.5px);  /* compensation optique du glyphe fa-bars */
+    width: 14px;
+    height: 10px;
+    background:
+      linear-gradient(var(--text-main), var(--text-main)) 0 0 / 100% 1.6px no-repeat,
+      linear-gradient(var(--text-main), var(--text-main)) 0 4.2px / 100% 1.6px no-repeat,
+      linear-gradient(var(--text-main), var(--text-main)) 0 8.4px / 100% 1.6px no-repeat;
+  }
+  .header-actions.open .actions-trigger::before {
+    background:
+      linear-gradient(#fff, #fff) 0 0 / 100% 1.6px no-repeat,
+      linear-gradient(#fff, #fff) 0 4.2px / 100% 1.6px no-repeat,
+      linear-gradient(#fff, #fff) 0 8.4px / 100% 1.6px no-repeat;
   }
   .header-actions { padding: 4px; }
 
@@ -552,8 +564,10 @@ html[data-theme="dark"] .timeline-container {
     margin: 0;
   }
   .header-actions.open .actions-inner {
-    max-width: 260px;
-    gap: 2px;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    max-width: none;
   }
   /* Items: icônes seules, rondes, sans marges larges */
   .header-actions.open .actions-inner .btn-icon {
@@ -574,9 +588,11 @@ html[data-theme="dark"] .timeline-container {
   }
   /* RGPD + thème: mêmes pastilles rondes */
   .header-actions.open .actions-inner .global-footer-toggle {
-    gap: 2px;
-    padding-left: 2px;
-    border-left: 1px solid var(--border-color);
+    gap: 6px;
+    padding: 4px 0 0;
+    border-left: none;
+    border-top: 1px solid var(--border-color);
+    margin-top: 2px;
   }
   .header-actions.open .actions-inner .global-footer-toggle .rgpd-btn,
   .header-actions.open .actions-inner .global-footer-toggle .gemini-toggle {
