@@ -517,62 +517,67 @@ html[data-theme="dark"] .timeline-container {
 .header-actions.open .actions-trigger { background: var(--apple-blue); color: #fff; }
 
 
-/* === Mobile: la pillule devient un menu hamburger (dropdown) === */
+/* === Mobile: la pillule s'agrandit en overlay, icônes seules, compactes === */
 @media (max-width: 640px) {
   /* Masque la hiérarchie (ex: Accueil > Laptops > MacBook) sur mobile */
   #breadcrumb-container { display: none !important; }
 
-  .header-actions.open {
-    overflow: visible;          /* le dropdown doit déborder de la pillule */
-    position: relative;
-    z-index: 2;
+  /* Poignée hamburger compacte, icône parfaitement centrée */
+  .header-actions .actions-trigger {
+    width: 28px;
+    height: 28px;
+    flex: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    line-height: 1;
   }
-  /* Poignée hamburger compacte */
-  .header-actions .actions-trigger { width: 30px; height: 30px; }
+  .header-actions { padding: 4px; }
 
-  /* Dropdown: panneau flottant sous la poignée, aligné à droite */
-  .header-actions.open .actions-inner {
+  /* Ouverture: la pillule s'étend en overlay (pas de dropdown externe) */
+  .header-actions.open {
+    overflow: visible;
     position: absolute;
-    top: calc(100% + 8px);
-    right: 0;
-    flex-direction: column;
-    align-items: stretch;
+    top: 8px;
+    right: 16px;
+    z-index: 3;
+    margin: 0;
+  }
+  .header-actions.open .actions-inner {
+    max-width: 260px;
     gap: 2px;
-    width: 190px;
-    max-width: none;
-    transform: translateY(-6px);
-    background: var(--panel-bg);
-    backdrop-filter: blur(24px) saturate(180%);
-    -webkit-backdrop-filter: blur(24px) saturate(180%);
-    border: 1px solid var(--border-color);
-    box-shadow: var(--shadow);
-    border-radius: 16px;
-    padding: 8px;
   }
-  .header-actions.open .actions-inner .btn-icon,
-  .header-actions.open .actions-inner .global-footer-toggle {
-    width: 100%;
-    height: 38px;
-    border-radius: 10px;
-    justify-content: flex-start;
-    padding: 0 12px;
-    gap: 10px;
+  /* Items: icônes seules, rondes, sans marges larges */
+  .header-actions.open .actions-inner .btn-icon {
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
   }
-  /* RGPD/thème → groupe final du menu, séparé par un filet */
+  /* RGPD + thème: mêmes pastilles rondes */
   .header-actions.open .actions-inner .global-footer-toggle {
-    flex-direction: row;
-    justify-content: space-between;
-    border-left: none;
-    border-top: 1px solid var(--border-color);
-    border-radius: 0 0 10px 10px;
-    padding: 6px 12px 2px;
-    margin-top: 4px;
+    gap: 2px;
+    padding-left: 2px;
+    border-left: 1px solid var(--border-color);
   }
   .header-actions.open .actions-inner .global-footer-toggle .rgpd-btn,
   .header-actions.open .actions-inner .global-footer-toggle .gemini-toggle {
-    width: auto;
-    height: 34px;
-    padding: 0 10px;
+    width: 28px;
+    height: 28px;
+    padding: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .header-actions.open .actions-inner .global-footer-toggle .rgpd-btn svg,
+  .header-actions.open .actions-inner .global-footer-toggle .gemini-toggle svg {
+    width: 15px;
+    height: 14px;
   }
 }
 @media (max-width: 640px) {
