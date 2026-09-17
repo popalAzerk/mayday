@@ -554,9 +554,16 @@ html[data-theme="dark"] .timeline-container {
       linear-gradient(#fff, #fff) 0 4.2px / 100% 1.6px no-repeat,
       linear-gradient(#fff, #fff) 0 8.4px / 100% 1.6px no-repeat;
   }
-  .header-actions { padding: 4px; }
+  /* État repos: pastille ronde 36px, trigger entièrement visible */
+  .header-actions {
+    padding: 4px;
+    max-width: none;
+    overflow: hidden;
+    border-radius: 50%;
+  }
 
-  /* Ouverture: la pillule s'étend en overlay (pas de dropdown externe) */
+  /* Ouverture: barre de menu VERTICALE en overlay — ☰ en haut,
+     les boutons empilés les uns au-dessus des autres, étroit */
   .header-actions.open {
     overflow: visible;
     position: fixed;
@@ -566,13 +573,16 @@ html[data-theme="dark"] .timeline-container {
     margin: 0;
     width: auto;
     min-width: 0;
+    flex-direction: column;   /* ☰ (1er enfant) en haut */
+    align-items: center;      /* colonne centrée */
+    gap: 4px;
   }
   .header-actions.open .actions-inner {
-    flex-direction: column;
-    align-items: flex-end;
+    flex-direction: column;   /* items empilés */
+    align-items: center;
     gap: 4px;
     max-width: none;
-    width: auto;          /* au contenu: 28px + padding pillule */
+    width: 28px;              /* largeur exacte d'une pastille */
     min-width: 0;
   }
   /* Items: icônes seules, rondes, sans marges larges */
@@ -594,11 +604,13 @@ html[data-theme="dark"] .timeline-container {
   }
   /* RGPD + thème: mêmes pastilles rondes */
   .header-actions.open .actions-inner .global-footer-toggle {
-    gap: 6px;
+    flex-direction: column;
+    gap: 4px;
     padding: 4px 0 0;
     border-left: none;
     border-top: 1px solid var(--border-color);
     margin-top: 2px;
+    width: 28px;
   }
   .header-actions.open .actions-inner .global-footer-toggle .rgpd-btn,
   .header-actions.open .actions-inner .global-footer-toggle .gemini-toggle {
