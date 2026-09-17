@@ -532,16 +532,23 @@ html[data-theme="dark"] .timeline-container {
     justify-content: center;
     font-size: 12px;
     line-height: 1;
+    padding: 0;
+    border: none;
+  }
+  .header-actions .actions-trigger i {
+    display: block;
+    line-height: 1;
+    transform: translateY(0.5px);  /* compensation optique du glyphe fa-bars */
   }
   .header-actions { padding: 4px; }
 
   /* Ouverture: la pillule s'étend en overlay (pas de dropdown externe) */
   .header-actions.open {
     overflow: visible;
-    position: absolute;
-    top: 8px;
+    position: fixed;
+    top: 84px;              /* sous la nav globale flottante (top 20px) */
     right: 16px;
-    z-index: 3;
+    z-index: 10000;         /* au-dessus de la nav globale (9999) */
     margin: 0;
   }
   .header-actions.open .actions-inner {
@@ -553,11 +560,17 @@ html[data-theme="dark"] .timeline-container {
     width: 28px;
     height: 28px;
     padding: 0;
+    flex: none;
     border-radius: 50%;
     display: inline-flex;
     align-items: center;
     justify-content: center;
     font-size: 13px;
+    line-height: 1;
+  }
+  .header-actions.open .actions-inner .btn-icon i {
+    display: block;
+    line-height: 1;
   }
   /* RGPD + thème: mêmes pastilles rondes */
   .header-actions.open .actions-inner .global-footer-toggle {
