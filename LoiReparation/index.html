@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181330">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181348">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -248,27 +248,61 @@ const QUESTIONS = [
   {
     id: "swap-part",
     modes: ["swap-repair"],
+    depends: "swap-generation",
     label: "Pièce à remplacer",
-    options: [
-      { value: "modules-123", label: "1, 2 ou 3 modules" },
-      { value: "modules-4", label: "4 modules ou +" },
-      { value: "mid-display", label: "Mid + Display" },
-      { value: "mid-mix", label: "Mid + Rear Camera / Back Glass / True Depth" },
-      { value: "rear-display", label: "Rear + Display" },
-      { value: "rear-camera", label: "Rear + Rear camera" }
-    ]
+    optionsByGen: {
+      gen17: [
+        { value: "modules-123", label: "1, 2 ou 3 modules" },
+        { value: "modules-4", label: "4 modules ou +" }
+      ],
+      gen16: [
+        { value: "mid-display", label: "Mid + Display" },
+        { value: "mid-mix", label: "Mid + Rear Camera / Mid + Back Glass / Mid + True Depth" }
+      ],
+      gen15: [
+        { value: "mid-display", label: "Mid + Display" },
+        { value: "mid-mix", label: "Mid + Rear Camera / Mid + Back Glass" }
+      ],
+      gen14: [
+        { value: "rear-display", label: "Rear + Display" },
+        { value: "rear-camera", label: "Rear + Rear camera" }
+      ]
+    }
   },
   {
     id: "swap-status",
     modes: ["swap-repair"],
+    depends: "swap-part",
     label: "Statut de garantie",
-    options: [
-      { value: "covered", label: "Couvert* (garantie / AC+ / Loi euro / programme qualité)" },
-      { value: "partial", label: "Hors garantie — au moins 1 module/pièce couvert" },
-      { value: "og-cheaper", label: "Hors garantie — € répa < € swap" },
-      { value: "og-pricier", label: "Hors garantie — € répa > € swap" },
-      { value: "og", label: "Hors garantie (sans devis)" }
-    ]
+    optionsByPart: {
+      "modules-123": [
+        { value: "covered", label: "Couvert* (garantie / AC+ / Loi euro / programme qualité)" },
+        { value: "og-cheaper", label: "Hors garantie — € répa < € swap" },
+        { value: "og-pricier", label: "Hors garantie — € répa > € swap" }
+      ],
+      "modules-4": [
+        { value: "covered", label: "Couvert*" },
+        { value: "og", label: "Hors garantie" }
+      ],
+      "mid-display": [
+        { value: "covered", label: "Couvert*" },
+        { value: "og", label: "Hors garantie" }
+      ],
+      "mid-mix": [
+        { value: "covered", label: "Couvert*" },
+        { value: "partial", label: "Au moins 1 module couvert" },
+        { value: "og", label: "Hors garantie" }
+      ],
+      "rear-display": [
+        { value: "covered", label: "Couvert*" },
+        { value: "og", label: "Hors garantie" }
+      ],
+      "rear-camera": [
+        { value: "covered", label: "Couvert*" },
+        { value: "partial", label: "Au moins 1 pièce sous garantie" },
+        { value: "og", label: "Hors garantie" }
+      ]
+    }
   },
 
   {
@@ -477,55 +511,29 @@ function getResultReparables(s) {
 
 function getResultSwap(s) {
   const gen = s["swap-generation"], part = s["swap-part"], st = s["swap-status"];
-  // Validité combinaisons (d'après la fiche officielle):
-  const valid = {
-    gen17: ["modules-123", "modules-4"],
-    gen16: ["mid-display", "mid-mix"],
-    gen15: ["mid-display", "mid-mix"],
-    gen14: ["rear-display", "rear-camera"]
-  };
-  if (!valid[gen].includes(part)) {
-    return {
-      verdict: "not-eligible",
-      title: "Combinaison impossible",
-      summary: "Cette pièce ne s'applique pas à cette génération. Reportez-vous au tableau de la fiche pour la bonne combinaison.",
-      cards: []
-    };
-  }
-  // Logique de décision:
+  if (!gen || !part || !st) return { verdict: "not-eligible", title: "?", summary: "?", cards: [] };
   let solution, reason;
-  if (gen === "gen17") {
-    if (part === "modules-4") {
-      solution = "Swap";
-      reason = "4 modules ou plus → toujours Swap (hors garantie comme couvert*).";
-    } else if (st === "covered") {
-      solution = "Repair";
-      reason = "1 à 3 modules, couvert* → Repair.";
-    } else if (st === "og-cheaper") {
-      solution = "Repair";
-      reason = "Hors garantie, coût réparation < coût swap → Repair.";
-    } else if (st === "og-pricier") {
-      solution = "Swap";
-      reason = "Hors garantie, coût réparation > coût swap → Swap.";
-    } else {
-      solution = "Repair ou Swap";
-      reason = "Hors garantie sans devis: arbitrer selon le coût (€ répa vs € swap) — 1 à 3 modules.";
-    }
+  if (part === "modules-4") {
+    solution = "Swap";
+    reason = "4 modules ou plus → toujours Swap (hors garantie comme couvert*).";
+  } else if (part === "modules-123") {
+    if (st === "covered") { solution = "Repair"; reason = "1 à 3 modules, couvert* → Repair."; }
+    else if (st === "og-cheaper") { solution = "Repair"; reason = "Hors garantie, coût réparation < coût swap → Repair."; }
+    else { solution = "Swap"; reason = "Hors garantie, coût réparation > coût swap → Swap."; }
   } else if (part === "mid-display" || part === "rear-display") {
     solution = "Swap";
-    reason = "Mid/Rear + Display → toujours Swap (hors garantie ou couvert*).";
+    reason = "Mid/Rear + Display → toujours Swap (couvert* ou non).";
   } else if (st === "covered") {
     solution = "Repair";
     reason = "Couvert* → Repair.";
   } else if (st === "partial") {
     solution = "Repair";
-    reason = "Au moins 1 module/pièce couvert → Repair.";
+    reason = part === "rear-camera" ? "Au moins 1 pièce sous garantie → Repair." : "Au moins 1 module couvert → Repair.";
   } else {
     solution = "Swap";
-    reason = "Hors garantie (mix Mid/Rear + caméra/back glass/True Depth) → Swap.";
+    reason = "Hors garantie → Swap.";
   }
   const cls = solution === "Swap" ? "not-eligible" : "eligible";
-  const icon = solution === "Swap" ? "📦" : "🛠️";
   return {
     verdict: cls,
     title: solution,
@@ -1397,6 +1405,19 @@ function buildQuestionnaire() {
   });
   QUESTIONS.forEach(q => {
     if (!q.modes || !q.modes.includes(state.mode)) return;
+    // Cascade gauche→droite: une question dépendante ne s'affiche que si
+    // sa question parente est répondue, avec les options filtrées:
+    let opts = q.options;
+    if (q.depends) {
+      const parentVal = state[q.depends];
+      if (!parentVal) return; // le parent d'abord
+      if (q.optionsByGen) opts = q.optionsByGen[parentVal] || [];
+      else if (q.optionsByPart) opts = q.optionsByPart[parentVal] || [];
+      // Reset si la valeur stockée n'existe plus dans les options filtrées:
+      if (state[q.id] && !opts.some(o => o.value === state[q.id])) {
+        delete state[q.id];
+      }
+    }
     const box = document.createElement('div');
     box.className = 'select-box';
     box.innerHTML = `
@@ -1404,7 +1425,7 @@ function buildQuestionnaire() {
       <div class="value" id="${q.id}-value">—</div>
       <select id="${q.id}-select" aria-label="${q.label}">
         <option value="" disabled selected>Sélectionnez…</option>
-        ${q.options.map(o => `<option value="${o.value}">${o.label}</option>`).join('')}
+        ${opts.map(o => `<option value="${o.value}">${o.label}</option>`).join('')}
       </select>
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     `;
@@ -1413,7 +1434,10 @@ function buildQuestionnaire() {
     const val = box.querySelector('.value');
     sel.addEventListener('change', e => {
       state[q.id] = e.target.value;
-      val.textContent = q.options.find(o => o.value === e.target.value).label;
+      val.textContent = opts.find(o => o.value === e.target.value).label;
+      // Cascade: reset des valeurs en aval + reconstruction des questions:
+      QUESTIONS.forEach(qq => { if (qq.depends === q.id) delete state[qq.id]; });
+      buildQuestionnaire();
       renderResult();
     });
   });
@@ -1596,6 +1620,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181330"></script>
+  <script src="../assets/js/shared-app.js?v=202609181348"></script>
 </body>
 </html>
