@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181639">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181649">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -224,14 +224,16 @@ const QUESTIONS = [
   {
     id: "reparables-cat",
     modes: ["reparables"],
-    label: "Sous-ensemble",
+    label: "Catégorie de panne",
     options: [
-      { value: "logic", label: "Carte logique" },
-      { value: "enclosure", label: "Enclosure (châssis)" },
-      { value: "screen", label: "Écran" },
-      { value: "backglass", label: "Back Glass (vitre arrière)" },
-      { value: "microspk", label: "Micro / Haut-parleur" },
-      { value: "camera", label: "Caméra" }
+      { value: "power", label: "Alimentation & charge" },
+      { value: "display", label: "Écran & affichage" },
+      { value: "camera", label: "Caméra & photo" },
+      { value: "network", label: "Réseau & connectivité" },
+      { value: "system", label: "Système & capteurs" },
+      { value: "audio", label: "Audio (micros / haut-parleurs)" },
+      { value: "buttons", label: "Boutons & châssis" },
+      { value: "pay", label: "Paiement & sécurité (Apple Pay)" }
     ]
   },
   {
@@ -240,44 +242,47 @@ const QUESTIONS = [
     depends: "reparables-cat",
     label: "Symptôme constaté",
     optionsByCat: {
-      logic: [
-        { value: "logic-power", label: "Aucune alimentation" },
-        { value: "logic-black", label: "Écran vide ou noir" },
-        { value: "logic-wired-vmi-ok", label: "Charge filaire — VMI ✅" },
-        { value: "logic-enclosure-fail", label: "Enclosure fail si carte logique HS" },
-        { value: "logic-freeze", label: "Blocage / redémarrage / arrêt inopiné" },
-        { value: "logic-rotation", label: "Rotation de l'affichage" },
-        { value: "logic-cellular", label: "Données cellulaires" },
-        { value: "logic-bt-wifi", label: "Bluetooth / Wi-Fi" },
-        { value: "logic-pay-mri-ko", label: "Apple Pay / Cartes — MRI ❗" },
-        { value: "logic-alert", label: "Message d'alerte" }
+      power: [
+        { value: "logic-power", label: "Aucune alimentation", sub: "logic" },
+        { value: "logic-wired-vmi-ok", label: "Charge filaire — VMI ✅", sub: "logic" },
+        { value: "enc-wired-vmi-ko", label: "Charge filaire — VMI ❌", sub: "enclosure" },
+        { value: "bg-wireless", label: "Charge sans fil", sub: "backglass" }
       ],
-      enclosure: [
-        { value: "enc-buttons", label: "Boutons / commutateur" },
-        { value: "enc-pay-mri-ok", label: "Apple Pay / Cartes — MRI ✅" },
-        { value: "enc-wired-vmi-ko", label: "Charge filaire — VMI ❌" }
-      ],
-      screen: [
-        { value: "scr-ambient", label: "Capteur de luminosité ambiante" },
-        { value: "scr-quality", label: "Qualité de l'image" },
-        { value: "scr-touch", label: "Multi-Touch" },
-        { value: "scr-topmic", label: "Micro supérieur" },
-        { value: "scr-proximity", label: "Capteur de proximité" }
-      ],
-      backglass: [
-        { value: "bg-wireless", label: "Charge sans fil" },
-        { value: "bg-flash", label: "Flash de l'appareil photo" }
-      ],
-      microspk: [
-        { value: "sp-top", label: "Haut-parleur supérieur" },
-        { value: "sp-bottom", label: "Haut-parleur inférieur" },
-        { value: "sp-mic", label: "Micro principal ou auxiliaire" },
-        { value: "sp-compass", label: "Boussole" }
+      display: [
+        { value: "logic-black", label: "Écran vide ou noir", sub: "logic" },
+        { value: "scr-ambient", label: "Capteur de luminosité ambiante", sub: "screen" },
+        { value: "scr-quality", label: "Qualité de l'image", sub: "screen" },
+        { value: "scr-touch", label: "Multi-Touch", sub: "screen" }
       ],
       camera: [
-        { value: "cam-prox", label: "Capteur de proximité (caméra avant)" },
-        { value: "cam-rear", label: "Caméra arrière / LIDAR" },
-        { value: "cam-front", label: "Caméra avant / Face ID" }
+        { value: "bg-flash", label: "Flash de l'appareil photo", sub: "backglass" },
+        { value: "cam-rear", label: "Caméra arrière / LIDAR", sub: "camera" },
+        { value: "cam-front", label: "Caméra avant / Face ID", sub: "camera" }
+      ],
+      network: [
+        { value: "logic-cellular", label: "Données cellulaires", sub: "logic" },
+        { value: "logic-bt-wifi", label: "Bluetooth / Wi-Fi", sub: "logic" }
+      ],
+      system: [
+        { value: "logic-freeze", label: "Blocage / redémarrage / arrêt inopiné", sub: "logic" },
+        { value: "logic-rotation", label: "Rotation de l'affichage", sub: "logic" },
+        { value: "logic-alert", label: "Message d'alerte", sub: "logic" },
+        { value: "logic-enclosure-fail", label: "Enclosure fail si carte logique HS", sub: "logic" },
+        { value: "sp-compass", label: "Boussole", sub: "microspk" },
+        { value: "scr-proximity", label: "Capteur de proximité", sub: "screen" }
+      ],
+      audio: [
+        { value: "sp-top", label: "Haut-parleur supérieur", sub: "microspk" },
+        { value: "sp-bottom", label: "Haut-parleur inférieur", sub: "microspk" },
+        { value: "sp-mic", label: "Micro principal ou auxiliaire", sub: "microspk" },
+        { value: "scr-topmic", label: "Micro supérieur", sub: "screen" }
+      ],
+      buttons: [
+        { value: "enc-buttons", label: "Boutons / commutateur", sub: "enclosure" }
+      ],
+      pay: [
+        { value: "enc-pay-mri-ok", label: "Apple Pay / Cartes — MRI ✅", sub: "enclosure" },
+        { value: "logic-pay-mri-ko", label: "Apple Pay / Cartes — MRI ❗", sub: "logic" }
       ]
     }
   },
@@ -522,7 +527,6 @@ function getResultReparables(s) {
   const opts = (q.optionsByCat && q.optionsByCat[cat]) || [];
   const opt = opts.find(o => o.value === s["reparables-symptom"]);
   if (!opt) return { verdict: "not-eligible", title: "?", summary: "?", cards: [] };
-  opt.sub = cat;
   const data = {
     logic: {
       title: "Carte logique",
@@ -550,8 +554,10 @@ function getResultReparables(s) {
     }
   };
   const d = data[opt.sub];
-  // Les AUTRES symptômes du même sous-ensemble (contexte):
-  const others = opts.filter(o => o.value !== opt.value).map(o => o.label);
+  // Les AUTRES symptômes du même sous-ensemble PHYSIQUE (toutes
+  // catégories confondues — contexte de diagnostic):
+  const allOpts = Object.values(q.optionsByCat).flat();
+  const others = allOpts.filter(o => o.sub === opt.sub && o.value !== opt.value).map(o => o.label);
   return {
     verdict: "eligible",
     title: d.title,
@@ -1493,6 +1499,18 @@ function buildQuestionnaire() {
       // Cascade: reset des valeurs en aval + reconstruction des questions:
       QUESTIONS.forEach(qq => { if (qq.depends === q.id) delete state[qq.id]; });
       buildQuestionnaire();
+      // Le rebuild recrée les selects: repositionner les valeurs déjà
+      // choisies (le .value affiché sinon repart à "—"):
+      QUESTIONS.forEach(qq => {
+        if (!qq.modes || !qq.modes.includes(state.mode)) return;
+        const s2 = document.getElementById(qq.id + '-select');
+        const v2 = document.getElementById(qq.id + '-value');
+        if (s2 && v2 && state[qq.id]) {
+          s2.value = state[qq.id];
+          const found = (qq.options || (qq.optionsByCat && qq.optionsByCat[state[qq.depends]]) || (qq.optionsByGen && qq.optionsByGen[state[qq.depends]]) || (qq.optionsByPart && qq.optionsByPart[state[qq.depends]]) || []).find(o => o.value === state[qq.id]);
+          if (found) v2.textContent = found.label;
+        }
+      });
       renderResult();
     });
   });
@@ -1679,6 +1697,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181639"></script>
+  <script src="../assets/js/shared-app.js?v=202609181649"></script>
 </body>
 </html>
