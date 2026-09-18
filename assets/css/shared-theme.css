@@ -517,7 +517,8 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 }
 
 
-/* === Pillule .header-actions intégrée dans la hub bar (Mac) === */
+/* === Pillule .header-actions intégrée dans la hub bar (Mac) —
+       extension HORIZONTALE: au clic la hub bar s'étend latéralement === */
 .global-floating-nav .header-actions {
     position: static;
     display: flex;
@@ -526,7 +527,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
     width: 40px;
     height: 40px;
     padding: 0;
-    overflow: hidden;
+    overflow: visible;
     border-radius: 50%;
     background: transparent;
     border: none;
@@ -557,7 +558,21 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
     font-size: 14px;
     line-height: 1;
 }
+.global-floating-nav .header-actions .actions-trigger::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 12px;
+    position: absolute;
+    top: calc(50% - 6px);
+    left: calc(50% - 8px);
+    background:
+      linear-gradient(var(--apple-text, #1d1d1f), var(--apple-text, #1d1d1f)) 0 0 / 100% 2px no-repeat,
+      linear-gradient(var(--apple-text, #1d1d1f), var(--apple-text, #1d1d1f)) 0 5px / 100% 2px no-repeat,
+      linear-gradient(var(--apple-text, #1d1d1f), var(--apple-text, #1d1d1f)) 0 10px / 100% 2px no-repeat;
+}
 .global-floating-nav .header-actions .actions-inner { display: none; }
+/* Ouverte: EXTENSION HORIZONTALE (icônes côte à côte dans la barre) */
 .global-floating-nav .header-actions.open {
     width: auto;
     height: 40px;
@@ -574,7 +589,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 }
 .global-floating-nav .header-actions.open .actions-inner {
     display: flex;
-    flex-direction: row;          /* icônes côte à côte: la barre s'étend */
+    flex-direction: row;
     align-items: center;
     gap: 4px;
     width: auto;
@@ -592,47 +607,6 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
     transition: none;
 }
 .global-floating-nav .header-actions.open .actions-inner > * { flex: none; }
-.global-floating-nav .header-actions.open .actions-inner .global-footer-toggle {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 4px;
-    border-top: none;
-    border-left: 1px solid var(--glass-border, rgba(0,0,0,0.1));
-    margin: 0 0 0 2px;
-    padding: 0 0 0 4px;
-    width: auto;
-    height: 30px;
-    background: transparent;
-    box-shadow: none;
-}
-    width: auto;
-    height: auto;
-    padding: 5px;
-    overflow: visible;
-    border-radius: 18px;
-    background: var(--apple-glass-bg, #fff);
-    backdrop-filter: blur(30px) saturate(200%);
-    -webkit-backdrop-filter: blur(30px) saturate(200%);
-    border: 1px solid var(--glass-border, rgba(0,0,0,.1));
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    z-index: 10001;
-}
-.global-floating-nav .header-actions.open .actions-inner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-    max-width: none;
-    width: 30px;
-    height: auto;
-    opacity: 1;
-    transform: none;
-    transition: none;
-}
 .global-floating-nav .header-actions .actions-inner .btn-icon,
 .global-floating-nav .header-actions .actions-inner .global-footer-toggle .rgpd-btn,
 .global-floating-nav .header-actions .actions-inner .global-footer-toggle .gemini-toggle {
@@ -646,35 +620,34 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
     border-radius: 50%;
     font-size: 13px;
     line-height: 1;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    color: var(--apple-text, #1d1d1f);
 }
 .global-floating-nav .header-actions .actions-inner .global-footer-toggle {
     position: static;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     gap: 4px;
-    border-top: 1px solid var(--glass-border, rgba(0,0,0,0.1));
-    margin-top: 2px;
-    padding-top: 4px;
-    width: 30px;
-    box-shadow: none;
+    border-top: none;
+    border-left: 1px solid var(--glass-border, rgba(0,0,0,0.1));
+    margin: 0 0 0 2px;
+    padding: 0 0 0 4px;
+    width: auto;
+    height: 30px;
     background: transparent;
+    box-shadow: none;
 }
 .global-floating-nav .header-actions .actions-inner .rgpd-btn svg,
 .global-floating-nav .header-actions .actions-inner .gemini-toggle svg {
+    width: 15px;
+    height: 15px;
     fill: var(--apple-text, #1d1d1f);
 }
-.global-floating-nav .header-actions .actions-inner .gemini-toggle .toggle-thumb { display: none !important; }
-.global-floating-nav .header-actions .actions-trigger::before {
-    content: "";
-    display: block;
-    width: 16px;
-    height: 12px;
-    position: absolute;
-    top: calc(50% - 6px);
-    left: calc(50% - 8px);
-    background:
-      linear-gradient(var(--apple-text, #1d1d1f), var(--apple-text, #1d1d1f)) 0 0 / 100% 2px no-repeat,
-      linear-gradient(var(--apple-text, #1d1d1f), var(--apple-text, #1d1d1f)) 0 5px / 100% 2px no-repeat,
-      linear-gradient(var(--apple-text, #1d1d1f), var(--apple-text, #1d1d1f)) 0 10px / 100% 2px no-repeat;
+.global-floating-nav .header-actions .actions-inner .gemini-toggle .toggle-thumb {
+    display: none !important;
 }
