@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181649">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181702">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -298,11 +298,50 @@ const QUESTIONS = [
     ]
   },
   {
-    id: "swap-part",
+    id: "swap-model",
     modes: ["swap-repair"],
     depends: "swap-generation",
+    label: "Modèle",
+    optionsByModel: {
+      gen17: [
+        { value: "17", label: "iPhone 17 — swap 729 €" },
+        { value: "17pro", label: "iPhone 17 Pro — swap 899 €" },
+        { value: "17promax", label: "iPhone 17 Pro Max — swap 955 €" },
+        { value: "air", label: "iPhone Air — swap 859 €" }
+      ],
+      gen16: [
+        { value: "16e", label: "iPhone 16e — swap 519 €" },
+        { value: "16", label: "iPhone 16 — swap 659 €" },
+        { value: "16plus", label: "iPhone 16 Plus — swap 729 €" },
+        { value: "16pro", label: "iPhone 16 Pro — swap 799 €" },
+        { value: "16promax", label: "iPhone 16 Pro Max — swap 899 €" }
+      ],
+      gen15: [
+        { value: "14", label: "iPhone 14 — swap 549 €" },
+        { value: "14plus", label: "iPhone 14 Plus — swap 729 €" },
+        { value: "15", label: "iPhone 15 — swap 659 €" },
+        { value: "15plus", label: "iPhone 15 Plus — swap 729 €" },
+        { value: "15pro", label: "iPhone 15 Pro — swap 799 €" },
+        { value: "15promax", label: "iPhone 15 Pro Max — swap 859 €" }
+      ],
+      gen14: [
+        { value: "12", label: "iPhone 12 / 12 mini — swap 499 / 419 €" },
+        { value: "12pro", label: "iPhone 12 Pro — swap 549 €" },
+        { value: "12promax", label: "iPhone 12 Pro Max — swap 729 €" },
+        { value: "13", label: "iPhone 13 / 13 mini — swap 499 / 419 €" },
+        { value: "13pro", label: "iPhone 13 Pro — swap 549 €" },
+        { value: "13promax", label: "iPhone 13 Pro Max — swap 729 €" },
+        { value: "14pro", label: "iPhone 14 Pro — swap 799 €" },
+        { value: "14promax", label: "iPhone 14 Pro Max — swap 859 €" }
+      ]
+    }
+  },
+  {
+    id: "swap-part",
+    modes: ["swap-repair"],
+    depends: "swap-model",
     label: "Pièce à remplacer",
-    optionsByGen: {
+    optionsByPart: {
       gen17: [
         { value: "modules-123", label: "1, 2 ou 3 modules" },
         { value: "modules-4", label: "4 modules ou +" }
@@ -570,19 +609,24 @@ function getResultReparables(s) {
 }
 
 function getResultSwap(s) {
-  const gen = s["swap-generation"], part = s["swap-part"], st = s["swap-status"];
-  if (!gen || !part || !st) return { verdict: "not-eligible", title: "?", summary: "?", cards: [] };
+  const gen = s["swap-generation"], model = s["swap-model"], part = s["swap-part"], st = s["swap-status"];
+  if (!gen || !model || !part || !st) return { verdict: "not-eligible", title: "?", summary: "?", cards: [] };
+  // Prix swap depuis le label du modèle choisi:
+  const qm = QUESTIONS.find(qq => qq.id === "swap-model");
+  const modelOpt = (qm.optionsByModel[gen] || []).find(o => o.value === model);
+  const px = modelOpt ? (/[0-9][0-9\s/]*\s*€/.exec(modelOpt.label) || [])[0] : null;
+  const priceTxt = px ? ` Coût swap : <strong>${px.trim()}</strong>.` : "";
   let solution, reason;
   if (part === "modules-4") {
     solution = "Swap";
-    reason = "4 modules ou plus → toujours Swap (hors garantie comme couvert*).";
+    reason = "4 modules ou plus → toujours Swap (hors garantie comme couvert*)." + priceTxt;
   } else if (part === "modules-123") {
     if (st === "covered") { solution = "Repair"; reason = "1 à 3 modules, couvert* → Repair."; }
-    else if (st === "og-cheaper") { solution = "Repair"; reason = "Hors garantie, coût réparation < coût swap → Repair."; }
-    else { solution = "Swap"; reason = "Hors garantie, coût réparation > coût swap → Swap."; }
+    else if (st === "og-cheaper") { solution = "Repair"; reason = "Hors garantie — si € répa < " + (px ? px.trim() : "€ swap") + " → Repair." + (px ? " Au-delà, passer en Swap." : ""); }
+    else { solution = "Swap"; reason = "Hors garantie, coût réparation > coût swap → Swap." + priceTxt; }
   } else if (part === "mid-display" || part === "rear-display") {
     solution = "Swap";
-    reason = "Mid/Rear + Display → toujours Swap (couvert* ou non).";
+    reason = "Mid/Rear + Display → toujours Swap (couvert* ou non)." + priceTxt;
   } else if (st === "covered") {
     solution = "Repair";
     reason = "Couvert* → Repair.";
@@ -591,7 +635,7 @@ function getResultSwap(s) {
     reason = part === "rear-camera" ? "Au moins 1 pièce sous garantie → Repair." : "Au moins 1 module couvert → Repair.";
   } else {
     solution = "Swap";
-    reason = "Hors garantie → Swap.";
+    reason = "Hors garantie → Swap." + priceTxt;
   }
   const cls = solution === "Swap" ? "not-eligible" : "eligible";
   return {
@@ -1472,7 +1516,13 @@ function buildQuestionnaire() {
       const parentVal = state[q.depends];
       if (!parentVal) return; // le parent d'abord
       if (q.optionsByGen) opts = q.optionsByGen[parentVal] || [];
-      else if (q.optionsByPart) opts = q.optionsByPart[parentVal] || [];
+      else if (q.optionsByModel) opts = q.optionsByModel[parentVal] || [];
+      else if (q.optionsByPart) {
+        // La pièce dépend de la GÉNÉRATION: la retrouver depuis le modèle
+        // choisi (chaque modèle n'existe que dans une seule génération):
+        const gen = Object.keys(q.optionsByModel).find(g => (q.optionsByModel[g] || []).some(o => o.value === parentVal));
+        opts = (q.optionsByModel && gen ? q.optionsByPartByGen[gen] : null) || [];
+      }
       else if (q.optionsByCat) opts = q.optionsByCat[parentVal] || [];
       // Reset si la valeur stockée n'existe plus dans les options filtrées:
       if (state[q.id] && !opts.some(o => o.value === state[q.id])) {
@@ -1496,8 +1546,16 @@ function buildQuestionnaire() {
     sel.addEventListener('change', e => {
       state[q.id] = e.target.value;
       val.textContent = opts.find(o => o.value === e.target.value).label;
-      // Cascade: reset des valeurs en aval + reconstruction des questions:
-      QUESTIONS.forEach(qq => { if (qq.depends === q.id) delete state[qq.id]; });
+      // Cascade: reset en CHAÎNE des valeurs en aval (enfants,
+      // petits-enfants…) + reconstruction des questions:
+      let frontier = [q.id];
+      while (frontier.length) {
+        const next = [];
+        QUESTIONS.forEach(qq => {
+          if (frontier.includes(qq.depends)) { delete state[qq.id]; next.push(qq.id); }
+        });
+        frontier = next;
+      }
       buildQuestionnaire();
       // Le rebuild recrée les selects: repositionner les valeurs déjà
       // choisies (le .value affiché sinon repart à "—"):
@@ -1507,7 +1565,7 @@ function buildQuestionnaire() {
         const v2 = document.getElementById(qq.id + '-value');
         if (s2 && v2 && state[qq.id]) {
           s2.value = state[qq.id];
-          const found = (qq.options || (qq.optionsByCat && qq.optionsByCat[state[qq.depends]]) || (qq.optionsByGen && qq.optionsByGen[state[qq.depends]]) || (qq.optionsByPart && qq.optionsByPart[state[qq.depends]]) || []).find(o => o.value === state[qq.id]);
+          const found = (qq.options || (qq.optionsByCat && qq.optionsByCat[state[qq.depends]]) || (qq.optionsByGen && qq.optionsByGen[state[qq.depends]]) || (qq.optionsByModel && qq.optionsByModel[state[qq.depends]]) || (qq.optionsByPart && qq.optionsByPart[state[qq.depends]]) || []).find(o => o.value === state[qq.id]);
           if (found) v2.textContent = found.label;
         }
       });
@@ -1697,6 +1755,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181649"></script>
+  <script src="../assets/js/shared-app.js?v=202609181702"></script>
 </body>
 </html>
