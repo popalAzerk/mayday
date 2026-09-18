@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181354">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181356">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -505,7 +505,10 @@ function getResultReparables(s) {
     verdict: "eligible",
     title: d.title,
     summary: d.summary,
-    cards: [{ title: "Symptômes concernés", body: `<ul>${d.items.map(i => `<li>${i}</li>`).join('')}</ul>` }]
+    cards: [
+      { title: "Symptômes concernés", body: `<ul>${d.items.map(i => `<li>${i}</li>`).join('')}</ul>` },
+      { title: "Notes & Kbase associées", body: `<p><strong>*Couvert</strong> = Sous garantie / AC+ / AC Services / Loi euro / Programme qualité.</p><p>Kbase : <strong>111090</strong> — Procédure panne mixte · <strong>106063</strong> — Traitement répa mixte · <strong>108632</strong> — Rear system · <strong>108633</strong> — Mid system.</p>` }
+    ]
   };
 }
 
@@ -538,7 +541,7 @@ function getResultSwap(s) {
     verdict: cls,
     title: solution,
     summary: reason,
-    cards: [{ title: "Rappel", body: "<p><strong>Couvert*</strong> = Sous garantie / AC+ / AC Services / Loi euro / Programme qualité. Kbase: 111090 (panne mixte), 106063 (traitement répa mixte), 108632 (Rear system), 108633 (Mid system).</p>" }]
+    cards: [{ title: "Notes & Kbase associées", body: "<p><strong>*Couvert</strong> = Sous garantie / AC+ / AC Services / Loi euro / Programme qualité.</p><p>Kbase : <strong>111090</strong> — Procédure panne mixte · <strong>106063</strong> — Traitement répa mixte · <strong>108632</strong> — Rear system · <strong>108633</strong> — Mid system.</p>" }]
   };
 }
 
@@ -1620,6 +1623,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181354"></script>
+  <script src="../assets/js/shared-app.js?v=202609181356"></script>
 </body>
 </html>
