@@ -9,8 +9,8 @@
     <meta name="theme-color" content="#000000">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
-<title>Genius Bar — Guide loi de réparation</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181230">
+<title>Biblio — Genius Bar</title>
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181236">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -161,6 +161,32 @@
     .verdict-box{ padding:14px 16px; }
     .verdict-icon{ font-size:24px; }
   }
+
+  /* === Fiches Biblio (accordéons) === */
+  .biblio-section{ margin: 28px 0 8px; }
+  .biblio-heading{ font-size: 15px; font-weight: 700; color: #6e6e73; text-transform: uppercase; letter-spacing: .06em; margin: 0 0 10px; }
+  .biblio-dropdown{ background: var(--card-bg, #fff); border: 1px solid var(--border-color, rgba(0,0,0,.08)); border-radius: 14px; margin-bottom: 10px; overflow: hidden; box-shadow: 0 1px 3px rgba(0,0,0,.05); }
+  .biblio-dropdown summary{ display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 14px 16px; cursor: pointer; font-weight: 600; font-size: 15px; color: var(--text-main, #1d1d1f); list-style: none; user-select: none; }
+  .biblio-dropdown summary::-webkit-details-marker{ display: none; }
+  .biblio-dropdown .bd-arrow{ transition: transform .25s ease; color: #86868b; flex: none; }
+  .biblio-dropdown[open] .bd-arrow{ transform: rotate(180deg); }
+  .bd-body{ padding: 4px 16px 16px; border-top: 1px solid var(--border-color, rgba(0,0,0,.08)); }
+  .bd-grid{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px; margin-top: 12px; }
+  .bd-card{ border-radius: 12px; padding: 12px 14px; color: #fff; }
+  .bd-card h3{ margin: 0 0 8px; font-size: 14px; text-decoration: underline; }
+  .bd-card ul{ margin: 0; padding-left: 16px; font-size: 13px; line-height: 1.55; }
+  .bd-blue{ background: #0a84ff; } .bd-teal{ background: #0aa; } .bd-green{ background: #34c759; }
+  .bd-brown{ background: #8a5a2b; } .bd-red{ background: #a0293e; } .bd-purple{ background: #af52de; }
+  .bd-note{ font-size: 13px; color: #6e6e73; margin: 10px 0; }
+  .bd-table-wrap{ overflow-x: auto; margin: 8px 0 14px; }
+  .bd-table{ width: 100%; border-collapse: collapse; font-size: 12.5px; min-width: 560px; }
+  .bd-table th{ background: #0071e3; color: #fff; padding: 8px 10px; text-align: left; font-size: 12px; }
+  .bd-table td{ padding: 7px 10px; border: 1px solid var(--border-color, rgba(0,0,0,.08)); vertical-align: top; }
+  .sol-repair{ color: #1d7a2f; font-weight: 700; }
+  .sol-swap{ color: #c23a3a; font-weight: 700; }
+  .bd-kbase h4{ margin: 0 0 6px; font-size: 13px; color: #6e6e73; text-transform: uppercase; letter-spacing: .05em; }
+  .bd-kbase ul{ margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.7; color: var(--text-main, #1d1d1f); }
+
 </style>
 </head>
 <body class="needs-global-nav loi-page">
@@ -168,12 +194,136 @@
 
 
 <div class="wrap">
-  <h1>Guide loi de réparation</h1>
-  <p class="subtitle">Outil d'aide à la décision pour les conseillers Genius Bar. Sélectionnez le produit et la situation du client pour connaître les droits applicables.</p>
+  <h1>Biblio</h1>
+  <p class="subtitle">Bibliothèque Genius Bar : le guide loi réparation ci-dessous, plus les fiches de référence en bas de page (réparabilité iPhone, règles Repair/Swap).</p>
 
   <div class="select-group" id="questionnaire"></div>
   <div class="result-panel" id="result-panel">
     <div class="result-placeholder">Sélectionnez le produit et la situation du client.</div>
+  </div>
+
+
+  <div class="biblio-section">
+    <h2 class="biblio-heading">Fiches de référence</h2>
+
+    <details class="biblio-dropdown">
+      <summary>
+        <span class="bd-title">Que répare-t-on sur iPhone 17, 17 Pro, 17 Pro Max et iPhone Air ?</span>
+        <span class="bd-arrow">▾</span>
+      </summary>
+      <div class="bd-body">
+        <div class="bd-grid">
+          <div class="bd-card bd-blue">
+            <h3>Carte Logique</h3>
+            <ul>
+              <li>Aucune alimentation</li>
+              <li>Écran vide ou noir</li>
+              <li>Charge filaire si VMI ✅</li>
+              <li>Enclosure si Carte Logique fail</li>
+              <li>Blocage / redémarrage / arrêt inopiné</li>
+              <li>Rotation de l'affichage</li>
+              <li>Données cellulaires</li>
+              <li>Bluetooth / Wi-Fi</li>
+              <li>Apple Pay et Cartes (si MRI ❗)</li>
+              <li>Message d'alerte</li>
+            </ul>
+          </div>
+          <div class="bd-card bd-teal">
+            <h3>Enclosure</h3>
+            <ul>
+              <li>Boutons / commutateur</li>
+              <li>Apple Pay et Cartes (si MRI ✅)</li>
+              <li>Charge filaire si VMI ❌</li>
+            </ul>
+          </div>
+          <div class="bd-card bd-green">
+            <h3>Écran</h3>
+            <ul>
+              <li>Capteur de luminosité ambiante</li>
+              <li>Qualité de l'image</li>
+              <li>Multi-Touch</li>
+              <li>Micro supérieur</li>
+              <li>Capteur de proximité</li>
+            </ul>
+          </div>
+          <div class="bd-card bd-brown">
+            <h3>Back Glass</h3>
+            <ul>
+              <li>Charge sans fil</li>
+              <li>Flash de l'appareil photo</li>
+            </ul>
+          </div>
+          <div class="bd-card bd-red">
+            <h3>Micro / Speaker</h3>
+            <ul>
+              <li>Haut-parleur supérieur (top speaker)</li>
+              <li>Haut-parleur inférieur (bottom speaker)</li>
+              <li>Micro principal ou micro auxiliaire</li>
+              <li>Boussole</li>
+            </ul>
+          </div>
+          <div class="bd-card bd-purple">
+            <h3>Caméra</h3>
+            <ul>
+              <li>Capteur de proximité (caméra avant)</li>
+              <li>Caméra arrière / LIDAR (carte logique si persiste)</li>
+              <li>Caméra avant / Face ID (carte logique si persiste)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="biblio-dropdown">
+      <summary>
+        <span class="bd-title">Repair ou Swap ? Règles par génération (iPhone 12 → 17) + Kbase</span>
+        <span class="bd-arrow">▾</span>
+      </summary>
+      <div class="bd-body">
+        <p class="bd-note"><strong>Couvert*</strong> = Sous garantie / AC+ / AC Services / Loi euro / Programme qualité.</p>
+
+        <div class="bd-table-wrap">
+          <table class="bd-table">
+            <thead><tr><th>Produit</th><th>Pièce à remplacer</th><th>Statut de garantie</th><th>Solution</th></tr></thead>
+            <tbody>
+              <tr><td rowspan="5">iPhone 17 Pro Max, 17 Pro, 17, Air</td><td rowspan="3">1, 2 ou 3 Modules</td><td>Hors garantie — € répa &lt; € swap</td><td class="sol-repair">Repair</td></tr>
+              <tr><td>Hors garantie — € répa &gt; € swap</td><td class="sol-swap">Swap</td></tr>
+              <tr><td>Couvert*</td><td class="sol-repair">Repair</td></tr>
+              <tr><td rowspan="2">4 Modules ou +</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
+              <tr><td>Couvert*</td><td class="sol-swap">Swap</td></tr>
+
+              <tr><td rowspan="5">iPhone 16e, 16 Pro Max, 16 Pro, 16 Plus, 16</td><td rowspan="2">Mid + Display</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
+              <tr><td>Couvert*</td><td class="sol-swap">Swap</td></tr>
+              <tr><td rowspan="3">Mid + Rear Camera / Mid + Back Glass / Mid + True Depth</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
+              <tr><td>Au moins 1 module couvert</td><td class="sol-repair">Repair</td></tr>
+              <tr><td>Couvert*</td><td class="sol-repair">Repair</td></tr>
+
+              <tr><td rowspan="5">iPhone 15 Pro Max, 15 Pro, 15 Plus, 15, 14 Plus, 14</td><td rowspan="2">Mid + Display</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
+              <tr><td>Couvert*</td><td class="sol-swap">Swap</td></tr>
+              <tr><td rowspan="3">Mid + Rear Camera / Mid + Back Glass</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
+              <tr><td>Au moins 1 module couvert</td><td class="sol-repair">Repair</td></tr>
+              <tr><td>Couvert*</td><td class="sol-repair">Repair</td></tr>
+
+              <tr><td rowspan="5">iPhone 14 Pro Max, 14 Pro, 13 Pro Max, 13 Pro, 13, 13 mini, 12 Pro Max, 12 Pro, 12, 12 mini</td><td rowspan="2">Rear + Display</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
+              <tr><td>Couvert*</td><td class="sol-swap">Swap</td></tr>
+              <tr><td rowspan="3">Rear + Rear camera</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
+              <tr><td>Au moins 1 pièce sous garantie</td><td class="sol-repair">Repair</td></tr>
+              <tr><td>Couvert*</td><td class="sol-repair">Repair</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="bd-kbase">
+          <h4>Kbase</h4>
+          <ul>
+            <li><strong>111090</strong> — procédure panne mixte</li>
+            <li><strong>106063</strong> — traitement répa mixte</li>
+            <li><strong>108632</strong> — Rear system</li>
+            <li><strong>108633</strong> — Mid system</li>
+          </ul>
+        </div>
+      </div>
+    </details>
   </div>
 
   <div class="disclaimer">
@@ -1398,6 +1548,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181019"></script>
+  <script src="../assets/js/shared-app.js?v=202609181236"></script>
 </body>
 </html>
