@@ -586,8 +586,8 @@ html[data-theme="dark"] .timeline-container {
   .header-actions.open {
     overflow: visible;
     position: fixed;
-    top: 84px;              /* sous la nav globale flottante (top 20px) */
-    right: 16px;
+    top: 62px;              /* collé sous la nav globale, au niveau du toggle Admin/Genius — volet entièrement visible dès l'ouverture */
+    right: 12px;
     z-index: 10000;         /* au-dessus de la nav globale (9999) */
     margin: 0;
     width: auto;
