@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181702">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181713">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -1518,10 +1518,8 @@ function buildQuestionnaire() {
       if (q.optionsByGen) opts = q.optionsByGen[parentVal] || [];
       else if (q.optionsByModel) opts = q.optionsByModel[parentVal] || [];
       else if (q.optionsByPart) {
-        // La pièce dépend de la GÉNÉRATION: la retrouver depuis le modèle
-        // choisi (chaque modèle n'existe que dans une seule génération):
-        const gen = Object.keys(q.optionsByModel).find(g => (q.optionsByModel[g] || []).some(o => o.value === parentVal));
-        opts = (q.optionsByModel && gen ? q.optionsByPartByGen[gen] : null) || [];
+        // La pièce dépend de la GÉNÉRATION (pas du modèle précis):
+        opts = q.optionsByPart[state["swap-generation"]] || [];
       }
       else if (q.optionsByCat) opts = q.optionsByCat[parentVal] || [];
       // Reset si la valeur stockée n'existe plus dans les options filtrées:
@@ -1546,16 +1544,6 @@ function buildQuestionnaire() {
     sel.addEventListener('change', e => {
       state[q.id] = e.target.value;
       val.textContent = opts.find(o => o.value === e.target.value).label;
-      // Cascade: reset en CHAÎNE des valeurs en aval (enfants,
-      // petits-enfants…) + reconstruction des questions:
-      let frontier = [q.id];
-      while (frontier.length) {
-        const next = [];
-        QUESTIONS.forEach(qq => {
-          if (frontier.includes(qq.depends)) { delete state[qq.id]; next.push(qq.id); }
-        });
-        frontier = next;
-      }
       buildQuestionnaire();
       // Le rebuild recrée les selects: repositionner les valeurs déjà
       // choisies (le .value affiché sinon repart à "—"):
@@ -1755,6 +1743,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181702"></script>
+  <script src="../assets/js/shared-app.js?v=202609181713"></script>
 </body>
 </html>
