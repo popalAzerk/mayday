@@ -1,0 +1,141 @@
+﻿Produit,Pièce à remplacer,Statut de garantie,Condition / Détail,Solution
+"iPhone 17 Pro Max
+iPhone 17 Pro
+iPhone 17
+iPhone Air","1 Module
+2 Modules
+3 Modules",Hors garantie,€ répa < € swap,Repair
+"iPhone 17 Pro Max
+iPhone 17 Pro
+iPhone 17
+iPhone Air","1 Module
+2 Modules
+3 Modules",Hors garantie,€ répa > € swap,Swap
+"iPhone 17 Pro Max
+iPhone 17 Pro
+iPhone 17
+iPhone Air","1 Module
+2 Modules
+3 Modules",Couvert*,,Repair
+"iPhone 17 Pro Max
+iPhone 17 Pro
+iPhone 17
+iPhone Air",4 Modules ou +,Hors garantie,,Swap
+"iPhone 17 Pro Max
+iPhone 17 Pro
+iPhone 17
+iPhone Air",4 Modules ou +,Couvert*,,Swap
+"iPhone 16e
+iPhone 16 Pro Max
+iPhone 16 Pro
+iPhone 16 Plus
+iPhone 16",Mid + Display,Hors garantie,,Swap
+"iPhone 16e
+iPhone 16 Pro Max
+iPhone 16 Pro
+iPhone 16 Plus
+iPhone 16",Mid + Display,Couvert*,,Swap
+"iPhone 16e
+iPhone 16 Pro Max
+iPhone 16 Pro
+iPhone 16 Plus
+iPhone 16","Mid + Rear Camera
+Mid + Back Glass
+Mid + True Depth",Hors garantie,,Swap
+"iPhone 16e
+iPhone 16 Pro Max
+iPhone 16 Pro
+iPhone 16 Plus
+iPhone 16","Mid + Rear Camera
+Mid + Back Glass
+Mid + True Depth",Au - 1 module couvert,,Repair
+"iPhone 16e
+iPhone 16 Pro Max
+iPhone 16 Pro
+iPhone 16 Plus
+iPhone 16","Mid + Rear Camera
+Mid + Back Glass
+Mid + True Depth",Couvert*,,Repair
+"iPhone 15 Pro Max
+iPhone 15 Pro
+iPhone 15 Plus
+iPhone 15
+iPhone 14 Plus
+iPhone 14",Mid + Display,Hors garantie,,Swap
+"iPhone 15 Pro Max
+iPhone 15 Pro
+iPhone 15 Plus
+iPhone 15
+iPhone 14 Plus
+iPhone 14",Mid + Display,Couvert*,,Swap
+"iPhone 15 Pro Max
+iPhone 15 Pro
+iPhone 15 Plus
+iPhone 15
+iPhone 14 Plus
+iPhone 14","Mid + Rear Camera
+Mid + Back Glass",Hors garantie,,Swap
+"iPhone 15 Pro Max
+iPhone 15 Pro
+iPhone 15 Plus
+iPhone 15
+iPhone 14 Plus
+iPhone 14","Mid + Rear Camera
+Mid + Back Glass",Au - 1 module couvert,,Repair
+"iPhone 15 Pro Max
+iPhone 15 Pro
+iPhone 15 Plus
+iPhone 15
+iPhone 14 Plus
+iPhone 14","Mid + Rear Camera
+Mid + Back Glass",Couvert*,,Repair
+"iPhone 14 Pro Max
+iPhone 14 Pro
+iPhone 13 Pro Max
+iPhone 13 Pro
+iPhone 13
+iPhone 13 mini
+iPhone 12 Pro Max
+iPhone 12 Pro
+iPhone 12
+iPhone 12 mini",Rear + Display,Hors garantie,,Swap
+"iPhone 14 Pro Max
+iPhone 14 Pro
+iPhone 13 Pro Max
+iPhone 13 Pro
+iPhone 13
+iPhone 13 mini
+iPhone 12 Pro Max
+iPhone 12 Pro
+iPhone 12
+iPhone 12 mini",Rear + Display,Couvert*,,Swap
+"iPhone 14 Pro Max
+iPhone 14 Pro
+iPhone 13 Pro Max
+iPhone 13 Pro
+iPhone 13
+iPhone 13 mini
+iPhone 12 Pro Max
+iPhone 12 Pro
+iPhone 12
+iPhone 12 mini",Rear + Rear camera,Hors garantie,,Swap
+"iPhone 14 Pro Max
+iPhone 14 Pro
+iPhone 13 Pro Max
+iPhone 13 Pro
+iPhone 13
+iPhone 13 mini
+iPhone 12 Pro Max
+iPhone 12 Pro
+iPhone 12
+iPhone 12 mini",Rear + Rear camera,Au - 1 pièce sous garantie,,Repair
+"iPhone 14 Pro Max
+iPhone 14 Pro
+iPhone 13 Pro Max
+iPhone 13 Pro
+iPhone 13
+iPhone 13 mini
+iPhone 12 Pro Max
+iPhone 12 Pro
+iPhone 12
+iPhone 12 mini",Rear + Rear camera,Couvert*,,Repair
