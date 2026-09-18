@@ -555,11 +555,15 @@ html[data-theme="dark"] .timeline-container {
       linear-gradient(var(--text-main), var(--text-main)) 0 5px / 100% 2px no-repeat,
       linear-gradient(var(--text-main), var(--text-main)) 0 10px / 100% 2px no-repeat;
   }
+  /* Au repos ET ouvert: barres NOIRES (la pillule ouverte reste claire) */
   .header-actions.open .actions-trigger::before {
     background:
-      linear-gradient(#fff, #fff) 0 0 / 100% 2px no-repeat,
-      linear-gradient(#fff, #fff) 0 5px / 100% 2px no-repeat,
-      linear-gradient(#fff, #fff) 0 10px / 100% 2px no-repeat;
+      linear-gradient(var(--text-main), var(--text-main)) 0 0 / 100% 2px no-repeat,
+      linear-gradient(var(--text-main), var(--text-main)) 0 5px / 100% 2px no-repeat,
+      linear-gradient(var(--text-main), var(--text-main)) 0 10px / 100% 2px no-repeat;
+  }
+  .header-actions.open .actions-trigger {
+    background: transparent;
   }
   /* État repos: pastille PARFAITEMENT ronde 40×40 (le rail est retiré du
      flux — il ne peut plus déformer la pillule ni décentrer le trigger) */
@@ -645,11 +649,16 @@ html[data-theme="dark"] .timeline-container {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    background: transparent;      /* pas de pastille vitrée dans le rail */
+    border: none;
+    box-shadow: none;
+    color: var(--text-main);
   }
   .header-actions.open .actions-inner .global-footer-toggle .rgpd-btn svg,
   .header-actions.open .actions-inner .global-footer-toggle .gemini-toggle svg {
     width: 15px;
     height: 14px;
+    fill: var(--text-main);   /* icônes noires comme les autres */
   }
 }
 @media (max-width: 640px) {
