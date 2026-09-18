@@ -561,17 +561,21 @@ html[data-theme="dark"] .timeline-container {
       linear-gradient(#fff, #fff) 0 5px / 100% 2px no-repeat,
       linear-gradient(#fff, #fff) 0 10px / 100% 2px no-repeat;
   }
-  /* État repos: pastille ronde assortie au toggle Admin/Genius */
+  /* État repos: pastille PARFAITEMENT ronde 40×40 (le rail est retiré du
+     flux — il ne peut plus déformer la pillule ni décentrer le trigger) */
   .header-actions {
-    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
     max-width: none;
     overflow: hidden;
     border-radius: 50%;
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);  /* ombre réduite: ne décale plus la perception du centre */
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
   }
-  .header-actions .actions-inner {
-    height: 30px;    /* = trigger: les items cachés ne gonflent pas la pillule */
-  }
+  .header-actions .actions-inner { display: none; }   /* retiré du flux au repos */
 
   /* Ouverture: barre de menu VERTICALE en overlay — ☰ en haut,
      les boutons empilés les uns au-dessus des autres, étroit */
@@ -586,12 +590,14 @@ html[data-theme="dark"] .timeline-container {
     height: auto;
     max-height: none;
     min-width: 0;
+    padding: 5px;           /* le padding du repos est neutralisé */
     flex-direction: column;   /* ☰ (1er enfant) en haut */
     align-items: center;      /* colonne centrée */
     gap: 4px;
     border-radius: 18px;      /* barre verticale: coins doux réguliers */
   }
   .header-actions.open .actions-inner {
+    display: flex;            /* réaffiché à l'ouverture */
     flex-direction: column;   /* items empilés */
     align-items: center;
     gap: 4px;
