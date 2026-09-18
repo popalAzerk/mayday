@@ -524,14 +524,22 @@ html[data-theme="dark"] .timeline-container {
   #breadcrumb-container { display: none !important; }
 
   /* Poignée hamburger compacte, icône parfaitement centrée */
-  .header-actions .actions-trigger {
-    width: 28px;
-    height: 28px;
+  .header-actions .actions-trigger,
+  .header-actions.open .actions-trigger {
+    width: 30px;
+    height: 30px;
     flex: none;
     position: relative;
     padding: 0;
+    margin: 0;
     border: none;
+    border-radius: 50%;
     background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: 0;
   }
   .header-actions .actions-trigger i { display: none; }
   .header-actions .actions-trigger::before {
@@ -540,9 +548,8 @@ html[data-theme="dark"] .timeline-container {
     width: 14px;
     height: 10px;
     position: absolute;
-    top: 50%;
-    left: 50%;
-    margin: -5px 0 0 -7px;   /* centrage géométrique exact (h/2, w/2) */
+    top: calc(50% - 5px);
+    left: calc(50% - 7px);   /* centrage géométrique exact sans marges */
     background:
       linear-gradient(var(--text-main), var(--text-main)) 0 0 / 100% 1.6px no-repeat,
       linear-gradient(var(--text-main), var(--text-main)) 0 4.2px / 100% 1.6px no-repeat,
@@ -585,7 +592,7 @@ html[data-theme="dark"] .timeline-container {
     align-items: center;
     gap: 4px;
     max-width: none;
-    width: 28px;              /* largeur exacte d'une pastille */
+    width: 30px;              /* largeur exacte d'une pastille */
     min-width: 0;
     height: auto;
     max-height: none;
@@ -595,8 +602,8 @@ html[data-theme="dark"] .timeline-container {
   }
   /* Items: icônes seules, rondes, sans marges larges */
   .header-actions.open .actions-inner .btn-icon {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     padding: 0;
     flex: none;
     border-radius: 50%;
@@ -618,12 +625,12 @@ html[data-theme="dark"] .timeline-container {
     border-left: none;
     border-top: 1px solid var(--border-color);
     margin-top: 2px;
-    width: 28px;
+    width: 30px;
   }
   .header-actions.open .actions-inner .global-footer-toggle .rgpd-btn,
   .header-actions.open .actions-inner .global-footer-toggle .gemini-toggle {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 30px;
     padding: 0;
     display: inline-flex;
     align-items: center;
