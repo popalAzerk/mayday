@@ -302,7 +302,7 @@ html[data-theme="dark"] .gemini-toggle .toggle-thumb {
 
 /* Hub bar: laisse déborder le menu ouvert de la pillule (pas de clipping) */
 .global-floating-nav { overflow: visible; }
-.hub-pill-auto.open { position: absolute; top: 0; right: 0; margin: 0; }
+.hub-pill-auto.open { position: absolute; top: 100%; right: 0; margin: 6px 0 0 0; }
 .global-floating-nav { position: fixed; }
 
 /* Force icons-only mode if body has .hub-icons-only class */
@@ -424,7 +424,10 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 }
 .hub-pill-auto .actions-inner { display: none; }
 .hub-pill-auto.open {
-    position: relative;   /* le rail se déroule SOUS la pillule, dans le flux de la hub bar */
+    position: absolute;   /* rail déroulé SOUS la hub bar, ne la recouvre pas */
+    top: 100%;
+    right: 0;
+    margin: 6px 0 0 0;
     width: auto;
     height: auto;
     padding: 5px;
@@ -527,8 +530,9 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 .global-floating-nav .header-actions .actions-inner { display: none; }
 .global-floating-nav .header-actions.open {
     position: absolute;
-    top: 0;
+    top: 100%;
     right: 0;
+    margin: 6px 0 0 0;
     width: auto;
     height: auto;
     padding: 5px;
