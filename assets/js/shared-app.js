@@ -110,6 +110,16 @@ function initGlobalNav() {
                 navCloseItem.insertAdjacentHTML('beforeend', '<span class="eod-badge"></span>');
             }
         } catch (e) { /* ignore */ }
+
+        // Pillule hamburger universelle (haut droite) pour les pages SANS
+        // .header-actions (iPhone, Loi, Close): RGPD + dark mode dedans
+        if (!document.querySelector('.header-actions')) {
+            const pill = document.createElement('div');
+            pill.className = 'header-actions hub-pill-auto';
+            pill.innerHTML = '<button class="actions-trigger" onclick="this.parentElement.classList.toggle(\'open\')" title="Menu"><i class="fa-solid fa-bars"></i></button><div class="actions-inner"></div>';
+            document.body.appendChild(pill);
+        }
+
         // RGPD + dark mode: dans la pillule hamburger (Mac: .header-actions
         // déjà présente; autres pages: pillule auto créée ci-dessous)
         const pillTarget = document.querySelector('.header-actions .actions-inner') || document.querySelector('.hub-pill-auto .actions-inner') || document.body;
