@@ -480,6 +480,9 @@ html[data-theme="dark"] .timeline-container {
     padding-top: 66px; /* place pour la pillule MAYDAY flottante */
     background: transparent;
   }
+  .dashboard-wrapper {
+    padding-top: 8px;  /* la div Catégories remonte au ras des boutons (toggle + hamburger) */
+  }
 }
 
 
@@ -586,8 +589,8 @@ html[data-theme="dark"] .timeline-container {
   .header-actions.open {
     overflow: visible;
     position: fixed;
-    top: 62px;              /* collé sous la nav globale, au niveau du toggle Admin/Genius — volet entièrement visible dès l'ouverture */
-    right: 12px;
+    top: 66px;              /* aligné sur la rangée du header (toggle Admin/Genius + hamburger fermé), juste sous la pillule MAYDAY */
+    right: 16px;            /* aligné sur le hamburger fermé du header */
     z-index: 10000;         /* au-dessus de la nav globale (9999) */
     margin: 0;
     width: auto;
