@@ -548,8 +548,8 @@ html[data-theme="dark"] .timeline-container {
     width: 16px;
     height: 12px;
     position: absolute;
-    top: calc(50% - 6px);
-    left: calc(50% - 8px);   /* centrage géométrique exact sans marges */
+    top: calc(50% - 5px);   /* compensation optique: la masse visuelle des barres tire vers le haut */
+    left: calc(50% - 8px);   /* centrage horizontal exact */
     background:
       linear-gradient(var(--text-main), var(--text-main)) 0 0 / 100% 2px no-repeat,
       linear-gradient(var(--text-main), var(--text-main)) 0 5px / 100% 2px no-repeat,
@@ -567,6 +567,7 @@ html[data-theme="dark"] .timeline-container {
     max-width: none;
     overflow: hidden;
     border-radius: 50%;
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);  /* ombre réduite: ne décale plus la perception du centre */
   }
   .header-actions .actions-inner {
     height: 30px;    /* = trigger: les items cachés ne gonflent pas la pillule */
