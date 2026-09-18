@@ -110,6 +110,13 @@ function initGlobalNav() {
                 navCloseItem.insertAdjacentHTML('beforeend', '<span class="eod-badge"></span>');
             }
         } catch (e) { /* ignore */ }
-        document.body.insertAdjacentHTML('beforeend', footerHtml);
+        // RGPD + dark mode: dans la pillule hamburger (Mac: .header-actions
+        // déjà présente; autres pages: pillule auto créée ci-dessous)
+        const pillTarget = document.querySelector('.header-actions .actions-inner') || document.querySelector('.hub-pill-auto .actions-inner') || document.body;
+        if (pillTarget === document.body) {
+            document.body.insertAdjacentHTML('beforeend', footerHtml);
+        } else {
+            pillTarget.insertAdjacentHTML('beforeend', footerHtml);
+        }
     }
 }
