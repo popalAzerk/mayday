@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181322">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181330">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -195,7 +195,7 @@
 
 <div class="wrap">
   <h1>Biblio</h1>
-  <p class="subtitle">Bibliothèque Genius Bar : le guide loi réparation ci-dessous, plus les fiches de référence en bas de page (réparabilité iPhone, règles Repair/Swap).</p>
+  <p class="subtitle">Bibliothèque Genius Bar : choisissez le type de demande — garantie légale, retour 14 jours, bonus réparation, réparabilité iPhone 17/Air ou règles Repair/Swap.</p>
 
   <div class="select-group" id="questionnaire"></div>
   <div class="result-panel" id="result-panel">
@@ -221,6 +221,56 @@
 <script>
 // ========== QUESTIONS ==========
 const QUESTIONS = [
+  {
+    id: "reparables-sub",
+    modes: ["reparables"],
+    label: "Sous-ensemble concerné",
+    options: [
+      { value: "logic", label: "Carte logique" },
+      { value: "enclosure", label: "Enclosure (châssis)" },
+      { value: "screen", label: "Écran" },
+      { value: "backglass", label: "Back Glass (vitre arrière)" },
+      { value: "microspk", label: "Micro / Haut-parleur" },
+      { value: "camera", label: "Caméra" }
+    ]
+  },
+  {
+    id: "swap-generation",
+    modes: ["swap-repair"],
+    label: "Génération",
+    options: [
+      { value: "gen17", label: "iPhone 17 / 17 Pro / 17 Pro Max / Air" },
+      { value: "gen16", label: "iPhone 16e / 16 / 16 Plus / 16 Pro / 16 Pro Max" },
+      { value: "gen15", label: "iPhone 14 / 14 Plus / 15 / 15 Plus / 15 Pro / 15 Pro Max" },
+      { value: "gen14", label: "iPhone 12 / 13 / 14 Pro (mini inclus)" }
+    ]
+  },
+  {
+    id: "swap-part",
+    modes: ["swap-repair"],
+    label: "Pièce à remplacer",
+    options: [
+      { value: "modules-123", label: "1, 2 ou 3 modules" },
+      { value: "modules-4", label: "4 modules ou +" },
+      { value: "mid-display", label: "Mid + Display" },
+      { value: "mid-mix", label: "Mid + Rear Camera / Back Glass / True Depth" },
+      { value: "rear-display", label: "Rear + Display" },
+      { value: "rear-camera", label: "Rear + Rear camera" }
+    ]
+  },
+  {
+    id: "swap-status",
+    modes: ["swap-repair"],
+    label: "Statut de garantie",
+    options: [
+      { value: "covered", label: "Couvert* (garantie / AC+ / Loi euro / programme qualité)" },
+      { value: "partial", label: "Hors garantie — au moins 1 module/pièce couvert" },
+      { value: "og-cheaper", label: "Hors garantie — € répa < € swap" },
+      { value: "og-pricier", label: "Hors garantie — € répa > € swap" },
+      { value: "og", label: "Hors garantie (sans devis)" }
+    ]
+  },
+
   {
     id: "product",
     modes: ["garantie"],
@@ -383,6 +433,107 @@ const PRODUCTS = {
 };
 
 // ========== RESULT ENGINE =========
+function getResultReparables(s) {
+  const data = {
+    logic: {
+      title: "Carte logique",
+      summary: "Ces symptômes pointent vers la carte logique — remplacement de la carte logique.",
+      items: ["Aucune alimentation", "Écran vide ou noir", "Charge filaire si VMI ✅", "Enclosure si Carte Logique fail", "Blocage / redémarrage / arrêt inopiné", "Rotation de l'affichage", "Données cellulaires", "Bluetooth / Wi-Fi", "Apple Pay et Cartes (si MRI ❗)", "Message d'alerte"]
+    },
+    enclosure: {
+      title: "Enclosure (châssis)",
+      summary: "Ces symptômes pointent vers l'enclosure — remplacement du châssis.",
+      items: ["Boutons / commutateur", "Apple Pay et Cartes (si MRI ✅)", "Charge filaire si VMI ❌"]
+    },
+    screen: {
+      title: "Écran",
+      summary: "Ces symptômes pointent vers l'écran — remplacement de l'écran.",
+      items: ["Capteur de luminosité ambiante", "Qualité de l'image", "Multi-Touch", "Micro supérieur", "Capteur de proximité"]
+    },
+    backglass: {
+      title: "Back Glass (vitre arrière)",
+      summary: "Ces symptômes pointent vers la vitre arrière — remplacement du back glass.",
+      items: ["Charge sans fil", "Flash de l'appareil photo"]
+    },
+    microspk: {
+      title: "Micro / Haut-parleur",
+      summary: "Ces symptômes pointent vers l'ensemble micro / haut-parleur.",
+      items: ["Haut-parleur supérieur (top speaker)", "Haut-parleur inférieur (bottom speaker)", "Micro principal ou micro auxiliaire", "Boussole"]
+    },
+    camera: {
+      title: "Caméra",
+      summary: "Ces symptômes pointent vers la caméra — si le défaut persiste après remplacement, carte logique.",
+      items: ["Capteur de proximité (caméra avant)", "Caméra arrière / LIDAR (carte logique si persiste)", "Caméra avant / Face ID (carte logique si persiste)"]
+    }
+  };
+  const d = data[s["reparables-sub"]];
+  return {
+    verdict: "eligible",
+    title: d.title,
+    summary: d.summary,
+    cards: [{ title: "Symptômes concernés", body: `<ul>${d.items.map(i => `<li>${i}</li>`).join('')}</ul>` }]
+  };
+}
+
+function getResultSwap(s) {
+  const gen = s["swap-generation"], part = s["swap-part"], st = s["swap-status"];
+  // Validité combinaisons (d'après la fiche officielle):
+  const valid = {
+    gen17: ["modules-123", "modules-4"],
+    gen16: ["mid-display", "mid-mix"],
+    gen15: ["mid-display", "mid-mix"],
+    gen14: ["rear-display", "rear-camera"]
+  };
+  if (!valid[gen].includes(part)) {
+    return {
+      verdict: "not-eligible",
+      title: "Combinaison impossible",
+      summary: "Cette pièce ne s'applique pas à cette génération. Reportez-vous au tableau de la fiche pour la bonne combinaison.",
+      cards: []
+    };
+  }
+  // Logique de décision:
+  let solution, reason;
+  if (gen === "gen17") {
+    if (part === "modules-4") {
+      solution = "Swap";
+      reason = "4 modules ou plus → toujours Swap (hors garantie comme couvert*).";
+    } else if (st === "covered") {
+      solution = "Repair";
+      reason = "1 à 3 modules, couvert* → Repair.";
+    } else if (st === "og-cheaper") {
+      solution = "Repair";
+      reason = "Hors garantie, coût réparation < coût swap → Repair.";
+    } else if (st === "og-pricier") {
+      solution = "Swap";
+      reason = "Hors garantie, coût réparation > coût swap → Swap.";
+    } else {
+      solution = "Repair ou Swap";
+      reason = "Hors garantie sans devis: arbitrer selon le coût (€ répa vs € swap) — 1 à 3 modules.";
+    }
+  } else if (part === "mid-display" || part === "rear-display") {
+    solution = "Swap";
+    reason = "Mid/Rear + Display → toujours Swap (hors garantie ou couvert*).";
+  } else if (st === "covered") {
+    solution = "Repair";
+    reason = "Couvert* → Repair.";
+  } else if (st === "partial") {
+    solution = "Repair";
+    reason = "Au moins 1 module/pièce couvert → Repair.";
+  } else {
+    solution = "Swap";
+    reason = "Hors garantie (mix Mid/Rear + caméra/back glass/True Depth) → Swap.";
+  }
+  const cls = solution === "Swap" ? "not-eligible" : "eligible";
+  const icon = solution === "Swap" ? "📦" : "🛠️";
+  return {
+    verdict: cls,
+    title: solution,
+    summary: reason,
+    cards: [{ title: "Rappel", body: "<p><strong>Couvert*</strong> = Sous garantie / AC+ / AC Services / Loi euro / Programme qualité. Kbase: 111090 (panne mixte), 106063 (traitement répa mixte), 108632 (Rear system), 108633 (Mid system).</p>" }]
+  };
+}
+
 function getResult(s) {
   const p = PRODUCTS[s.product];
   let cards = [];
@@ -1376,58 +1527,24 @@ function getResultBonus(s) {
   return { verdict, title, summary, cards };
 }
 
-function biblioReparablesHTML() {
-  return `<div class="verdict-box eligible"><div class="verdict-icon">🛠️</div><div><h2>Que répare-t-on sur iPhone 17, 17 Pro, 17 Pro Max et iPhone Air ?</h2><p>Synthèse par sous-ensemble: le composant à tester détermine la pièce à remplacer.</p></div></div>
-  <div class="quick-card"><h3>Fiche complète</h3>
-  <div class="bd-grid">
-    <div class="bd-card bd-blue"><h3>Carte Logique</h3><ul><li>Aucune alimentation</li><li>Écran vide ou noir</li><li>Charge filaire si VMI ✅</li><li>Enclosure si Carte Logique fail</li><li>Blocage / redémarrage / arrêt inopiné</li><li>Rotation de l'affichage</li><li>Données cellulaires</li><li>Bluetooth / Wi-Fi</li><li>Apple Pay et Cartes (si MRI ❗)</li><li>Message d'alerte</li></ul></div>
-    <div class="bd-card bd-teal"><h3>Enclosure</h3><ul><li>Boutons / commutateur</li><li>Apple Pay et Cartes (si MRI ✅)</li><li>Charge filaire si VMI ❌</li></ul></div>
-    <div class="bd-card bd-green"><h3>Écran</h3><ul><li>Capteur de luminosité ambiante</li><li>Qualité de l'image</li><li>Multi-Touch</li><li>Micro supérieur</li><li>Capteur de proximité</li></ul></div>
-    <div class="bd-card bd-brown"><h3>Back Glass</h3><ul><li>Charge sans fil</li><li>Flash de l'appareil photo</li></ul></div>
-    <div class="bd-card bd-red"><h3>Micro / Speaker</h3><ul><li>Haut-parleur supérieur (top speaker)</li><li>Haut-parleur inférieur (bottom speaker)</li><li>Micro principal ou micro auxiliaire</li><li>Boussole</li></ul></div>
-    <div class="bd-card bd-purple"><h3>Caméra</h3><ul><li>Capteur de proximité (caméra avant)</li><li>Caméra arrière / LIDAR (carte logique si persiste)</li><li>Caméra avant / Face ID (carte logique si persiste)</li></ul></div>
-  </div></div>`;
-}
-function biblioSwapRepairHTML() {
-  return `<div class="verdict-box eligible"><div class="verdict-icon">🔧</div><div><h2>Repair ou Swap ?</h2><p>Règles par génération (iPhone 12 → 17). Couvert* = Sous garantie / AC+ / AC Services / Loi euro / Programme qualité.</p></div></div>
-  <div class="quick-card"><h3>Tableau de décision</h3>
-  <div class="bd-table-wrap"><table class="bd-table">
-    <thead><tr><th>Produit</th><th>Pièce à remplacer</th><th>Statut de garantie</th><th>Solution</th></tr></thead>
-    <tbody>
-      <tr><td rowspan="5">iPhone 17 Pro Max, 17 Pro, 17, Air</td><td rowspan="3">1, 2 ou 3 Modules</td><td>Hors garantie — € répa &lt; € swap</td><td class="sol-repair">Repair</td></tr>
-      <tr><td>Hors garantie — € répa &gt; € swap</td><td class="sol-swap">Swap</td></tr>
-      <tr><td>Couvert*</td><td class="sol-repair">Repair</td></tr>
-      <tr><td rowspan="2">4 Modules ou +</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
-      <tr><td>Couvert*</td><td class="sol-swap">Swap</td></tr>
-      <tr><td rowspan="5">iPhone 16e, 16 Pro Max, 16 Pro, 16 Plus, 16</td><td rowspan="2">Mid + Display</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
-      <tr><td>Couvert*</td><td class="sol-swap">Swap</td></tr>
-      <tr><td rowspan="3">Mid + Rear Camera / Mid + Back Glass / Mid + True Depth</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
-      <tr><td>Au moins 1 module couvert</td><td class="sol-repair">Repair</td></tr>
-      <tr><td>Couvert*</td><td class="sol-repair">Repair</td></tr>
-      <tr><td rowspan="5">iPhone 15 Pro Max, 15 Pro, 15 Plus, 15, 14 Plus, 14</td><td rowspan="2">Mid + Display</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
-      <tr><td>Couvert*</td><td class="sol-swap">Swap</td></tr>
-      <tr><td rowspan="3">Mid + Rear Camera / Mid + Back Glass</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
-      <tr><td>Au moins 1 module couvert</td><td class="sol-repair">Repair</td></tr>
-      <tr><td>Couvert*</td><td class="sol-repair">Repair</td></tr>
-      <tr><td rowspan="5">iPhone 14 Pro Max, 14 Pro, 13 Pro Max, 13 Pro, 13, 13 mini, 12 Pro Max, 12 Pro, 12, 12 mini</td><td rowspan="2">Rear + Display</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
-      <tr><td>Couvert*</td><td class="sol-swap">Swap</td></tr>
-      <tr><td rowspan="3">Rear + Rear camera</td><td>Hors garantie</td><td class="sol-swap">Swap</td></tr>
-      <tr><td>Au moins 1 pièce sous garantie</td><td class="sol-repair">Repair</td></tr>
-      <tr><td>Couvert*</td><td class="sol-repair">Repair</td></tr>
-    </tbody>
-  </table></div>
-  <div class="bd-kbase"><h4>Kbase</h4><ul><li><strong>111090</strong> — procédure panne mixte</li><li><strong>106063</strong> — traitement répa mixte</li><li><strong>108632</strong> — Rear system</li><li><strong>108633</strong> — Mid system</li></ul></div>
-  </div>`;
-}
 function renderResult() {
   const panel = document.getElementById('result-panel');
   const panel2 = panel;
   if (state.mode === "reparables") {
-    panel.innerHTML = biblioReparablesHTML();
+    if (!state["reparables-sub"]) {
+      panel.innerHTML = `<div class="result-placeholder">Choisissez le <strong>sous-ensemble concerné</strong> pour afficher les symptômes et la pièce à remplacer.</div>`;
+      return;
+    }
+    showResult(panel2, getResultReparables(state));
     return;
   }
   if (state.mode === "swap-repair") {
-    panel.innerHTML = biblioSwapRepairHTML();
+    const ans = [state["swap-generation"], state["swap-part"], state["swap-status"]].filter(Boolean).length;
+    if (ans < 3) {
+      panel.innerHTML = `<div class="result-placeholder">Question Repair ou Swap — ${3 - ans} question${3 - ans > 1 ? 's' : ''} restante${3 - ans > 1 ? 's' : ''}.</div>`;
+      return;
+    }
+    showResult(panel2, getResultSwap(state));
     return;
   }
   if (state.mode === "bonus") {
@@ -1479,6 +1596,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181322"></script>
+  <script src="../assets/js/shared-app.js?v=202609181330"></script>
 </body>
 </html>
