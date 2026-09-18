@@ -518,7 +518,7 @@ html[data-theme="dark"] .timeline-container {
   transition: background .2s;
 }
 .actions-trigger:hover { background: rgba(0, 122, 255, 0.08); }
-.header-actions.open .actions-trigger { background: var(--apple-blue); color: #fff; }
+.header-actions.open .actions-trigger { background: transparent; color: var(--text-main); }
 
 
 /* === Mobile: la pillule s'agrandit en overlay, icônes seules, compactes === */
