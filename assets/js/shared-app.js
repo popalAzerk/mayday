@@ -63,11 +63,10 @@ function initGlobalNav() {
                     <svg class="svg-icon" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
                     MAYDAY
                 </a>
-                ${currentPath.endsWith('/Mac/index.html') ? '' : `
                 <a href="${relativeRoot}Mac/index.html" class="nav-item ${currentPath.includes('/Mac/') ? 'active' : ''}" title="Mac">
-                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M22.7 19l-9.1-9.1c.9-2.3.4-5-1.5-6.9-2-2-5-2.4-7.4-1.3L9 6 6 9 1.6 4.7C.5 7.1.9 10.1 2.9 12.1c1.9 1.9 4.6 2.4 6.9 1.5l9.1 9.1c.4.4 1 .4 1.4 0l2.3-2.3c.5-.4.5-1.1.1-1.4z"/></svg>
+                    <svg class="svg-icon" viewBox="0 0 24 24"><path d="M20 18c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2H0v2h24v-2h-4zM4 6h16v10H4V6z"/></svg>
                     Mac
-                </a>`}
+                </a>
                 <a href="${relativeRoot}iPhone/index.html" class="nav-item ${currentPath.includes('/iPhone/') ? 'active' : ''}" title="iPhone">
                     <svg class="svg-icon" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
                     iPhone
