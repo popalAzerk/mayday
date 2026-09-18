@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181913">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181925">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -21,6 +21,20 @@
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
     color-scheme: light dark;
   }
+  /* === DARK MODE (pillule lune — palette Mayday) === */
+  html[data-theme="dark"]{
+    --bg:#000000; --surface:rgba(44,44,46,0.75); --surface-2:#1c1c1e; --text:#f5f5f7;
+    --text-secondary:#a1a1a6; --accent:#0A84FF; --accent-hover:#4facff;
+    --border:#3a3a3c; --border-soft:#2c2c2e;
+    --shadow: 0 8px 32px rgba(0,0,0,0.4);
+    color-scheme: dark;
+  }
+  html[data-theme="dark"] .topbar{ background:rgba(28,28,30,0.65); border-color:rgba(255,255,255,0.1); }
+  html[data-theme="dark"] .topbar-label{ color:#a1a1a6; }
+  html[data-theme="dark"] .biblio-heading, html[data-theme="dark"] .bd-note, html[data-theme="dark"] .bd-kbase h4{ color:#a1a1a6; }
+  html[data-theme="dark"] .bd-arrow{ color:#a1a1a6; }
+  html[data-theme="dark"] .bd-kbase ul{ color:#f5f5f7; }
+
   *{box-sizing:border-box;} html,body{margin:0;padding:0;}
   body{
     background:var(--bg); color:var(--text);
@@ -1744,6 +1758,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181913"></script>
+  <script src="../assets/js/shared-app.js?v=202609181925"></script>
 </body>
 </html>
