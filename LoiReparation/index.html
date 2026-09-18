@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181713">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181740">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -304,35 +304,37 @@ const QUESTIONS = [
     label: "Modèle",
     optionsByModel: {
       gen17: [
-        { value: "17", label: "iPhone 17 — swap 729 €" },
-        { value: "17pro", label: "iPhone 17 Pro — swap 899 €" },
-        { value: "17promax", label: "iPhone 17 Pro Max — swap 955 €" },
-        { value: "air", label: "iPhone Air — swap 859 €" }
+        { value: "17", label: "iPhone 17", swapPrice: 729 },
+        { value: "17pro", label: "iPhone 17 Pro", swapPrice: 899 },
+        { value: "17promax", label: "iPhone 17 Pro Max", swapPrice: 955 },
+        { value: "air", label: "iPhone Air", swapPrice: 859 }
       ],
       gen16: [
-        { value: "16e", label: "iPhone 16e — swap 519 €" },
-        { value: "16", label: "iPhone 16 — swap 659 €" },
-        { value: "16plus", label: "iPhone 16 Plus — swap 729 €" },
-        { value: "16pro", label: "iPhone 16 Pro — swap 799 €" },
-        { value: "16promax", label: "iPhone 16 Pro Max — swap 899 €" }
+        { value: "16e", label: "iPhone 16e", swapPrice: 519 },
+        { value: "16", label: "iPhone 16", swapPrice: 659 },
+        { value: "16plus", label: "iPhone 16 Plus", swapPrice: 729 },
+        { value: "16pro", label: "iPhone 16 Pro", swapPrice: 799 },
+        { value: "16promax", label: "iPhone 16 Pro Max", swapPrice: 899 }
       ],
       gen15: [
-        { value: "14", label: "iPhone 14 — swap 549 €" },
-        { value: "14plus", label: "iPhone 14 Plus — swap 729 €" },
-        { value: "15", label: "iPhone 15 — swap 659 €" },
-        { value: "15plus", label: "iPhone 15 Plus — swap 729 €" },
-        { value: "15pro", label: "iPhone 15 Pro — swap 799 €" },
-        { value: "15promax", label: "iPhone 15 Pro Max — swap 859 €" }
+        { value: "14", label: "iPhone 14", swapPrice: 549 },
+        { value: "14plus", label: "iPhone 14 Plus", swapPrice: 729 },
+        { value: "15", label: "iPhone 15", swapPrice: 659 },
+        { value: "15plus", label: "iPhone 15 Plus", swapPrice: 729 },
+        { value: "15pro", label: "iPhone 15 Pro", swapPrice: 799 },
+        { value: "15promax", label: "iPhone 15 Pro Max", swapPrice: 859 }
       ],
       gen14: [
-        { value: "12", label: "iPhone 12 / 12 mini — swap 499 / 419 €" },
-        { value: "12pro", label: "iPhone 12 Pro — swap 549 €" },
-        { value: "12promax", label: "iPhone 12 Pro Max — swap 729 €" },
-        { value: "13", label: "iPhone 13 / 13 mini — swap 499 / 419 €" },
-        { value: "13pro", label: "iPhone 13 Pro — swap 549 €" },
-        { value: "13promax", label: "iPhone 13 Pro Max — swap 729 €" },
-        { value: "14pro", label: "iPhone 14 Pro — swap 799 €" },
-        { value: "14promax", label: "iPhone 14 Pro Max — swap 859 €" }
+        { value: "12", label: "iPhone 12", swapPrice: 499 },
+        { value: "12mini", label: "iPhone 12 mini", swapPrice: 419 },
+        { value: "12pro", label: "iPhone 12 Pro", swapPrice: 549 },
+        { value: "12promax", label: "iPhone 12 Pro Max", swapPrice: 729 },
+        { value: "13", label: "iPhone 13", swapPrice: 499 },
+        { value: "13mini", label: "iPhone 13 mini", swapPrice: 419 },
+        { value: "13pro", label: "iPhone 13 Pro", swapPrice: 549 },
+        { value: "13promax", label: "iPhone 13 Pro Max", swapPrice: 729 },
+        { value: "14pro", label: "iPhone 14 Pro", swapPrice: 799 },
+        { value: "14promax", label: "iPhone 14 Pro Max", swapPrice: 859 }
       ]
     }
   },
@@ -368,8 +370,8 @@ const QUESTIONS = [
     optionsByPart: {
       "modules-123": [
         { value: "covered", label: "Couvert* (garantie / AC+ / Loi euro / programme qualité)" },
-        { value: "og-cheaper", label: "Hors garantie — € répa < € swap" },
-        { value: "og-pricier", label: "Hors garantie — € répa > € swap" }
+        { value: "og-cheaper", label: "Hors garantie — € répa < {swap}" },
+        { value: "og-pricier", label: "Hors garantie — € répa > {swap}" }
       ],
       "modules-4": [
         { value: "covered", label: "Couvert*" },
@@ -614,15 +616,15 @@ function getResultSwap(s) {
   // Prix swap depuis le label du modèle choisi:
   const qm = QUESTIONS.find(qq => qq.id === "swap-model");
   const modelOpt = (qm.optionsByModel[gen] || []).find(o => o.value === model);
-  const px = modelOpt ? (/[0-9][0-9\s/]*\s*€/.exec(modelOpt.label) || [])[0] : null;
-  const priceTxt = px ? ` Coût swap : <strong>${px.trim()}</strong>.` : "";
+  const px = (modelOpt && modelOpt.swapPrice) ? modelOpt.swapPrice + " €" : null;
+  const priceTxt = px ? ` Coût swap : <strong>${px}</strong>.` : "";
   let solution, reason;
   if (part === "modules-4") {
     solution = "Swap";
     reason = "4 modules ou plus → toujours Swap (hors garantie comme couvert*)." + priceTxt;
   } else if (part === "modules-123") {
     if (st === "covered") { solution = "Repair"; reason = "1 à 3 modules, couvert* → Repair."; }
-    else if (st === "og-cheaper") { solution = "Repair"; reason = "Hors garantie — si € répa < " + (px ? px.trim() : "€ swap") + " → Repair." + (px ? " Au-delà, passer en Swap." : ""); }
+    else if (st === "og-cheaper") { solution = "Repair"; reason = "Hors garantie — si € répa < " + (px ? px : "€ swap") + " → Repair." + (px ? " Au-delà, passer en Swap." : ""); }
     else { solution = "Swap"; reason = "Hors garantie, coût réparation > coût swap → Swap." + priceTxt; }
   } else if (part === "mid-display" || part === "rear-display") {
     solution = "Swap";
@@ -1522,6 +1524,14 @@ function buildQuestionnaire() {
         opts = q.optionsByPart[state["swap-generation"]] || [];
       }
       else if (q.optionsByCat) opts = q.optionsByCat[parentVal] || [];
+      // Injecter le prix swap du modèle choisi dans les labels statut:
+      if (q.id === "swap-status" && state["swap-model"]) {
+        const qm = QUESTIONS.find(qq => qq.id === "swap-model");
+        const mOpt = (qm.optionsByModel[state["swap-generation"]] || []).find(o => o.value === state["swap-model"]);
+        if (mOpt && mOpt.swapPrice) {
+          opts = opts.map(o => ({ ...o, label: o.label.replace('{swap}', mOpt.swapPrice + ' €') }));
+        }
+      }
       // Reset si la valeur stockée n'existe plus dans les options filtrées:
       if (state[q.id] && !opts.some(o => o.value === state[q.id])) {
         delete state[q.id];
@@ -1743,6 +1753,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181713"></script>
+  <script src="../assets/js/shared-app.js?v=202609181740"></script>
 </body>
 </html>
