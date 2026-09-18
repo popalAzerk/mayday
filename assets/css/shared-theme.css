@@ -680,3 +680,47 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 .global-floating-nav .header-actions .actions-inner .gemini-toggle .toggle-thumb {
     display: none !important;
 }
+
+/* === XS/iPhone: hub bar + extension = UNE SEULE LIGNE garantie === */
+@media (max-width: 640px) {
+    .global-floating-nav {
+        flex-wrap: nowrap !important;
+        max-width: calc(100vw - 16px);
+        justify-content: flex-start;
+    }
+    .global-floating-nav .nav-item,
+    .global-floating-nav a {
+        padding: 4px !important;
+        font-size: 0 !important;
+    }
+    .global-floating-nav .nav-item .svg-icon,
+    .global-floating-nav a .svg-icon {
+        width: 18px !important;
+        height: 18px !important;
+    }
+    .global-floating-nav .hub-pill-auto,
+    .global-floating-nav .header-actions {
+        width: 36px;
+        height: 36px;
+    }
+    .global-floating-nav .hub-pill-auto .actions-trigger,
+    .global-floating-nav .header-actions .actions-trigger {
+        width: 28px;
+        height: 28px;
+    }
+    .global-floating-nav .header-actions.open .actions-inner .btn-icon,
+    .global-floating-nav .header-actions.open .actions-inner .global-footer-toggle .rgpd-btn,
+    .global-floating-nav .header-actions.open .actions-inner .global-footer-toggle .gemini-toggle,
+    .hub-pill-auto.open .actions-inner .btn-icon,
+    .hub-pill-auto.open .actions-inner .global-footer-toggle .rgpd-btn,
+    .hub-pill-auto.open .actions-inner .global-footer-toggle .gemini-toggle {
+        width: 26px;
+        height: 26px;
+        font-size: 11px;
+    }
+    .global-floating-nav .header-actions.open .actions-inner,
+    .hub-pill-auto.open .actions-inner {
+        gap: 3px;
+        height: 26px;
+    }
+}
