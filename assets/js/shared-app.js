@@ -99,6 +99,9 @@ function initGlobalNav() {
         
         document.body.insertAdjacentHTML('afterbegin', navHtml);
 
+        // Hub bar: icônes seules sur toutes les webapps (desktop + mobile)
+        document.body.classList.add('hub-icons-only');
+
         // Badge EOD: point vert sur l'item Close si l'EOD du jour a été sauvegardé
         try {
             const today = new Date();
