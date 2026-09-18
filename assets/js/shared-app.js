@@ -111,13 +111,16 @@ function initGlobalNav() {
             }
         } catch (e) { /* ignore */ }
 
-        // Pillule hamburger universelle (haut droite) pour les pages SANS
-        // .header-actions (iPhone, Loi, Close): RGPD + dark mode dedans
+        // Pillule hamburger universelle pour les pages SANS .header-actions
+        // (iPhone, Loi, Close): placée DANS la hub bar, tout à droite
         if (!document.querySelector('.header-actions')) {
             const pill = document.createElement('div');
             pill.className = 'header-actions hub-pill-auto';
             pill.innerHTML = '<button class="actions-trigger" onclick="this.parentElement.classList.toggle(\'open\')" title="Menu"><i class="fa-solid fa-bars"></i></button><div class="actions-inner"></div>';
             document.body.appendChild(pill);
+            // Intégrée dans la hub bar, tout à droite
+            const hubNav = document.querySelector('.global-floating-nav');
+            if (hubNav) hubNav.appendChild(pill);
         }
 
         // RGPD + dark mode: dans la pillule hamburger (Mac: .header-actions

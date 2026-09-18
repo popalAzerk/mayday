@@ -300,6 +300,11 @@ html[data-theme="dark"] .gemini-toggle .toggle-thumb {
     }
 }
 
+/* Hub bar: laisse déborder le menu ouvert de la pillule (pas de clipping) */
+.global-floating-nav { overflow: visible; }
+.hub-pill-auto.open { position: absolute; top: 0; right: 0; margin: 0; }
+.global-floating-nav { position: fixed; }
+
 /* Force icons-only mode if body has .hub-icons-only class */
 body.hub-icons-only .global-floating-nav {
     padding: 6px 10px !important;
@@ -383,12 +388,9 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 .global-floating-nav .nav-item { position: relative; }
 
 
-/* === Pillule hamburger universelle (pages sans .header-actions) === */
+/* === Pillule hamburger universelle — DANS la hub bar, tout à droite === */
 .hub-pill-auto {
-    position: fixed;
-    top: 66px;
-    right: 16px;
-    z-index: 10000;
+    position: static;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -397,11 +399,10 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
     padding: 0;
     overflow: hidden;
     border-radius: 50%;
-    background: var(--apple-glass-bg, #fff);
-    backdrop-filter: blur(30px) saturate(200%);
-    -webkit-backdrop-filter: blur(30px) saturate(200%);
-    border: 1px solid var(--glass-border, rgba(0,0,0,.1));
-    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    flex: none;
 }
 .hub-pill-auto .actions-trigger {
     width: 30px;
@@ -423,11 +424,17 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 }
 .hub-pill-auto .actions-inner { display: none; }
 .hub-pill-auto.open {
+    position: relative;   /* le rail se déroule SOUS la pillule, dans le flux de la hub bar */
     width: auto;
     height: auto;
     padding: 5px;
     overflow: visible;
     border-radius: 18px;
+    background: var(--apple-glass-bg, #fff);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid var(--glass-border, rgba(0,0,0,.1));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
     flex-direction: column;
     align-items: center;
     gap: 4px;
@@ -473,5 +480,5 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 }
 .hub-pill-auto .gemini-toggle .toggle-thumb { display: none !important; }
 @media (max-width: 400px) {
-    .hub-pill-auto { top: 60px; right: 10px; }
+    .hub-pill-auto { width: 36px; height: 36px; }
 }
