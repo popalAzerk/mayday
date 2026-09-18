@@ -545,28 +545,31 @@ html[data-theme="dark"] .timeline-container {
   .header-actions .actions-trigger::before {
     content: "";
     display: block;
-    width: 14px;
-    height: 10px;
+    width: 16px;
+    height: 12px;
     position: absolute;
-    top: calc(50% - 5px);
-    left: calc(50% - 7px);   /* centrage géométrique exact sans marges */
+    top: calc(50% - 6px);
+    left: calc(50% - 8px);   /* centrage géométrique exact sans marges */
     background:
-      linear-gradient(var(--text-main), var(--text-main)) 0 0 / 100% 1.6px no-repeat,
-      linear-gradient(var(--text-main), var(--text-main)) 0 4.2px / 100% 1.6px no-repeat,
-      linear-gradient(var(--text-main), var(--text-main)) 0 8.4px / 100% 1.6px no-repeat;
+      linear-gradient(var(--text-main), var(--text-main)) 0 0 / 100% 2px no-repeat,
+      linear-gradient(var(--text-main), var(--text-main)) 0 5px / 100% 2px no-repeat,
+      linear-gradient(var(--text-main), var(--text-main)) 0 10px / 100% 2px no-repeat;
   }
   .header-actions.open .actions-trigger::before {
     background:
-      linear-gradient(#fff, #fff) 0 0 / 100% 1.6px no-repeat,
-      linear-gradient(#fff, #fff) 0 4.2px / 100% 1.6px no-repeat,
-      linear-gradient(#fff, #fff) 0 8.4px / 100% 1.6px no-repeat;
+      linear-gradient(#fff, #fff) 0 0 / 100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 5px / 100% 2px no-repeat,
+      linear-gradient(#fff, #fff) 0 10px / 100% 2px no-repeat;
   }
-  /* État repos: pastille ronde 36px, trigger entièrement visible */
+  /* État repos: pastille ronde assortie au toggle Admin/Genius */
   .header-actions {
-    padding: 4px;
+    padding: 5px;
     max-width: none;
     overflow: hidden;
     border-radius: 50%;
+  }
+  .header-actions .actions-inner {
+    height: 30px;    /* = trigger: les items cachés ne gonflent pas la pillule */
   }
 
   /* Ouverture: barre de menu VERTICALE en overlay — ☰ en haut,
