@@ -131,5 +131,13 @@ function initGlobalNav() {
         } else {
             pillTarget.insertAdjacentHTML('beforeend', footerHtml);
         }
+
+        // UNIFICATION: la pillule ☰ fait partie de la hub bar sur TOUTES les
+        // webapps — déplacée en dernier élément de .global-floating-nav
+        const pillAny = document.querySelector('.header-actions') || document.querySelector('.hub-pill-auto');
+        const hubNav = document.querySelector('.global-floating-nav');
+        if (pillAny && hubNav && pillAny.parentElement !== hubNav) {
+            hubNav.appendChild(pillAny);
+        }
     }
 }

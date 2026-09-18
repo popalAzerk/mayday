@@ -482,3 +482,122 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 @media (max-width: 400px) {
     .hub-pill-auto { width: 36px; height: 36px; }
 }
+
+
+/* === Pillule .header-actions intégrée dans la hub bar (Mac) === */
+.global-floating-nav .header-actions {
+    position: static;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    flex: none;
+}
+.global-floating-nav .header-actions .actions-trigger {
+    width: 30px;
+    height: 30px;
+    flex: none;
+    position: relative;
+    padding: 0;
+    margin: 0;
+    border: none;
+    border-radius: 50%;
+    background: transparent;
+    color: var(--apple-text, #1d1d1f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-size: 0;
+}
+.global-floating-nav .header-actions .actions-trigger i {
+    display: block !important;
+    font-size: 14px;
+    line-height: 1;
+}
+.global-floating-nav .header-actions .actions-inner { display: none; }
+.global-floating-nav .header-actions.open {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: auto;
+    height: auto;
+    padding: 5px;
+    overflow: visible;
+    border-radius: 18px;
+    background: var(--apple-glass-bg, #fff);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid var(--glass-border, rgba(0,0,0,.1));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    z-index: 10001;
+}
+.global-floating-nav .header-actions.open .actions-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    max-width: none;
+    width: 30px;
+    height: auto;
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
+.global-floating-nav .header-actions .actions-inner .btn-icon,
+.global-floating-nav .header-actions .actions-inner .global-footer-toggle .rgpd-btn,
+.global-floating-nav .header-actions .actions-inner .global-footer-toggle .gemini-toggle {
+    width: 30px;
+    height: 30px;
+    padding: 0;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-size: 13px;
+    line-height: 1;
+}
+.global-floating-nav .header-actions .actions-inner .global-footer-toggle {
+    position: static;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    border-top: 1px solid var(--glass-border, rgba(0,0,0,0.1));
+    margin-top: 2px;
+    padding-top: 4px;
+    width: 30px;
+    box-shadow: none;
+    background: transparent;
+}
+.global-floating-nav .header-actions .actions-inner .rgpd-btn svg,
+.global-floating-nav .header-actions .actions-inner .gemini-toggle svg {
+    fill: var(--apple-text, #1d1d1f);
+}
+.global-floating-nav .header-actions .actions-inner .gemini-toggle .toggle-thumb { display: none !important; }
+.global-floating-nav .header-actions .actions-trigger::before {
+    content: "";
+    display: block;
+    width: 16px;
+    height: 12px;
+    position: absolute;
+    top: calc(50% - 6px);
+    left: calc(50% - 8px);
+    background:
+      linear-gradient(var(--apple-text, #1d1d1f), var(--apple-text, #1d1d1f)) 0 0 / 100% 2px no-repeat,
+      linear-gradient(var(--apple-text, #1d1d1f), var(--apple-text, #1d1d1f)) 0 5px / 100% 2px no-repeat,
+      linear-gradient(var(--apple-text, #1d1d1f), var(--apple-text, #1d1d1f)) 0 10px / 100% 2px no-repeat;
+}
