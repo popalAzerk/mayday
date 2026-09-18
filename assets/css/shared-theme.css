@@ -302,7 +302,29 @@ html[data-theme="dark"] .gemini-toggle .toggle-thumb {
 
 /* Hub bar: laisse déborder le menu ouvert de la pillule (pas de clipping) */
 .global-floating-nav { overflow: visible; }
-.hub-pill-auto.open { position: absolute; top: 100%; right: 0; margin: 6px 0 0 0; }
+.hub-pill-auto.open {
+    position: relative;   /* reste DANS la hub bar: elle s'agrandit au lieu de rétrécir */
+    width: auto;
+    height: auto;
+    padding: 5px;
+    overflow: visible;
+    border-radius: 18px;
+    background: var(--apple-glass-bg, #fff);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid var(--glass-border, rgba(0,0,0,.1));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+/* Le rail se déroule SOUS la barre: le conteneur .open ne contient que le
+   trigger; le rail (actions-inner) est placé en absolu sous la pillule */
+.hub-pill-auto.open .actions-inner {
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+}
 .global-floating-nav { position: fixed; }
 
 /* Force icons-only mode if body has .hub-icons-only class */
@@ -423,25 +445,7 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
     line-height: 1;
 }
 .hub-pill-auto .actions-inner { display: none; }
-.hub-pill-auto.open {
-    position: absolute;   /* rail déroulé SOUS la hub bar, ne la recouvre pas */
-    top: 100%;
-    right: 0;
-    margin: 6px 0 0 0;
-    width: auto;
-    height: auto;
-    padding: 5px;
-    overflow: visible;
-    border-radius: 18px;
-    background: var(--apple-glass-bg, #fff);
-    backdrop-filter: blur(30px) saturate(200%);
-    -webkit-backdrop-filter: blur(30px) saturate(200%);
-    border: 1px solid var(--glass-border, rgba(0,0,0,.1));
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-    flex-direction: column;
-    align-items: center;
-    gap: 4px;
-}
+
 .hub-pill-auto.open .actions-inner {
     display: flex;
     flex-direction: column;
@@ -529,10 +533,39 @@ h1, h2, h3 { font-weight: 600; letter-spacing: -0.5px; }
 }
 .global-floating-nav .header-actions .actions-inner { display: none; }
 .global-floating-nav .header-actions.open {
+    position: relative;   /* la pillule reste dans la hub bar */
+    width: 40px;
+    height: 40px;
+    overflow: visible;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+}
+.global-floating-nav .header-actions.open .actions-inner {
     position: absolute;
-    top: 100%;
+    top: calc(100% + 6px);
     right: 0;
-    margin: 6px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 5px;
+    border-radius: 18px;
+    background: var(--apple-glass-bg, #fff);
+    backdrop-filter: blur(30px) saturate(200%);
+    -webkit-backdrop-filter: blur(30px) saturate(200%);
+    border: 1px solid var(--glass-border, rgba(0,0,0,.1));
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    width: 30px;
+    max-width: none;
+    height: auto;
+    opacity: 1;
+    transform: none;
+    transition: none;
+}
     width: auto;
     height: auto;
     padding: 5px;
