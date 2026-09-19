@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190907">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190937">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -746,12 +746,12 @@ function getResult(s) {
     } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
       title = "Éligible garantie légale prolongée";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
-    } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
-      title = "Hors garantie légale — réparation payante possible (droit à la réparation UE)";
-      summary = `Garantie légale <strong>expirée</strong> (2 ans, aucune réparation ni remplacement antérieur). Le droit à la réparation (directive 2024/1799) oblige Apple à proposer la réparation en tant que fabricant d'un produit Annexe II — <strong>payante</strong>, au tarif hors garantie. Une réparation effectuée bénéficie de <strong>90 jours de garantie</strong> sur celle-ci. Coût : <strong>${storeCost}</strong>.`;
     } else if (s["prior-repair"] === "apple-repair" && isDefect) {
       title = "Garantie prolongée ? — vérifier la date de la réparation";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
+    } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
+      title = "Hors garantie légale — réparation payante possible (droit à la réparation UE)";
+      summary = `Garantie légale <strong>expirée</strong> (2 ans, ${s["prior-repair"] === "third-party" ? 'réparation antérieure par un tiers — la garantie légale n\'a pas été prolongée par Apple' : s["prior-repair"] === "self" ? 'auto-réparation antérieure (Self Service Repair)' : 'aucune réparation ni remplacement antérieur'}). Le droit à la réparation (directive 2024/1799) oblige Apple à proposer la réparation en tant que fabricant d'un produit Annexe II — <strong>payante</strong>, au tarif hors garantie. Une réparation effectuée bénéficie de <strong>90 jours de garantie</strong> sur celle-ci. Coût : <strong>${storeCost}</strong>.`;
     } else {
       title = "Réparation possible en Apple Store";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
@@ -1802,6 +1802,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609190907"></script>
+  <script src="../assets/js/shared-app.js?v=202609190937"></script>
 </body>
 </html>
