@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190858">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190907">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -1551,8 +1551,10 @@ function buildQuestionnaire() {
       if (q.optionsByGen) opts = q.optionsByGen[parentVal] || [];
       else if (q.optionsByModel) opts = q.optionsByModel[parentVal] || [];
       else if (q.optionsByPart) {
-        // La pièce dépend de la GÉNÉRATION (pas du modèle précis):
-        opts = q.optionsByPart[state["swap-generation"]] || [];
+        // swap-part: clé = GÉNÉRATION (le modèle ne détermine que le
+        // prix). swap-status: clé = PIÈCE choisie (parent direct):
+        const partKey = (q.id === "swap-part") ? state["swap-generation"] : parentVal;
+        opts = q.optionsByPart[partKey] || [];
       }
       else if (q.optionsByCat) opts = q.optionsByCat[parentVal] || [];
       // Injecter le prix swap du modèle choisi dans les labels statut:
@@ -1601,7 +1603,7 @@ function buildQuestionnaire() {
             const pv = state[qq.depends];
             if (qq.optionsByGen) pool = (qq.optionsByGen[pv] || []);
             else if (qq.optionsByModel) pool = (qq.optionsByModel[pv] || []);
-            else if (qq.optionsByPart) pool = (qq.optionsByPart[state["swap-generation"]] || []);
+            else if (qq.optionsByPart) pool = (qq.optionsByPart[qq.id === "swap-part" ? state["swap-generation"] : state[qq.depends]] || []);
             else if (qq.optionsByCat) pool = (qq.optionsByCat[pv] || []);
           }
           if (qq.id === "swap-status" && state["swap-model"]) {
@@ -1800,6 +1802,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609190858"></script>
+  <script src="../assets/js/shared-app.js?v=202609190907"></script>
 </body>
 </html>
