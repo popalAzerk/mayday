@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609191942">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609192131">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -702,8 +702,8 @@ function getResult(s) {
     // Réparation antérieure sous garantie: prolongation 1 an possible
     // selon la date de la réparation (art. 10(2) dir. 2019/771):
     canStore = true;
-    storeReason = "Appareil réparé sous garantie — la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (Service Public F11094 ; art. 16 directive 2024/1799 — ventes à partir du 31/07/2026). Vérifier la date de celle-ci : si elle date de moins de 12 mois, la <strong>garantie légale prolongée</strong> reste à la charge du <strong>vendeur d'origine</strong> (pas d'Apple) — le client doit d'abord s'adresser au vendeur ; au-delà, hors garantie (payant + 90 j). Si la panne est une <strong>rechute du même défaut</strong> réparé par Apple, la garantie Apple sur la réparation (90 jours) peut couvrir la remise en état chez Apple.";
-    storeCost = "Gratuit via le vendeur si réparation < 12 mois, sinon payant";
+    storeReason = "Appareil réparé sous garantie — la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (Service Public F11094 ; art. 16 directive 2024/1799 — ventes à partir du 31/07/2026). <strong>Action en Apple Store :</strong> si la panne est une <strong>rechute du même défaut</strong> réparé par Apple, la garantie Apple sur la réparation (90 jours) couvre la remise en état — traiter en magasin. Sinon, si la réparation date de moins de 12 mois : la garantie légale prolongée incombe au <strong>vendeur d\'origine</strong> (pas à Apple) → <strong>orienter le client vers son vendeur</strong> avec sa facture. Réparation plus ancienne : hors garantie (payant + 90 j).";
+    storeCost = "Rechute même défaut : gratuit ici · Nouveau défaut < 12 mois : chez le vendeur · Sinon payant";
   }
 
   // --- VERDICT PRINCIPAL ---
@@ -1788,6 +1788,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609191942"></script>
+  <script src="../assets/js/shared-app.js?v=202609192131"></script>
 </body>
 </html>
