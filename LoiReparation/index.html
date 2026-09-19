@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190828">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190841">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -695,10 +695,15 @@ function getResult(s) {
       canStore = false;
       // Pas Apple Store — le vendeur d'origine est responsable
     }
-  } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
+  } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect && !["apple-replace", "apple-repair"].includes(s["prior-repair"])) {
+    // Garantie légale EXPIRÉE (> 2 ans sans réparation antérieure). Le
+    // droit à la réparation (directive 2024/1799, Annexe II) oblige le
+    // fabricant à proposer la réparation à prix raisonnable — ce n'est
+    // PAS une prise en charge gratuite. Réparation hors garantie →
+    // 90 jours de garantie Apple sur la réparation.
     canStore = true;
-    storeReason = `Apple est le <strong>fabricant</strong> — droit à la réparation (directive 2024/1799). ${p.name} dans l'Annexe II (règlement ${p.reg}).`;
-    storeCost = "Payant — prix raisonnable";
+    storeReason = `<strong>Garantie légale expirée</strong> (2 ans — aucune réparation ni remplacement antérieur). Apple reste le <strong>fabricant</strong> d'un produit Annexe II (directive 2024/1799) : elle doit proposer la <strong>réparation payante</strong> à un prix raisonnable.`;
+    storeCost = "Payant — tarif hors garantie, + 90 j de garantie";
   } else if (s["prior-repair"] === "apple-replace" && isDefect) {
     canStore = true;
     storeReason = "Appareil remplacé sous garantie — garantie légale <strong>renouvelée 2 ans</strong>. Réparation gratuite.";
@@ -711,8 +716,9 @@ function getResult(s) {
 
   // --- VERDICT PRINCIPAL ---
   let verdict, title, summary;
+  const isPayantUE = isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect && !(s["prior-repair"] === "apple-replace" || s["prior-repair"] === "apple-repair" && isUnderWarranty);
   if (canStore) {
-    verdict = "eligible";
+    verdict = isPayantUE ? "partial" : "eligible";
     if (isYear1 && isDefect && isAppleVendor) {
       title = "Éligible garantie constructeur + garantie légale";
       summary = `<strong>Garantie constructeur Apple</strong> (1 an) + <strong>garantie légale de conformité</strong> (2 ans, vendeur). Apple Store est vendeur et fabricant — réparation gratuite. Coût : <strong>${storeCost}</strong>.`;
@@ -722,15 +728,15 @@ function getResult(s) {
     } else if (isYear2 && isDefect && isAppleVendor) {
       title = "Éligible garantie légale de conformité";
       summary = `<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le vendeur. Garantie constructeur expirée (1 an). Le client doit prouver l'antériorité du défaut. Coût : <strong>${storeCost}</strong>.`;
-    } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
-      title = "Éligible droit à la réparation — Loi européenne";
-      summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
     } else if (s["prior-repair"] === "apple-replace" && isDefect) {
       title = "Éligible garantie légale renouvelée";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
     } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
       title = "Éligible garantie légale prolongée";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
+    } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
+      title = "Hors garantie légale — réparation payante possible (droit à la réparation UE)";
+      summary = `Garantie légale <strong>expirée</strong> (2 ans, aucune réparation ni remplacement antérieur). Le droit à la réparation (directive 2024/1799) oblige Apple à proposer la réparation en tant que fabricant d'un produit Annexe II — <strong>payante</strong>, au tarif hors garantie. Une réparation effectuée bénéficie de <strong>90 jours de garantie</strong> sur celle-ci. Coût : <strong>${storeCost}</strong>.`;
     } else {
       title = "Réparation possible en Apple Store";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
@@ -857,8 +863,8 @@ function getResult(s) {
     revendeurCost = "Gratuit (si pro)";
   } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
     revendeurEligible = true;
-    revendeurReason = `Le <strong>fabricant</strong> (Apple) doit réparer ${p.name} (Annexe II) à prix raisonnable. Le revendeur peut servir d'intermédiaire.`;
-    revendeurCost = "Payant — prix raisonnable";
+    revendeurReason = `<strong>Garantie légale expirée</strong> (2 ans sans réparation antérieure) — le vendeur n'est plus responsable. En tant que <strong>fabricant</strong> d'un produit Annexe II, Apple doit proposer la réparation <strong>payante</strong> à prix raisonnable (directive 2024/1799). Le revendeur peut servir d'intermédiaire.`;
+    revendeurCost = "Payant — tarif hors garantie";
   }
 
   if (revendeurEligible) {
@@ -1780,6 +1786,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609190828"></script>
+  <script src="../assets/js/shared-app.js?v=202609190841"></script>
 </body>
 </html>
