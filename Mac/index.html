@@ -9,7 +9,7 @@
     <!-- Shared Master Theme CSS (for dark mode + basic vars if needed) -->
     <link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181236">
     <!-- Local specific Dashboard styles -->
-    <link rel="stylesheet" href="./css/styles.css?v=202609181230">
+    <link rel="stylesheet" href="./css/styles.css?v=202609190818">
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🛠️</text></svg>">
 
 
@@ -114,26 +114,7 @@ body.mode-genius .dashboard-wrapper {
                 <button id="mode-genius" class="mode-btn" onclick="setAppMode('genius')">Genius</button>
             </div>
         </div>
-        <div class="header-actions" id="header-actions">
-            <button class="actions-trigger" onclick="toggleHeaderActions(this)" title="Actions" aria-expanded="false">
-                <i class="fa-solid fa-bars"></i>
-            </button>
-            <div class="actions-inner">
-            <!-- Gemini Toggle injected by shared-app.js -->
-            <button onclick="openModal('dashboard-modal')" class="btn btn-icon" title="Dashboard">
-                <i class="fa-solid fa-chart-pie"></i>
-            </button>
-            <button onclick="openHistoryModal()" class="btn btn-icon" title="Historique 7 jours">
-                <i class="fa-solid fa-clock-rotate-left"></i>
-            </button>
-            <button onclick="saveSchedule()" class="btn btn-icon btn-primary" title="Cmd+S pour Sauvegarder">
-                <i class="fa-solid fa-save"></i>
-            </button>
-            <button onclick="resetCurrentSelection()" class="btn btn-icon" title="Reset">
-                <i class="fa-solid fa-house"></i>
-            </button>
-            </div>
-        </div>
+        <!-- Outils déplacés dans la carte Planning : hub bar allégée -->
     </header>
 
     <!-- Main Layout (Bento Grid) -->
@@ -208,9 +189,23 @@ body.mode-genius .dashboard-wrapper {
 
         <!-- Right Panel: Scheduled Repairs & Planning -->
         <div class="bento-panel" id="planning-panel">
-            <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center;">
+            <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; gap: 8px;">
                 <h3 style="margin:0;">Planning</h3>
                 <span id="repair-count" style="background: var(--apple-blue); color: white; border-radius: 12px; padding: 2px 8px; font-size: 12px;">0</span>
+                <div style="display: flex; align-items: center; gap: 6px; margin-left: auto;">
+                    <button onclick="openModal('dashboard-modal')" class="btn btn-icon" title="Dashboard">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </button>
+                    <button onclick="openHistoryModal()" class="btn btn-icon" title="Historique 7 jours">
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+                    </button>
+                    <button onclick="saveSchedule()" class="btn btn-icon btn-primary" title="Cmd+S pour Sauvegarder">
+                        <i class="fa-solid fa-save"></i>
+                    </button>
+                    <button onclick="resetCurrentSelection()" class="btn btn-icon" title="Reset">
+                        <i class="fa-solid fa-house"></i>
+                    </button>
+                </div>
             </div>
             <div id="scheduled-repairs-container" class="panel-body" style="background: rgba(120, 120, 120, 0.02)">
             </div>
@@ -286,15 +281,15 @@ body.mode-genius .dashboard-wrapper {
 
     <!-- Scripts -->
     <!-- Shared App injects Global Nav and manages Dark Mode -->
-    <script src="../assets/js/shared-app.js?v=202609181236"></script>
-    <script src="./js/config.js"></script>
-    <script src="./js/mac-guides.js"></script>
-    <script src="./js/diagnostics-data.js"></script>
-    <script src="./data/mac-data-raw.js"></script>
-    <script src="./js/part-diagnostics.js"></script>
-    <script src="./js/state.js"></script>
-    <script src="./js/render.js"></script>
-    <script src="./js/handlers.js"></script>
-    <script src="./js/app.js"></script>
+    <script src="../assets/js/shared-app.js?v=202609190818"></script>
+    <script src="./js/config.js?v=202609190818"></script>
+    <script src="./js/mac-guides.js?v=202609190818"></script>
+    <script src="./js/diagnostics-data.js?v=202609190818"></script>
+    <script src="./data/mac-data-raw.js?v=202609190818"></script>
+    <script src="./js/part-diagnostics.js?v=202609190818"></script>
+    <script src="./js/state.js?v=202609190818"></script>
+    <script src="./js/render.js?v=202609190818"></script>
+    <script src="./js/handlers.js?v=202609190818"></script>
+    <script src="./js/app.js?v=202609190818"></script>
 </body>
 </html>

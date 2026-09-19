@@ -499,33 +499,6 @@ window.resetDay = function () {
   }
 };
 
-// Pillule d'actions à ouverture dynamique (Mac Admin)
-window.toggleHeaderActions = function (btn) {
-  const pill = document.getElementById('header-actions');
-  if (!pill) return;
-  const open = pill.classList.toggle('open');
-  if (btn) btn.setAttribute('aria-expanded', open);
-};
-// Fermeture au clic extérieur + Échap
-document.addEventListener('click', function (e) {
-  const pill = document.getElementById('header-actions');
-  if (pill && pill.classList.contains('open') && !pill.contains(e.target)) {
-    pill.classList.remove('open');
-    const t = pill.querySelector('.actions-trigger');
-    if (t) t.setAttribute('aria-expanded', 'false');
-  }
-});
-document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') {
-    const pill = document.getElementById('header-actions');
-    if (pill && pill.classList.contains('open')) {
-      pill.classList.remove('open');
-      const t = pill.querySelector('.actions-trigger');
-      if (t) t.setAttribute('aria-expanded', 'false');
-    }
-  }
-});
-
 // Keyboard Shortcuts
 document.addEventListener('keydown', function(event) {
     const activeModal = document.querySelector('.modal-overlay.active, .modal-overlay[style*="display: flex"]');

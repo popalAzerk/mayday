@@ -8,28 +8,6 @@
 // Initialize Application
 window.init = function () {
     try {
-        // Reloger les boutons RGPD + thème (injectés par shared-app.js en
-        // fixed bottom-right) DANS la pillule d'actions du header — sinon ils
-        // chevauchent le panneau Planning.
-        (function moveFooterToggles() {
-            const ft = document.querySelector('.global-footer-toggle');
-            const actions = document.querySelector('.header-actions');
-            if (ft && actions) {
-                const trig = actions.querySelector('.actions-trigger');
-                const inner = actions.querySelector('.actions-inner');
-                if (inner) inner.appendChild(ft); else if (trig) trig.after(ft); else actions.appendChild(ft);
-            } else if (!ft) {
-                // shared-app.js attend DOMContentLoaded: réessayer brièvement
-                let tries = 0;
-                const t = setInterval(() => {
-                    const f = document.querySelector('.global-footer-toggle');
-                    const ac = document.querySelector('.header-actions');
-                    if (f && ac) { const inner = ac.querySelector('.actions-inner'); if (inner) inner.appendChild(f); else { const tr = ac.querySelector('.actions-trigger'); if (tr) tr.after(f); else ac.appendChild(f); } clearInterval(t); }
-                    else if (++tries > 20) clearInterval(t);
-                }, 100);
-            }
-        })();
-
         // Initialize DOM elements
         window.initElements();
     window.setAppMode(window.appMode);
