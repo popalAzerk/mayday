@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609181925">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190828">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -1521,7 +1521,12 @@ function buildQuestionnaire() {
     let opts = q.options;
     if (q.depends) {
       const parentVal = state[q.depends];
-      if (!parentVal) return; // le parent d'abord
+      if (!parentVal) {
+        // Parent réinitialisé → l'enfant aussi (reset en chaîne, sinon
+        // des réponses orphelines polluent le verdict):
+        delete state[q.id];
+        return;
+      }
       if (q.optionsByGen) opts = q.optionsByGen[parentVal] || [];
       else if (q.optionsByModel) opts = q.optionsByModel[parentVal] || [];
       else if (q.optionsByPart) {
@@ -1568,7 +1573,24 @@ function buildQuestionnaire() {
         const v2 = document.getElementById(qq.id + '-value');
         if (s2 && v2 && state[qq.id]) {
           s2.value = state[qq.id];
-          const found = (qq.options || (qq.optionsByCat && qq.optionsByCat[state[qq.depends]]) || (qq.optionsByGen && qq.optionsByGen[state[qq.depends]]) || (qq.optionsByModel && qq.optionsByModel[state[qq.depends]]) || (qq.optionsByPart && qq.optionsByPart[state[qq.depends]]) || []).find(o => o.value === state[qq.id]);
+          // Source d'options = la MÊME logique que le build (sinon label
+          // faux ou {swap} non remplacé):
+          let pool = qq.options;
+          if (qq.depends) {
+            const pv = state[qq.depends];
+            if (qq.optionsByGen) pool = (qq.optionsByGen[pv] || []);
+            else if (qq.optionsByModel) pool = (qq.optionsByModel[pv] || []);
+            else if (qq.optionsByPart) pool = (qq.optionsByPart[state["swap-generation"]] || []);
+            else if (qq.optionsByCat) pool = (qq.optionsByCat[pv] || []);
+          }
+          if (qq.id === "swap-status" && state["swap-model"]) {
+            const qm = QUESTIONS.find(x => x.id === "swap-model");
+            const mOpt = (qm.optionsByModel[state["swap-generation"]] || []).find(o => o.value === state["swap-model"]);
+            if (mOpt && mOpt.swapPrice) {
+              pool = pool.map(o => ({ ...o, label: o.label.replace('{swap}', mOpt.swapPrice + ' €') }));
+            }
+          }
+          const found = (pool || []).find(o => o.value === state[qq.id]);
           if (found) v2.textContent = found.label;
         }
       });
@@ -1758,6 +1780,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609181925"></script>
+  <script src="../assets/js/shared-app.js?v=202609190828"></script>
 </body>
 </html>
