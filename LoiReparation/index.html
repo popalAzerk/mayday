@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190841">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190858">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -685,16 +685,13 @@ function getResult(s) {
       storeReason = "<strong>Garantie constructeur Apple</strong> (1 an) — Apple répare gratuitement quel que soit le lieu d'achat. La garantie légale reste à la charge du vendeur d'origine, mais le client peut choisir l'Apple Store.";
     }
     storeCost = "Gratuit";
-  } else if (isYear2 && isDefect) {
-    // 2ème année : seule la garantie légale s'applique (vendeur)
-    if (isAppleVendor) {
-      canStore = true;
-      storeReason = "<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le <strong>vendeur</strong>. Le client doit prouver que le défaut existait à la livraison. Garantie constructeur expirée (1 an).";
-      storeCost = "Gratuit";
-    } else {
-      canStore = false;
-      // Pas Apple Store — le vendeur d'origine est responsable
-    }
+  } else if (isYear2 && isDefect && isAppleVendor) {
+    // 2ème année : seule la garantie légale s'applique (vendeur).
+    // Sans vendeur Apple → ne PAS consommer la chaîne: les branches
+    // apple-replace/apple-repair doivent pouvoir s'évaluer.
+    canStore = true;
+    storeReason = "<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le <strong>vendeur</strong>. Le client doit prouver que le défaut existait à la livraison. Garantie constructeur expirée (1 an).";
+    storeCost = "Gratuit";
   } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect && !["apple-replace", "apple-repair"].includes(s["prior-repair"])) {
     // Garantie légale EXPIRÉE (> 2 ans sans réparation antérieure). Le
     // droit à la réparation (directive 2024/1799, Annexe II) oblige le
@@ -705,20 +702,35 @@ function getResult(s) {
     storeReason = `<strong>Garantie légale expirée</strong> (2 ans — aucune réparation ni remplacement antérieur). Apple reste le <strong>fabricant</strong> d'un produit Annexe II (directive 2024/1799) : elle doit proposer la <strong>réparation payante</strong> à un prix raisonnable.`;
     storeCost = "Payant — tarif hors garantie, + 90 j de garantie";
   } else if (s["prior-repair"] === "apple-replace" && isDefect) {
+    // Le remplacement renouvelle la garantie légale 2 ans À COMPTER du
+    // remplacement. Si l'appareil (remplacé) a moins de 2 ans → gratuit.
+    // Au-delà → amber: la date réelle du remplacement décide.
     canStore = true;
-    storeReason = "Appareil remplacé sous garantie — garantie légale <strong>renouvelée 2 ans</strong>. Réparation gratuite.";
-    storeCost = "Gratuit";
+    if (isUnderWarranty) {
+      storeReason = "Appareil remplacé sous garantie — garantie légale <strong>renouvelée 2 ans</strong> à compter du remplacement. Réparation gratuite.";
+      storeCost = "Gratuit";
+    } else {
+      storeReason = "Appareil remplacé sous garantie — la garantie légale est <strong>renouvelée 2 ans à compter du remplacement</strong>. Vérifier la date du remplacement : si elle date de moins de 2 ans, réparation gratuite ; au-delà, hors garantie (réparation payante + 90 j de garantie).";
+      storeCost = "Gratuit si remplacement < 2 ans, sinon payant";
+    }
   } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
     canStore = true;
     storeReason = "Appareil réparé sous garantie — garantie légale <strong>prolongée d'un an</strong>. Réparation gratuite.";
     storeCost = "Gratuit";
+  } else if (s["prior-repair"] === "apple-repair" && isDefect && (s.age === "2-5")) {
+    // Réparation antérieure sous garantie: prolongation 1 an possible
+    // selon la date de la réparation (art. 10(2) dir. 2019/771):
+    canStore = true;
+    storeReason = "Appareil réparé sous garantie — la garantie légale est <strong>prolongée d'un an</strong> à compter de la réparation. Vérifier la date de celle-ci : si elle date de moins d'un an, réparation gratuite ; au-delà, hors garantie (payant + 90 j).";
+    storeCost = "Gratuit si réparation < 1 an, sinon payant";
   }
 
   // --- VERDICT PRINCIPAL ---
   let verdict, title, summary;
-  const isPayantUE = isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect && !(s["prior-repair"] === "apple-replace" || s["prior-repair"] === "apple-repair" && isUnderWarranty);
+  const isPayantUE = isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect && !["apple-replace", "apple-repair"].includes(s["prior-repair"]);
+  const isDateCheck = isDefect && ((s["prior-repair"] === "apple-replace" && !isUnderWarranty) || (s["prior-repair"] === "apple-repair" && s.age === "2-5"));
   if (canStore) {
-    verdict = isPayantUE ? "partial" : "eligible";
+    verdict = (isPayantUE || isDateCheck) ? "partial" : "eligible";
     if (isYear1 && isDefect && isAppleVendor) {
       title = "Éligible garantie constructeur + garantie légale";
       summary = `<strong>Garantie constructeur Apple</strong> (1 an) + <strong>garantie légale de conformité</strong> (2 ans, vendeur). Apple Store est vendeur et fabricant — réparation gratuite. Coût : <strong>${storeCost}</strong>.`;
@@ -729,7 +741,7 @@ function getResult(s) {
       title = "Éligible garantie légale de conformité";
       summary = `<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le vendeur. Garantie constructeur expirée (1 an). Le client doit prouver l'antériorité du défaut. Coût : <strong>${storeCost}</strong>.`;
     } else if (s["prior-repair"] === "apple-replace" && isDefect) {
-      title = "Éligible garantie légale renouvelée";
+      title = isUnderWarranty ? "Éligible garantie légale renouvelée" : "Garantie renouvelée ? — vérifier la date du remplacement";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
     } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
       title = "Éligible garantie légale prolongée";
@@ -737,6 +749,9 @@ function getResult(s) {
     } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
       title = "Hors garantie légale — réparation payante possible (droit à la réparation UE)";
       summary = `Garantie légale <strong>expirée</strong> (2 ans, aucune réparation ni remplacement antérieur). Le droit à la réparation (directive 2024/1799) oblige Apple à proposer la réparation en tant que fabricant d'un produit Annexe II — <strong>payante</strong>, au tarif hors garantie. Une réparation effectuée bénéficie de <strong>90 jours de garantie</strong> sur celle-ci. Coût : <strong>${storeCost}</strong>.`;
+    } else if (s["prior-repair"] === "apple-repair" && isDefect) {
+      title = "Garantie prolongée ? — vérifier la date de la réparation";
+      summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
     } else {
       title = "Réparation possible en Apple Store";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
@@ -1639,8 +1654,7 @@ function getResultBonus(s) {
       cards: [
         { title: "Que faire en Genius Bar", tag: "blue", tagLabel: "Procédure", body: `
           <p><strong>Orienter le client vers le vendeur</strong> (Apple si acheté sur apple.com/Apple Store, sinon l'enseigne d'achat) avec sa facture. La présomption de défaut est renforcée les 12 premiers mois (art. L217-10, 24 mois pour les biens neufs à compter du 1er janvier 2026).</p>
-          <p>Si le vendeur refuse ou que le client veut accélérer : la réparation payante hors garantie reste possible, mais <strong>sans bonus</strong> tant que la garantie légale court.</p>
-          ${RETRACT_LAW}` } ] };
+          <p>Si le vendeur refuse ou que le client veut accélérer : la réparation payante hors garantie reste possible, mais <strong>sans bonus</strong> tant que la garantie légale court.</p>` } ] };
   }
   if (bw === "garantie-constructeur") {
     return { verdict: "not-eligible", title: "Sous garantie constructeur / AppleCare+ — prise en charge gratuite",
@@ -1786,6 +1800,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609190841"></script>
+  <script src="../assets/js/shared-app.js?v=202609190858"></script>
 </body>
 </html>
