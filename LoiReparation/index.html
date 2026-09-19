@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609191548">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609191555">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -671,7 +671,7 @@ function getResult(s) {
     // Sans vendeur Apple → ne PAS consommer la chaîne: les branches
     // apple-replace/apple-repair doivent pouvoir s'évaluer.
     canStore = true;
-    storeReason = "<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le <strong>vendeur</strong>. Le client doit prouver que le défaut existait à la livraison. Garantie constructeur expirée (1 an).";
+    storeReason = "<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le <strong>vendeur</strong>. Présomption d'antériorité du défaut pendant <strong>24 mois</strong> pour un bien neuf (art. L217-7). Garantie constructeur expirée (1 an).";
     storeCost = "Gratuit";
   } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect && !["apple-replace", "apple-repair"].includes(s["prior-repair"])) {
     // Garantie légale EXPIRÉE (> 2 ans sans réparation antérieure). Le
@@ -696,13 +696,13 @@ function getResult(s) {
     }
   } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
     canStore = true;
-    storeReason = "Appareil réparé sous garantie — garantie légale <strong>prolongée</strong> (+6 mois en France, L217-13 — 12 mois UE pour les ventes à partir du 31/07/2026). Réparation gratuite.";
+    storeReason = "Appareil réparé sous garantie — garantie légale <strong>prolongée de 12 mois</strong> (Service Public F11094 ; art. 16 directive 2024/1799 — pour les ventes à partir du 31/07/2026). Réparation gratuite.";
     storeCost = "Gratuit";
   } else if (s["prior-repair"] === "apple-repair" && isDefect && (s.age === "2-5")) {
     // Réparation antérieure sous garantie: prolongation 1 an possible
     // selon la date de la réparation (art. 10(2) dir. 2019/771):
     canStore = true;
-    storeReason = "Appareil réparé sous garantie — la garantie légale est <strong>prolongée</strong> à compter de la réparation (+6 mois en France, L217-13 — 12 mois UE pour les ventes à partir du 31/07/2026). Vérifier la date de celle-ci : si elle date de moins de 6 mois, réparation gratuite ; au-delà, hors garantie (payant + 90 j).";
+    storeReason = "Appareil réparé sous garantie — la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (Service Public F11094 ; art. 16 directive 2024/1799 — ventes à partir du 31/07/2026). Vérifier la date de celle-ci : si elle date de moins de 12 mois, réparation gratuite ; au-delà, hors garantie (payant + 90 j).";
     storeCost = "Gratuit si réparation < 1 an, sinon payant";
   }
 
@@ -720,7 +720,7 @@ function getResult(s) {
       summary = `<strong>Garantie constructeur Apple</strong> (1 an) — Apple répare gratuitement quel que soit le lieu d'achat. La garantie légale reste à la charge du vendeur d'origine. Coût : <strong>${storeCost}</strong>.`;
     } else if (isYear2 && isDefect && isAppleVendor) {
       title = "Éligible garantie légale de conformité";
-      summary = `<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le vendeur. Garantie constructeur expirée (1 an). Le client doit prouver l'antériorité du défaut. Coût : <strong>${storeCost}</strong>.`;
+      summary = `<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le vendeur. Garantie constructeur expirée (1 an). Présomption d'antériorité pendant 24 mois pour un bien neuf (art. L217-7). Coût : <strong>${storeCost}</strong>.`;
     } else if (s["prior-repair"] === "apple-replace" && isDefect) {
       title = isUnderWarranty ? "Éligible garantie légale renouvelée" : "Garantie renouvelée ? — vérifier la date du remplacement";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
@@ -732,7 +732,7 @@ function getResult(s) {
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
     } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
       title = "Hors garantie légale — réparation payante possible (droit à la réparation UE)";
-      summary = `Garantie légale <strong>expirée</strong> (2 ans, ${s["prior-repair"] === "third-party" ? 'réparation antérieure par un tiers — la garantie légale n\'a pas été prolongée par Apple' : s["prior-repair"] === "self" ? 'auto-réparation antérieure (Self Service Repair)' : 'aucune réparation ni remplacement antérieur'}). Le droit à la réparation (directive 2024/1799, art. 5) demande au fabricant d'un produit Annexe II de proposer la réparation à <strong>prix raisonnable</strong> (gratuite ou payante — ici hors garantie, au tarif Apple). Nuance : la transposition française n'étant pas notifiée au 19/09/2026, cette obligation n'est pas encore opposable en droit français — Apple peut l'appliquer à titre commercial. Une réparation effectuée bénéficie de <strong>90 jours de garantie</strong> sur celle-ci. Coût : <strong>${storeCost}</strong>.`;
+      summary = `Garantie légale <strong>expirée</strong> (2 ans, ${s["prior-repair"] === "third-party" ? 'réparation antérieure par un tiers — la garantie légale n\'a pas été prolongée par Apple' : s["prior-repair"] === "self" ? 'auto-réparation antérieure (Self Service Repair)' : 'aucune réparation ni remplacement antérieur'}). Le droit à la réparation (directive 2024/1799, art. 5) demande au fabricant d'un produit Annexe II de proposer la réparation à <strong>prix raisonnable</strong> (gratuite ou payante — ici hors garantie, au tarif Apple). Nuances : applicable aux contrats conclus à compter du 31/07/2026 (Service Public) ; transposition française en cours au 19/09/2026 — pas encore opposable en droit français, Apple peut l'appliquer à titre commercial. Une réparation effectuée bénéficie de <strong>90 jours de garantie</strong> sur celle-ci. Coût : <strong>${storeCost}</strong>.`;
     } else {
       title = "Réparation possible en Apple Store";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
@@ -741,7 +741,7 @@ function getResult(s) {
     verdict = "not-eligible";
     if (isYear2 && !isAppleVendor && isDefect) {
       title = "Garantie constructeur expirée — rediriger vers le vendeur";
-      summary = `Garantie constructeur Apple expirée (1 an). Le <strong>vendeur d'origine</strong> reste responsable de la garantie légale (2ème année). Le client doit prouver l'antériorité du défaut.`;
+      summary = `Garantie constructeur Apple expirée (1 an). Le <strong>vendeur d'origine</strong> reste responsable de la garantie légale (2ème année). Présomption d'antériorité pendant 24 mois pour un bien neuf (L217-7) ; 12 mois pour un bien d'occasion/reconditionné, ensuite le client doit prouver.`;
     } else if (isAccidental) {
       title = "Non couvert par la garantie (constructeur ou légale)";
       summary = "Dommage accidentel/liquide non couvert. AppleCare+ avec franchise ou tarif hors garantie.";
@@ -767,8 +767,8 @@ function getResult(s) {
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
       <div class="expand-content">
         ${isAppleVendor && isUnderWarranty ? `
-        <p><strong>1ère année (0–12 mois) :</strong> présomption que le défaut existait à la livraison — réparation/remplacement gratuit, au vendeur de prouver le contraire.</p>
-        <p><strong>2ème année (12–24 mois) :</strong> le <strong>client doit prouver</strong> que le défaut existait au moment de l'achat.</p>
+        <p><strong>Biens neufs (L217-7) :</strong> présomption d'antériorité pendant <strong>24 mois</strong> (toute la durée de garantie) — c'est au vendeur de prouver le contraire. Le client n'a rien à prouver, ni en 1ère ni en 2ème année.</p>
+        <p><strong>Biens d'occasion / reconditionnés :</strong> présomption limitée à <strong>12 mois</strong> — passé ce délai, le client doit prouver que le défaut existait à la livraison.</p>
         <p><strong>Si réparation choisie :</strong> garantie prolongée de 6 mois (L217-13). <strong>Si remplacement imposé :</strong> garantie renouvelée 2 ans.</p>
         <p><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F11094" target="_blank" rel="noopener">Garantie légale — Service Public</a></p>
         ` : isAnnexII ? `
@@ -783,11 +783,11 @@ function getResult(s) {
     if (isYear2 && !isAppleVendor && isDefect) {
       redirectBody = `
         <p><strong>Rediriger vers le vendeur d'origine.</strong> La garantie constructeur Apple (1 an) est expirée. Seul le vendeur est responsable de la garantie légale (2ème année).</p>
-        <p>Le vendeur (${s.purchase === "other" ? "Fnac, Darty, Amazon…" : "vendeur d'occasion professionnel"}) doit réparer ou remplacer gratuitement si le client prouve que le défaut existait à la livraison.</p>
+        <p>Le vendeur (${s.purchase === "other" ? "Fnac, Darty, Amazon…" : "vendeur d'occasion professionnel"}) doit réparer ou remplacer gratuitement — présomption d'antériorité 24 mois pour un bien neuf (L217-7), 12 mois pour l'occasion.</p>
         <p>L'Apple Store peut proposer une réparation <strong>payante</strong> hors garantie, mais le client n'a pas à payer pour un défaut couvert par la garantie légale.</p>
         <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
         <div class="expand-content">
-          <p><strong>2ème année (12–24 mois) :</strong> la garantie constructeur Apple (1 an) est expirée. La garantie légale de conformité (2 ans) continue mais le client doit prouver que le défaut existait au moment de l'achat.</p>
+          <p><strong>2ème année (12–24 mois) :</strong> la garantie constructeur Apple (1 an) est expirée. La garantie légale de conformité (2 ans) continue — présomption d'antériorité 24 mois pour un bien neuf (L217-7), 12 mois pour l'occasion/reconditionné.</p>
           <p>La garantie légale oppose le client au <strong>vendeur</strong>, pas au fabricant. Si le client a acheté son iPhone chez Fnac, c'est Fnac qui doit réparer ou remplacer gratuitement.</p>
           <p>Le client peut faire valoir la garantie légale auprès de son vendeur : <a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F11094" target="_blank" rel="noopener">Service Public</a></p>
           <p>Si le vendeur refuse : <a href="https://www.europe-consommateurs.eu/thematiques/garanties/" target="_blank" rel="noopener">Europe Consommateurs</a> · <a href="https://signal.conso.gouv.fr/" target="_blank" rel="noopener">SignalConso</a></p>
@@ -870,8 +870,8 @@ function getResult(s) {
       <div class="expand-content">
         ${isUnderWarranty ? `
         <p><strong>Garantie légale de conformité (2 ans) :</strong> le vendeur doit réparer ou remplacer gratuitement tout défaut de conformité existant au moment de la livraison.</p>
-        <p><strong>1ère année :</strong> présomption d'antériorité du défaut — au vendeur de prouver le contraire. <strong>2ème année :</strong> le client doit prouver l'antériorité.</p>
-        <p><strong>Si réparation choisie :</strong> garantie prolongée de 6 mois (L217-13; 12 mois UE, ventes ≥ 31/07/2026, art. 16 directive 2024/1799).</p>
+        <p><strong>Presomption (L217-7) :</strong> 24 mois pour un bien neuf, 12 mois pour un bien d'occasion/reconditionné. Passé la présomption, c'est au client de prouver l'antériorité du défaut.</p>
+        <p><strong>Si réparation choisie :</strong> garantie prolongée de 12 mois (Service Public F11094; art. 16 directive 2024/1799 — ventes ≥ 31/07/2026).</p>
         <p><strong>Si remplacement imposé :</strong> garantie renouvelée 2 ans.</p>
         <p><a href="https://www.service-public.gouv.fr/particuliers/vosdroits/F11094" target="_blank" rel="noopener">Service Public</a> · <a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000032225325/" target="_blank" rel="noopener">Code de la consommation</a></p>
         ` : `
@@ -903,7 +903,7 @@ function getResult(s) {
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
       <div class="expand-content">
         <p>Apple remplace gratuitement la batterie lorsqu'elle conserve moins de 80% de sa capacité originale, avec la garantie légale, AppleCare+ ou AppleCare One.</p>
-        <p><strong>Sous garantie légale :</strong> une batterie qui tombe sous 80% avant 2 ans peut être considérée comme un défaut de conformité. En 1ère année, c'est au vendeur de prouver qu'il s'agit d'usure normale. En 2ème année, le client doit prouver l'antériorité du défaut.</p>
+        <p><strong>Sous garantie légale :</strong> une batterie qui tombe sous 80% avant 2 ans peut être considérée comme un défaut de conformité. Présomption d'antériorité 24 mois pour un bien neuf (L217-7) — c'est au vendeur de prouver l'usure normale. Pour un bien d'occasion, la présomption est de 12 mois.</p>
         <p>Sans AppleCare et hors garantie, le remplacement est payant (ex: 89€ iPhone, 289€ MacBook Pro 16"). Voir <a href="https://repairprice.popalazerk.com" target="_blank" rel="noopener">l'outil de tarifs</a>.</p>
       </div>
     `});
@@ -988,13 +988,13 @@ function getResult(s) {
     garantApresBody = `
       <table class="price-table">
         <tr><th></th><th>Garantie légale</th><th>Garantie Apple</th></tr>
-        <tr><td><strong>Réparation choisie</strong></td><td><strong>+6 mois</strong> (L217-13)<br>à compter de la réparation<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
+        <tr><td><strong>Réparation choisie</strong></td><td><strong>+6 mois</strong> (L217-13, ventes avant le 31/07/2026)<br><strong>+12 mois</strong> (art. 16 dir. 2024/1799, ventes à partir du 31/07/2026)<br>à compter de la réparation<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
         <tr><td><strong>Remplacement imposé</strong></td><td><strong>Renouvelée 2 ans</strong> (art. L217-11)<br>à compter du remplacement<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
       </table>
       <p>Apple Store est <strong>vendeur et fabricant</strong> : la réparation est effectuée sous garantie légale de conformité. L'art. 16 (2024/1799) s'applique → garantie prolongée de 12 mois (une seule fois).</p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
       <div class="expand-content">
-        <p>La réparation sous garantie légale prolonge la garantie de <strong>6 mois</strong> (art. L217-13 ; 12 mois UE pour les ventes à partir du 31/07/2026 — art. 16, directive 2024/1799). Apple Store étant le vendeur, il est responsable de cette extension.</p>
+        <p>La réparation sous garantie légale prolonge la garantie de <strong>12 mois</strong> (Service Public F11094 ; art. 16, directive 2024/1799 — ventes à partir du 31/07/2026). Apple Store étant le vendeur, il est responsable de cette extension.</p>
         <p>Exemple : achat en Apple Store en janvier 2026, défaut en juin 2026, réparation → garantie jusqu'en décembre 2026 (2 ans + 6 mois).</p>
         <p>Si le vendeur impose le remplacement : garantie renouvelée 2 ans à compter du remplacement (art. L217-11).</p>
         <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799, art. 16</a> · <a href="https://www.legifrance.gouv.fr/codes/id/LEGIARTI000032225325/" target="_blank" rel="noopener">Art. L217-11</a></p>
@@ -1023,14 +1023,14 @@ function getResult(s) {
     garantApresBody = `
       <table class="price-table">
         <tr><th></th><th>Garantie légale</th><th>Garantie Apple</th></tr>
-        <tr><td><strong>Réparation choisie</strong></td><td><strong>+6 mois</strong> (L217-13)<br>à compter de la réparation<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
+        <tr><td><strong>Réparation choisie</strong></td><td><strong>+6 mois</strong> (L217-13, ventes avant le 31/07/2026)<br><strong>+12 mois</strong> (art. 16 dir. 2024/1799, ventes à partir du 31/07/2026)<br>à compter de la réparation<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
         <tr><td><strong>Remplacement imposé</strong></td><td><strong>Renouvelée 2 ans</strong> (art. L217-11)<br>à compter du remplacement<br>Responsable : Apple Store (vendeur)</td><td>90 jours sur la réparation</td></tr>
       </table>
       <p>Apple Store est le <strong>vendeur</strong> : la réparation est sous garantie légale. L'art. 16 (2024/1799) s'applique → garantie prolongée de 12 mois (une seule fois). Garantie constructeur expirée (1 an).</p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
       <div class="expand-content">
-        <p>La réparation sous garantie légale prolonge la garantie de <strong>6 mois</strong> (art. L217-13 ; 12 mois UE pour les ventes à partir du 31/07/2026 — art. 16, directive 2024/1799). Apple Store étant le vendeur, il est responsable.</p>
-        <p>Exemple : achat en Apple Store en janvier 2026, défaut en juin 2027 (2ème année), réparation → garantie jusqu'en juin 2028.</p>
+        <p>La réparation sous garantie légale prolonge la garantie de <strong>12 mois</strong> (Service Public F11094 ; art. 16, directive 2024/1799 — ventes à partir du 31/07/2026). Apple Store étant le vendeur, il est responsable.</p>
+        <p>Exemple : achat en Apple Store en janvier 2026 (avant le 31/07/2026), défaut en juin 2027 (2ème année), réparation → garantie prolongée de 6 mois (L217-13), jusqu'en décembre 2027.</p>
         <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799, art. 16</a></p>
       </div>
     `;
@@ -1072,7 +1072,7 @@ function getResult(s) {
     garantApresBody = `
       <table class="price-table">
         <tr><th>Type de réparation</th><th>Garantie légale</th><th>Garantie Apple</th></tr>
-        <tr><td>Réparation sous garantie légale (défaut, achat Apple Store)</td><td><strong>+6 mois</strong> (L217-13)<br>à compter de la réparation — vendeur responsable</td><td>90 jours</td></tr>
+        <tr><td>Réparation sous garantie légale (défaut, achat Apple Store)</td><td><strong>+6 mois</strong> (L217-13, ventes avant 31/07/2026)<br><strong>+12 mois</strong> (dir. 2024/1799 art. 16, ventes à partir du 31/07/2026)<br>à compter de la réparation — vendeur responsable</td><td>90 jours</td></tr>
         <tr><td>Réparation sous garantie constructeur (achat ailleurs, 1ère année)</td><td><strong>Inchangée</strong> — art. 16 ne s'applique pas</td><td>90 jours</td></tr>
         <tr><td>Réparation hors garantie (payante)</td><td><strong>Aucune prolongation</strong></td><td>90 jours</td></tr>
         <tr><td>Remplacement imposé sous garantie (achat Apple Store)</td><td><strong>Renouvelée 2 ans</strong> (art. L217-11)</td><td>90 jours</td></tr>
@@ -1089,8 +1089,9 @@ function getResult(s) {
     <p><strong>Remplacement</strong> = Apple fournit un appareil neuf <strong>ou reconditionné</strong> (pièces d'origine Apple neuves et/ou précédemment utilisées, testées).</p>
     <p><strong>Amazon :</strong> vérifier la mention « Vendu et expédié par ». Si Apple est le vendeur → Apple Store (garantie légale + constructeur). Si Amazon est le vendeur → Autre vendeur (Amazon responsable de la garantie légale, Apple responsable de la garantie constructeur uniquement).</p>
     <p><strong>Achat à l'étranger (UE + EEE) :</strong> la garantie légale s'applique dans toute l'UE (27 pays) + EEE (Norvège, Islande, Liechtenstein). Durée variable : 2 ans (France, Allemagne, Italie), 3 ans (Espagne, Portugal, Suède), 5 ans (Norvège, Islande), 6 ans (Irlande, Finlande). Le vendeur étranger est responsable. Garantie constructeur Apple valable dans toute l'UE. Litige transfrontalier : <a href="https://www.europe-consommateurs.eu/" target="_blank" rel="noopener">Centre Européen des Consommateurs</a>.</p>
-    <p><strong>Date d'application du droit à la réparation (art. 5) :</strong> l'échéance de transposition était le <strong>31 juillet 2026</strong> (art. 22). La directive <strong>ne contient pas d'exclusion temporelle</strong> pour l'obligation de réparation du fabricant (seule la prolongation de garantie de 12 mois — art. 16 — est limitée aux ventes à partir du 31/07/2026, art. 21). MAIS une directive n'est pas d'application directe : <strong>en France, au 19/09/2026, la transposition n'est pas notifiée</strong> (Service Public : « travaux en cours ») — l'obligation n'est donc pas encore opposable à Apple en droit français. La prolongation de 12 mois (art. 16), elle, ne s'applique jamais aux ventes antérieures au 31/07/2026.</p>
-    <p><strong>Prolongation après réparation :</strong> la prolongation démarre à la <strong>date de réparation</strong> (pas la date d'achat). <strong>En France : 6 mois</strong> (art. L217-13 du Code de la consommation, toujours en vigueur au 19/09/2026 — transposition de la directive en cours). <strong>Minimum UE : 12 mois, une seule fois</strong> (directive 2024/1799, art. 16 → art. 10(2a) de la directive 2019/771), applicable aux ventes conclues à partir du 31 juillet 2026 (art. 21). Le remplacement imposé par le vendeur renouvelle la garantie <strong>2 ans à compter du remplacement</strong> (art. L217-11).</p>
+    <p><strong>Date d'application du droit à la réparation (art. 5) :</strong> <strong>Service Public (F11094) : le droit à la réparation s'applique aux contrats conclus à compter du 31 juillet 2026</strong> — pour les contrats antérieurs : garantie commerciale ou vices cachés uniquement. (La directive elle-même ne limite que la prolongation de garantie de 12 mois — art. 16 — aux ventes ≥ 31/07/2026, art. 21.) La transposition française étant en cours, suivre Service Public pour l'application en France.</p>
+    <p><strong>Réparation ou remplacement (L217-10) :</strong> la mise en conformité doit intervenir dans les <strong>30 jours</strong> suivant la demande. Le client choisit entre réparation et remplacement ; le vendeur ne peut imposer l'autre option que si le coût est manifestement disproportionné. Passé le délai de 30 jours : réduction du prix ou résolution (remboursement sous 14 jours, pénalités de retard 10 % / 20 % / 50 % au-delà de 14 / 30 / 60 jours). La garantie est <strong>suspendue</strong> pendant l'immobilisation du bien pour réparation (L217-28). La garantie légale est <strong>transmissible</strong> au sous-acquéreur (elle porte sur le bien).</p>
+    <p><strong>Prolongation après réparation :</strong> la prolongation démarre à la <strong>date de réparation</strong> (pas la date d'achat). <strong>Extension de 12 mois, une seule fois</strong> (Service Public F11094, vérifié le 17/08/2026 ; directive 2024/1799 art. 16 → art. 10(2a) de la directive 2019/771 — l'extension était de 6 mois avant la réforme, art. L217-13). Applicable aux ventes conclues à partir du 31 juillet 2026 (art. 21 de la directive). Le remplacement imposé par le vendeur renouvelle la garantie <strong>2 ans à compter du remplacement</strong> (art. L217-11).</p>
     <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
     <div class="expand-content">
       <h4 style="font-size:13px;font-weight:600;margin:0 0 6px;">Garantie légale vs garantie constructeur</h4>
@@ -1783,6 +1784,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609191548"></script>
+  <script src="../assets/js/shared-app.js?v=202609191555"></script>
 </body>
 </html>
