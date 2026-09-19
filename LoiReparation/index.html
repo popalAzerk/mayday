@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609191555">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609191942">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -702,8 +702,8 @@ function getResult(s) {
     // Réparation antérieure sous garantie: prolongation 1 an possible
     // selon la date de la réparation (art. 10(2) dir. 2019/771):
     canStore = true;
-    storeReason = "Appareil réparé sous garantie — la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (Service Public F11094 ; art. 16 directive 2024/1799 — ventes à partir du 31/07/2026). Vérifier la date de celle-ci : si elle date de moins de 12 mois, réparation gratuite ; au-delà, hors garantie (payant + 90 j).";
-    storeCost = "Gratuit si réparation < 1 an, sinon payant";
+    storeReason = "Appareil réparé sous garantie — la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (Service Public F11094 ; art. 16 directive 2024/1799 — ventes à partir du 31/07/2026). Vérifier la date de celle-ci : si elle date de moins de 12 mois, la <strong>garantie légale prolongée</strong> reste à la charge du <strong>vendeur d'origine</strong> (pas d'Apple) — le client doit d'abord s'adresser au vendeur ; au-delà, hors garantie (payant + 90 j). Si la panne est une <strong>rechute du même défaut</strong> réparé par Apple, la garantie Apple sur la réparation (90 jours) peut couvrir la remise en état chez Apple.";
+    storeCost = "Gratuit via le vendeur si réparation < 12 mois, sinon payant";
   }
 
   // --- VERDICT PRINCIPAL ---
@@ -857,6 +857,10 @@ function getResult(s) {
     revendeurEligible = true;
     revendeurReason = "Si achat à un <strong>professionnel</strong> : garantie légale de 2 ans. Si achat entre particuliers : pas de garantie légale.";
     revendeurCost = "Gratuit (si pro)";
+  } else if (s["prior-repair"] === "apple-repair" && isDefect && (s.age === "2-5" || s.age === "5-10") && isAnnexII) {
+    revendeurEligible = true;
+    revendeurReason = `<strong>Garantie légale expirée</strong> (2 ans), MAIS la réparation antérieure a <strong>prolongé la garantie légale de 12 mois</strong> à compter de la réparation (art. 16 dir. 2024/1799 — ventes ≥ 31/07/2026). Cette prolongation incombe au <strong>vendeur d'origine</strong> (pas à Apple) : si elle court encore (réparation < 12 mois), le vendeur prend en charge ; sinon, réparation payante chez Apple (droit à la réparation UE, tarif hors garantie + 90 j).`;
+    revendeurCost = "Vendeur si réparation < 12 mois, sinon payant";
   } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
     revendeurEligible = true;
     revendeurReason = `<strong>Garantie légale expirée</strong> (2 ans sans réparation antérieure) — le vendeur n'est plus responsable. En tant que <strong>fabricant</strong> d'un produit Annexe II, Apple doit proposer la réparation à <strong>prix raisonnable</strong> (directive 2024/1799, art. 5 — payante ici, au tarif hors garantie ; transposition FR en cours). Le revendeur peut servir d'intermédiaire.`;
@@ -1784,6 +1788,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609191555"></script>
+  <script src="../assets/js/shared-app.js?v=202609191942"></script>
 </body>
 </html>
