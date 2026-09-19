@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609190937">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609191328">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -131,8 +131,7 @@
   .price-table td{ padding:8px 10px; border-bottom:1px solid var(--border-soft); }
   .price-table tr:last-child td{ border-bottom:none; }
 
-  .disclaimer{ max-width:640px; margin:28px auto 0; padding:14px 4px 0; font-size:11.5px; line-height:1.5; color:var(--text-secondary); text-align:center; }
-
+  
   /* Scenarios */
   .scenarios{ max-width:480px; margin:0 auto 28px; display:flex; flex-direction:column; gap:8px; }
   .scenarios-label{ font-size:12.5px; font-weight:600; color:var(--text-secondary); text-transform:uppercase; letter-spacing:0.02em; margin:0 0 4px; }
@@ -147,8 +146,7 @@
   .scenario-btn .sc-title{ font-weight:600; font-size:14px; display:block; margin-bottom:2px; }
   .scenario-btn .sc-desc{ font-size:12px; color:var(--text-secondary); }
   .scenario-btn .sc-icon{ display:inline-block; margin-right:6px; }
-  .footer{ text-align:center; padding:32px 24px 56px; font-size:11.5px; color:var(--text-secondary); border-top:1px solid var(--border-soft); }
-  .footer a{ color:var(--text-secondary); text-decoration:none; }
+    .footer a{ color:var(--text-secondary); text-decoration:none; }
   .footer a:hover{ color:var(--accent); text-decoration:underline; }
   ::selection{ background:color-mix(in srgb, var(--accent) 30%, transparent); }
 
@@ -203,24 +201,7 @@
   <p class="subtitle">Bibliothèque Genius Bar : choisissez le type de demande — garantie légale, retour 14 jours, bonus réparation, réparabilité iPhone 17/Air ou règles Repair/Swap.</p>
 
   <div class="select-group" id="questionnaire"></div>
-  <div class="result-panel" id="result-panel">
-    <div class="result-placeholder">Sélectionnez le produit et la situation du client.</div>
-  </div>
-
-
-  <div class="disclaimer">
-    Outil informatif non affilié à Apple Inc. Ne constitue pas un conseil juridique. Basé sur la directive (UE) 2024/1799, Service Public, les conditions générales Apple et la loi française (AGEC).
-  </div>
-</div>
-
-<div class="footer">
-  Sources : <a href="https://www.service-public.gouv.fr/particuliers/actualites/A19033" target="_blank" rel="noopener">Service Public</a> ·
-  <a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive (UE) 2024/1799</a> ·
-  <a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions Apple</a> ·
-  <a href="https://www.apple.com/legal/warranty/statutoryrights.html" target="_blank" rel="noopener">Droits consommateurs</a> ·
-  <a href="https://selfservicerepair.eu/fr-FR" target="_blank" rel="noopener">Self Service Repair</a> ·
-  <a href="https://repairprice.popalazerk.com" target="_blank" rel="noopener">Tarifs</a> ·
-  <a href="https://www.europe-consommateurs.eu/thematiques/garanties/apres-achat/reparation/" target="_blank" rel="noopener">Europe Consommateurs</a>
+  <div class="result-panel" id="result-panel"></div>
 </div>
 
 <script>
@@ -1802,6 +1783,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609190937"></script>
+  <script src="../assets/js/shared-app.js?v=202609191328"></script>
 </body>
 </html>
