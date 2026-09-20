@@ -702,7 +702,7 @@ function getResult(s) {
     // Réparation antérieure sous garantie: prolongation 1 an possible
     // selon la date de la réparation (art. 10(2) dir. 2019/771):
     canStore = true;
-    storeReason = "Appareil réparé sous garantie — la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (Service Public F11094 ; art. 16 directive 2024/1799 — ventes à partir du 31/07/2026). <strong>Action en Apple Store :</strong> si la panne est une <strong>rechute du même défaut</strong> réparé par Apple, la garantie Apple sur la réparation (90 jours) couvre la remise en état — traiter en magasin. Sinon, si la réparation date de moins de 12 mois : la garantie légale prolongée incombe au <strong>vendeur d\'origine</strong> (pas à Apple) → <strong>orienter le client vers son vendeur</strong> avec sa facture. Réparation plus ancienne : hors garantie (payant + 90 j).";
+    storeReason = "<strong>Action en Apple Store :</strong> rechute du même défaut → garantie Apple réparation (90 j), traiter en magasin. Nouveau défaut + réparation < 12 mois → garantie légale prolongée chez le <strong>vendeur d\'origine</strong>, orienter le client avec sa facture. Sinon : hors garantie (payant + 90 j). <em>Prolongation de 12 mois (art. 16 dir. 2024/1799, ventes ≥ 31/07/2026 ; SP F11094).</em>";
     storeCost = "Rechute même défaut : gratuit ici · Nouveau défaut < 12 mois : chez le vendeur · Sinon payant";
   }
 
@@ -761,8 +761,9 @@ function getResult(s) {
 
   // 0. ACTION IMMÉDIATE (Genius Bar)
   if (canStore) {
-    cards.push({ title:"Action sur place", tag:"green", tagLabel:storeCost, body:`
-      <p><strong>Procéder à la réparation.</strong> ${storeReason}</p>
+    const storeTag = (verdict === "partial") ? "orange" : "green";
+    cards.push({ title:"Action sur place", tag:storeTag, tagLabel:storeCost, body:`
+      <p><strong>Procéder à la réparation.</strong></p>
       <p>Prendre rendez-vous : <a href="https://www.apple.com/fr/shop/repair" target="_blank" rel="noopener">apple.com/fr/shop/repair</a></p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
       <div class="expand-content">
@@ -1788,6 +1789,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609192131"></script>
+  <script src="../assets/js/shared-app.js?v=202609200709"></script>
 </body>
 </html>
