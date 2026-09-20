@@ -762,9 +762,17 @@ function getResult(s) {
   // 0. ACTION IMMÉDIATE (Genius Bar)
   if (canStore) {
     const storeTag = (verdict === "partial") ? "orange" : "green";
-    const storeTitle = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ? "Réparation garantie 90 jours" : "Action sur place";
+    const isAppleReplaceCheck = (s["prior-repair"] === "apple-replace" && !isUnderWarranty);
+    const storeTitle = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ? "Réparation garantie 90 jours" : (isPayantUE ? "Réparation payante possible — droit à la réparation UE" : (isAppleReplaceCheck ? "Garantie renouvelée ? — vérifier la date du remplacement" : "Action sur place"));
+    const storeLead = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ?
+      "Réparation possible si rechute du même défaut (garantie Apple sur la réparation, 90 jours)." :
+      (isAppleReplaceCheck ?
+        "Remplacement effectué sous garantie : la garantie légale est <strong>renouvelée 2 ans à compter du remplacement</strong>. Vérifier la date du remplacement — si moins de 2 ans, réparation gratuite ici ; sinon, réparation payante (+ 90 j de garantie)." :
+        (isPayantUE ?
+          "Hors garantie légale : réparation possible en Apple Store au <strong>tarif hors garantie</strong> (devis avant intervention) — + 90 jours de garantie sur la réparation. Vérifier aussi la garantie commerciale éventuelle du client." :
+          "Procéder à la réparation."));
     cards.push({ title:storeTitle, tag:storeTag, tagLabel:storeCost, body:`
-      <p><strong>${s["prior-repair"] === "apple-repair" && s.age === "2-5" ? "Réparation possible si rechute du même défaut (garantie Apple sur la réparation, 90 jours)." : "Procéder à la réparation."}</strong></p>
+      <p><strong>${storeLead}</strong></p>
       <p>Prendre rendez-vous : <a href="https://www.apple.com/fr/shop/repair" target="_blank" rel="noopener">apple.com/fr/shop/repair</a></p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
       <div class="expand-content">
@@ -869,7 +877,16 @@ function getResult(s) {
     revendeurCost = "Payant — tarif hors garantie";
   }
 
-    if (s["prior-repair"] === "apple-repair" && s.age === "2-5") {
+      if (s["prior-repair"] === "apple-replace" && !isUnderWarranty) {
+    cards.push({ title:"Garantie légale renouvelée — prise en charge par le vendeur", tag:"green", tagLabel:"Chez le vendeur d\'origine", body:`
+      <p>Le <strong>remplacement sous garantie</strong> renouvelle la garantie légale de <strong>2 ans à compter du remplacement</strong> (L217-11). Si le remplacement date de moins de 2 ans : le <strong>vendeur d'origine</strong> prend en charge la réparation — orienter le client vers son vendeur avec sa facture (ou la facture du remplacement).</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p><strong>En pratique :</strong> la garantie renouvelée suit le produit remplacé, quel que soit le lieu de la visite. Si le vendeur refuse, réparation payante en Apple Store au tarif hors garantie (+ 90 jours de garantie sur la réparation).</p>
+      </div>` });
+  }
+
+if (s["prior-repair"] === "apple-repair" && s.age === "2-5") {
     cards.push({ title:"Réparation prise en charge — garantie légale (vendeur)", tag:"green", tagLabel:"Chez le vendeur d\'origine", body:`
       <p><strong>Si c'est un nouveau défaut</strong> et que la réparation Apple date de <strong>moins de 12 mois</strong> : la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (art. 16 dir. 2024/1799, ventes ≥ 31/07/2026 ; Service Public F11094). Cette prolongation incombe au <strong>vendeur d'origine</strong>, pas à Apple → orienter le client vers son vendeur avec sa facture.</p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
@@ -1799,6 +1816,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609200959"></script>
+  <script src="../assets/js/shared-app.js?v=202609201516"></script>
 </body>
 </html>
