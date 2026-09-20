@@ -762,8 +762,9 @@ function getResult(s) {
   // 0. ACTION IMMÉDIATE (Genius Bar)
   if (canStore) {
     const storeTag = (verdict === "partial") ? "orange" : "green";
-    cards.push({ title:"Action sur place", tag:storeTag, tagLabel:storeCost, body:`
-      <p><strong>Procéder à la réparation.</strong></p>
+    const storeTitle = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ? "Réparation garantie 90 jours" : "Action sur place";
+    cards.push({ title:storeTitle, tag:storeTag, tagLabel:storeCost, body:`
+      <p><strong>${s["prior-repair"] === "apple-repair" && s.age === "2-5" ? "Réparation possible si rechute du même défaut (garantie Apple sur la réparation, 90 jours)." : "Procéder à la réparation."}</strong></p>
       <p>Prendre rendez-vous : <a href="https://www.apple.com/fr/shop/repair" target="_blank" rel="noopener">apple.com/fr/shop/repair</a></p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
       <div class="expand-content">
@@ -868,7 +869,16 @@ function getResult(s) {
     revendeurCost = "Payant — tarif hors garantie";
   }
 
-  if (revendeurEligible) {
+    if (s["prior-repair"] === "apple-repair" && s.age === "2-5") {
+    cards.push({ title:"Réparation prise en charge — garantie légale (vendeur)", tag:"green", tagLabel:"Chez le vendeur d\'origine", body:`
+      <p><strong>Si c'est un nouveau défaut</strong> et que la réparation Apple date de <strong>moins de 12 mois</strong> : la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (art. 16 dir. 2024/1799, ventes ≥ 31/07/2026 ; Service Public F11094). Cette prolongation incombe au <strong>vendeur d'origine</strong>, pas à Apple → orienter le client vers son vendeur avec sa facture.</p>
+      <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
+      <div class="expand-content">
+        <p><strong>En pratique :</strong> le client s'adresse au vendeur (Fnac, Darty, Amazon…) qui doit réparer ou remplacer gratuitement. Si le vendeur refuse, il reste la réparation payante en Apple Store au tarif hors garantie (+ 90 jours de garantie sur la réparation).</p>
+      </div>` });
+  }
+
+if (revendeurEligible) {
     cards.push({ title:"Éligibilité chez le revendeur — Loi européenne", tag:"green", tagLabel:revendeurCost, body:`
       <p>${revendeurReason}</p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
@@ -1789,6 +1799,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609200718"></script>
+  <script src="../assets/js/shared-app.js?v=202609200959"></script>
 </body>
 </html>
