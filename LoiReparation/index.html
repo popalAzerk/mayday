@@ -742,8 +742,8 @@ function getResult(s) {
       storeCost = "Gratuit si remplacement < 2 ans, sinon payant";
     } else {
       canStore = true;
-      storeReason = "Appareil acheté chez un tiers (Fnac, Darty...) et remplacé sous garantie — la garantie légale <strong>renouvelée 2 ans</strong> (L217-11) incombe au <strong>vendeur d'origine</strong>, pas à Apple. Si le produit de remplacement a été vendu par Apple, sa garantie commerciale (reliquat ou 90 jours) peut jouer ici ; sinon, orienter le client vers son vendeur.";
-      storeCost = "Garantie commerciale du remplacement ici - Garantie légale renouvelée chez le vendeur";
+      storeReason = "<strong>En Apple Store :</strong> pas de prise en charge garantie (achat chez un tiers) — réparation possible au <strong>tarif hors garantie</strong> avec <strong>90 jours de garantie sur la réparation</strong>. La garantie légale renouvelée 2 ans (L217-11) incombe au <strong>vendeur d'origine</strong> → orienter le client vers son vendeur avec sa facture. Si le produit de remplacement a été vendu par Apple, sa garantie commerciale (reliquat ou 90 jours) peut jouer ici.";
+      storeCost = "Ici : payant + 90 j - Chez le vendeur : gratuit si remplacement < 2 ans";
     }
   } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
     canStore = true;
@@ -773,7 +773,7 @@ function getResult(s) {
       title = "Éligible garantie légale de conformité";
       summary = `<strong>Garantie légale de conformité</strong> (2 ans) — Apple Store est le vendeur. Garantie constructeur expirée (1 an). Présomption d'antériorité pendant 24 mois pour un bien neuf (art. L217-7). Coût : <strong>${storeCost}</strong>.`;
     } else if (s["prior-repair"] === "apple-replace" && isDefect) {
-      title = isAppleVendor ? (isUnderWarranty ? "Éligible garantie légale renouvelée" : "Garantie renouvelée ? — vérifier la date du remplacement") : "Garantie légale renouvelée — prise en charge par le vendeur";
+      title = isAppleVendor ? (isUnderWarranty ? "Éligible garantie légale renouvelée" : "Garantie renouvelée ? — vérifier la date du remplacement") : "Pas couvert en Apple Store — garantie légale renouvelée chez le vendeur";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
     } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
       title = "Éligible garantie légale prolongée";
@@ -813,15 +813,22 @@ function getResult(s) {
   // 0. ACTION IMMÉDIATE (Genius Bar)
   if (canStore) {
     const storeTag = (verdict === "partial") ? "orange" : "green";
-    const isAppleReplaceCheck = (s["prior-repair"] === "apple-replace" && !isUnderWarranty);
-    const storeTitle = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ? "Réparation garantie 90 jours" : (isPayantUE ? "Réparation payante possible — droit à la réparation UE" : (isAppleReplaceCheck ? "Garantie renouvelée ? — vérifier la date du remplacement" : "Action sur place"));
+    const isAppleOrigin = (s.purchase === "apple-store");
+    const isAppleReplaceCheck = (s["prior-repair"] === "apple-replace" && !isUnderWarranty && isAppleOrigin);
+    const isAppleReplaceVendor = (s["prior-repair"] === "apple-replace" && !isAppleOrigin);
+    const storeTitle = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ? "Réparation garantie 90 jours" :
+      isAppleReplaceVendor ? "Garantie en Apple Store : 90 jours sur la réparation" :
+      (isPayantUE ? "Réparation payante possible — droit à la réparation UE" :
+      (isAppleReplaceCheck ? "Garantie renouvelée ? — vérifier la date du remplacement" : "Action sur place"));
     const storeLead = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ?
       "Réparation possible si rechute du même défaut (garantie Apple sur la réparation, 90 jours)." :
-      (isAppleReplaceCheck ?
+      (isAppleReplaceVendor ?
+        "L'appareil a été acheté chez un tiers : <strong>pas de prise en charge garantie ici</strong>. Apple Store peut réparer au tarif hors garantie avec <strong>90 jours de garantie sur la réparation</strong> — la carte suivante détaille la prise en charge légale chez le vendeur." :
+        (isAppleReplaceCheck ?
         "Remplacement effectué sous garantie : la garantie légale est <strong>renouvelée 2 ans à compter du remplacement</strong>. Vérifier la date du remplacement — si moins de 2 ans, réparation gratuite ici ; sinon, réparation payante (+ 90 j de garantie)." :
         (isPayantUE ?
           "Hors garantie légale : réparation possible en Apple Store au <strong>tarif hors garantie</strong> (devis avant intervention) — + 90 jours de garantie sur la réparation. Vérifier aussi la garantie commerciale éventuelle du client." :
-          "Procéder à la réparation."));
+          "Procéder à la réparation.")));
     cards.push({ title:storeTitle, tag:storeTag, tagLabel:storeCost, body:`
       <p><strong>${storeLead}</strong></p>
       <p>Prendre rendez-vous : <a href="https://www.apple.com/fr/shop/repair" target="_blank" rel="noopener">apple.com/fr/shop/repair</a></p>
@@ -1870,6 +1877,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609210522"></script>
+  <script src="../assets/js/shared-app.js?v=202609210728"></script>
 </body>
 </html>
