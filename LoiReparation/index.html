@@ -753,8 +753,8 @@ function getResult(s) {
     // Réparation antérieure sous garantie: prolongation 1 an possible
     // selon la date de la réparation (art. 10(2) dir. 2019/771):
     canStore = true;
-    storeReason = "<strong>Action en Apple Store :</strong> rechute du même défaut → garantie Apple réparation (90 j), traiter en magasin. Nouveau défaut + réparation < 12 mois → garantie légale prolongée chez le <strong>vendeur d\'origine</strong>, orienter le client avec sa facture. Sinon : hors garantie (payant + 90 j). <em>Prolongation de 12 mois (art. 16 dir. 2024/1799, ventes ≥ 31/07/2026 ; SP F11094).</em>";
-    storeCost = "Rechute même défaut : gratuit ici · Nouveau défaut < 12 mois : chez le vendeur · Sinon payant";
+    storeReason = "Trois cas : <strong>rechute du même défaut</strong> → gratuit ici (garantie Apple 90 j sur la réparation). <strong>Nouveau défaut + réparation < 12 mois</strong> → garantie légale prolongée chez le <strong>vendeur d'origine</strong> (facture). <strong>Sinon</strong> → payant.";
+    storeCost = "Gratuit si rechute · vendeur si < 12 mois · sinon payant";
   }
 
   // --- VERDICT PRINCIPAL ---
@@ -816,12 +816,12 @@ function getResult(s) {
     const isAppleOrigin = (s.purchase === "apple-store");
     const isAppleReplaceCheck = (s["prior-repair"] === "apple-replace" && !isUnderWarranty && isAppleOrigin);
     const isAppleReplaceVendor = (s["prior-repair"] === "apple-replace" && !isAppleOrigin);
-    const storeTitle = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ? "Réparation garantie 90 jours" :
+    const storeTitle = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ? "Action Apple Store : rechute → gratuit" :
       isAppleReplaceVendor ? "Garantie en Apple Store : 90 jours sur la réparation" :
       (isPayantUE ? "Réparation payante possible — droit à la réparation UE" :
       (isAppleReplaceCheck ? "Garantie renouvelée ? — vérifier la date du remplacement" : "Action sur place"));
     const storeLead = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ?
-      "Réparation possible si rechute du même défaut (garantie Apple sur la réparation, 90 jours)." :
+      "<strong>Rechute du même défaut ?</strong> Apple la répare gratuitement (garantie de 90 jours sur la réparation effectuée). Pour un nouveau défaut, voir la carte suivante." :
       (isAppleReplaceVendor ?
         "L'appareil a été acheté chez un tiers : <strong>pas de prise en charge garantie ici</strong>. Apple Store peut réparer au tarif hors garantie avec <strong>90 jours de garantie sur la réparation</strong> — la carte suivante détaille la prise en charge légale chez le vendeur." :
         (isAppleReplaceCheck ?
@@ -834,7 +834,11 @@ function getResult(s) {
       <p>Prendre rendez-vous : <a href="https://www.apple.com/fr/shop/repair" target="_blank" rel="noopener">apple.com/fr/shop/repair</a></p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
       <div class="expand-content">
-        ${isAppleVendor && isUnderWarranty ? `
+        ${(s["prior-repair"] === "apple-repair" && s.age === "2-5") ? `
+        <p><strong>Garantie service Apple (90 jours) :</strong> contractuelle — Apple garantit la réparation effectuée pendant 90 jours (ou jusqu'à la fin de la garantie légale si elle est plus longue), indépendamment de la garantie légale.</p>
+        <p><strong>Rappel :</strong> une réparation faite <strong>sous garantie légale</strong> prolonge celle-ci de 12 mois (art. 16 dir. 2024/1799, ventes ≥ 31/07/2026) ; une réparation <strong>payante</strong> hors garantie ne la prolonge pas (art. 5).</p>
+        <p><a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions Apple</a> · <a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799</a></p>
+        ` : isAppleVendor && isUnderWarranty ? `
         <p><strong>Biens neufs (L217-7) :</strong> présomption d'antériorité pendant <strong>24 mois</strong> (toute la durée de garantie) — c'est au vendeur de prouver le contraire. Le client n'a rien à prouver, ni en 1ère ni en 2ème année.</p>
         <p><strong>Biens d'occasion / reconditionnés :</strong> présomption limitée à <strong>12 mois</strong> — passé ce délai, le client doit prouver que le défaut existait à la livraison.</p>
         <p><strong>Si réparation choisie :</strong> garantie prolongée de 6 mois (L217-13). <strong>Si remplacement imposé :</strong> garantie renouvelée 2 ans.</p>
@@ -945,15 +949,20 @@ function getResult(s) {
   }
 
 if (s["prior-repair"] === "apple-repair" && s.age === "2-5") {
-    cards.push({ title:"Réparation prise en charge — garantie légale (vendeur)", tag:"green", tagLabel:"Chez le vendeur d\'origine", body:`
-      <p><strong>Si c'est un nouveau défaut</strong> et que la réparation Apple date de <strong>moins de 12 mois</strong> : la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (art. 16 dir. 2024/1799, ventes ≥ 31/07/2026 ; Service Public F11094). Cette prolongation incombe au <strong>vendeur d'origine</strong>, pas à Apple → orienter le client vers son vendeur avec sa facture.</p>
+    cards.push({ title:"Nouveau défaut chez le vendeur — garantie prolongée", tag:"green", tagLabel:"Chez le vendeur d'origine", body:`
+      <p><strong>Ce n'est pas une rechute</strong> (nouveau défaut) et la réparation Apple date de <strong>moins de 12 mois</strong> : la garantie légale est <strong>prolongée de 12 mois</strong> à compter de la réparation (art. 16 dir. 2024/1799, ventes ≥ 31/07/2026 ; SP F11094). Cette prolongation incombe au <strong>vendeur d'origine</strong>, pas à Apple → orienter le client vers son vendeur avec sa facture.</p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
       <div class="expand-content">
+        <p><strong>Le client garde la facture de la réparation Apple</strong> : c'est la preuve de la date qui déclenche la prolongation de 12 mois.</p>
         <p><strong>En pratique :</strong> le client s'adresse au vendeur (Fnac, Darty, Amazon…) qui doit réparer ou remplacer gratuitement. Si le vendeur refuse, il reste la réparation payante en Apple Store au tarif hors garantie (+ 90 jours de garantie sur la réparation).</p>
+        <p><strong>Syntaxe :</strong> la prolongation démarre à la date de la réparation, pas de l'achat ; elle ne joue qu'<strong>une seule fois</strong> (art. 21 dir. 2024/1799).</p>
       </div>` });
   }
 
-if (revendeurEligible) {
+// Carte revendeur supprimée pour le scénario "réparé par Apple + 2-5 ans" :
+// la règle (prolongation 12 mois, vendeur d'origine) est déjà portée par la
+// carte "Nouveau défaut chez le vendeur" ci-dessus — éviter la répétition.
+if (revendeurEligible && !(s["prior-repair"] === "apple-repair" && s.age === "2-5")) {
     cards.push({ title:"Éligibilité chez le revendeur — Loi européenne", tag:"green", tagLabel:revendeurCost, body:`
       <p>${revendeurReason}</p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
@@ -1026,7 +1035,11 @@ if (revendeurEligible) {
 
   // 4. RÉPARATION OU REMPLACEMENT ANTÉRIEUR
   const pr = s["prior-repair"];
-  if (pr === "apple-repair") {
+  // Cartes "antérieur par Apple" masquées quand la carte Action + la carte
+  // Vendeur portent déjà l'info (scénario réparé par Apple, 2-5 ans) :
+  // éviter la 4e/5e répétition de la règle rechute / 12 mois / payant.
+  const priorAppleCardsSuppressed = (pr === "apple-repair" && s.age === "2-5");
+  if (pr === "apple-repair" && !priorAppleCardsSuppressed) {
     cards.push({ title:"Réparation antérieure par Apple", tag:"green", tagLabel:"Voir détail", body:`
       <p><strong>Si la réparation était sous garantie légale (défaut de conformité, 2 ans) :</strong> garantie prolongée d'<strong>un an</strong> (directive 2024/1799, art. 16). <strong>Le vendeur</strong> reste responsable de cette extension, pas Apple en tant que fabricant.</p>
       <p><strong>Si la réparation était hors garantie (payante) :</strong> pas de prolongation de garantie légale. Garantie commerciale Apple de 90 jours sur la réparation uniquement.</p>
@@ -1073,7 +1086,12 @@ if (revendeurEligible) {
 
   // 5. DURÉE DE GARANTIE APRÈS RÉPARATION (contextuel selon le scénario)
   let garantApresBody = "";
-  if (isYear1 && isDefect && isAppleVendor) {
+  // Scénario "réparé par Apple + 2-5 ans" : la carte Action + la carte
+  // Vendeur couvrent déjà le sort de la garantie (rechute 90 j /
+  // prolongation 12 mois / payant sans prolongation) — pas de carte
+  // générique supplémentaire.
+  const skipGarantApres = (s["prior-repair"] === "apple-repair" && s.age === "2-5");
+  if (isYear1 && isDefect && isAppleVendor && !skipGarantApres) {
     // Achat Apple Store + réparation 1ère année = sous garantie légale
     garantApresBody = `
       <table class="price-table">
@@ -1171,7 +1189,7 @@ if (revendeurEligible) {
     `;
   }
 
-  cards.push({ title:"Durée de garantie après réparation", tag:"", tagLabel:"", body: garantApresBody });
+  if (!skipGarantApres) cards.push({ title:"Durée de garantie après réparation", tag:"", tagLabel:"", body: garantApresBody });
 
   // 6. DÉFINITIONS (toujours affichées)
   cards.push({ title:"Définitions utiles", tag:"", tagLabel:"", body:`
