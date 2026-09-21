@@ -742,7 +742,7 @@ function getResult(s) {
       storeCost = "Gratuit si remplacement < 2 ans, sinon payant";
     } else {
       canStore = true;
-      storeReason = "<strong>En Apple Store :</strong> pas de prise en charge garantie (achat chez un tiers) — réparation possible au <strong>tarif hors garantie</strong> avec <strong>90 jours de garantie sur la réparation</strong>. La garantie légale renouvelée 2 ans (L217-11) incombe au <strong>vendeur d'origine</strong> → orienter le client vers son vendeur avec sa facture. Si le produit de remplacement a été vendu par Apple, sa garantie commerciale (reliquat ou 90 jours) peut jouer ici.";
+      storeReason = "<strong>En Apple Store :</strong> pas de prise en charge garantie (achat chez un tiers) — réparation possible au <strong>tarif hors garantie</strong> avec <strong>90 jours de garantie sur la réparation</strong>. La garantie légale renouvelée 2 ans (L217-11) incombe au <strong>vendeur d'origine</strong> → orienter le client vers son vendeur avec sa facture. Si Apple a vendu le produit de remplacement, sa garantie commerciale peut jouer ici — 90 jours minimum.";
       storeCost = "Ici : payant + 90 j - Chez le vendeur : gratuit si remplacement < 2 ans";
     }
   } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
@@ -1877,6 +1877,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609210728"></script>
+  <script src="../assets/js/shared-app.js?v=202609210807"></script>
 </body>
 </html>
