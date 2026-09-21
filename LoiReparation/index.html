@@ -962,7 +962,14 @@ if (s["prior-repair"] === "apple-repair" && s.age === "2-5") {
 // Carte revendeur supprimée pour le scénario "réparé par Apple + 2-5 ans" :
 // la règle (prolongation 12 mois, vendeur d'origine) est déjà portée par la
 // carte "Nouveau défaut chez le vendeur" ci-dessus — éviter la répétition.
-if (revendeurEligible && !(s["prior-repair"] === "apple-repair" && s.age === "2-5")) {
+const revendeurRedondant =
+    (s["prior-repair"] === "apple-repair" && s.age === "2-5") ||
+    (s.purchase === "apple-store" && isUnderWarranty && isDefect) ||
+    (s["prior-repair"] === "apple-replace" && !isUnderWarranty && isDefect) ||
+    (isUnderWarranty && isDefect && s.purchase !== "secondhand") ||
+    ((s.age === "2-5" || s.age === "5-10") && isDefect &&
+     !["apple-repair", "apple-replace"].includes(s["prior-repair"]));
+  if (revendeurEligible && !revendeurRedondant) {
     cards.push({ title:"Éligibilité chez le revendeur — Loi européenne", tag:"green", tagLabel:revendeurCost, body:`
       <p>${revendeurReason}</p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
@@ -1038,7 +1045,11 @@ if (revendeurEligible && !(s["prior-repair"] === "apple-repair" && s.age === "2-
   // Cartes "antérieur par Apple" masquées quand la carte Action + la carte
   // Vendeur portent déjà l'info (scénario réparé par Apple, 2-5 ans) :
   // éviter la 4e/5e répétition de la règle rechute / 12 mois / payant.
-  const priorAppleCardsSuppressed = (pr === "apple-repair" && s.age === "2-5");
+  const priorAppleCardsSuppressed = (pr === "apple-repair");
+  // "Remplacement antérieur par Apple" : redondant dès qu'une autre carte
+  // porte déjà la règle du renouvellement 2 ans (carte Vendeur, carte
+  // Action "vérifier la date", ou verdict sous garantie).
+  const priorReplaceSuppressed = (pr === "apple-replace" && (isDefect || s.purchase !== "apple-store"));
   if (pr === "apple-repair" && !priorAppleCardsSuppressed) {
     cards.push({ title:"Réparation antérieure par Apple", tag:"green", tagLabel:"Voir détail", body:`
       <p><strong>Si la réparation était sous garantie légale (défaut de conformité, 2 ans) :</strong> garantie prolongée d'<strong>un an</strong> (directive 2024/1799, art. 16). <strong>Le vendeur</strong> reste responsable de cette extension, pas Apple en tant que fabricant.</p>
@@ -1059,7 +1070,7 @@ if (revendeurEligible && !(s["prior-repair"] === "apple-repair" && s.age === "2-
         <p><a href="http://data.europa.eu/eli/dir/2024/1799/oj" target="_blank" rel="noopener">Directive 2024/1799, art. 5 et 16</a> · <a href="https://www.service-public.gouv.fr/particuliers/actualites/A19033" target="_blank" rel="noopener">Service Public</a> · <a href="https://www.apple.com/legal/sales-support/terms/repair/generalservice/servicetermsfr" target="_blank" rel="noopener">Conditions Apple</a></p>
       </div>
     `});
-  } else if (pr === "apple-replace") {
+  } else if (pr === "apple-replace" && !priorReplaceSuppressed) {
     cards.push({ title:"Remplacement antérieur par Apple", tag:"green", tagLabel:"Garantie renouvelée", body:`
       <p><strong>Effet sur la garantie :</strong> si le vendeur a <strong>imposé</strong> le remplacement pendant la garantie légale, celle-ci est <strong>renouvelée pour 2 ans</strong> sur l'appareil de remplacement.</p>
       <span class="expand-link" onclick="toggleExpand(this)">En savoir plus</span>
@@ -1090,7 +1101,8 @@ if (revendeurEligible && !(s["prior-repair"] === "apple-repair" && s.age === "2-
   // Vendeur couvrent déjà le sort de la garantie (rechute 90 j /
   // prolongation 12 mois / payant sans prolongation) — pas de carte
   // générique supplémentaire.
-  const skipGarantApres = (s["prior-repair"] === "apple-repair" && s.age === "2-5");
+  const skipGarantApres = (s["prior-repair"] === "apple-repair" && s.age === "2-5") ||
+    (s["prior-repair"] === "apple-replace" && isDefect);
   if (isYear1 && isDefect && isAppleVendor && !skipGarantApres) {
     // Achat Apple Store + réparation 1ère année = sous garantie légale
     garantApresBody = `
