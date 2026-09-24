@@ -364,20 +364,20 @@ const repairData = {
         fr: `- Micro principal remplacé\nMicro ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\n\nTest Requis\nConfiguration système\nDiags audio\nDiags post-réparation\n  : 20 min restantes`
     },
     'Logic Board': {
-        en: `- Logic Board replaced\nBoard added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 20 mins left`,
-        fr: `- Carte logique remplacée\nCarte ajoutée aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 20 min restantes`
+        en: `- Logic Board replaced\nBoard added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 40 mins left`,
+        fr: `- Carte logique remplacée\nCarte ajoutée aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 40 min restantes`
     },
     'Rear System': {
-        en: `- Rear System replaced\nRear System added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 20 mins left`,
-        fr: `- Système arrière remplacé\nSystème ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 20 min restantes`
+        en: `- Rear System replaced\nRear System added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 40 mins left`,
+        fr: `- Système arrière remplacé\nSystème ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 40 min restantes`
     },
     'Enclosure': {
         en: `- Enclosure replaced\nEnclosure added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\n\nTest Needed\nConfiguration system\nPost Repair diags\nAudio Diags\nCamera diags\n  : 20 mins left`,
         fr: `- Boîtier remplacé\nBoîtier ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\n\nTest Requis\nConfiguration système\nDiags post-réparation\nDiags audio\nDiags caméra\n  : 20 min restantes`
     },
     'Mid System': {
-        en: `- Mid System replaced\nMid System added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 20 mins left`,
-        fr: `- Système central remplacé\nSystème central ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 20 min restantes`
+        en: `- Mid System replaced\nMid System added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 40 mins left`,
+        fr: `- Système central remplacé\nSystème central ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 40 min restantes`
     },
     'Post Diags OK': {
         en: `Post-Repair Diagnostics: PASSED\nAll functional tests successful\nSystem Configuration complete\nDevice ready for customer pickup.`,
@@ -658,7 +658,7 @@ function buildCombinedNote(names, lang) {
         return (ix === -1 ? 99 : ix) - (iy === -1 ? 99 : iy);
     });
     lines.push(...diags);
-    lines.push(lang === 'fr' ? '  : 20 min restantes' : '  : 20 mins left');
+    lines.push(lang === 'fr' ? (hasRestore ? '  : 40 min restantes' : '  : 20 min restantes') : (hasRestore ? '  : 40 mins left' : '  : 20 mins left'));
     return lines.join('\n');
 }
 
