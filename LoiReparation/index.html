@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609192131">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609241526">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -51,7 +51,10 @@
   .apple-logo{ width:15px; height:18px; flex-shrink:0; opacity:.92; }
   .topbar-label{ font-size:13px; font-weight:600; color:var(--text-secondary); letter-spacing:-0.01em; }
   .wrap{ max-width:720px; margin:0 auto; padding:120px 24px 64px; }
-  h1{ font-size:30px; line-height:1.1; letter-spacing:-0.015em; font-weight:600; margin:0 0 8px; text-align:center; }
+  h1{ font-size:56px; line-height:1.1; letter-spacing:-1.8px; font-weight:700; margin:0 0 8px; text-align:center;
+    background: linear-gradient(135deg, #0071e3 0%, #7d4cff 50%, #ff375f 100%);
+    -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+  @media (max-width: 640px){ h1{ font-size:36px; letter-spacing:-1.2px; } }
   .subtitle{ text-align:center; font-size:14px; color:var(--text-secondary); margin:0 0 36px; max-width:480px; margin-left:auto; margin-right:auto; line-height:1.45; }
 
   /* Select boxes */
@@ -198,7 +201,7 @@
 
 <div class="wrap">
   <h1>Biblio</h1>
-  <p class="subtitle">Bibliothèque Genius Bar : choisissez le type de demande et obtenez la réponse adaptée. Cette base de connaissances vit grâce à vos contributions — chaque cas traité, chaque astuce validée enrichit la bibliothèque pour toute l'équipe. Partagez vos découvertes&nbsp;: plus nous sommes nombreux à documenter, plus les réponses gagnent en fiabilité.</p>
+  <p class="subtitle">Bibliothèque Genius Bar : choisissez le type de demande et obtenez la réponse adaptée.</p>
 
   <div class="select-group" id="questionnaire"></div>
   <div class="result-panel" id="result-panel"></div>
