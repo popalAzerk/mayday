@@ -17,11 +17,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte du Touch ID": "https://support.apple.com/fr-fr/126168",
   "Clavier avec Touch ID": "https://support.apple.com/fr-fr/126170",
   "Clavier sans Touch ID": "https://support.apple.com/fr-fr/126169",
-  "Boîtier supérieur": "https://support.apple.com/fr-fr/126171",
-  "Trackpad Force Touch": "https://support.apple.com/fr-fr/126162",
-  "Ecran": "https://support.apple.com/fr-fr/126159",
-  "Clavier (avec boîtier supérieur)": "https://support.apple.com/fr-fr/126170",
-  "Haut-parleur droit": "https://support.apple.com/fr-fr/126156"
+  "Boîtier supérieur": "https://support.apple.com/fr-fr/126171"
  },
  "mb-12-2017": {},
  "mba-13-m5-2026": {
@@ -56,16 +52,7 @@ window.MAC_GUIDE_PAGES = {
   "Nappe de connexion audio/du capteur": "https://support.apple.com/fr-fr/125758",
   "Carte du Touch ID": "https://support.apple.com/fr-fr/125767",
   "Batterie": "https://support.apple.com/fr-fr/125759",
-  "Boîtier supérieur avec clavier": "https://support.apple.com/fr-fr/125768",
-  "Trackpad": "https://support.apple.com/fr-fr/125761",
-  "Haut Parleur Gauche": "https://support.apple.com/fr-fr/125769",
-  "Haut Parleur Droit": "https://support.apple.com/fr-fr/125765",
-  "Antenne Airport": "https://support.apple.com/fr-fr/125751",
-  "Carte Magsafe": "https://support.apple.com/fr-fr/125749",
-  "Carte USB-C": "https://support.apple.com/fr-fr/125752",
-  "Module écran": "https://support.apple.com/fr-fr/125760",
-  "Capteur Touch ID": "https://support.apple.com/fr-fr/125767",
-  "Boitier Supérieur": "https://support.apple.com/fr-fr/125757"
+  "Boîtier supérieur avec clavier": "https://support.apple.com/fr-fr/125768"
  },
  "mba-15-m4-2025": {
   "Boîtier inférieur": "https://support.apple.com/fr-fr/121963",
@@ -130,6 +117,7 @@ window.MAC_GUIDE_PAGES = {
  "mba-15-m2-2023": {
   "Boîtier inférieur": "https://support.apple.com/fr-fr/104033",
   "Batterie": "https://support.apple.com/fr-fr/104047",
+  "Dissipateur Thermique": "https://support.apple.com/fr-fr/104046",
   "Trackpad": "https://support.apple.com/fr-fr/104035",
   "Haut Parleur Gauche": "https://support.apple.com/fr-fr/104036",
   "Haut Parleur Droit": "https://support.apple.com/fr-fr/104037",
@@ -156,9 +144,7 @@ window.MAC_GUIDE_PAGES = {
   "Module écran": "https://support.apple.com/fr-fr/100619",
   "Carte logique": "https://support.apple.com/fr-fr/100616",
   "Capteur Touch ID": "https://support.apple.com/fr-fr/100620",
-  "Boitier Supérieur": "https://support.apple.com/fr-fr/100607",
-  "Haut-Parleurs": "https://support.apple.com/fr-fr/100614",
-  "Cable de la Carte Audio": "https://support.apple.com/fr-fr/100617"
+  "Boitier Supérieur": "https://support.apple.com/fr-fr/100607"
  },
  "mba-13-m1-2020": {
   "Boîtier inférieur": "https://support.apple.com/fr-fr/100590",
@@ -195,16 +181,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte MagSafe 3": "https://support.apple.com/fr-fr/125809",
   "Carte du Touch ID": "https://support.apple.com/fr-fr/125808",
   "Cartes USB-C": "https://support.apple.com/fr-fr/125816",
-  "Boîtier supérieur avec batterie et clavier": "https://support.apple.com/fr-fr/125812",
-  "Capteur d'angle": "https://support.apple.com/fr-fr/125806",
-  "Trackpad": "https://support.apple.com/fr-fr/125805",
-  "Module Ventilation/Antenne": "https://support.apple.com/fr-fr/125803",
-  "Module Écran": "https://support.apple.com/fr-fr/125800",
-  "Haut-Parleurs": "https://support.apple.com/fr-fr/125801",
-  "Carte Audio": "https://support.apple.com/fr-fr/125814",
-  "Carte Magsafe": "https://support.apple.com/fr-fr/125809",
-  "Carte Touch-ID": "https://support.apple.com/fr-fr/125808",
-  "Boîtier supérieur avec clavier": "https://support.apple.com/fr-fr/125812"
+  "Boîtier supérieur avec batterie et clavier": "https://support.apple.com/fr-fr/125812"
  },
  "mbp-14-m5-base-2025": {
   "Boîtier inférieur": "https://support.apple.com/fr-fr/123157",
@@ -339,8 +316,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte Magsafe": "https://support.apple.com/fr-fr/100582",
   "Carte Touch-ID": "https://support.apple.com/fr-fr/100583",
   "Cartes USB-C": "https://support.apple.com/fr-fr/100584",
-  "Boîtier supérieur avec clavier": "https://support.apple.com/fr-fr/100585",
-  "Carte Logique": "https://support.apple.com/fr-fr/100579"
+  "Boîtier supérieur avec clavier": "https://support.apple.com/fr-fr/100585"
  },
  "mbp-14-m1-2021": {
   "Boîtier inférieur": "https://support.apple.com/fr-fr/100553",
@@ -355,9 +331,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte Magsafe": "https://support.apple.com/fr-fr/100563",
   "Carte Touch-ID": "https://support.apple.com/fr-fr/100564",
   "Cartes USB-C": "https://support.apple.com/fr-fr/100565",
-  "Boîtier supérieur avec clavier": "https://support.apple.com/fr-fr/100566",
-  "Carte Logique": "https://support.apple.com/fr-fr/100560",
-  "Cartes Audio": "https://support.apple.com/fr-fr/100561"
+  "Boîtier supérieur avec clavier": "https://support.apple.com/fr-fr/100566"
  },
  "mbp-13-m1-2020": {
   "Boîtier inférieur": "https://support.apple.com/fr-fr/100534",
@@ -370,12 +344,7 @@ window.MAC_GUIDE_PAGES = {
   "Ventilateurs": "https://support.apple.com/fr-fr/100544",
   "Carte Touch-ID": "https://support.apple.com/fr-fr/100545",
   "Cartes Audio": "https://support.apple.com/fr-fr/100547",
-  "Boîtier supérieur avec clavier": "https://support.apple.com/fr-fr/100548",
-  "Antenne Airport": "https://support.apple.com/fr-fr/100539",
-  "Carte Audio": "https://support.apple.com/fr-fr/100547",
-  "Ensemble écran Retina": "https://support.apple.com/fr-fr/100540",
-  "Carte logique": "https://support.apple.com/fr-fr/100537",
-  "Dissipateur Thermique": "https://support.apple.com/fr-fr/100544"
+  "Boîtier supérieur avec clavier": "https://support.apple.com/fr-fr/100548"
  },
  "mbp-13-2020": {},
  "mbp-16-2019": {},
@@ -397,9 +366,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte audio et voyant d’état": "https://support.apple.com/fr-fr/121004",
   "Carte logique": "https://support.apple.com/fr-fr/121005",
   "Bloc d’alimentation": "https://support.apple.com/fr-fr/121006",
-  "Boîtier": "https://support.apple.com/fr-fr/121141",
-  "Coque inférieure": "https://support.apple.com/fr-fr/121141",
-  "Module d'alimentation": "https://support.apple.com/fr-fr/121006"
+  "Boîtier": "https://support.apple.com/fr-fr/121141"
  },
  "mini-m2-2023": {
   "Couvercle inférieur": "https://support.apple.com/fr-fr/102944",
@@ -410,11 +377,7 @@ window.MAC_GUIDE_PAGES = {
   "Bloc d’alimentation": "https://support.apple.com/fr-fr/102949",
   "Haut-parleur": "https://support.apple.com/fr-fr/102950",
   "Façade d’entrée/de sortie": "https://support.apple.com/fr-fr/102951",
-  "Boîtier": "https://support.apple.com/fr-fr/102952",
-  "Coque inférieure": "https://support.apple.com/fr-fr/102952",
-  "Module d'alimentation": "https://support.apple.com/fr-fr/102949",
-  "Carte mère": "https://support.apple.com/fr-fr/102948",
-  "Alimentation": "https://support.apple.com/fr-fr/102949"
+  "Boîtier": "https://support.apple.com/fr-fr/102952"
  },
  "mini-m1-2020": {
   "Couvercle inférieur": "https://support.apple.com/fr-fr/100337",
@@ -425,14 +388,7 @@ window.MAC_GUIDE_PAGES = {
   "Bloc d’alimentation": "https://support.apple.com/fr-fr/100342",
   "Haut-parleur": "https://support.apple.com/fr-fr/100343",
   "Façade d’entrée/de sortie": "https://support.apple.com/fr-fr/100344",
-  "Boîtier": "https://support.apple.com/fr-fr/100345",
-  "Coque inférieure": "https://support.apple.com/fr-fr/100345",
-  "Module d'alimentation": "https://support.apple.com/fr-fr/100342",
-  "Carte mère": "https://support.apple.com/fr-fr/100341",
-  "Alimentation": "https://support.apple.com/fr-fr/100342",
-  "Ventilateur système": "https://support.apple.com/fr-fr/100340",
-  "Haut-parleurs": "https://support.apple.com/fr-fr/100343",
-  "Boîtier arrière": "https://support.apple.com/fr-fr/100345"
+  "Boîtier": "https://support.apple.com/fr-fr/100345"
  },
  "mini-intel-2018": {},
  "imac-21-5": {},
@@ -456,13 +412,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte USB-C": "https://support.apple.com/fr-fr/120962",
   "Antenne Wi-Fi": "https://support.apple.com/fr-fr/120969",
   "Antenne Wi-Fi et Bluetooth": "https://support.apple.com/fr-fr/120968",
-  "Boîtier": "https://support.apple.com/fr-fr/120975",
-  "Cartes USB-C": "https://support.apple.com/fr-fr/120962",
-  "Carte de l’adaptateur": "https://support.apple.com/fr-fr/121148",
-  "Nappe de connexion de la caméra et eDP (embedded DisplayPort)": "https://support.apple.com/fr-fr/120976",
-  "Ventilateurs": "https://support.apple.com/fr-fr/120966",
-  "Nappe de connexion haute vitesse": "https://support.apple.com/fr-fr/121493",
-  "Nappe de connexion basse vitesse": "https://support.apple.com/fr-fr/120978"
+  "Boîtier": "https://support.apple.com/fr-fr/120975"
  },
  "imac-24-m1-4port-2021": {
   "Écran": "https://support.apple.com/fr-fr/120977",
@@ -483,14 +433,7 @@ window.MAC_GUIDE_PAGES = {
   "Nappe de connexion basse vitesse": "https://support.apple.com/fr-fr/120978",
   "Antenne Wi-Fi": "https://support.apple.com/fr-fr/120969",
   "Antenne Wi-Fi et Bluetooth": "https://support.apple.com/fr-fr/120968",
-  "Boîtier": "https://support.apple.com/fr-fr/120975",
-  "Ecran": "https://support.apple.com/fr-fr/120977",
-  "Pied": "https://support.apple.com/fr-fr/120971",
-  "Couvercle de la carte logique (protection contre les interférences électromagnétiques)": "https://support.apple.com/fr-fr/120974",
-  "Carte USB-C": "https://support.apple.com/fr-fr/120962",
-  "Ventilateur": "https://support.apple.com/fr-fr/120966",
-  "Nappe de connexion du DisplayPort intégré et de la caméra": "https://support.apple.com/fr-fr/120976",
-  "Batterie": "https://support.apple.com/fr-fr/120959"
+  "Boîtier": "https://support.apple.com/fr-fr/120975"
  },
  "imac-24-m3-2023": {
   "Ecran": "https://support.apple.com/fr-fr/120977",
@@ -509,9 +452,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte logique": "https://support.apple.com/fr-fr/120965",
   "Nappe de connexion basse vitesse": "https://support.apple.com/fr-fr/120978",
   "Batterie": "https://support.apple.com/fr-fr/120959",
-  "Boîtier": "https://support.apple.com/fr-fr/120975",
-  "Cartes USB-C": "https://support.apple.com/fr-fr/120962",
-  "Ventilateurs": "https://support.apple.com/fr-fr/120966"
+  "Boîtier": "https://support.apple.com/fr-fr/120975"
  },
  "imac-24-m3-4port-2023": {
   "Ecran": "https://support.apple.com/fr-fr/120977",
@@ -530,9 +471,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte logique": "https://support.apple.com/fr-fr/120965",
   "Nappe de connexion basse vitesse": "https://support.apple.com/fr-fr/120978",
   "Batterie": "https://support.apple.com/fr-fr/120959",
-  "Boîtier": "https://support.apple.com/fr-fr/120975",
-  "Carte USB-C": "https://support.apple.com/fr-fr/120962",
-  "Ventilateur": "https://support.apple.com/fr-fr/120966"
+  "Boîtier": "https://support.apple.com/fr-fr/120975"
  },
  "imac-24-m4-2024": {
   "Ecran": "https://support.apple.com/fr-fr/120977",
@@ -551,9 +490,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte logique": "https://support.apple.com/fr-fr/120965",
   "Nappe de connexion basse vitesse": "https://support.apple.com/fr-fr/120978",
   "Batterie": "https://support.apple.com/fr-fr/120959",
-  "Boîtier": "https://support.apple.com/fr-fr/120975",
-  "Cartes USB-C": "https://support.apple.com/fr-fr/120962",
-  "Ventilateurs": "https://support.apple.com/fr-fr/120966"
+  "Boîtier": "https://support.apple.com/fr-fr/120975"
  },
  "imac-24-m4-4port-2024": {
   "Ecran": "https://support.apple.com/fr-fr/120977",
@@ -572,13 +509,7 @@ window.MAC_GUIDE_PAGES = {
   "Carte logique": "https://support.apple.com/fr-fr/120964",
   "Nappe de connexion basse vitesse": "https://support.apple.com/fr-fr/120973",
   "Batterie": "https://support.apple.com/fr-fr/120959",
-  "Boîtier": "https://support.apple.com/fr-fr/120975",
-  "Écran Retina": "https://support.apple.com/fr-fr/120977",
-  "Câble rétroéclairage écran": "https://support.apple.com/fr-fr/120977",
-  "Câble extension rétroéclairage": "https://support.apple.com/fr-fr/120977",
-  "Carte mère (MLB)": "https://support.apple.com/fr-fr/120964",
-  "Caméra FaceTime HD 1080p": "https://support.apple.com/fr-fr/120976",
-  "Pied support réglable": "https://support.apple.com/fr-fr/120971"
+  "Boîtier": "https://support.apple.com/fr-fr/120975"
  },
  "imac-27": {},
  "imac-27-2017": {},
@@ -618,8 +549,7 @@ window.MAC_GUIDE_PAGES = {
   "Bouton d’alimentation": "https://support.apple.com/fr-fr/104019",
   "Carte logique": "https://support.apple.com/fr-fr/104020",
   "Ventilateur": "https://support.apple.com/fr-fr/104021",
-  "Boîtier": "https://support.apple.com/fr-fr/104023",
-  "Ports Thunderbolt arrière": "https://support.apple.com/fr-fr/104016"
+  "Boîtier": "https://support.apple.com/fr-fr/104023"
  },
  "mac-studio-2025": {
   "Couvercle inférieur": "https://support.apple.com/fr-fr/121980",
@@ -637,23 +567,29 @@ window.MAC_GUIDE_PAGES = {
   "Bouton d’alimentation": "https://support.apple.com/fr-fr/121995",
   "Carte logique": "https://support.apple.com/fr-fr/121996",
   "Ventilateur": "https://support.apple.com/fr-fr/121997",
-  "Boîtier": "https://support.apple.com/fr-fr/121999",
-  "Alimentation modulaire": "https://support.apple.com/fr-fr/121981",
-  "SSD PCIe Module": "https://support.apple.com/fr-fr/121989",
-  "Châssis complet": "https://support.apple.com/fr-fr/121982",
-  "Souffleur": "https://support.apple.com/fr-fr/121997"
+  "Boîtier": "https://support.apple.com/fr-fr/121999"
  },
  "pro-intel-2019": {},
  "pro-m2-ultra-2023": {
   "Boîtier": "https://support.apple.com/fr-fr/102965",
+  "Carte d’entrée/sortie Apple Thunderbolt et carte d’entrée/sortie Apple": "https://support.apple.com/fr-fr/102961",
   "Pile": "https://support.apple.com/fr-fr/102959",
   "Souffleur": "https://support.apple.com/fr-fr/102960",
+  "Pieds et roues": "https://support.apple.com/fr-fr/102965",
+  "Poignées": "https://support.apple.com/fr-fr/102965",
+  "Bouton d’alimentation avec voyant d’état": "https://support.apple.com/fr-fr/102965",
   "Bloc d’alimentation": "https://support.apple.com/fr-fr/102962",
   "Haut-parleur": "https://support.apple.com/fr-fr/102963",
+  "Modules SSD": "https://support.apple.com/fr-fr/102961",
+  "Ventilateurs système": "https://support.apple.com/fr-fr/102960",
+  "Cadre des emplacements PCI Express": "https://support.apple.com/fr-fr/102965",
   "Carte logique": "https://support.apple.com/fr-fr/102961",
+  "Nappe de connexion de la carte d’entrée/sortie supérieure": "https://support.apple.com/fr-fr/102961",
+  "Carte d’entrée/sortie supérieure": "https://support.apple.com/fr-fr/102961",
+  "Anneau de verrouillage": "https://support.apple.com/fr-fr/102965",
   "Antennes": "https://support.apple.com/fr-fr/102958",
-  "Ventilateur gauche": "https://support.apple.com/fr-fr/102960",
-  "Ventilateur droit": "https://support.apple.com/fr-fr/102960"
+  "Plaque supérieure du châssis": "https://support.apple.com/fr-fr/102965",
+  "Plaque inférieure du châssis": "https://support.apple.com/fr-fr/102965"
  },
  "pro-display-xdr": {}
 };
