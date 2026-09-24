@@ -59,7 +59,7 @@ html[data-theme="dark"] {
 }
 
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Fira Code", "Fira Sans", "Segoe UI", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
     background-color: var(--apple-bg);
     color: var(--apple-text);
     line-height: 1.5;
