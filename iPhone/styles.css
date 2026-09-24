@@ -1042,29 +1042,27 @@ footer p {
 
 /* ---- Component Card ---- */
 /* --- Notes combinées (mode +) --- */
-.combine-toggle {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 34px;
-    height: 34px;
-    border-radius: 50%;
-    border: 1px solid var(--border-color, rgba(0,0,0,0.12));
-    background: var(--card-bg);
-    color: var(--text-color, #1d1d1f);
-    font-size: 22px;
-    font-weight: 600;
-    line-height: 1;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    padding: 0;
-    flex: 0 0 auto;
+.combine-card {
+    border-style: dashed;
 }
-.combine-toggle:hover { transform: scale(1.08); }
-.combine-toggle.active {
+.combine-card .combine-plus {
+    font-size: 34px;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--text-color, #1d1d1f);
+    transition: color 0.2s ease;
+}
+.combine-card .notes-card-title {
+    font-size: 13px;
+}
+.combine-card:hover { transform: translateY(-2px); }
+.combine-card.active {
     background: #0071e3;
-    color: #fff;
     border-color: #0071e3;
+}
+.combine-card.active .combine-plus,
+.combine-card.active .notes-card-title {
+    color: #fff;
 }
 .combine-bar {
     display: none;

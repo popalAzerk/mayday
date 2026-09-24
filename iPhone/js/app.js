@@ -194,9 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const noteBtn = document.querySelector('.icon-note');
     if (noteBtn) noteBtn.addEventListener('click', openNotesModal);
 
-    // Notes combinées (mode +)
-    const combineToggle = document.getElementById('combineToggle');
-    if (combineToggle) combineToggle.addEventListener('click', toggleCombineMode);
+    // Notes combinées (mode +) — la carte « + » est créée par
+    // generateNotesCards et se câble via plusCard.onclick
     const combineCopyBtn = document.getElementById('combineCopy');
     if (combineCopyBtn) combineCopyBtn.addEventListener('click', copyCombinedNote);
     const combineClearBtn = document.getElementById('combineClear');
@@ -395,6 +394,7 @@ const translations = {
         modalTitle: 'Repair Notes',
         noNotes: 'No notes available.',
         copyToast: 'Copied to clipboard!',
+        combineCardLabel: 'Combined note',
         combineBar: 'Combined mode: select <span class="combine-count" id="combineCount">0</span>/3 parts',
         combineCopy: 'Copy combined note',
         combineClear: 'Clear',
@@ -405,7 +405,8 @@ const translations = {
         modalTitle: 'Notes de Réparation',
         noNotes: 'Aucune note disponible.',
         copyToast: 'Copié dans le presse-papier!',
-        combineBar: 'Mode combiné : sélectionne <span class="combine-count" id="combineCount">0</span>/3 pièces',
+                combineCardLabel: 'Note combinée',
+combineBar: 'Mode combiné : sélectionne <span class="combine-count" id="combineCount">0</span>/3 pièces',
         combineCopy: 'Copier la note combinée',
         combineClear: 'Effacer',
         combineLimit: 'Maximum 3 pièces',
@@ -435,6 +436,7 @@ function setLanguage(lang, event) {
     if (disclaimer) disclaimer.textContent = lang === 'en' ? 'Note: ' : 'Note : ';
     
     if (document.getElementById('notesModal').classList.contains('active')) {
+        generateNotesCards();
         updateCombineUI();
         const combineCopyBtn = document.getElementById('combineCopy');
         if (combineCopyBtn) {
@@ -539,10 +541,8 @@ let combineSelection = [];
 
 function toggleCombineMode() {
     combineMode = !combineMode;
-    const toggle = document.getElementById('combineToggle');
     const bar = document.getElementById('combineBar');
     const actions = document.getElementById('combineActions');
-    if (toggle) toggle.classList.toggle('active', combineMode);
     if (bar) bar.classList.toggle('visible', combineMode);
     if (actions) actions.classList.toggle('visible', combineMode);
     combineSelection = [];
@@ -563,6 +563,15 @@ function updateCombineUI() {
 function generateNotesCards() {
     if (!notesGrid) return;
     notesGrid.innerHTML = '';
+    // Carte « + » (note combinée) en tête de grille:
+    const plusCard = document.createElement('div');
+    plusCard.className = 'notes-card combine-card';
+    plusCard.id = 'combineCard';
+    if (combineMode) plusCard.classList.add('active');
+    plusCard.onclick = toggleCombineMode;
+    const plusLabel = (typeof translations !== 'undefined' && translations[currentLanguage]) ? translations[currentLanguage].combineCardLabel : 'Combined note';
+    plusCard.innerHTML = `<div class="combine-plus">+</div><div class="notes-card-title">${plusLabel}</div>`;
+    notesGrid.appendChild(plusCard);
     const componentsToShow = Object.keys(repairData);
     componentsToShow.forEach(componentName => {
         const card = document.createElement('div');
