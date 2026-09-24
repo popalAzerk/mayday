@@ -194,6 +194,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const noteBtn = document.querySelector('.icon-note');
     if (noteBtn) noteBtn.addEventListener('click', openNotesModal);
 
+    // Notes combinées (mode +)
+    const combineToggle = document.getElementById('combineToggle');
+    if (combineToggle) combineToggle.addEventListener('click', toggleCombineMode);
+    const combineCopyBtn = document.getElementById('combineCopy');
+    if (combineCopyBtn) combineCopyBtn.addEventListener('click', copyCombinedNote);
+    const combineClearBtn = document.getElementById('combineClear');
+    if (combineClearBtn) combineClearBtn.addEventListener('click', () => {
+        combineSelection = [];
+        updateCombineUI();
+        generateNotesCards();
+    });
+
     // Title click to return to grid
     const mainTitle = document.querySelector('.title');
     if (mainTitle) {
@@ -382,12 +394,23 @@ const translations = {
     en: {
         modalTitle: 'Repair Notes',
         noNotes: 'No notes available.',
-        copyToast: 'Copied to clipboard!'
+        copyToast: 'Copied to clipboard!',
+        combineBar: 'Combined mode: select <span class="combine-count" id="combineCount">0</span>/3 parts',
+        combineCopy: 'Copy combined note',
+        combineClear: 'Clear',
+        combineLimit: 'Maximum 3 parts',
+        combineTitle: 'The browser blocked the combined note'
     },
     fr: {
         modalTitle: 'Notes de Réparation',
         noNotes: 'Aucune note disponible.',
-        copyToast: 'Copié dans le presse-papier!'
+        copyToast: 'Copié dans le presse-papier!',
+        combineBar: 'Mode combiné : sélectionne <span class="combine-count" id="combineCount">0</span>/3 pièces',
+        combineCopy: 'Copier la note combinée',
+        combineClear: 'Effacer',
+        combineLimit: 'Maximum 3 pièces',
+        combineLimitMsg: 'Maximum 3 pièces',
+        combineTitle: 'Note combinée'
     }
 };
 
@@ -412,6 +435,17 @@ function setLanguage(lang, event) {
     if (disclaimer) disclaimer.textContent = lang === 'en' ? 'Note: ' : 'Note : ';
     
     if (document.getElementById('notesModal').classList.contains('active')) {
+        updateCombineUI();
+        const combineCopyBtn = document.getElementById('combineCopy');
+        if (combineCopyBtn) {
+            const tr = (typeof translations !== 'undefined' ? translations[currentLanguage] : null) || {};
+            combineCopyBtn.textContent = tr.combineCopy || combineCopyBtn.textContent;
+        }
+        const combineClearBtn = document.getElementById('combineClear');
+        if (combineClearBtn) {
+            const tr = (typeof translations !== 'undefined' ? translations[currentLanguage] : null) || {};
+            combineClearBtn.textContent = tr.combineClear || combineClearBtn.textContent;
+        }
         generateNotesCards();
     }
 }
@@ -499,6 +533,33 @@ function closeNotesModal() {
     }
 }
 
+// === Notes combinées (mode +) ===
+let combineMode = false;
+let combineSelection = [];
+
+function toggleCombineMode() {
+    combineMode = !combineMode;
+    const toggle = document.getElementById('combineToggle');
+    const bar = document.getElementById('combineBar');
+    const actions = document.getElementById('combineActions');
+    if (toggle) toggle.classList.toggle('active', combineMode);
+    if (bar) bar.classList.toggle('visible', combineMode);
+    if (actions) actions.classList.toggle('visible', combineMode);
+    combineSelection = [];
+    updateCombineUI();
+    generateNotesCards();
+}
+
+
+function updateCombineUI() {
+    const bar = document.getElementById('combineBar');
+    const count = document.getElementById('combineCount');
+    if (count) count.textContent = String(combineSelection.length);
+    if (bar && window.translations) {
+        bar.innerHTML = (typeof translations !== 'undefined' ? (translations[currentLanguage] || {}).combineBar : null) || bar.innerHTML;
+    }
+}
+
 function generateNotesCards() {
     if (!notesGrid) return;
     notesGrid.innerHTML = '';
@@ -506,12 +567,106 @@ function generateNotesCards() {
     componentsToShow.forEach(componentName => {
         const card = document.createElement('div');
         card.className = 'notes-card';
-        card.onclick = () => copyRepairText(componentName);
+        if (combineMode && combineSelection.includes(componentName)) card.classList.add('combine-selected');
+        card.onclick = () => {
+            if (combineMode) { toggleCombineSelection(componentName); }
+            else { copyRepairText(componentName); }
+        };
         const iconPath = componentIcons[componentName] || getSquareIconPath('enclosure.svg');
         const displayLabel = componentName.replace(/_/g, ' ');
         card.innerHTML = `<img src="${iconPath}" alt="${displayLabel}" class="notes-card-icon"><div class="notes-card-title">${displayLabel}</div>`;
         notesGrid.appendChild(card);
     });
+}
+
+function toggleCombineSelection(componentName) {
+    const idx = combineSelection.indexOf(componentName);
+    if (idx > -1) {
+        combineSelection.splice(idx, 1);
+    } else {
+        if (combineSelection.length >= 3) {
+            const tr = (typeof translations !== 'undefined' ? translations[currentLanguage] : null) || {};
+            showToastMsg(tr.combineLimitMsg || 'Maximum 3 pièces');
+            return;
+        }
+        combineSelection.push(componentName);
+    }
+    updateCombineUI();
+    generateNotesCards();
+}
+
+// Parse une note en segments réutilisables:
+function parseNoteSegments(text) {
+    const lines = text.split('\n');
+    return {
+        replaced: lines[0] || '',
+        added: lines[1] || '',
+        diags: lines.map(l => l.trim()).filter(l =>
+            l.startsWith('Diags ') || l === 'Post Repair diags' ||
+            l === 'Audio Diags' || l === 'Camera diags')
+    };
+}
+
+// Ordre canonique des diags dans une note combinée:
+const COMBINE_DIAG_ORDER_FR = ['Diags post-réparation', 'Diags audio', 'Diags caméra'];
+const COMBINE_DIAG_ORDER_EN = ['Post Repair diags', 'Audio Diags', 'Camera diags'];
+const COMBINE_SHARED = {
+    fr: ['Nouvel adhésif posé', 'Appareil fermé et pressé', 'Vis de sécurité vissées', 'Test Requis', 'Configuration système'],
+    en: ['New adhesive pressed', 'Device closed and pressed', 'Screwed security screws', 'Test Needed', 'Configuration system']
+};
+
+function buildCombinedNote(names, lang) {
+    const shared = COMBINE_SHARED[lang];
+    const diagOrder = lang === 'fr' ? COMBINE_DIAG_ORDER_FR : COMBINE_DIAG_ORDER_EN;
+    const lines = [];
+    names.forEach(n => {
+        const entry = repairData[n];
+        if (!entry) return;
+        const seg = parseNoteSegments(entry[lang] || entry['en']);
+        lines.push(seg.replaced, seg.added);
+    });
+    lines.push(...shared.slice(0, 3));
+    lines.push('');
+    lines.push(shared[3], shared[4]);
+    const diags = [];
+    names.forEach(n => {
+        const entry = repairData[n];
+        if (!entry) return;
+        const seg = parseNoteSegments(entry[lang] || entry['en']);
+        seg.diags.forEach(d => { if (!diags.includes(d)) diags.push(d); });
+    });
+    diags.sort((x, y) => {
+        const ix = diagOrder.indexOf(x), iy = diagOrder.indexOf(y);
+        return (ix === -1 ? 99 : ix) - (iy === -1 ? 99 : iy);
+    });
+    lines.push(...diags);
+    lines.push(lang === 'fr' ? '  : 20 min restantes' : '  : 20 mins left');
+    return lines.join('\n');
+}
+
+async function copyCombinedNote() {
+    if (combineSelection.length < 2) return;
+    const text = buildCombinedNote(combineSelection, currentLanguage);
+    try {
+        await navigator.clipboard.writeText(text);
+        showCopyToast();
+    } catch (err) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        document.body.appendChild(textArea);
+        textArea.select();
+        document.execCommand('copy');
+        document.body.removeChild(textArea);
+        showCopyToast();
+    }
+}
+
+function showToastMsg(msg) {
+    if (!copyToast) return;
+    const toastSpan = copyToast.querySelector('span');
+    if (toastSpan) toastSpan.textContent = msg;
+    copyToast.classList.add('show');
+    setTimeout(() => copyToast.classList.remove('show'), 2000);
 }
 
 async function copyRepairText(componentName) {

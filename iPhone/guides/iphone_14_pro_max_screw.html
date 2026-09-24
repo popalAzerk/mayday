@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>iPhone 14 Pro Max Screw Diagram</title>
-    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../styles.css?v=202609241218">
     <!-- Use localized FontAwesome from Mac Admin Support -->
     <link rel="stylesheet" href="../../Mac/assets/css/fontawesome.min.css" />
     <!-- Global Shared Theme for MAYDAY Navigation -->
@@ -881,6 +881,7 @@
             <div class="notes-modal-header">
                 <div class="notes-modal-title-group">
                     <div class="notes-modal-title">Notes de Réparation</div>
+                    <button class="combine-toggle" id="combineToggle" aria-label="Notes combinées" title="Notes combinées (jusqu'à 3 pièces)">+</button>
                     <div class="lang-toggle">
                         <button class="lang-btn" id="langBtnEn" onclick="setLanguage('en', event)">EN</button>
                         <button class="lang-btn active" id="langBtnFr" onclick="setLanguage('fr', event)">FR</button>
@@ -895,8 +896,15 @@
                 </button>
             </div>
             <div class="notes-modal-body">
+                <div class="combine-bar" id="combineBar">
+                    Mode combiné : sélectionne <span class="combine-count" id="combineCount">0</span>/3 pièces
+                </div>
                 <div class="notes-grid" id="notesGrid">
                     <!-- Component cards will be dynamically inserted here -->
+                </div>
+                <div class="combine-actions" id="combineActions">
+                    <button class="combine-btn" id="combineCopy">Copier la note combinée</button>
+                    <button class="combine-btn secondary" id="combineClear">Effacer</button>
                 </div>
                 <p class="notes-disclaimer">
                     <strong>Note : </strong> Les notes pré-écrites fournies constituent un support général et
@@ -1014,7 +1022,7 @@
         });
     </script>
     <script src="../../assets/js/shared-app.js?v=202609181236"></script>
-    <script src="../js/app.js"></script>
+    <script src="../js/app.js?v=202609241218"></script>
 </body>
 
 </html>

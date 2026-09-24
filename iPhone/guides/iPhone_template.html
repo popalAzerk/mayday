@@ -1418,6 +1418,7 @@
         <div class="notes-modal-content">
             <div class="notes-modal-header">
                 <div class="notes-modal-title">Repair Notes</div>
+                <button class="combine-toggle" id="combineToggle" aria-label="Combined notes" title="Combined notes (up to 3 parts)">+</button>
                 <button class="notes-modal-close" id="closeNotesModal" aria-label="Close notes">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round"
                         stroke-linejoin="round">
@@ -1427,8 +1428,15 @@
                 </button>
             </div>
             <div class="notes-modal-body">
+                <div class="combine-bar" id="combineBar">
+                    Combined mode: select <span class="combine-count" id="combineCount">0</span>/3 parts
+                </div>
                 <div class="notes-grid" id="notesGrid">
                     <!-- Component cards will be dynamically inserted here -->
+                </div>
+                <div class="combine-actions" id="combineActions">
+                    <button class="combine-btn" id="combineCopy">Copy combined note</button>
+                    <button class="combine-btn secondary" id="combineClear">Clear</button>
                 </div>
                 <div class="notes-warning">
                     <p><strong>Note :</strong> Les notes pré-écrites fournies constituent un support

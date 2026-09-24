@@ -1041,6 +1041,73 @@ footer p {
 }
 
 /* ---- Component Card ---- */
+/* --- Notes combinées (mode +) --- */
+.combine-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color, rgba(0,0,0,0.12));
+    background: var(--card-bg);
+    color: var(--text-color, #1d1d1f);
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    padding: 0;
+    flex: 0 0 auto;
+}
+.combine-toggle:hover { transform: scale(1.08); }
+.combine-toggle.active {
+    background: #0071e3;
+    color: #fff;
+    border-color: #0071e3;
+}
+.combine-bar {
+    display: none;
+    width: 100%;
+    margin: 0 0 12px;
+    padding: 10px 14px;
+    border-radius: 14px;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color, rgba(0,0,0,0.10));
+    font-size: 14px;
+    color: var(--text-color, #1d1d1f);
+    text-align: center;
+}
+.combine-bar.visible { display: block; }
+.combine-bar .combine-count { font-weight: 600; }
+.notes-card.combine-selected {
+    border: 2px solid #0071e3;
+    box-shadow: 0 0 0 4px rgba(0,113,227,0.15);
+}
+.combine-actions {
+    display: none;
+    width: 100%;
+    margin-top: 4px;
+}
+.combine-actions.visible { display: flex; gap: 10px; }
+.combine-btn {
+    flex: 1;
+    padding: 12px 18px;
+    border-radius: 14px;
+    border: none;
+    background: #0071e3;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+.combine-btn.secondary {
+    background: var(--card-bg);
+    color: var(--text-color, #1d1d1f);
+    border: 1px solid var(--border-color, rgba(0,0,0,0.12));
+}
+
 .notes-card {
     background: var(--card-bg);
     border: 0.5px solid var(--border-color, rgba(0,0,0,0.08));
