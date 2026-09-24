@@ -549,6 +549,29 @@ window.getGuideUrl = function () {
   return window.MAC_GUIDES?.[key] || window.MAC_GUIDES?.[cr.modelKey] || null;
 };
 
+// Ouvre 1 onglet par pièce sélectionnée (pages Apple par pièce), le
+// manuel du modèle en secours. Retourne le nombre d'onglets ouverts.
+window.openGuidePages = function () {
+  const cr = window.state.currentRepair;
+  if (!cr) return 0;
+  const pages = window.MAC_GUIDE_PAGES?.[cr.modelKey] || {};
+  const seen = new Set();
+  let opened = 0;
+  // Le manuel complet (guide modèle) d'abord:
+  const base = window.getGuideUrl();
+  if (base) { window.open(base, '_blank', 'noopener'); opened++; }
+  for (const partKey of Object.keys(cr.selectedParts)) {
+    const part = cr.selectedParts[partKey];
+    const url = pages?.[part?.name];
+    if (url && !seen.has(url)) {
+      seen.add(url);
+      window.open(url, '_blank', 'noopener');
+      opened++;
+    }
+  }
+  return opened;
+};
+
 window.showPreTest = function () {
   const cr = window.state.currentRepair;
   if (!cr || Object.keys(cr.selectedParts).length === 0) return;
