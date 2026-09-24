@@ -555,22 +555,47 @@ window.openGuidePages = function () {
   const cr = window.state.currentRepair;
   if (!cr) return 0;
   const pages = window.MAC_GUIDE_PAGES?.[cr.modelKey] || {};
+  const urls = [];
   const seen = new Set();
-  let opened = 0;
-  // Le manuel complet (guide modèle) d'abord:
   const base = window.getGuideUrl();
-  if (base) { window.open(base, '_blank', 'noopener'); opened++; }
+  if (base) { urls.push(base); seen.add(base); }
   for (const partKey of Object.keys(cr.selectedParts)) {
-    const part = cr.selectedParts[partKey];
-    const url = pages?.[part?.name];
-    if (url && !seen.has(url)) {
-      seen.add(url);
-      window.open(url, '_blank', 'noopener');
-      opened++;
-    }
+    const url = pages?.[cr.selectedParts[partKey]?.name];
+    if (url && !seen.has(url)) { seen.add(url); urls.push(url); }
+  }
+  if (urls.length === 0) return 0;
+  const blocked = [];
+  let opened = 0;
+  for (const u of urls) {
+    const w = window.open(u, '_blank', 'noopener');
+    if (w) { opened++; } else { blocked.push(u); }
+  }
+  if (blocked.length > 0) {
+    const list = blocked.map(function (u) {
+      const label = 'Page Apple ' + u.split('/').pop();
+      return '<li><a href="' + u + '" target="_blank" rel="noopener">' + label + '</a></li>';
+    }).join('');
+    const body = document.getElementById('details-body') || document.querySelector('main') || document.body;
+    const note = document.createElement('div');
+    note.className = 'card';
+    note.style.cssText = 'margin-top:12px; text-align:left;';
+    const t = document.createElement('h4');
+    t.className = 'font-semibold';
+    t.textContent = 'Le navigateur a bloqué ' + blocked.length + ' onglet(s)';
+    const p = document.createElement('p');
+    p.className = 'text-muted';
+    p.style.marginBottom = '8px';
+    p.textContent = 'Clique sur chaque lien pour ouvrir la page (ou autorise les fenêtres pop-up pour ce site).';
+    const ul = document.createElement('ul');
+    ul.style.paddingLeft = '16px';
+    ul.innerHTML = list;
+    note.appendChild(t); note.appendChild(p); note.appendChild(ul);
+    body.appendChild(note);
   }
   return opened;
 };
+
+
 
 window.showPreTest = function () {
   const cr = window.state.currentRepair;
