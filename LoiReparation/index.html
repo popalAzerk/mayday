@@ -10,7 +10,7 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" href="favicon.png" sizes="180x180">
 <title>Biblio — Genius Bar</title>
-<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609251253">
+<link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609251636">
 <style>
   :root{
     /* Mappé sur le thème Mayday (shared-theme.css) — Liquid Glass */
@@ -755,22 +755,26 @@ function getResult(s) {
       storeReason = "<strong>Vérifier les 90 jours :</strong> le remplacement effectué par Apple est couvert par la <strong>garantie de service Apple de 90 jours</strong> (ou la durée restante de la garantie Apple, la plus longue). Si le remplacement date de <strong>moins de 90 jours</strong>, la réparation est gratuite ici ; sinon, réparation payante (+ 90 j de garantie). La garantie légale renouvelée (2 ans sur le bien de remplacement) incombe au <strong>vendeur d'origine</strong> — carte suivante.";
       storeCost = "Gratuit si remplacement < 90 j — sinon payant + 90 j";
     }
-  } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
+  } else if (s["prior-repair"] === "apple-repair" && isDefect) {
+    // Réparation antérieure par Apple/CSAA. En store, ce qui compte:
+    // 1) rechute du même défaut → gratuit (garantie Apple 90 j sur
+    //    la réparation) ; 2) nouveau défaut → la prolongation légale
+    //    de 12 mois incombe au VENDEUR D'ORIGINE, pas à Apple.
     canStore = true;
-    storeReason = "Appareil réparé sous garantie — garantie légale <strong>prolongée de 12 mois</strong> (Service Public F11094 ; art. 16 directive 2024/1799 — pour les ventes à partir du 31/07/2026). Réparation gratuite.";
-    storeCost = "Gratuit";
-  } else if (s["prior-repair"] === "apple-repair" && isDefect && (s.age === "2-5")) {
+    storeReason = "<strong>Rechute du même défaut</strong> → gratuit ici (garantie Apple <strong>90 jours</strong> sur la réparation, art. 10(2) dir. 2019/771). <strong>Nouveau défaut + réparation &lt; 12 mois</strong> → garantie légale prolongée chez le <strong>vendeur d'origine</strong> (facture ; Service Public F11094). <strong>Sinon</strong> → réparation payante (+ 90 j de garantie).";
+    storeCost = "Gratuit si rechute · vendeur si < 12 mois · sinon payant";
+  } else if (false && s["prior-repair"] === "apple-repair" && isDefect && (s.age === "2-5")) {
     // Réparation antérieure sous garantie: prolongation 1 an possible
     // selon la date de la réparation (art. 10(2) dir. 2019/771):
     canStore = true;
-    storeReason = "Trois cas : <strong>rechute du même défaut</strong> → gratuit ici (garantie Apple 90 j sur la réparation). <strong>Nouveau défaut + réparation < 12 mois</strong> → garantie légale prolongée chez le <strong>vendeur d'origine</strong> (facture). <strong>Sinon</strong> → payant.";
+    storeReason = "Trois cas : <strong>rechute du même défaut</strong> → gratuit ici (garantie Apple 90 j sur la réparation). <strong>Nouveau défaut + réparation &lt; 12 mois</strong> → garantie légale prolongée chez le <strong>vendeur d'origine</strong> (facture). <strong>Sinon</strong> → payant.";
     storeCost = "Gratuit si rechute · vendeur si < 12 mois · sinon payant";
   }
 
   // --- VERDICT PRINCIPAL ---
   let verdict, title, summary;
   const isPayantUE = isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect && !["apple-replace", "apple-repair"].includes(s["prior-repair"]);
-  const isDateCheck = isDefect && ((s["prior-repair"] === "apple-replace" && (!isUnderWarranty || !isAppleVendor)) || (s["prior-repair"] === "apple-repair" && s.age === "2-5"));
+  const isDateCheck = isDefect && ((s["prior-repair"] === "apple-replace" && (!isUnderWarranty || !isAppleVendor)) || (s["prior-repair"] === "apple-repair"));
   if (canStore) {
     verdict = (isPayantUE || isDateCheck) ? "partial" : "eligible";
     if (isYear1 && isDefect && isAppleVendor) {
@@ -785,11 +789,8 @@ function getResult(s) {
     } else if (s["prior-repair"] === "apple-replace" && isDefect) {
       title = isAppleVendor ? (isUnderWarranty ? "Éligible garantie légale renouvelée" : "Garantie renouvelée ? — vérifier la date du remplacement") : "Vérifier : remplacement couvert par les 90 jours de garantie de service ?";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
-    } else if (s["prior-repair"] === "apple-repair" && isUnderWarranty && isDefect) {
-      title = "Éligible garantie légale prolongée";
-      summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
     } else if (s["prior-repair"] === "apple-repair" && isDefect) {
-      title = "Pas couvert ici — garantie légale possible chez le vendeur";
+      title = "Réparation Apple : 90 jours ? — vérifier la date";
       summary = `${storeReason} Coût : <strong>${storeCost}</strong>.`;
     } else if (isAnnexII && (s.age === "2-5" || s.age === "5-10") && isDefect) {
       title = "Hors garantie légale — réparation payante possible (droit à la réparation UE)";
@@ -1924,6 +1925,6 @@ function showResult(panel, r) {
 
 buildQuestionnaire();
 </script>
-  <script src="../assets/js/shared-app.js?v=202609251253"></script>
+  <script src="../assets/js/shared-app.js?v=202609251636"></script>
 </body>
 </html>
