@@ -6,7 +6,7 @@
     <title>iPhone Screw Diagrams</title>
     <script>(function(){try{var t=localStorage.getItem('apple-hub-theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
     <!-- Master Portal Shared Theme -->
-    <link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609251853">
+    <link rel="stylesheet" href="../assets/css/shared-theme.css?v=202609260954">
     <style>
         html, body {
             min-height: 100vh;
@@ -74,6 +74,20 @@
 
         .series-grid::-webkit-scrollbar {
             display: none;
+        }
+
+        .card-new-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 3px 10px;
+            border-radius: 10px;
+            background: var(--apple-red, #ff3b30);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            z-index: 2;
         }
 
         .series-card {
@@ -966,6 +980,20 @@
         
         <div class="series-container-wrapper">
             <div class="series-grid">
+                <div class="series-card">
+                    <div class="card-image-box">
+                        <img src="models/iPhone_18_Pro/iphone_18pro_overview.png" class="series-image" alt="iPhone 18 Pro Series">
+                        <span class="card-new-badge">New</span>
+                    </div>
+                    <div class="card-info">
+                        <h3 class="series-title">iPhone 18 Series</h3>
+                        <div class="model-pills">
+                            <a href="guides/iphone_18_pro_max_screw.html" class="model-pill">MAX</a>
+                            <a href="guides/iphone_18_pro_screw.html" class="model-pill">PRO</a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- iPhone 17 Series -->
                 <div class="series-card">
                     <div class="card-image-box">
@@ -1168,7 +1196,7 @@
     </div>
 
     <!-- The shared JS script injecting global nav and handling theme toggle -->
-    <script src="../assets/js/shared-app.js?v=202609251853"></script>
+    <script src="../assets/js/shared-app.js?v=202609260954"></script>
     <script src="js/index_logic.js?v=1"></script>
 </body>
 </html>
