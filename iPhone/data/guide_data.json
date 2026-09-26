@@ -23,25 +23,25 @@
       {
        "number": 3,
        "text": "Remove the iPhone from the heated display removal fixture and place it in the repair tray with the display faceup and the USB-C connector facing the cutout. Caution: Fully open the display pocket to avoid scratching the iPhone enclosure.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127631/127631_Display_Repair_Tray.png",
        "type": "step"
       },
       {
        "number": 4,
        "text": "Use the adhesive cutter to cut along the left and right sides of the display, stopping at the antenna bands. Caution: You must use a new adhesive cutter.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127631/127631_Display_Open_Cut_Sides.png",
        "type": "step"
       },
       {
        "number": 5,
        "text": "Pull down on the display to disengage the internal display clips along the top edge. Then use the adhesive cutter to cut around the top and corners to release the display. Caution: To avoid damaging the enclosure or display, ensure that the internal display clips are released before you tilt up the display.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/123365/123365_Open_Cut_Top.gif",
        "type": "step"
       },
       {
        "number": 6,
        "text": "Insert the repair tray suction cups into the slots in the repair tray. Grasp only the edges of the display and tilt it up toward the suction cups. Press the top and bottom edges of the display to secure it to the suction cups. Caution Don't damage the flex cables as you tilt up the display.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -95,7 +95,7 @@
       {
        "number": 2,
        "text": "Use ESD-safe tweezers or the adhesive removal tool to pick up the display adhesive. Then pull the adhesive at a 45-degree angle to remove it. Repeat this process until all the adhesive is removed from the perimeter of the enclosure. Caution Don&rsquo;t touch the front camera assembly, grounding springs, or nearby parts.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -107,7 +107,7 @@
       {
        "number": 4,
        "text": "Use ethanol wipes or IPA wipes to clean residual adhesive from the enclosure and only from the edges of the display. Caution Don't touch any other part of the display glass with the ethanol wipes or IPA wipes. Ethanol and isopropyl alcohol may damage the display and affect image quality.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -161,7 +161,7 @@
       {
        "number": 13,
        "text": "Align the replacement display adhesive over the enclosure. Ensure that the top holes of the adhesive align over the front camera assembly. Caution: Ensure that you've removed all residual adhesive from the display and the enclosure before applying the replacement adhesive.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127631/127631_Display_Adhesive_Align.png",
        "type": "step"
       },
       {
@@ -173,7 +173,7 @@
       {
        "number": 15,
        "text": "Use the black stick to adhere the display adhesive to the enclosure. Move the black stick around the edge of the enclosure at least three times to ensure that the adhesive is adhered evenly. Caution Don't damage the bottom and top grounding springs. Run the black stick along the edges in the directions of the grounding springs.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -251,7 +251,7 @@
       {
        "number": 28,
        "text": "Peel the first strip of the middle release liner (1) counterclockwise, starting at the bottom of the enclosure. Peel the second strip (2) clockwise. Don&rsquo;t peel the remaining strip yet. Caution Inspect the display adhesive to ensure that it&rsquo;s in the correct position and isn&rsquo;t damaged or wrinkled. If the adhesive is damaged, remove it and apply replacement adhesive.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -287,7 +287,7 @@
       {
        "number": 34,
        "text": "Press all four corners of the display simultaneously. Then press along the edges of the display until it clicks and the display is flush with the enclosure. Caution: Ensure that the flex cables aren't trapped between the display and the enclosure. Feel the edges of the display for variations or gaps. If the display isn't flush, repeat all removal steps and check the flex cables for damage. Then repeat reassembly steps 1 through 24.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127631/127631_Display_Adhesive_Corner_Press.png",
        "type": "step"
       },
       {
@@ -305,7 +305,7 @@
       {
        "number": 37,
        "text": "Use the blue torque driver and PL1.1 bit to install two new PL1.1 screws, one on each side of the USB-C connector. As you install the screws, press lightly on the display near the USB-C connector. Count five clicks from the torque driver as you install each screw to ensure that the screw is fully installed. Caution: If the screws aren't flush, remove the screws. Then repeat this step to install a new set of PL1.1 screws. If the new screws still aren't flush, repeat all removal and reassembly steps.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -377,7 +377,7 @@
       {
        "number": 4,
        "text": "Use the adhesive cutter to cut around all sides of the iPhone until the back glass is free. Caution: Go slowly around the corners.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127632/127632_BG_Open_Cutter.png",
        "type": "step"
       },
       {
@@ -413,19 +413,19 @@
       {
        "number": 1,
        "text": "Use the adhesive removal tool or the black stick to lift the adhesive from the enclosure. Use ESD-safe tweezers or the adhesive removal tool to pull the adhesive. Repeat until all the adhesive is removed from the perimeter of the enclosure. Caution: Only use the adhesive removal tool as instructed. Avoid contact with plastic parts of the enclosure.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127632/127632_BG_Adhesive_ART.png",
        "type": "step"
       },
       {
        "number": 2,
        "text": "Use ethanol wipes or IPA wipes to clean all residual adhesive from the edges of the back glass and the enclosure. Warning: Inspect the enclosure for loose or extra screws and small parts, which can damage the battery and cause safety issues.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Warning_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127632/127632_BG_Adhesive_Wipes.png",
        "type": "step"
       },
       {
        "number": 3,
        "text": "Align the replacement back glass adhesive over the enclosure starting at the bottom edge. &nbsp;Caution: Ensure that you've removed all residual adhesive from the back glass and the enclosure before you apply the replacement back glass adhesive.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127632/127632_BG_Adhesive_Align.png",
        "type": "step"
       },
       {
@@ -485,7 +485,7 @@
       {
        "number": 13,
        "text": "Inspect the back glass adhesive to ensure that it's in the correct position and not damaged or wrinkled. If the adhesive is damaged, remove it and reapply replacement adhesive. &nbsp;Warning Carefully inspect the back glass for loose or extra screws and other small parts that may have attached to magnetized areas. These small parts can damage the iPhone and cause safety or functional issues when the iPhone is reassembled.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Warning_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -515,7 +515,7 @@
       {
        "number": 18,
        "text": "Align the back glass with the enclosure. Then lower the back glass into place. Caution: Feel the edges of the back glass for variations or gaps. If the back glass isn't flush, repeat all removal steps and check the flex cables for damage. Then repeat reassembly steps 1 through 17 before continuing to step 18.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127632/127632_BG_Adhesive_Inspect_Gaps.png",
        "type": "step"
       },
       {
@@ -563,7 +563,7 @@
       {
        "number": 26,
        "text": "&nbsp;Caution: If the screws aren't flush, remove the screws. Then install a new set of PL1.1 screws. If the new screws still aren't flush, repeat all removal and reassembly steps.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127631/127632_Bottom_Screw_Install.png",
        "type": "step"
       }
      ]
@@ -617,13 +617,13 @@
       {
        "number": 3,
        "text": "Caution: Properly align the battery to avoid damaging it during installation.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127633/127633_Battery_Install.png",
        "type": "step"
       },
       {
        "number": 4,
        "text": "Set the torque value on the 10&ndash;34 Ncm adjustable torque driver to 32.5 Ncm. Use the adjustable torque driver and 4IP bit to install 11 new 4IP screws (923-15884) (B3-D1) into the battery in the order shown. Caution: Ensure that the screws are installed at a 90-degree angle to the battery to avoid stripping the screws.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127633/127398_Battery_Screws_Install_A.png",
        "type": "step"
       },
       {
@@ -689,7 +689,7 @@
       {
        "number": 3,
        "text": "Lift the camera out of the enclosure. Caution: Don&rsquo;t lift the camera by the flex cables. Lift it out of the enclosure by one of the screw holes.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -707,7 +707,7 @@
       {
        "number": 1,
        "text": "Remove the camera cap and inspect the lenses. Ensure that they're free of debris. &nbsp;Caution: If the camera cap on a replacement part is damaged or missing, order a new replacement part.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -833,7 +833,7 @@
       {
        "number": 1,
        "text": "If you&rsquo;re installing a replacement front camera, inspect it for damage. If it&rsquo;s damaged or the camera cap is missing, order a replacement front camera. Caution: Leave the camera cap on until just before you apply the replacement display adhesive.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127635/127635_FC_Cover_Inspect.png",
        "type": "step"
       },
       {
@@ -845,7 +845,7 @@
       {
        "number": 3,
        "text": "Caution: Avoid touching the grounding springs.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127635/127635_FC_Install.png",
        "type": "step"
       },
       {
@@ -917,7 +917,7 @@
       {
        "number": 1,
        "text": "Position the top speaker in the enclosure at an angle as shown. Then lower it into the enclosure. Caution: Ensure that the top speaker gasket is fully aligned with the indentation in the enclosure.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127636/127636_TopSpk_Install.png",
        "type": "step"
       },
       {
@@ -1007,7 +1007,7 @@
       {
        "number": 1,
        "text": "Ensure that the speaker port and speaker well are undamaged and free of debris. Caution: Debris in the speaker port and speaker well may affect sound quality.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127638/127638_BttmSpkr_pSIM_Check.png",
        "type": "step"
       },
       {
@@ -1055,7 +1055,7 @@
       {
        "number": 9,
        "text": "Lower the SIM assembly into the enclosure. Press the end of the SIM assembly flex cable to the connector. Caution: Don&rsquo;t damage the USB-C flex cable while lowering the SIM assembly into the enclosure.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1121,7 +1121,7 @@
       {
        "number": 3,
        "text": "&nbsp;Caution:&nbsp;Don&rsquo;t damage the USB-C connector flex cables when lifting the SIM assembly.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1133,7 +1133,7 @@
       {
        "number": 5,
        "text": "Lift the bottom speaker out of the enclosure. Caution: Don&rsquo;t damage the grounding springs on the bottom speaker.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1223,7 +1223,7 @@
       {
        "number": 3,
        "text": "&nbsp;Caution:&nbsp;Don&rsquo;t damage the USB-C connector flex cables when lifting the SIM assembly.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1235,7 +1235,7 @@
       {
        "number": 5,
        "text": "Lift the bottom speaker out of the enclosure. Caution: Don&rsquo;t damage the grounding springs on the bottom speaker.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1259,7 +1259,7 @@
       {
        "number": 9,
        "text": "Separate the adhesive between the main microphone and enclosure as shown. Then lift the main microphone out of the enclosure. Caution: The main microphone gasket uses a strong adhesive. When separating the main microphone from the enclosure, don&rsquo;t press or pull on the cowlings on either side of the main microphone.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127642/127642_Mic_pSIM_Remove.png",
        "type": "step"
       }
      ]
@@ -1403,7 +1403,7 @@
       {
        "number": 7,
        "text": "Caution: Don&rsquo;t pinch or stretch the flex cables on the back of the logic board or in the enclosure. Avoid touching components on the logic board.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1451,7 +1451,7 @@
       {
        "number": 3,
        "text": "Position the back glass connector cowling over the end of the back glass flex cable. Hook the cowling over the end of the flex cable. Caution: Ensure that the cowling tab is engaged before installing the screw.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127646/127646_MLB_pSIM_BG_Cowl_Replace.png",
        "type": "step"
       },
       {
@@ -1662,25 +1662,25 @@
       {
        "number": 3,
        "text": "Remove the iPhone from the heated display removal fixture and place it in the repair tray with the display faceup and the USB-C connector facing the cutout. Caution: Fully open the display pocket to avoid scratching the iPhone enclosure.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127396/127396_Display_Repair_Tray.png",
        "type": "step"
       },
       {
        "number": 4,
        "text": "Use the adhesive cutter to cut along the left and right sides of the display, stopping at the antenna bands. Caution: You must use a new adhesive cutter.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127396/127396_Display_Open_Cut_Sides.png",
        "type": "step"
       },
       {
        "number": 5,
        "text": "Pull down on the display to disengage the internal display clips along the top edge. Then use the adhesive cutter to cut around the top and corners to release the display. Caution: To avoid damaging the enclosure or display, ensure that the internal display clips are released before you tilt up the display.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/123365/123365_Open_Cut_Top.gif",
        "type": "step"
       },
       {
        "number": 6,
        "text": "Insert the repair tray suction cups into the slots in the repair tray. Grasp only the edges of the display and tilt it up toward the suction cups. Press the top and bottom edges of the display to secure it to the suction cups. Caution Don't damage the flex cables as you tilt up the display.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1734,7 +1734,7 @@
       {
        "number": 2,
        "text": "Use ESD-safe tweezers or the adhesive removal tool to pick up the display adhesive. Then pull the adhesive at a 45-degree angle to remove it. Repeat this process until all the adhesive is removed from the perimeter of the enclosure. Caution Don&rsquo;t touch the front camera assembly, grounding springs, or nearby parts.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1746,7 +1746,7 @@
       {
        "number": 4,
        "text": "Use ethanol wipes or IPA wipes to clean residual adhesive from the enclosure and only from the edges of the display. Caution Don't touch any other part of the display glass with the ethanol wipes or IPA wipes. Ethanol and isopropyl alcohol may damage the display and affect image quality.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1800,7 +1800,7 @@
       {
        "number": 13,
        "text": "Align the replacement display adhesive over the enclosure. Ensure that the top holes of the adhesive align over the front camera assembly. Caution: Ensure that you've removed all residual adhesive from the display and the enclosure before applying the replacement adhesive.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127396/127396_Display_Adhesive_Align.png",
        "type": "step"
       },
       {
@@ -1812,7 +1812,7 @@
       {
        "number": 15,
        "text": "Use the black stick to adhere the display adhesive to the enclosure. Move the black stick around the edge of the enclosure at least three times to ensure that the adhesive is adhered evenly. Caution Don't damage the bottom and top grounding springs. Run the black stick along the edges in the directions of the grounding springs.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1890,7 +1890,7 @@
       {
        "number": 28,
        "text": "Peel the first strip of the middle release liner (1) counterclockwise, starting at the bottom of the enclosure. Peel the second strip (2) clockwise. Don&rsquo;t peel the remaining strip yet. Caution Inspect the display adhesive to ensure that it&rsquo;s in the correct position and isn&rsquo;t damaged or wrinkled. If the adhesive is damaged, remove it and apply replacement adhesive.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -1926,7 +1926,7 @@
       {
        "number": 34,
        "text": "Press all four corners of the display simultaneously. Then press along the edges of the display until it clicks and the display is flush with the enclosure. Caution: Ensure that the flex cables aren't trapped between the display and the enclosure. Feel the edges of the display for variations or gaps. If the display isn't flush, repeat all removal steps and check the flex cables for damage. Then repeat reassembly steps 1 through 24.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127396/127396_Display_Adhesive_Corner_Press.png",
        "type": "step"
       },
       {
@@ -1944,7 +1944,7 @@
       {
        "number": 37,
        "text": "Use the blue torque driver and PL1.1 bit to install two new PL1.1 screws, one on each side of the USB-C connector. As you install the screws, press lightly on the display near the USB-C connector. Count five clicks from the torque driver as you install each screw to ensure that the screw is fully installed. Caution: If the screws aren't flush, remove the screws. Then repeat this step to install a new set of PL1.1 screws. If the new screws still aren't flush, repeat all removal and reassembly steps.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -2016,7 +2016,7 @@
       {
        "number": 4,
        "text": "Use the adhesive cutter to cut around all sides of the iPhone until the back glass is free. Caution: Go slowly around the corners.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127397/127397_BG_Open_Cutter.png",
        "type": "step"
       },
       {
@@ -2052,19 +2052,19 @@
       {
        "number": 1,
        "text": "Use the adhesive removal tool or the black stick to lift the adhesive from the enclosure. Use ESD-safe tweezers or the adhesive removal tool to pull the adhesive. Repeat this process until all the adhesive is removed from the perimeter of the enclosure. Caution: Only use the adhesive removal tool as instructed. Avoid contact with plastic parts of the enclosure.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127397/127397_BG_Adhesive_ART.png",
        "type": "step"
       },
       {
        "number": 2,
        "text": "Use ethanol wipes or IPA wipes to clean all residual adhesive from the edges of the back glass and the enclosure. Warning: Inspect the enclosure for loose or extra screws and small parts, which can damage the battery and cause safety issues.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Warning_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127397/127397_BG_Adhesive_Wipes.png",
        "type": "step"
       },
       {
        "number": 3,
        "text": "Align the replacement back glass adhesive over the enclosure starting at the bottom edge. &nbsp;Caution: Ensure that you've removed all residual adhesive from the back glass and the enclosure before you apply the replacement back glass adhesive.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127397/127397_BG_Adhesive_Align.png",
        "type": "step"
       },
       {
@@ -2124,7 +2124,7 @@
       {
        "number": 13,
        "text": "Inspect the back glass adhesive to ensure that it's in the correct position and not damaged or wrinkled. If the adhesive is damaged, remove it and reapply replacement adhesive. &nbsp;Warning Carefully inspect the back glass for loose or extra screws and other small parts that may have attached to magnetized areas. These small parts can damage the iPhone and cause safety or functional issues when the iPhone is reassembled.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Warning_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -2154,7 +2154,7 @@
       {
        "number": 18,
        "text": "Align the back glass with the enclosure. Then lower the back glass into place. Caution: Feel the edges of the back glass for variations or gaps. If the back glass isn't flush, repeat all removal steps and check the flex cables for damage. Then repeat reassembly steps 1 through 17 before continuing to step 18.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127397/127397_BG_Adhesive_Inspect_Gaps.png",
        "type": "step"
       },
       {
@@ -2202,7 +2202,7 @@
       {
        "number": 26,
        "text": "&nbsp;Caution: If the screws aren't flush, remove the screws. Then install a new set of PL1.1 screws. If the new screws still aren't flush, repeat all removal and reassembly steps.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127397/127397_Screw_Ext_Out.png",
        "type": "step"
       }
      ]
@@ -2250,13 +2250,13 @@
       {
        "number": 3,
        "text": "Caution: Properly align the battery to avoid damaging it during installation.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127398/127398_Battery_Install.png",
        "type": "step"
       },
       {
        "number": 4,
        "text": "Set the torque value on the 10&ndash;34 Ncm adjustable torque driver to 32.5 Ncm. Use the adjustable torque driver and 4IP bit to install 10 new 4IP screws (923-15884) (B3-C6) into the battery in the order shown. Caution: Ensure that screws are installed at a 90-degree angle to the battery to avoid stripping the screws.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127398/127398_Battery_Screws_Install_A.png",
        "type": "step"
       },
       {
@@ -2322,7 +2322,7 @@
       {
        "number": 3,
        "text": "Lift the camera out of the enclosure. Caution: Don&rsquo;t lift the camera by the flex cables. Lift it out of the enclosure by one of the screw holes.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -2340,7 +2340,7 @@
       {
        "number": 1,
        "text": "Remove the camera cap and inspect the lenses. Ensure that they're free of debris. &nbsp;Caution: If the camera cap on a replacement part is damaged or missing, order a new replacement part.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -2454,7 +2454,7 @@
       {
        "number": 1,
        "text": "If you&rsquo;re installing a replacement front camera, inspect it for damage. If it&rsquo;s damaged or the camera cap is missing, order a replacement front camera. Caution: Leave the camera cap on until just before you apply the replacement display adhesive.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127400/127400_FC_Cover_Inspect.png",
        "type": "step"
       },
       {
@@ -2466,7 +2466,7 @@
       {
        "number": 3,
        "text": "Caution: Avoid touching the grounding springs.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127400/127400_FC_Install.png",
        "type": "step"
       },
       {
@@ -2526,7 +2526,7 @@
       {
        "number": 2,
        "text": "Caution: Don't damage the springs on the top speaker. If the springs are damaged, replace the top speaker.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127401/127401_TopSpk_Springs_1.png",
        "type": "step"
       }
      ]
@@ -2538,7 +2538,7 @@
       {
        "number": 1,
        "text": "Position the top speaker in the enclosure at an angle as shown. Then lower it into the enclosure. Caution: Ensure that the top speaker gasket is fully aligned with the indentation in the enclosure and no debris is present on the top of the housing.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127401/127401_TopSpk_Install.png",
        "type": "step"
       },
       {
@@ -2628,7 +2628,7 @@
       {
        "number": 1,
        "text": "Ensure that the speaker port and speaker well are undamaged and free of debris. Caution: Debris in the speaker port and speaker well may affect sound quality.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127403/127403_BttmSpkr_pSIM_Check.png",
        "type": "step"
       },
       {
@@ -2748,7 +2748,7 @@
       {
        "number": 5,
        "text": "Lift the bottom speaker out of the enclosure. Caution: Don&rsquo;t damage the grounding springs on the bottom speaker.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": null,
        "type": "step"
       },
       {
@@ -2898,7 +2898,7 @@
       {
        "number": 9,
        "text": "Break the adhesive between the main microphone and enclosure as shown. Then lift the main microphone out of the enclosure. Caution: The main microphone adhesive gasket uses a strong adhesive. When separating the main microphone from the enclosure, don&rsquo;t press or pull on the cowlings on either side of the main microphone.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127407/127407_Mic_pSIM_Remove.png",
        "type": "step"
       }
      ]
@@ -3012,13 +3012,13 @@
       {
        "number": 4,
        "text": "Slowly tilt the logic board (with upper antenna flex cable) as shown, moving the LiDAR flex cable and other flex cables out of the way as necessary. Caution: Avoid pinching or touching the flex cables to other parts as you tilt the logic board.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127411/127411_MLB_pSIM_Lift.gif",
        "type": "step"
       },
       {
        "number": 5,
        "text": "Use a torque driver and the crosshead bit to remove one crosshead screw from the back glass connector cowling. Remove the back glass connector cowling and save it for reassembly. Then complete the entire step. Caution: The screw and cowling may fall into the enclosure. Ensure that you remove both before you continue.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127411/127411_MLB_pSIM_BG_Cowl_Remove.png",
        "type": "step"
       },
       {
@@ -3048,7 +3048,7 @@
       {
        "number": 3,
        "text": "Tilt the logic board into the enclosure, moving cables out of the way as necessary. Caution: Ensure that the upper antenna flex cable (connected to the logic board) sits under the LiDAR flex cable.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127411/127411_MLB_pSIM_Replace.gif",
        "type": "step"
       },
       {
@@ -3066,7 +3066,7 @@
       {
        "number": 6,
        "text": "Position the grounding spring and ensure that it faces toward the camera. Caution: Ensure that the grounding spring is correctly positioned before fully installing the screw.",
-       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/ssr/boilerplates/icon-images/Caution_112219_MT.svg",
+       "image": "https://cdsassets.apple.com/live/SZLF0YNV/service-documentation/iphone/127411/127411_MLB_pSIM_Ground_Spring_Replace.png",
        "type": "step"
       },
       {
