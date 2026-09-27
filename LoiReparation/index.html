@@ -763,12 +763,6 @@ function getResult(s) {
     canStore = true;
     storeReason = "<strong>Rechute du même défaut</strong> → gratuit ici (garantie Apple <strong>90 jours</strong> sur la réparation, art. 10(2) dir. 2019/771). <strong>Nouveau défaut + réparation &lt; 12 mois</strong> → garantie légale prolongée chez le <strong>vendeur d'origine</strong> (facture ; Service Public F11094). <strong>Sinon</strong> → réparation payante (+ 90 j de garantie).";
     storeCost = "Gratuit si rechute · vendeur si < 12 mois · sinon payant";
-  } else if (false && s["prior-repair"] === "apple-repair" && isDefect && (s.age === "2-5")) {
-    // Réparation antérieure sous garantie: prolongation 1 an possible
-    // selon la date de la réparation (art. 10(2) dir. 2019/771):
-    canStore = true;
-    storeReason = "Trois cas : <strong>rechute du même défaut</strong> → gratuit ici (garantie Apple 90 j sur la réparation). <strong>Nouveau défaut + réparation &lt; 12 mois</strong> → garantie légale prolongée chez le <strong>vendeur d'origine</strong> (facture). <strong>Sinon</strong> → payant.";
-    storeCost = "Gratuit si rechute · vendeur si < 12 mois · sinon payant";
   }
 
   // --- VERDICT PRINCIPAL ---
