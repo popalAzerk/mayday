@@ -2615,6 +2615,8 @@ body.view-active .component-grid {
     border-radius: 9px;
     padding: 2px;
     width: fit-content;
+    max-width: 100%;
+    min-width: 0;
     z-index: 10;
 }
 
@@ -2644,6 +2646,7 @@ body.view-active .component-grid {
 .guide-tab-label {
     font-size: 12px;
     line-height: 1;
+    white-space: nowrap; /* "Removal"/"Reassembly" jamais tronqués */
 }
 
 .guide-section-tab.active {
@@ -2741,7 +2744,7 @@ body.view-active .component-grid {
     align-items: center;
     justify-content: center;
     height: 24px;
-    padding: 0 6px;
+    padding: 0 8px;
     background: var(--apple-blue);
     color: white;
     font-size: 13px;
@@ -2750,6 +2753,8 @@ body.view-active .component-grid {
     letter-spacing: -0.2px;
     width: fit-content;
     min-width: fit-content;
+    white-space: nowrap; /* jamais de wrap: "Étape N" sur 1 ligne */
+    flex-shrink: 0; /* la grille 1fr ne l'écrase plus */
 }
 
 /* Guide Image */
@@ -3217,6 +3222,8 @@ body.view-active .component-grid {
     
     .guide-step-header {
         padding: 10px 12px 6px;
+        grid-template-columns: auto 1fr auto; /* badge et lien source à leur largeur naturelle */
+        gap: 8px;
     }
     
     .guide-image-wrapper {
@@ -3237,6 +3244,9 @@ body.view-active .component-grid {
     justify-content: center;
     height: 24px; /* Matches step badge perfectly */
     padding: 0 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    max-width: 100%;
     gap: 5px;
     background: rgba(52, 199, 89, 0.85);
     color: white;
