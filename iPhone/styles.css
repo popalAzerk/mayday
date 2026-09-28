@@ -3112,6 +3112,7 @@ body.view-active .component-grid {
     /* Bouton menu (dropdown Series) = icône hamburger identique au bouton
        hamburger du coin supérieur gauche, symétrie parfaite */
     .header-dropdown-title {
+        position: relative !important;
         min-width: 44px !important;
         width: 44px !important;
         height: 44px !important;
@@ -3125,8 +3126,17 @@ body.view-active .component-grid {
         overflow: hidden !important;
         /* texte "17 Series" masqué, remplacé par l'icône */
         font-size: 0 !important;
-        /* icône hamburger identique au bouton de gauche (22px, 3 lignes),
-           dessinée en mask: prend la couleur du texte (dark mode OK) */
+    }
+
+    /* icône hamburger identique au bouton de gauche (22px, 3 lignes),
+       sur un pseudo-élément en mask: prend la couleur du texte (dark mode OK) */
+    .header-dropdown-title::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        width: 22px;
+        height: 22px;
         background-color: currentColor;
         -webkit-mask-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='3' y1='6' x2='21' y2='6'/%3E%3Cline x1='3' y1='12' x2='21' y2='12'/%3E%3Cline x1='3' y1='18' x2='21' y2='18'/%3E%3C/svg%3E");
         -webkit-mask-repeat: no-repeat;
@@ -3136,6 +3146,7 @@ body.view-active .component-grid {
         mask-repeat: no-repeat;
         mask-position: center;
         mask-size: 22px 22px;
+        pointer-events: none;
     }
 
     .header-dropdown-arrow {
