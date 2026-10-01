@@ -339,11 +339,13 @@ const QUESTIONS = [
       ],
       gen16: [
         { value: "mid-display", label: "Mid + Display" },
-        { value: "mid-mix", label: "Mid + Rear Camera / Mid + Back Glass / Mid + True Depth" }
+        { value: "mid-backglass", label: "Mid + Back Glass cassé" },
+        { value: "mid-mix", label: "Mid + Rear Camera / Mid + True Depth" }
       ],
       gen15: [
         { value: "mid-display", label: "Mid + Display" },
-        { value: "mid-mix", label: "Mid + Rear Camera / Mid + Back Glass" }
+        { value: "mid-backglass", label: "Mid + Back Glass cassé" },
+        { value: "mid-mix", label: "Mid + Rear Camera" }
       ],
       gen14: [
         { value: "rear-display", label: "Rear + Display" },
@@ -629,6 +631,9 @@ function getResultSwap(s) {
   } else if (part === "mid-display" || part === "rear-display") {
     solution = "Swap";
     reason = "Mid/Rear + Display → toujours Swap (couvert* ou non)." + priceTxt;
+  } else if (part === "mid-backglass") {
+    solution = "Swap";
+    reason = "Mid + Back Glass → uniquement Swap, même si 1 seul module est cassé (Kbase panne mixte 111090 / 106063)." + priceTxt + " <em>Attention : Mobile Genius peut bloquer sur ce cas et proposer une réparation — c'est une erreur connue, remontée à Geoff. Forcer le Swap (annuler et refaire la sélection si besoin).</em>";
   } else if (st === "covered") {
     solution = "Repair";
     reason = "Couvert* → Repair.";
