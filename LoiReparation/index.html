@@ -339,12 +339,14 @@ const QUESTIONS = [
       ],
       gen16: [
         { value: "mid-display", label: "Mid + Display" },
-        { value: "mid-backglass", label: "Mid + Back Glass cassé" },
+        { value: "mid-backglass", label: "Mid + Back Glass — dommage accidentel" },
+        { value: "mid-backglass-fn", label: "Mid + Back Glass — problème fonctionnel" },
         { value: "mid-mix", label: "Mid + Rear Camera / Mid + True Depth" }
       ],
       gen15: [
         { value: "mid-display", label: "Mid + Display" },
-        { value: "mid-backglass", label: "Mid + Back Glass cassé" },
+        { value: "mid-backglass", label: "Mid + Back Glass — dommage accidentel" },
+        { value: "mid-backglass-fn", label: "Mid + Back Glass — problème fonctionnel" },
         { value: "mid-mix", label: "Mid + Rear Camera" }
       ],
       gen14: [
@@ -632,8 +634,19 @@ function getResultSwap(s) {
     solution = "Swap";
     reason = "Mid/Rear + Display → toujours Swap (couvert* ou non)." + priceTxt;
   } else if (part === "mid-backglass") {
+    // KBase 106063 : dommage ACCIDENTEL écran et/ou dos en verre → WUR toujours
     solution = "Swap";
-    reason = "Mid + Back Glass → uniquement Swap, même si 1 seul module est cassé (Kbase panne mixte 111090 / 106063)." + priceTxt + " <em>Attention : Mobile Genius peut bloquer sur ce cas et proposer une réparation — c'est une erreur connue, remontée à Geoff. Forcer le Swap (annuler et refaire la sélection si besoin).</em>";
+    reason = "Mid + Back Glass accidentel → WUR (Swap) obligatoire, même couvert* (Kbase 106063 : dommage accidentel écran/dos en verre → jamais de réparation sur place)." + priceTxt + " <em>Attention : Mobile Genius peut bloquer sur ce cas et proposer une réparation — erreur connue, remontée à Geoff. Forcer le Swap.</em>";
+  } else if (part === "mid-backglass-fn") {
+    // KBase 106063 : SUR possible si Au moins 1 des 2 réparations est couverte;
+    // les 2 hors garantie → WUR; écran fonctionnel impliqué → WUR (pas ici).
+    if (st === "covered" || st === "partial") {
+      solution = "Repair";
+      reason = "Mid + Back Glass fonctionnel — SUR possible car l'une des réparations est couverte* (Kbase 106063 note SUR).";
+    } else {
+      solution = "Swap";
+      reason = "Mid + Back Glass fonctionnel, les 2 réparations hors garantie → WUR (Swap) obligatoire (Kbase 106063)." + priceTxt;
+    }
   } else if (st === "covered") {
     solution = "Repair";
     reason = "Couvert* → Repair.";
