@@ -97,6 +97,19 @@
   .quick-card a{ color:var(--accent); text-decoration:none; font-weight:500; }
   .quick-card a:hover{ text-decoration:underline; }
 
+  /* Service Business — cartes façon screw (grid 2/3, pas de carrousel) */
+  .biz-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:18px 12px; padding:8px 0 4px; }
+  @media (min-width: 651px){ .biz-grid{ grid-template-columns:repeat(3, 1fr); gap:24px 16px; } }
+  .biz-card{ display:flex; flex-direction:column; align-items:center; text-align:center; background:transparent; border:none; padding:0; cursor:pointer; -webkit-tap-highlight-color:transparent; transition:transform .35s cubic-bezier(.4,0,.2,1); }
+  .biz-card:active{ transform:scale(.92); transition:all .1s ease; }
+  .biz-icon{ width:76px; height:76px; border-radius:22.5%; display:flex; align-items:center; justify-content:center; font-size:38px; background:var(--surface); border:1px solid var(--border-soft); box-shadow:var(--shadow); }
+  .biz-title{ font-size:13px; font-weight:500; margin-top:10px; line-height:1.2; letter-spacing:-.2px; max-width:100%; }
+  .biz-detail{ grid-column:1 / -1; background:var(--surface); border:1px solid var(--border-soft); border-radius:14px; padding:16px 20px; box-shadow:var(--shadow); font-size:13.5px; line-height:1.5; }
+  .biz-detail h3{ font-size:15px; font-weight:600; margin:0 0 8px; }
+  .biz-detail p{ margin:0 0 8px; }
+  .biz-detail p:last-child{ margin-bottom:0; }
+  .biz-detail a{ color:var(--accent); text-decoration:none; font-weight:500; }
+
   .tag{ display:inline-block; font-size:10.5px; font-weight:600; padding:2px 9px; border-radius:980px; margin-right:5px; background:color-mix(in srgb, var(--accent) 10%, transparent); color:var(--accent); }
   .tag.red{ background:color-mix(in srgb, var(--ac-red) 10%, transparent); color:var(--ac-red); }
   .tag.green{ background:color-mix(in srgb, var(--ac-green) 12%, transparent); color:var(--ac-green); }
@@ -1808,37 +1821,24 @@ function buildQuestionnaire() {
 // Mayday (manuel Apple par composant) — 'screen' = par l'écran,
 // 'backglass' = par le dos en verre.
 // ========== SERVICE BUSINESS ==========
-const RESULT_BUSINESS = {
-  verdict: "eligible",
-  title: "🧰 Kit de survie Services Business",
-  summary: "Un aper\u00e7u de nos services business — pas une liste exhaustive : la base pour r\u00e9pondre \u00e0 la plupart des questions.",
-  cards: [
-    {
-      title: "\u2696\ufe0f\ud83d\udcb8 Leasing",
-      body: `<p>Solution de location de 1 \u00e0 3 ans selon le contrat : le client pr\u00e9serve sa tr\u00e9sorerie initiale et peut l'investir ailleurs.</p><p><a href="https://www.afsleasequote.fr/quote.html" target="_blank" rel="noopener">Afsleasequote</a></p>`
-    },
-    {
-      title: "\ud83d\udcf1\ud83d\udcbb Gestion de parc",
-      body: `<p>Configurer, obtenir du support et s\u00e9curiser \u00e0 distance les identifiants et produits Apple avec Apple Business — sans intervention physique.</p><p><a href="https://business.apple.com" target="_blank" rel="noopener">Apple Business</a></p>`
-    },
-    {
-      title: "\ud83d\udcb0\ud83d\ude9a Mode d'achat",
-      body: `<p>Carte bancaire, virement (2-3 jours de setup) et portail de commande en ligne pro personnalisable pour faciliter les achats.</p>`
-    },
-    {
-      title: "\ud83d\udee0\ufe0f\ud83e\udd1d\ud83d\udcbb Consulting et webinaires",
-      body: `<p>Nous travaillons avec un r\u00e9seau d'<strong>Apple Technical Partner</strong> pour aider nos clients \u00e0 cr\u00e9er, mettre en place ou restructurer leurs outils.</p><p>Nos ing\u00e9nieurs solutions animent des <strong>webinaires</strong> sur nos technologies — rendez-vous avec eux pour vous aiguiller sur la gestion de parc.</p>`
-    },
-    {
-      title: "\ud83d\udcc5\ud83d\udc69\u200d\ud83c\udfeb Trainings et events",
-      body: `<p>Events business r\u00e9guliers autour de nos technologies, ateliers du programme Today @ Apple pour prendre en main l'\u00e9cosyst\u00e8me.</p><p><a href="https://www.apple.com/fr/today/groups" target="_blank" rel="noopener">Today at Apple — groupes</a></p>`
-    },
-    {
-      title: "\u260e\ufe0f\ud83e\udd1d Contact",
-      body: `<p>Le business est le <strong>contact local</strong> de nos clients pour nos Apple Store lyonnais — et aussi dans les autres services et Stores du monde. Ce contact unique permet un suivi efficace sans d\u00e9multiplier les intervenants.</p><p>\ud83d\udcde <a href="tel:+33437231520">04 37 23 15 20</a> — \ud83d\udce7 <a href="mailto:confluencebusiness@apple.com">confluencebusiness@apple.com</a></p>`
-    }
-  ]
-};
+const BIZ_ITEMS = [
+  { icon: "\u2696\ufe0f\ud83d\udcb8", title: "Leasing", html: `<p>Solution de location de 1 \u00e0 3 ans selon le contrat : le client pr\u00e9serve sa tr\u00e9sorerie initiale et peut l'investir ailleurs.</p><p><a href="https://www.afsleasequote.fr/quote.html" target="_blank" rel="noopener">Afsleasequote</a></p>` },
+  { icon: "\ud83d\udcf1\ud83d\udcbb", title: "Gestion de parc", html: `<p>Configurer, obtenir du support et s\u00e9curiser \u00e0 distance les identifiants et produits Apple avec Apple Business — sans intervention physique.</p><p><a href="https://business.apple.com" target="_blank" rel="noopener">Apple Business</a></p>` },
+  { icon: "\ud83d\udcb0\ud83d\ude9a", title: "Mode d'achat", html: `<p>Carte bancaire, virement (2-3 jours de setup) et portail de commande en ligne pro personnalisable pour faciliter les achats.</p>` },
+  { icon: "\ud83d\udee0\ufe0f\ud83e\udd1d\ud83d\udcbb", title: "Consulting et webinaires", html: `<p>Nous travaillons avec un r\u00e9seau d'<strong>Apple Technical Partner</strong> pour aider nos clients \u00e0 cr\u00e9er, mettre en place ou restructurer leurs outils.</p><p>Nos ing\u00e9nieurs solutions animent des <strong>webinaires</strong> sur nos technologies — rendez-vous avec eux pour vous aiguiller sur la gestion de parc.</p>` },
+  { icon: "\ud83d\udcc5\ud83d\udc69\u200d\ud83c\udfeb", title: "Trainings et events", html: `<p>Events business r\u00e9guliers autour de nos technologies, ateliers du programme Today @ Apple pour prendre en main l'\u00e9cosyst\u00e8me.</p><p><a href="https://www.apple.com/fr/today/groups" target="_blank" rel="noopener">Today at Apple — groupes</a></p>` },
+  { icon: "\u260e\ufe0f\ud83e\udd1d", title: "Contact", html: `<p>Le business est le <strong>contact local</strong> de nos clients pour nos Apple Store lyonnais — et aussi dans les autres services et Stores du monde. Ce contact unique permet un suivi efficace sans d\u00e9multiplier les intervenants.</p><p>\ud83d\udcde <a href="tel:+33437231520">04 37 23 15 20</a> — \ud83d\udce7 <a href="mailto:confluencebusiness@apple.com">confluencebusiness@apple.com</a></p>` }
+];
+
+function showBizDetail(idx) {
+  const it = BIZ_ITEMS[idx];
+  const box = document.getElementById('biz-detail');
+  if (!box) return;
+  if (box.hidden === false && box.dataset.idx === String(idx)) { box.hidden = true; box.dataset.idx = ''; return; }
+  box.innerHTML = `<h3>${it.icon} ${it.title}</h3>${it.html}`;
+  box.hidden = false;
+  box.dataset.idx = String(idx);
+}
 
 const SENS_DATA = {"iPhone_14": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_14_screw.html"}, "iPhone_14_Plus": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_14_plus_screw.html"}, "iPhone_14_Pro": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_14_pro_screw.html"}, "iPhone_14_Pro_Max": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_14_pro_max_screw.html"}, "iPhone_15": {"table": {"Battery": "backglass", "Camera": "screen", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_15_screw.html"}, "iPhone_15_Plus": {"table": {"Battery": "backglass", "Camera": "screen", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_15_plus_screw.html"}, "iPhone_15_Pro": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_15_pro_screw.html"}, "iPhone_15_Pro_Max": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_15_pro_max_screw.html"}, "iPhone_16": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_screw.html"}, "iPhone_16_Plus": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_plus_screw.html"}, "iPhone_16_Pro": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_pro_screw.html"}, "iPhone_16_Pro_Max": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_pro_max_screw.html"}, "iPhone_16e": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16e_screw.html"}, "iPhone_17": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_17_screw.html"}, "iPhone_17_Pro": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_17_pro_screw.html"}, "iPhone_17_Pro_Max": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_17_pro_max_screw.html"}, "iPhone_17e": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_17e_screw.html"}, "iPhone_Air": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_air_screw.html"}, "iPhone_18_Pro": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_18_pro_screw.html"}, "iPhone_18_Pro_Max": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_18_pro_max_screw.html"}};
 
@@ -1995,7 +1995,15 @@ function renderResult() {
   }
 
   if (state.mode === "business") {
-    showResult(panel2, RESULT_BUSINESS);
+    panel.innerHTML = `<div class="verdict-box eligible"><div class="verdict-icon">✅</div><div><h2>🧰 Kit de survie Services Business</h2><p>Un aperçu de nos services business — pas une liste exhaustive : la base pour répondre à la plupart des questions.</p></div></div><div class="biz-grid" id="biz-grid"></div><div class="biz-detail" id="biz-detail" hidden></div>`;
+    const grid = document.getElementById('biz-grid');
+    BIZ_ITEMS.forEach((it, idx) => {
+      const b = document.createElement('button');
+      b.type = 'button'; b.className = 'biz-card';
+      b.innerHTML = `<div class="biz-icon">${it.icon}</div><div class="biz-title">${it.title}</div>`;
+      b.addEventListener('click', () => showBizDetail(idx));
+      grid.appendChild(b);
+    });
     return;
   }
 
