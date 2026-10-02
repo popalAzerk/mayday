@@ -339,14 +339,12 @@ const QUESTIONS = [
       ],
       gen16: [
         { value: "mid-display", label: "Mid + Display" },
-        { value: "mid-backglass", label: "Mid + Back Glass — dommage accidentel" },
-        { value: "mid-backglass-fn", label: "Mid + Back Glass — problème fonctionnel" },
+        { value: "mid-backglass", label: "Mid + Back Glass" },
         { value: "mid-mix", label: "Mid + Rear Camera / Mid + True Depth" }
       ],
       gen15: [
         { value: "mid-display", label: "Mid + Display" },
-        { value: "mid-backglass", label: "Mid + Back Glass — dommage accidentel" },
-        { value: "mid-backglass-fn", label: "Mid + Back Glass — problème fonctionnel" },
+        { value: "mid-backglass", label: "Mid + Back Glass" },
         { value: "mid-mix", label: "Mid + Rear Camera" }
       ],
       gen14: [
@@ -375,13 +373,9 @@ const QUESTIONS = [
         { value: "og", label: "Hors garantie" }
       ],
       "mid-backglass": [
-        { value: "covered", label: "Couvert*" },
-        { value: "og", label: "Hors garantie" }
-      ],
-      "mid-backglass-fn": [
-        { value: "covered", label: "Couvert*" },
-        { value: "partial", label: "Au moins 1 pièce couverte (SUR possible)" },
-        { value: "og", label: "Hors garantie" }
+        { value: "accidental", label: "Dommage accidentel (écran et/ou dos en verre)" },
+        { value: "fn-covered", label: "Problème fonctionnel — au moins 1 des 2 réparations couverte*" },
+        { value: "fn-og", label: "Problème fonctionnel — les 2 réparations hors garantie" }
       ],
       "mid-mix": [
         { value: "covered", label: "Couvert*" },
@@ -625,9 +619,7 @@ function getResultReparables(s) {
 
 function getResultSwap(s) {
   const gen = s["swap-generation"], model = s["swap-model"], part = s["swap-part"], st = s["swap-status"];
-  // mid-backglass (accidentel): verdict indépendant du statut → la question
-  // statut est masquée et st peut être absent (verdict identique).
-  if (!gen || !model || !part || (!st && part !== "mid-backglass")) return { verdict: "not-eligible", title: "?", summary: "?", cards: [] };
+  if (!gen || !model || !part || !st) return { verdict: "not-eligible", title: "?", summary: "?", cards: [] };
   // Prix swap depuis le label du modèle choisi:
   const qm = QUESTIONS.find(qq => qq.id === "swap-model");
   const modelOpt = (qm.optionsByModel[gen] || []).find(o => o.value === model);
@@ -645,21 +637,17 @@ function getResultSwap(s) {
     solution = "Swap";
     reason = "Mid/Rear + Display → toujours Swap (couvert* ou non)." + priceTxt;
   } else if (part === "mid-backglass") {
-    // KBase 106063 : dommage ACCIDENTEL écran et/ou dos en verre → WUR toujours
-    solution = "Swap";
-    reason = "Mid + Back Glass accidentel → WUR (Swap) obligatoire, même couvert* (Kbase 106063 : dommage accidentel écran/dos en verre → jamais de réparation sur place)." + priceTxt + " <em>Attention : Mobile Genius peut bloquer sur ce cas et proposer une réparation. Forcer le Swap.</em>";
-  } else if (part === "mid-backglass-fn") {
-    // KBase 106063 : SUR possible si Au moins 1 des 2 réparations est couverte;
-    // les 2 hors garantie → WUR; écran fonctionnel impliqué → WUR (pas ici).
-    if (st === "covered") {
+    // KBase 106063 table: dommage accidentel → WUR; fonctionnel dos verre →
+    // SUR si 1 des 2 réparations couverte, sinon WUR.
+    if (st === "accidental") {
+      solution = "Swap";
+      reason = "Dommage accidentel écran et/ou dos en verre → WUR (Swap) obligatoire, même couvert* (Kbase 106063, dernière ligne du tableau)." + priceTxt + " <em>Attention : Mobile Genius peut bloquer sur ce cas et proposer une réparation. Forcer le Swap.</em>";
+    } else if (st === "fn-covered") {
       solution = "Repair";
-      reason = "Mid + Back Glass fonctionnel — SUR possible car l'une des réparations est couverte* (Kbase 106063 note SUR).";
-    } else if (st === "partial") {
-      solution = "Repair";
-      reason = "Mid + Back Glass fonctionnel — GARANTIE MIXTE : SUR autorisé (Kbase 106063). La réparation couverte* est prise en charge ; l'autre est facturée au tarif hors garantie" + (px ? " — swap si le total dépasse " + px + "." : ".");
+      reason = "Problème fonctionnel + dos en verre — réparation du système central et du dos en verre autorisée (SUR, Kbase 106063)" + (px ? " car au moins 1 des 2 réparations est couverte* — sinon swap si le total dépasse " + px + "." : " car au moins 1 des 2 réparations est couverte*.");
     } else {
       solution = "Swap";
-      reason = "Mid + Back Glass fonctionnel, les 2 réparations hors garantie → WUR (Swap) obligatoire (Kbase 106063)." + priceTxt;
+      reason = "Problème fonctionnel + dos en verre, les 2 réparations hors garantie → WUR (Swap) obligatoire (Kbase 106063 note SUR)." + priceTxt;
     }
   } else if (st === "covered") {
     solution = "Repair";
@@ -1686,9 +1674,7 @@ function buildQuestionnaire() {
   });
   QUESTIONS.forEach(q => {
     if (!q.modes || !q.modes.includes(state.mode)) return;
-    // mid-backglass (accidentel): verdict indépendant du statut (KBase
-    // 106063 WUR toujours) → masquer la question Statut de garantie:
-    if (q.id === "swap-status" && state["swap-part"] === "mid-backglass") return;
+
     // Cascade gauche→droite: une question dépendante ne s'affiche que si
     // sa question parente est répondue, avec les options filtrées:
     let opts = q.options;
@@ -1897,13 +1883,9 @@ function renderResult() {
     return;
   }
   if (state.mode === "swap-repair") {
-    // mid-backglass (accidentel): le verdict ne dépend pas du statut →
-    // la question statut est masquée, 2 réponses suffisent:
-    const needStatus = state["swap-part"] !== "mid-backglass";
-    const req = needStatus ? 3 : 2;
     const ans = [state["swap-generation"], state["swap-part"], state["swap-status"]].filter(Boolean).length;
-    if (ans < req) {
-      panel.innerHTML = `<div class="result-placeholder">Question Repair ou Swap — ${req - ans} question${req - ans > 1 ? 's' : ''} restante${req - ans > 1 ? 's' : ''}.</div>`;
+    if (ans < 3) {
+      panel.innerHTML = `<div class="result-placeholder">Question Repair ou Swap — ${3 - ans} question${3 - ans > 1 ? 's' : ''} restante${3 - ans > 1 ? 's' : ''}.</div>`;
       return;
     }
     showResult(panel2, getResultSwap(state));
