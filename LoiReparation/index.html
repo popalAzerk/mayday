@@ -552,6 +552,47 @@ const QUESTIONS = [
       { value: "third-party", label: "Réparé par un tiers" },
       { value: "self", label: "Self Service Repair" }
     ]
+  },
+  {
+    id: "sens-model",
+    modes: ["sens"],
+    label: "Modèle",
+    options: [
+        { value: "iPhone_14", label: "iPhone 14" },
+        { value: "iPhone_14_Plus", label: "iPhone 14 Plus" },
+        { value: "iPhone_14_Pro", label: "iPhone 14 Pro" },
+        { value: "iPhone_14_Pro_Max", label: "iPhone 14 Pro Max" },
+        { value: "iPhone_15", label: "iPhone 15" },
+        { value: "iPhone_15_Plus", label: "iPhone 15 Plus" },
+        { value: "iPhone_15_Pro", label: "iPhone 15 Pro" },
+        { value: "iPhone_15_Pro_Max", label: "iPhone 15 Pro Max" },
+        { value: "iPhone_16", label: "iPhone 16" },
+        { value: "iPhone_16_Plus", label: "iPhone 16 Plus" },
+        { value: "iPhone_16_Pro", label: "iPhone 16 Pro" },
+        { value: "iPhone_16_Pro_Max", label: "iPhone 16 Pro Max" },
+        { value: "iPhone_16e", label: "iPhone 16e" },
+        { value: "iPhone_17", label: "iPhone 17" },
+        { value: "iPhone_17_Pro", label: "iPhone 17 Pro" },
+        { value: "iPhone_17_Pro_Max", label: "iPhone 17 Pro Max" },
+        { value: "iPhone_17e", label: "iPhone 17e" },
+        { value: "iPhone_Air", label: "iPhone Air" },
+        { value: "iPhone_18_Pro", label: "iPhone 18 Pro" },
+        { value: "iPhone_18_Pro_Max", label: "iPhone 18 Pro Max" }
+      ]
+  },
+  {
+    id: "sens-piece",
+    modes: ["sens"],
+    depends: "sens-model",
+    label: "Pièce à réparer",
+    options: [
+        { value: "Battery", label: "Batterie" },
+        { value: "Camera", label: "Caméra arrière" },
+        { value: "TrueDepth_Camera", label: "Caméra avant (TrueDepth)" },
+        { value: "Taptic_Engine", label: "Taptic Engine" },
+        { value: "Bottom_Speaker", label: "Haut-parleur inférieur" },
+        { value: "Top_Speaker", label: "Haut-parleur supérieur" }
+      ]
   }
 ];
 
@@ -1656,6 +1697,7 @@ function buildQuestionnaire() {
         <option value="garantie">Garantie légale &amp; réparation</option>
         <option value="retour">Retour 14 jours &amp; rétractation</option>
         <option value="bonus">Bonus réparation</option>
+        <option value="sens">Sens d&#8217;ouverture</option>
         <option value="reparables">Que répare-t-on ? — iPhone 17 série &amp; Air</option>
         <option value="swap-repair">Repair ou Swap ? — règles iPhone 12 → 17</option>
       </select>
@@ -1665,7 +1707,7 @@ function buildQuestionnaire() {
   const modeSel = modeBox.querySelector('select');
   const modeVal = modeBox.querySelector('.value');
   modeSel.value = state.mode;
-  const modeLabels = { garantie: 'Garantie légale & réparation', retour: 'Retour 14 jours & rétractation', bonus: 'Bonus réparation', reparables: 'Que répare-t-on ? — iPhone 17 série & Air', 'swap-repair': 'Repair ou Swap ? — règles iPhone 12 → 17' };
+  const modeLabels = { garantie: 'Garantie légale & réparation', retour: 'Retour 14 jours & rétractation', bonus: 'Bonus réparation', reparables: 'Que répare-t-on ? — iPhone 17 série & Air', 'swap-repair': 'Repair ou Swap ? — règles iPhone 12 → 17', 'sens': 'Sens d\u2019ouverture — par où accéder à la pièce' };
   modeVal.textContent = modeLabels[state.mode] || 'Garantie légale & réparation';
   modeSel.addEventListener('change', e => {
     state.mode = e.target.value;
@@ -1758,6 +1800,32 @@ function buildQuestionnaire() {
       renderResult();
     });
   });
+}
+
+
+// Sens d'ouverture: route d'accès par pièce, extraite des guides screw
+// Mayday (manuel Apple par composant) — 'screen' = par l'écran,
+// 'backglass' = par le dos en verre.
+const SENS_DATA = {"iPhone_14": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_14_screw.html"}, "iPhone_14_Plus": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_14_plus_screw.html"}, "iPhone_14_Pro": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_14_pro_screw.html"}, "iPhone_14_Pro_Max": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_14_pro_max_screw.html"}, "iPhone_15": {"table": {"Battery": "backglass", "Camera": "screen", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_15_screw.html"}, "iPhone_15_Plus": {"table": {"Battery": "backglass", "Camera": "screen", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_15_plus_screw.html"}, "iPhone_15_Pro": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_15_pro_screw.html"}, "iPhone_15_Pro_Max": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_15_pro_max_screw.html"}, "iPhone_16": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_screw.html"}, "iPhone_16_Plus": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_plus_screw.html"}, "iPhone_16_Pro": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_pro_screw.html"}, "iPhone_16_Pro_Max": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_pro_max_screw.html"}, "iPhone_16e": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16e_screw.html"}, "iPhone_17": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_17_screw.html"}, "iPhone_17_Pro": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_17_pro_screw.html"}, "iPhone_17_Pro_Max": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_17_pro_max_screw.html"}, "iPhone_17e": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_17e_screw.html"}, "iPhone_Air": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_air_screw.html"}, "iPhone_18_Pro": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_18_pro_screw.html"}, "iPhone_18_Pro_Max": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_18_pro_max_screw.html"}};
+
+function getResultSens(s) {
+  const mod = s["sens-model"], comp = s["sens-piece"];
+  const entry = SENS_DATA[mod];
+  if (!entry) return { verdict: "partial", title: "Sens d'ouverture", summary: "Modèle non couvert.", cards: [] };
+  const sense = (entry.table || {})[comp];
+  if (!sense) return { verdict: "partial", title: "Sens d'ouverture", summary: "Pièce non couverte pour ce modèle.", cards: [] };
+  const byScreen = sense === "screen";
+  const label = byScreen ? "Ouverture par l'écran" : "Ouverture par le dos en verre (Back Glass)";
+  const icon = byScreen ? "📱" : "🔧";
+  const qm = QUESTIONS.find(qq => qq.id === "sens-piece");
+  const pOpt = qm.options.find(o => o.value === comp);
+  const mM = QUESTIONS.find(qq => qq.id === "sens-model");
+  const mOpt = mM.options.find(o => o.value === mod);
+  let linkTxt = "";
+  if (entry.guide) {
+    linkTxt = ` <a href="${entry.guide}" target="_blank" rel="noopener">Guide de démontage complet.</a>`;
+  }
+  return { verdict: "eligible", title: `${icon} ${label}`, summary: `${mOpt ? mOpt.label : mod} — ${pOpt ? pOpt.label : comp} : l\u2019accès se fait par ${byScreen ? "l\u2019<strong>écran</strong> (dos en verre non modulaire sur ce modèle)" : "le <strong>dos en verre</strong> (modulaire sur ce modèle)"}.${linkTxt}`, cards: [{ title: "Route d'accès", body: `<p>${label}</p>` }] };
 }
 
 function getResultBonus(s) {
@@ -1889,6 +1957,16 @@ function renderResult() {
       return;
     }
     showResult(panel2, getResultSwap(state));
+    return;
+  }
+
+  if (state.mode === "sens") {
+    if (!state["sens-model"] || !state["sens-piece"]) {
+      const n = 2 - [state["sens-model"], state["sens-piece"]].filter(Boolean).length;
+      panel.innerHTML = `<div class="result-placeholder">Sens d\u2019ouverture — ${n} question${n > 1 ? 's' : ''} restante${n > 1 ? 's' : ''}.</div>`;
+      return;
+    }
+    showResult(panel2, getResultSens(state));
     return;
   }
   if (state.mode === "bonus") {
