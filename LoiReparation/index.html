@@ -1655,7 +1655,7 @@ function getResultRetour(s) {
 }
 
 // ========== UI ==========
-const state = { mode:"garantie", country:"france", product:"", purchase:"", age:"", condition:"", "prior-repair":"", retract:"none", enseigne:"none" };
+const state = { mode:"sens", country:"france", product:"", purchase:"", age:"", condition:"", "prior-repair":"", retract:"none", enseigne:"none" };
 
 function toggleExpand(link) {
   const content = link.nextElementSibling;
@@ -1669,7 +1669,7 @@ function applyScenario(btn, s) {
   btn.classList.add('active');
   // Apply state
   Object.assign(state, s);
-  if (!s.mode) state.mode = "garantie";
+  if (!s.mode) state.mode = "sens";
   buildQuestionnaire();
   // Update all dropdowns to reflect the scenario
   QUESTIONS.forEach(q => {
