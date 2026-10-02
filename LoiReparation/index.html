@@ -558,26 +558,26 @@ const QUESTIONS = [
     modes: ["sens"],
     label: "Modèle",
     options: [
-        { value: "iPhone_14", label: "iPhone 14" },
-        { value: "iPhone_14_Plus", label: "iPhone 14 Plus" },
-        { value: "iPhone_14_Pro", label: "iPhone 14 Pro" },
-        { value: "iPhone_14_Pro_Max", label: "iPhone 14 Pro Max" },
-        { value: "iPhone_15", label: "iPhone 15" },
-        { value: "iPhone_15_Plus", label: "iPhone 15 Plus" },
-        { value: "iPhone_15_Pro", label: "iPhone 15 Pro" },
-        { value: "iPhone_15_Pro_Max", label: "iPhone 15 Pro Max" },
-        { value: "iPhone_16", label: "iPhone 16" },
-        { value: "iPhone_16_Plus", label: "iPhone 16 Plus" },
-        { value: "iPhone_16_Pro", label: "iPhone 16 Pro" },
-        { value: "iPhone_16_Pro_Max", label: "iPhone 16 Pro Max" },
-        { value: "iPhone_16e", label: "iPhone 16e" },
-        { value: "iPhone_17", label: "iPhone 17" },
-        { value: "iPhone_17_Pro", label: "iPhone 17 Pro" },
-        { value: "iPhone_17_Pro_Max", label: "iPhone 17 Pro Max" },
-        { value: "iPhone_17e", label: "iPhone 17e" },
-        { value: "iPhone_Air", label: "iPhone Air" },
+        { value: "iPhone_18_Pro_Max", label: "iPhone 18 Pro Max" },
         { value: "iPhone_18_Pro", label: "iPhone 18 Pro" },
-        { value: "iPhone_18_Pro_Max", label: "iPhone 18 Pro Max" }
+        { value: "iPhone_Air", label: "iPhone Air" },
+        { value: "iPhone_17_Pro_Max", label: "iPhone 17 Pro Max" },
+        { value: "iPhone_17_Pro", label: "iPhone 17 Pro" },
+        { value: "iPhone_17", label: "iPhone 17" },
+        { value: "iPhone_17e", label: "iPhone 17e" },
+        { value: "iPhone_16_Pro_Max", label: "iPhone 16 Pro Max" },
+        { value: "iPhone_16_Pro", label: "iPhone 16 Pro" },
+        { value: "iPhone_16e", label: "iPhone 16e" },
+        { value: "iPhone_16_Plus", label: "iPhone 16 Plus" },
+        { value: "iPhone_16", label: "iPhone 16" },
+        { value: "iPhone_15_Pro_Max", label: "iPhone 15 Pro Max" },
+        { value: "iPhone_15_Pro", label: "iPhone 15 Pro" },
+        { value: "iPhone_15_Plus", label: "iPhone 15 Plus" },
+        { value: "iPhone_15", label: "iPhone 15" },
+        { value: "iPhone_14_Pro_Max", label: "iPhone 14 Pro Max" },
+        { value: "iPhone_14_Pro", label: "iPhone 14 Pro" },
+        { value: "iPhone_14_Plus", label: "iPhone 14 Plus" },
+        { value: "iPhone_14", label: "iPhone 14" }
       ]
   },
   {
@@ -1694,10 +1694,10 @@ function buildQuestionnaire() {
       <label for="mode-select">Type de demande</label>
       <div class="value" id="mode-value">—</div>
       <select id="mode-select" aria-label="Type de demande">
+        <option value="sens">Sens d&#8217;ouverture</option>
         <option value="garantie">Garantie légale &amp; réparation</option>
         <option value="retour">Retour 14 jours &amp; rétractation</option>
         <option value="bonus">Bonus réparation</option>
-        <option value="sens">Sens d&#8217;ouverture</option>
         <option value="reparables">Que répare-t-on ? — iPhone 17 série &amp; Air</option>
         <option value="swap-repair">Repair ou Swap ? — règles iPhone 12 → 17</option>
       </select>
@@ -1825,7 +1825,7 @@ function getResultSens(s) {
   if (entry.guide) {
     linkTxt = ` <a href="${entry.guide}" target="_blank" rel="noopener">Guide de démontage complet.</a>`;
   }
-  return { verdict: "eligible", title: `${icon} ${label}`, summary: `${mOpt ? mOpt.label : mod} — ${pOpt ? pOpt.label : comp} : l\u2019accès se fait par ${byScreen ? "l\u2019<strong>écran</strong> (dos en verre non modulaire sur ce modèle)" : "le <strong>dos en verre</strong> (modulaire sur ce modèle)"}.${linkTxt}`, cards: [{ title: "Route d'accès", body: `<p>${label}</p>` }] };
+  return { verdict: "eligible", title: `${icon} ${label}`, summary: `${mOpt ? mOpt.label : mod} — ${pOpt ? pOpt.label : comp} : l\u2019accès se fait par ${byScreen ? "l\u2019<strong>écran</strong> (dos en verre non modulaire sur ce modèle)" : "le <strong>dos en verre</strong> (modulaire sur ce modèle)"}.${linkTxt}`, cards: []};
 }
 
 function getResultBonus(s) {
