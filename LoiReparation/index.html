@@ -1700,6 +1700,7 @@ function buildQuestionnaire() {
         <option value="garantie">Garantie légale &amp; réparation</option>
         <option value="retour">Retour 14 jours &amp; rétractation</option>
         <option value="bonus">Bonus réparation</option>
+        <option value="business">Service Business</option>
       </select>
       <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
     `;
@@ -1707,7 +1708,7 @@ function buildQuestionnaire() {
   const modeSel = modeBox.querySelector('select');
   const modeVal = modeBox.querySelector('.value');
   modeSel.value = state.mode;
-  const modeLabels = { garantie: 'Garantie légale & réparation', retour: 'Retour 14 jours & rétractation', bonus: 'Bonus réparation', reparables: 'Que répare-t-on ? — iPhone 17 série & Air', 'swap-repair': 'Repair ou Swap ? — règles iPhone 12 → 17', 'sens': 'Sens d\u2019ouverture — par où accéder à la pièce' };
+  const modeLabels = { garantie: 'Garantie légale & réparation', retour: 'Retour 14 jours & rétractation', bonus: 'Bonus réparation', reparables: 'Que répare-t-on ? — iPhone 17 série & Air', 'swap-repair': 'Repair ou Swap ? — règles iPhone 12 → 17', 'sens': 'Sens d\u2019ouverture — par où accéder à la pièce', 'business': 'Service Business' };
   modeVal.textContent = modeLabels[state.mode] || 'Garantie légale & réparation';
   modeSel.addEventListener('change', e => {
     state.mode = e.target.value;
@@ -1806,6 +1807,39 @@ function buildQuestionnaire() {
 // Sens d'ouverture: route d'accès par pièce, extraite des guides screw
 // Mayday (manuel Apple par composant) — 'screen' = par l'écran,
 // 'backglass' = par le dos en verre.
+// ========== SERVICE BUSINESS ==========
+const RESULT_BUSINESS = {
+  verdict: "eligible",
+  title: "🧰 Kit de survie Services Business",
+  summary: "Un aper\u00e7u de nos services business — pas une liste exhaustive : la base pour r\u00e9pondre \u00e0 la plupart des questions.",
+  cards: [
+    {
+      title: "\u2696\ufe0f\ud83d\udcb8 Leasing",
+      body: `<p>Solution de location de 1 \u00e0 3 ans selon le contrat : le client pr\u00e9serve sa tr\u00e9sorerie initiale et peut l'investir ailleurs.</p><p><a href="https://www.apple.com/fr/shop/finance" target="_blank" rel="noopener">Afsleasequote</a></p>`
+    },
+    {
+      title: "\ud83d\udcf1\ud83d\udcbb Gestion de parc",
+      body: `<p>Configurer, obtenir du support et s\u00e9curiser \u00e0 distance les identifiants et produits Apple avec Apple Business — sans intervention physique.</p><p><a href="https://business.apple.com" target="_blank" rel="noopener">Apple Business</a></p>`
+    },
+    {
+      title: "\ud83d\udcb0\ud83d\ude9a Mode d'achat",
+      body: `<p>Carte bancaire, virement (2-3 jours de setup) et portail de commande en ligne pro personnalisable pour faciliter les achats.</p>`
+    },
+    {
+      title: "\ud83d\udee0\ufe0f\ud83e\udd1d\ud83d\udcbb Consulting et webinaires",
+      body: `<p>Nous travaillons avec un r\u00e9seau d'<strong>Apple Technical Partner</strong> pour aider nos clients \u00e0 cr\u00e9er, mettre en place ou restructurer leurs outils.</p><p>Nos ing\u00e9nieurs solutions animent des <strong>webinaires</strong> sur nos technologies — rendez-vous avec eux pour vous aiguiller sur la gestion de parc.</p>`
+    },
+    {
+      title: "\ud83d\udcc5\ud83d\udc69\u200d\ud83c\udfeb Trainings et events",
+      body: `<p>Events business r\u00e9guliers autour de nos technologies, ateliers du programme Today @ Apple pour prendre en main l'\u00e9cosyst\u00e8me.</p><p><a href="https://www.apple.com/fr/today/groups" target="_blank" rel="noopener">Today at Apple — groupes</a></p>`
+    },
+    {
+      title: "\u260e\ufe0f\ud83e\udd1d Contact",
+      body: `<p>Le business est le <strong>contact local</strong> de nos clients pour nos Apple Store lyonnais — et aussi dans les autres services et Stores du monde. Ce contact unique permet un suivi efficace sans d\u00e9multiplier les intervenants.</p><p>\ud83d\udcde <a href="tel:+33437231520">04 37 23 15 20</a> — \ud83d\udce7 <a href="mailto:confluencebusiness@apple.com">confluencebusiness@apple.com</a></p>`
+    }
+  ]
+};
+
 const SENS_DATA = {"iPhone_14": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_14_screw.html"}, "iPhone_14_Plus": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_14_plus_screw.html"}, "iPhone_14_Pro": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_14_pro_screw.html"}, "iPhone_14_Pro_Max": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_14_pro_max_screw.html"}, "iPhone_15": {"table": {"Battery": "backglass", "Camera": "screen", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_15_screw.html"}, "iPhone_15_Plus": {"table": {"Battery": "backglass", "Camera": "screen", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_15_plus_screw.html"}, "iPhone_15_Pro": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_15_pro_screw.html"}, "iPhone_15_Pro_Max": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_15_pro_max_screw.html"}, "iPhone_16": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_screw.html"}, "iPhone_16_Plus": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_plus_screw.html"}, "iPhone_16_Pro": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_pro_screw.html"}, "iPhone_16_Pro_Max": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16_pro_max_screw.html"}, "iPhone_16e": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_16e_screw.html"}, "iPhone_17": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_17_screw.html"}, "iPhone_17_Pro": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_17_pro_screw.html"}, "iPhone_17_Pro_Max": {"table": {"Battery": "screen", "Camera": "screen", "TrueDepth_Camera": "screen", "Taptic_Engine": "screen", "Bottom_Speaker": "screen", "Top_Speaker": "screen"}, "guide": "/iPhone/guides/iphone_17_pro_max_screw.html"}, "iPhone_17e": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_17e_screw.html"}, "iPhone_Air": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_air_screw.html"}, "iPhone_18_Pro": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_18_pro_screw.html"}, "iPhone_18_Pro_Max": {"table": {"Battery": "backglass", "Camera": "backglass", "TrueDepth_Camera": "backglass", "Taptic_Engine": "backglass", "Bottom_Speaker": "backglass", "Top_Speaker": "backglass"}, "guide": "/iPhone/guides/iphone_18_pro_max_screw.html"}};
 
 function getResultSens(s) {
@@ -1957,6 +1991,11 @@ function renderResult() {
       return;
     }
     showResult(panel2, getResultSwap(state));
+    return;
+  }
+
+  if (state.mode === "business") {
+    showResult(panel2, RESULT_BUSINESS);
     return;
   }
 
