@@ -98,18 +98,19 @@
   .quick-card a:hover{ text-decoration:underline; }
 
   /* Service Business — cartes bento façon accueil Mayday (grid 2/3) */
-  .biz-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; padding:8px 0 4px; }
+  .biz-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; padding:8px 0 4px; align-items:stretch; }
   @media (min-width: 651px){ .biz-grid{ grid-template-columns:repeat(3, 1fr); gap:18px; } }
-  .biz-card{ display:flex; flex-direction:column; align-items:center; text-align:center; background:rgba(255,255,255,.6); backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px); border:1px solid var(--border-soft); border-radius:20px; padding:30px 16px 24px; cursor:pointer; -webkit-tap-highlight-color:transparent; box-shadow:var(--shadow); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
+  .biz-card{ display:flex; flex-direction:column; align-items:center; text-align:center; background:rgba(255,255,255,.6); backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px); border:1px solid var(--border-soft); border-radius:20px; padding:30px 18px 22px; cursor:pointer; -webkit-tap-highlight-color:transparent; box-shadow:var(--shadow); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
   html[data-theme="dark"] .biz-card{ background:rgba(30,30,32,.6); }
   .biz-card:hover{ transform:translateY(-4px); box-shadow:0 14px 28px rgba(0,0,0,.1); }
+  .biz-card{ } /* alignment: blocks espacés de façons fixes */
   .biz-card:active{ transform:scale(.92); transition:all .1s ease; }
-  .biz-icon{ width:76px; height:76px; border-radius:22px; display:flex; align-items:center; justify-content:center; margin:0 auto 18px; box-shadow:0 8px 24px rgba(0,0,0,.06); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
+  .biz-icon{ width:76px; height:76px; border-radius:22px; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; box-shadow:0 8px 24px rgba(0,0,0,.06); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
   .biz-card:hover .biz-icon{ transform:scale(1.1) translateY(-6px); box-shadow:0 14px 28px rgba(0,0,0,.1); }
   .biz-icon svg{ width:36px; height:36px; }
-  .biz-title{ font-size:19px; font-weight:600; letter-spacing:-.3px; margin-bottom:8px; }
-  .biz-short{ font-size:13.5px; line-height:1.45; color:var(--text-secondary); margin:0; }
-  .biz-more{ font-size:12px; font-weight:600; color:var(--accent); margin-top:12px; }
+  .biz-title{ font-size:19px; font-weight:600; letter-spacing:-.3px; margin-bottom:6px; }
+  .biz-short{ font-size:13.5px; line-height:1.45; color:var(--text-secondary); margin:0; min-height:39px; }
+  .biz-more{ font-size:12px; font-weight:600; color:var(--accent); margin-top:auto; padding-top:12px; }
   .biz-detail{ grid-column:1 / -1; background:var(--surface); border:1px solid var(--border-soft); border-radius:16px; padding:18px 22px; box-shadow:var(--shadow); font-size:13.5px; line-height:1.5; animation:bizIn .25s ease both; }
   @keyframes bizIn{ from{ opacity:0; transform:translateY(-6px);} to{ opacity:1; transform:none;} }
   .biz-detail h3{ font-size:16px; font-weight:600; margin:0 0 8px; }
@@ -1997,7 +1998,7 @@ function renderResult() {
   }
 
   if (state.mode === "business") {
-    panel.innerHTML = `<div class="verdict-box eligible"><div class="verdict-icon">✅</div><div><h2>🧰 Kit de survie Services Business</h2><p>Un aperçu de nos services business — pas une liste exhaustive : la base pour répondre à la plupart des questions.</p></div></div><div class="biz-grid" id="biz-grid"></div><div class="biz-detail" id="biz-detail" hidden></div>`;
+    panel.innerHTML = `<div class="biz-grid" id="biz-grid"></div><div class="biz-detail" id="biz-detail" hidden></div>`;
     const grid = document.getElementById('biz-grid');
     BIZ_ITEMS.forEach((it, idx) => {
       const b = document.createElement('button');
