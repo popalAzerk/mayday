@@ -625,7 +625,9 @@ function getResultReparables(s) {
 
 function getResultSwap(s) {
   const gen = s["swap-generation"], model = s["swap-model"], part = s["swap-part"], st = s["swap-status"];
-  if (!gen || !model || !part || !st) return { verdict: "not-eligible", title: "?", summary: "?", cards: [] };
+  // mid-backglass (accidentel): verdict indépendant du statut → la question
+  // statut est masquée et st peut être absent (verdict identique).
+  if (!gen || !model || !part || (!st && part !== "mid-backglass")) return { verdict: "not-eligible", title: "?", summary: "?", cards: [] };
   // Prix swap depuis le label du modèle choisi:
   const qm = QUESTIONS.find(qq => qq.id === "swap-model");
   const modelOpt = (qm.optionsByModel[gen] || []).find(o => o.value === model);
@@ -649,9 +651,12 @@ function getResultSwap(s) {
   } else if (part === "mid-backglass-fn") {
     // KBase 106063 : SUR possible si Au moins 1 des 2 réparations est couverte;
     // les 2 hors garantie → WUR; écran fonctionnel impliqué → WUR (pas ici).
-    if (st === "covered" || st === "partial") {
+    if (st === "covered") {
       solution = "Repair";
       reason = "Mid + Back Glass fonctionnel — SUR possible car l'une des réparations est couverte* (Kbase 106063 note SUR).";
+    } else if (st === "partial") {
+      solution = "Repair";
+      reason = "Mid + Back Glass fonctionnel — GARANTIE MIXTE : SUR autorisé (Kbase 106063). La réparation couverte* est prise en charge ; l'autre est facturée au tarif hors garantie" + (px ? " — swap si le total dépasse " + px + "." : ".");
     } else {
       solution = "Swap";
       reason = "Mid + Back Glass fonctionnel, les 2 réparations hors garantie → WUR (Swap) obligatoire (Kbase 106063)." + priceTxt;
@@ -1681,6 +1686,9 @@ function buildQuestionnaire() {
   });
   QUESTIONS.forEach(q => {
     if (!q.modes || !q.modes.includes(state.mode)) return;
+    // mid-backglass (accidentel): verdict indépendant du statut (KBase
+    // 106063 WUR toujours) → masquer la question Statut de garantie:
+    if (q.id === "swap-status" && state["swap-part"] === "mid-backglass") return;
     // Cascade gauche→droite: une question dépendante ne s'affiche que si
     // sa question parente est répondue, avec les options filtrées:
     let opts = q.options;
@@ -1889,9 +1897,13 @@ function renderResult() {
     return;
   }
   if (state.mode === "swap-repair") {
+    // mid-backglass (accidentel): le verdict ne dépend pas du statut →
+    // la question statut est masquée, 2 réponses suffisent:
+    const needStatus = state["swap-part"] !== "mid-backglass";
+    const req = needStatus ? 3 : 2;
     const ans = [state["swap-generation"], state["swap-part"], state["swap-status"]].filter(Boolean).length;
-    if (ans < 3) {
-      panel.innerHTML = `<div class="result-placeholder">Question Repair ou Swap — ${3 - ans} question${3 - ans > 1 ? 's' : ''} restante${3 - ans > 1 ? 's' : ''}.</div>`;
+    if (ans < req) {
+      panel.innerHTML = `<div class="result-placeholder">Question Repair ou Swap — ${req - ans} question${req - ans > 1 ? 's' : ''} restante${req - ans > 1 ? 's' : ''}.</div>`;
       return;
     }
     showResult(panel2, getResultSwap(state));
