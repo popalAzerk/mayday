@@ -1056,6 +1056,12 @@ let currentGuideData = null;
 let guideCurrentSection = 0;
 let guideCurrentStep = 0;
 
+function openGuidePart(componentName) {
+    // Cross-link d'étape: ouvrir le guide du composant (pas le diagramme)
+    if (typeof switchView === 'function') switchView('guide');
+    if (typeof loadGuide === 'function') loadGuide(componentName);
+}
+
 function loadGuide(componentName) {
     const data = window.guideData || guideData;
     if (!data) return;
