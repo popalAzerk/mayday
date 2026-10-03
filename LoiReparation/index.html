@@ -111,12 +111,17 @@
   .biz-title{ font-size:19px; font-weight:600; letter-spacing:-.3px; margin-bottom:6px; }
   .biz-short{ font-size:13.5px; line-height:1.45; color:var(--text-secondary); margin:0; min-height:39px; }
   .biz-more{ font-size:12px; font-weight:600; color:var(--accent); margin-top:auto; padding-top:12px; }
-  .biz-detail{ grid-column:1 / -1; background:var(--surface); border:1px solid var(--border-soft); border-radius:16px; padding:18px 22px; box-shadow:var(--shadow); font-size:13.5px; line-height:1.5; animation:bizIn .25s ease both; }
-  @keyframes bizIn{ from{ opacity:0; transform:translateY(-6px);} to{ opacity:1; transform:none;} }
-  .biz-detail h3{ font-size:16px; font-weight:600; margin:0 0 8px; }
-  .biz-detail p{ margin:0 0 8px; }
-  .biz-detail p:last-child{ margin-bottom:0; }
-  .biz-detail a{ color:var(--accent); text-decoration:none; font-weight:500; }
+  .biz-card.expanded{ grid-column:1 / -1; text-align:left; align-items:flex-start; flex-direction:row; gap:18px; padding:22px 20px 18px; }
+  .biz-card.expanded .biz-icon{ margin:0; flex-shrink:0; }
+  .biz-card.expanded .biz-title{ margin-bottom:6px; }
+  .biz-card.expanded .biz-short{ min-height:0; }
+  .biz-card.expanded .biz-more{ display:none; }
+  .biz-card.expanded .biz-bodywrap{ flex:1; min-width:0; }
+  .biz-full{ overflow:hidden; max-height:0; opacity:0; transition:max-height .35s ease, opacity .3s ease, margin .3s ease; margin-top:0; }
+  .biz-card.expanded .biz-full{ max-height:360px; opacity:1; margin-top:10px; }
+  .biz-full p{ font-size:13.5px; line-height:1.5; margin:0 0 8px; color:var(--text); }
+  .biz-full p:last-child{ margin-bottom:0; }
+  .biz-full a{ color:var(--accent); text-decoration:none; font-weight:500; }
 
   .tag{ display:inline-block; font-size:10.5px; font-weight:600; padding:2px 9px; border-radius:980px; margin-right:5px; background:color-mix(in srgb, var(--accent) 10%, transparent); color:var(--accent); }
   .tag.red{ background:color-mix(in srgb, var(--ac-red) 10%, transparent); color:var(--ac-red); }
@@ -1831,15 +1836,6 @@ function buildQuestionnaire() {
 // ========== SERVICE BUSINESS ==========
 const BIZ_ITEMS = [{"color": "#0A84FF", "bg": "linear-gradient(135deg, rgba(0,122,255,.2) 0%, rgba(100,180,255,.1) 100%)", "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"2.5\" y=\"7\" width=\"19\" height=\"11\" rx=\"2\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"12\" cy=\"12.5\" r=\"2.4\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M2.5 10.5h19\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>", "title": "Leasing", "short": "Louez 1 à 3 ans, préservez votre trésorerie.", "html": "<p>Solution de location de 1 à 3 ans selon le contrat : le client préserve sa trésorerie initiale et peut l'investir ailleurs.</p><p><a href=\"https://www.afsleasequote.fr/quote.html\" target=\"_blank\" rel=\"noopener\">Afsleasequote</a></p>"}, {"color": "#30D158", "bg": "linear-gradient(135deg, rgba(48,209,88,.2) 0%, rgba(185,240,205,.1) 100%)", "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"2.5\" y=\"5\" width=\"13\" height=\"9.5\" rx=\"1.6\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M1.5 17.5h9\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><rect x=\"17.5\" y=\"8.5\" width=\"5\" height=\"9\" rx=\"1.6\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>", "title": "Gestion de parc", "short": "Configurez et sécurisez tout à distance.", "html": "<p>Configurer, obtenir du support et sécuriser à distance les identifiants et produits Apple avec Apple Business — sans intervention physique.</p><p><a href=\"https://business.apple.com\" target=\"_blank\" rel=\"noopener\">Apple Business</a></p>"}, {"color": "#FF9F0A", "bg": "linear-gradient(135deg, rgba(255,159,10,.2) 0%, rgba(255,214,150,.1) 100%)", "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"2.5\" y=\"5.5\" width=\"19\" height=\"13\" rx=\"2\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M2.5 9.5h19\" stroke-width=\"2.2\" stroke-linecap=\"round\"/><path d=\"M5.5 14.5h4\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>", "title": "Mode d'achat", "short": "CB, virement ou portail pro en ligne.", "html": "<p>Carte bancaire, virement (2-3 jours de setup) et portail de commande en ligne pro personnalisable pour faciliter les achats.</p>"}, {"color": "#BF5AF2", "bg": "linear-gradient(135deg, rgba(191,90,242,.2) 0%, rgba(225,190,255,.1) 100%)", "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"3\" y=\"3.5\" width=\"18\" height=\"12\" rx=\"1.8\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M6.5 12.5l3.2-3.4 2.6 2.2 4-4.4\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M12 15.5v2M8.5 20.5l3.5-3 3.5 3\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>", "title": "Consulting & webinaires", "short": "Ingénieurs solutions + Apple Technical Partner.", "html": "<p>Nous travaillons avec un réseau d'<strong>Apple Technical Partner</strong> pour aider nos clients à créer, mettre en place ou restructurer leurs outils.</p><p>Nos ingénieurs solutions animent des <strong>webinaires</strong> sur nos technologies — rendez-vous avec eux pour vous aiguiller sur la gestion de parc.</p>"}, {"color": "#FF375F", "bg": "linear-gradient(135deg, rgba(255,55,95,.2) 0%, rgba(255,150,170,.1) 100%)", "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><rect x=\"3\" y=\"5\" width=\"18\" height=\"16\" rx=\"2\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><path d=\"M3 9.5h18M8 3v4M16 3v4\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/><circle cx=\"8\" cy=\"14\" r=\"1\" fill=\"currentColor\"/><circle cx=\"12\" cy=\"14\" r=\"1\" fill=\"currentColor\"/><circle cx=\"16\" cy=\"14\" r=\"1\" fill=\"currentColor\"/></svg>", "title": "Trainings & events", "short": "Ateliers Today @ Apple et events business.", "html": "<p>Events business réguliers autour de nos technologies, ateliers du programme Today @ Apple pour prendre en main l'écosystème.</p><p><a href=\"https://www.apple.com/fr/today/groups\" target=\"_blank\" rel=\"noopener\">Today at Apple — groupes</a></p>"}, {"color": "#64D2FF", "bg": "linear-gradient(135deg, rgba(100,210,255,.2) 0%, rgba(180,235,255,.1) 100%)", "svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M6.8 3.2h2.9L11.2 7 9 8.6c1.1 2.6 3.8 5.3 6.4 6.4l1.6-2.2 3.8 1.5v2.9a2.3 2.3 0 0 1-2.5 2.3C11 18.9 5.1 13 4.5 5.7a2.3 2.3 0 0 1 2.3-2.5z\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>", "title": "Contact", "short": "Un contact unique, local et dans le monde.", "html": "<p>Le business est le <strong>contact local</strong> de nos clients pour nos Apple Store lyonnais — et aussi dans les autres services et Stores du monde. Ce contact unique permet un suivi efficace sans démultiplier les intervenants.</p><p>📞 <a href=\"tel:+33437231520\">04 37 23 15 20</a> — ✉️ <a href=\"mailto:confluencebusiness@apple.com\">confluencebusiness@apple.com</a></p>"}];
 
-function showBizDetail(idx) {
-  const it = BIZ_ITEMS[idx];
-  const box = document.getElementById('biz-detail');
-  if (!box) return;
-  if (box.hidden === false && box.dataset.idx === String(idx)) { box.hidden = true; box.dataset.idx = ''; return; }
-  box.innerHTML = `<h3>${it.title}</h3>${it.html}`;
-  box.hidden = false;
-  box.dataset.idx = String(idx);
-}
 
 
 
@@ -1998,16 +1994,20 @@ function renderResult() {
   }
 
   if (state.mode === "business") {
-    panel.innerHTML = `<div class="biz-grid" id="biz-grid"></div><div class="biz-detail" id="biz-detail" hidden></div>`;
+    panel.innerHTML = `<div class="biz-grid" id="biz-grid"></div>`;
     const grid = document.getElementById('biz-grid');
     BIZ_ITEMS.forEach((it, idx) => {
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'biz-card';
-      b.innerHTML = `<div class="biz-icon" style="background:${it.bg}; color:${it.color}">${it.svg}</div><div class="biz-title">${it.title}</div><p class="biz-short">${it.short}</p><div class="biz-more">En savoir plus</div>`;
-      b.addEventListener('click', () => showBizDetail(idx));
+      b.innerHTML = `<div class="biz-icon" style="background:${it.bg}; color:${it.color}">${it.svg}</div><div class="biz-bodywrap"><div class="biz-title">${it.title}</div><p class="biz-short">${it.short}</p><div class="biz-full">${it.html}</div></div><div class="biz-more">En savoir plus</div>`;
+      b.addEventListener('click', () => {
+        const wasOpen = b.classList.contains('expanded');
+        grid.querySelectorAll('.biz-card.expanded').forEach(x => x.classList.remove('expanded'));
+        if (!wasOpen) b.classList.add('expanded');
+      });
       grid.appendChild(b);
     });
-    return;
+return;
   }
 
   if (state.mode === "sens") {
