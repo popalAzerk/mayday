@@ -100,7 +100,7 @@
   /* Service Business — cartes bento façon accueil Mayday (grid 2/3) */
   .biz-grid{ display:grid; grid-template-columns:repeat(2, 1fr); gap:14px; padding:8px 0 4px; align-items:stretch; }
   @media (min-width: 651px){ .biz-grid{ grid-template-columns:repeat(3, 1fr); gap:18px; } }
-  .biz-card{ display:flex; flex-direction:column; align-items:center; text-align:center; background:rgba(255,255,255,.6); backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px); border:1px solid var(--border-soft); border-radius:20px; padding:30px 18px 22px; cursor:pointer; -webkit-tap-highlight-color:transparent; box-shadow:var(--shadow); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
+  .biz-card{ display:flex; flex-direction:column; align-items:center; text-align:center; background:rgba(255,255,255,.6); backdrop-filter:blur(40px); -webkit-backdrop-filter:blur(40px); border:1px solid var(--border-soft); border-radius:20px; padding:26px 18px 22px; cursor:pointer; -webkit-tap-highlight-color:transparent; box-shadow:var(--shadow); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
   html[data-theme="dark"] .biz-card{ background:rgba(30,30,32,.6); }
   .biz-card:hover{ transform:translateY(-4px); box-shadow:0 14px 28px rgba(0,0,0,.1); }
   .biz-card{ } /* alignment: blocks espacés de façons fixes */
@@ -108,7 +108,7 @@
   .biz-icon{ width:76px; height:76px; border-radius:22px; display:flex; align-items:center; justify-content:center; margin:0 auto 14px; box-shadow:0 8px 24px rgba(0,0,0,.06); transition:transform .4s cubic-bezier(.2,.8,.2,1), box-shadow .4s ease; }
   .biz-card:hover .biz-icon{ transform:scale(1.1) translateY(-6px); box-shadow:0 14px 28px rgba(0,0,0,.1); }
   .biz-icon svg{ width:36px; height:36px; }
-  .biz-title{ font-size:19px; font-weight:600; letter-spacing:-.3px; margin-bottom:6px; }
+  .biz-title{ font-size:19px; font-weight:600; letter-spacing:-.3px; margin-bottom:6px; min-height:46px; }
   .biz-short{ font-size:13.5px; line-height:1.45; color:var(--text-secondary); margin:0; min-height:39px; }
   .biz-more{ font-size:12px; font-weight:600; color:var(--accent); margin-top:auto; padding-top:12px; }
   .biz-card.expanded{ grid-column:1 / -1; text-align:left; align-items:flex-start; flex-direction:row; gap:18px; padding:22px 20px 18px; }
