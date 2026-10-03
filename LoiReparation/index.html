@@ -2006,6 +2006,12 @@ function renderResult() {
       const b = document.createElement('button');
       b.type = 'button'; b.className = 'biz-card';
       b.innerHTML = `<div class="biz-icon" style="background:${it.bg}; color:${it.color}">${it.svg}</div><div class="biz-bodywrap"><div class="biz-title">${it.title}</div><p class="biz-short">${it.short}</p><div class="biz-full">${it.html}</div></div><div class="biz-more">En savoir plus</div>`;
+      // uniformiser la hauteur de toutes les cartes à la plus haute:
+      requestAnimationFrame(() => {
+        const hs = [...grid.querySelectorAll('.biz-card')].map(x => x.getBoundingClientRect().height);
+        const mh = Math.round(Math.max(...hs));
+        grid.querySelectorAll('.biz-card').forEach(x => x.style.minHeight = mh + 'px');
+      });
       b.addEventListener('click', () => {
         const wasOpen = b.classList.contains('expanded');
         grid.querySelectorAll('.biz-card.expanded').forEach(x => { x.classList.remove('expanded'); x.style.top = ''; x.style.maxHeight = ''; });
