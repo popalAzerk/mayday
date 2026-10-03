@@ -3280,9 +3280,21 @@ body.view-active .component-grid {
     }
     
     .guide-step-header {
-        padding: 10px 12px 6px;
-        grid-template-columns: auto 1fr auto; /* badge et lien source à leur largeur naturelle */
-        gap: 8px;
+        padding: 10px 64px 6px; /* largeur réservée pour badge + bouton source absolus */
+        gap: 6px;
+    }
+
+    .guide-section-tab {
+        padding: 4px 8px;
+        font-size: 12.5px;
+    }
+
+    .guide-source-link .source-label {
+        font-size: 12px;
+    }
+
+    .guide-source-link svg.external-icon {
+        display: none; /* gagner la place: le label Guide suffit */
     }
     
     .guide-image-wrapper {
