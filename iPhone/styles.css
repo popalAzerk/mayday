@@ -3289,8 +3289,13 @@ body.view-active .component-grid {
     }
 
     .guide-section-tab {
-        padding: 4px 8px;
-        font-size: 12.5px;
+        padding: 4px 6px;
+        font-size: 12px;
+    }
+
+    .guide-section-tabs {
+        gap: 1px;
+        max-width: calc(100% - 0px);
     }
 
     .guide-source-link .source-label {
