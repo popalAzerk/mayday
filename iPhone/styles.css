@@ -3279,8 +3279,12 @@ body.view-active .component-grid {
         height: 16px;
     }
     
+    .guide-carousel {
+        padding: 0 6px !important; /* la carte guide occupe l'écran mobile */
+    }
+
     .guide-step-header {
-        padding: 10px 64px 6px; /* largeur réservée pour badge + bouton source absolus */
+        padding: 10px 84px 6px; /* largeur réservée pour badge + bouton source absolus */
         gap: 6px;
     }
 
