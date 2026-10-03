@@ -2729,15 +2729,30 @@ body.view-active .component-grid {
 }
 
 .guide-step-header {
-    display: grid;
-    grid-template-columns: 1fr auto 1fr; /* 3-column grid for perfect centering */
+    display: flex; /* centre le toggle indépendamment des extrémités */
     align-items: center;
-    padding: 12px 24px; /* Slightly more compact vertical padding */
+    justify-content: center;
+    position: relative;
+    padding: 12px 24px;
     flex-shrink: 0;
     gap: 12px;
     background: var(--card-bg);
     border-bottom: 0.5px solid var(--divider-color);
 }
+
+.guide-step-header > .guide-step-badge,
+.guide-step-header > .guide-source-link,
+.guide-step-header > #guidePrereqBadge {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.guide-step-header > .guide-step-badge { left: 24px; }
+.guide-step-header > .guide-source-link { right: 24px; }
+.guide-step-header > .guide-step-badge:nth-child(n+2) ~ .guide-source-link { right: 24px; }
+/* plusieurs badges latéraux (prérequis): empilés à gauche du lien */
+.guide-step-header > #guidePrereqBadge { right: 76px; }
 
 .guide-step-badge {
     display: inline-flex;
@@ -3302,6 +3317,11 @@ body.view-active .component-grid {
     transition: all 0.2s ease;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
+}
+
+.guide-source-link .source-label {
+    /* remplace l'ancien logo Apple par le mot Guide */
+    font-weight: 600;
 }
 
 .guide-source-link:hover {
