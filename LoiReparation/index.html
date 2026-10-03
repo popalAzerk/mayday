@@ -111,7 +111,10 @@
   .biz-title{ font-size:19px; font-weight:600; letter-spacing:-.3px; margin-bottom:6px; min-height:46px; }
   .biz-short{ font-size:13.5px; line-height:1.45; color:var(--text-secondary); margin:0; min-height:39px; }
   .biz-more{ font-size:12px; font-weight:600; color:var(--accent); margin-top:auto; padding-top:12px; }
-  .biz-card.expanded{ grid-column:1 / -1; text-align:left; align-items:flex-start; flex-direction:row; gap:18px; padding:22px 20px 18px; }
+  .biz-grid{ position:relative; }
+  .biz-card{ position:relative; }
+  .biz-card.expanded{ position:absolute; z-index:30; left:0; width:100%; text-align:left; align-items:flex-start; flex-direction:row; gap:18px; padding:22px 20px 18px; box-shadow:0 18px 44px rgba(0,0,0,.16); animation:bizExpand .28s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes bizExpand{ from{ opacity:.6; transform:translateY(6px);} to{ opacity:1; transform:none;} }
   .biz-card .biz-bodywrap{ min-width:0; width:100%; }
   .biz-card.expanded .biz-icon{ margin:0; flex-shrink:0; }
   .biz-card.expanded .biz-title{ margin-bottom:6px; }
@@ -2003,8 +2006,20 @@ function renderResult() {
       b.innerHTML = `<div class="biz-icon" style="background:${it.bg}; color:${it.color}">${it.svg}</div><div class="biz-bodywrap"><div class="biz-title">${it.title}</div><p class="biz-short">${it.short}</p><div class="biz-full">${it.html}</div></div><div class="biz-more">En savoir plus</div>`;
       b.addEventListener('click', () => {
         const wasOpen = b.classList.contains('expanded');
-        grid.querySelectorAll('.biz-card.expanded').forEach(x => x.classList.remove('expanded'));
-        if (!wasOpen) b.classList.add('expanded');
+        grid.querySelectorAll('.biz-card.expanded').forEach(x => { x.classList.remove('expanded'); x.style.top = ''; x.style.maxHeight = ''; });
+        if (!wasOpen) {
+          const top = b.offsetTop;
+          const gh = grid.getBoundingClientRect().height;
+          b.style.top = top + 'px';
+          b.classList.add('expanded');
+          // la carte étendue peut monter sur la ligne suivante:
+          b.style.maxHeight = Math.max(gh - top + 300, 360) + 'px';
+          if (b.scrollHeight > (parseFloat(b.style.maxHeight) || 360)) {
+            b.style.overflowY = 'auto';
+          }
+        } else {
+          b.style.top = ''; b.style.maxHeight = ''; b.style.overflowY = '';
+        }
       });
       grid.appendChild(b);
     });
