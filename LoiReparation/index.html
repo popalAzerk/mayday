@@ -97,6 +97,26 @@
   .quick-card a{ color:var(--accent); text-decoration:none; font-weight:500; }
   .quick-card a:hover{ text-decoration:underline; }
 
+  /* Bandeau prochain événement Service Business */
+  .biz-event{
+    display:flex; align-items:center; gap:10px;
+    background:rgba(255,255,255,.6); backdrop-filter:blur(40px);
+    -webkit-backdrop-filter:blur(40px);
+    border:1px solid var(--border-soft); border-radius:16px;
+    padding:13px 16px; margin:10px 0 4px;
+    box-shadow:var(--shadow); font-size:14px;
+  }
+  .biz-event-dot{
+    width:10px; height:10px; border-radius:50%;
+    background:#FF3B30; flex-shrink:0;
+    box-shadow:0 0 0 3px rgba(255,59,48,.18);
+  }
+  .biz-event-txt{ color:var(--text); }
+  .biz-event-txt strong{ font-weight:600; }
+  @media (prefers-color-scheme: dark){
+    .biz-event{ background:rgba(50,50,50,.55); }
+  }
+
   /* Service Business — cartes bento façon accueil Mayday (grid 2/3) */
   .biz-grid{ display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:14px; padding:8px 0 4px; align-items:stretch; }
   @media (min-width: 651px){ .biz-grid{ grid-template-columns:repeat(3, minmax(0, 1fr)); gap:18px; } }
@@ -2000,7 +2020,14 @@ function renderResult() {
   }
 
   if (state.mode === "business") {
-    panel.innerHTML = `<div class="biz-grid" id="biz-grid"></div>`;
+    // Bandeau « Prochain événement » (mettre à jour BIZ_EVENT.date à chaque event) :
+    const BIZ_EVENT = { date: "27 octobre 2026", label: "Événement Business — Apple Store Lyon" };
+    panel.innerHTML = `
+      <div class="biz-event">
+        <span class="biz-event-dot"></span>
+        <span class="biz-event-txt"><strong>Prochain événement :</strong> ${BIZ_EVENT.date} — ${BIZ_EVENT.label}</span>
+      </div>
+      <div class="biz-grid" id="biz-grid"></div>`;
     const grid = document.getElementById('biz-grid');
     BIZ_ITEMS.forEach((it, idx) => {
       const b = document.createElement('button');
