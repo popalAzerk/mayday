@@ -364,16 +364,16 @@ const repairData = {
         fr: `- Micro principal remplacé\nMicro ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\n\nTest Requis\nConfiguration système\nDiags audio\nDiags post-réparation\n  : 20 min restantes`
     },
     'Logic Board': {
-        en: `- Logic Board replaced\nBoard added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 40 mins left`,
-        fr: `- Carte logique remplacée\nCarte ajoutée aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 40 min restantes`
+        en: `- Logic board replaced\nLogic board added to parts used\nAST2: System Configuration REQUIRED - one session, one attempt\nAn interruption forces the device to prompt for support assistance\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 40 mins left`,
+        fr: `- Carte logique remplacée\nCarte logique ajoutée aux pièces utilisées\nAST2 : Configuration système OBLIGATOIRE - une session, une seule tentative\nUne interruption fait afficher au device un renvoi vers le support\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 40 min restantes`
     },
     'Rear System': {
         en: `- Rear System replaced\nRear System added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 40 mins left`,
         fr: `- Système arrière remplacé\nSystème ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 40 min restantes`
     },
     'Enclosure': {
-        en: `- Enclosure replaced\nEnclosure added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\n\nTest Needed\nConfiguration system\nPost Repair diags\nAudio Diags\nCamera diags\n  : 20 mins left`,
-        fr: `- Boîtier remplacé\nBoîtier ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\n\nTest Requis\nConfiguration système\nDiags post-réparation\nDiags audio\nDiags caméra\n  : 20 min restantes`
+        en: `- Enclosure replaced\nEnclosure added to parts used\nAll parts transferred, adhesive renewed\nDevice closed and pressed\nAST2: check System Configuration\n\nTest Needed\nPost Repair diags\n  : 45 mins left`,
+        fr: `- Châssis remplacé\nChâssis ajouté aux pièces utilisées\nToutes les pièces transférées, adhésif renouvelé\nAppareil fermé et pressé\nAST2 : contrôle de la Configuration système\n\nTest Requis\nDiags post-réparation\n  : 45 min restantes`
     },
     'Mid System': {
         en: `- Mid System replaced\nMid System added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 40 mins left`,
@@ -448,62 +448,16 @@ Diags écran et tactile
   : 30 min restantes`
     },
     'Battery 1': {
-        en: `- Battery 1 replaced
-Battery 1 added to parts used
-Battery 2 state checked
-Repair Assistant available after reassembly - recommended
-
-Test Needed
-Post Repair diags
-Battery diags
-  : 20 mins left`,
-        fr: `- Batterie 1 remplacée
-Batterie 1 ajoutée aux pièces utilisées
-État de la batterie 2 contrôlé
-Repair Assistant disponible après remontage - recommandé
-
-Test Requis
-Diags post-réparation
-Diags batterie
-  : 20 min restantes`
+        en: `- Battery 1 replaced\nBattery 1 added to parts used\nBattery 2 state checked\nAST2: MRI, battery diagnostics and battery health\n\nTest Needed\nPost Repair diags\nBattery diags\n  : 20 mins left`,
+        fr: `- Batterie 1 remplacée\nBatterie 1 ajoutée aux pièces utilisées\nÉtat de la batterie 2 contrôlé\nAST2 : MRI, diagnostics batterie et état de santé\n\nTest Requis\nDiags post-réparation\nDiags batterie\n  : 20 min restantes`
     },
     'Battery 2': {
-        en: `- Battery 2 replaced
-Battery 2 added to parts used
-Battery 1 state checked
-Repair Assistant available after reassembly - recommended
-
-Test Needed
-Post Repair diags
-Battery diags
-  : 20 mins left`,
-        fr: `- Batterie 2 remplacée
-Batterie 2 ajoutée aux pièces utilisées
-État de la batterie 1 contrôlé
-Repair Assistant disponible après remontage - recommandé
-
-Test Requis
-Diags post-réparation
-Diags batterie
-  : 20 min restantes`
+        en: `- Battery 2 replaced\nBattery 2 added to parts used\nBattery 1 state checked\nAST2: MRI, battery diagnostics and battery health\n\nTest Needed\nPost Repair diags\nBattery diags\n  : 20 mins left`,
+        fr: `- Batterie 2 remplacée\nBatterie 2 ajoutée aux pièces utilisées\nÉtat de la batterie 1 contrôlé\nAST2 : MRI, diagnostics batterie et état de santé\n\nTest Requis\nDiags post-réparation\nDiags batterie\n  : 20 min restantes`
     },
     'Camera': {
-        en: `- Camera replaced
-Camera added to parts used
-Repair Assistant available after reassembly - recommended
-
-Test Needed
-Post Repair diags
-Camera diags
-  : 15 mins left`,
-        fr: `- Appareil photo remplacé
-Appareil photo ajouté aux pièces utilisées
-Repair Assistant disponible après remontage - recommandé
-
-Test Requis
-Diags post-réparation
-Diags caméra
-  : 15 min restantes`
+        en: `- Camera replaced\nCamera added to parts used\nAST2: run MRI, then the camera diagnostics\n\nTest Needed\nPost Repair diags\nCamera diags\n  : 15 mins left`,
+        fr: `- Appareil photo remplacé\nAppareil photo ajouté aux pièces utilisées\nAST2 : MRI, puis les diagnostics caméra\n\nTest Requis\nDiags post-réparation\nDiags caméra\n  : 15 min restantes`
     },
     'FaceTime Camera': {
         en: `- FaceTime camera replaced
@@ -542,24 +496,8 @@ Diags caméra
   : 10 min restantes`
     },
     'Input Output Board': {
-        en: `- I/O board replaced
-I/O board added to parts used
-System Configuration REQUIRED - diagnostics mode, Start Session
-One single attempt: an interruption means contacting Self Service Repair Store
-
-Test Needed
-Configuration system
-Post Repair diags
-  : 30 mins left`,
-        fr: `- Carte entrées-sorties remplacée
-Carte E/S ajoutée aux pièces utilisées
-Configuration système OBLIGATOIRE - mode diagnostics, Start Session
-Une seule tentative : une interruption impose de contacter le Self Service Repair Store
-
-Test Requis
-Configuration système
-Diags post-réparation
-  : 30 min restantes`
+        en: `- I/O board replaced\nI/O board added to parts used\nAST2: System Configuration REQUIRED - one session, one attempt\nAn interruption forces the device to prompt for support assistance\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 30 mins left`,
+        fr: `- Carte entrées-sorties remplacée\nCarte E/S ajoutée aux pièces utilisées\nAST2 : Configuration système OBLIGATOIRE - une session, une seule tentative\nUne interruption fait afficher au device un renvoi vers le support\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 30 min restantes`
     },
     'USB C Connector': {
         en: `- USB-C connector replaced
