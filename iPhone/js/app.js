@@ -386,6 +386,250 @@ const repairData = {
     'Post Diags Failed': {
         en: `Post-Repair Diagnostics: FAILED\nIssue detected during final testing\nFurther isolation required\nEscalating to lead technician.`,
         fr: `Diagnostics post-réparation : ÉCHEC\nProblème détecté lors des tests finaux\nIsolation supplémentaire requise\nEscalade vers le technicien référent.`
+    },
+    'Outer Display': {
+        en: `- Outer display replaced
+Outer display added to parts used
+New adhesive applied, display pressed
+Device closed and pressed
+
+Test Needed
+Post Repair diags
+Camera diags
+  : 20 mins left`,
+        fr: `- Écran externe remplacé
+Écran externe ajouté aux pièces utilisées
+Nouvel adhésif posé, écran pressé
+Appareil fermé et pressé
+
+Test Requis
+Diags post-réparation
+Diags caméra
+  : 20 min restantes`
+    },
+    'Inner Display': {
+        en: `- Inner display replaced
+Inner display added to parts used
+Hinge freed of residual adhesive
+New adhesive applied, display pressed
+
+Test Needed
+Post Repair diags
+Display and touch diags
+  : 25 mins left`,
+        fr: `- Écran interne remplacé
+Écran interne ajouté aux pièces utilisées
+Charnière nettoyée de tout adhésif
+Nouvel adhésif posé, écran pressé
+
+Test Requis
+Diags post-réparation
+Diags écran et tactile
+  : 25 min restantes`
+    },
+    'Inner Display Assembly': {
+        en: `- Inner display assembly replaced
+Assembly added to parts used
+Hinge checked for play
+Device closed and pressed
+
+Test Needed
+Post Repair diags
+Display and touch diags
+  : 30 mins left`,
+        fr: `- Ensemble écran interne remplacé
+Ensemble ajouté aux pièces utilisées
+Jeu de charnière contrôlé
+Appareil fermé et pressé
+
+Test Requis
+Diags post-réparation
+Diags écran et tactile
+  : 30 min restantes`
+    },
+    'Battery 1': {
+        en: `- Battery 1 replaced
+Battery 1 added to parts used
+Battery 2 state checked
+Repair Assistant available after reassembly - recommended
+
+Test Needed
+Post Repair diags
+Battery diags
+  : 20 mins left`,
+        fr: `- Batterie 1 remplacée
+Batterie 1 ajoutée aux pièces utilisées
+État de la batterie 2 contrôlé
+Repair Assistant disponible après remontage - recommandé
+
+Test Requis
+Diags post-réparation
+Diags batterie
+  : 20 min restantes`
+    },
+    'Battery 2': {
+        en: `- Battery 2 replaced
+Battery 2 added to parts used
+Battery 1 state checked
+Repair Assistant available after reassembly - recommended
+
+Test Needed
+Post Repair diags
+Battery diags
+  : 20 mins left`,
+        fr: `- Batterie 2 remplacée
+Batterie 2 ajoutée aux pièces utilisées
+État de la batterie 1 contrôlé
+Repair Assistant disponible après remontage - recommandé
+
+Test Requis
+Diags post-réparation
+Diags batterie
+  : 20 min restantes`
+    },
+    'Camera': {
+        en: `- Camera replaced
+Camera added to parts used
+Repair Assistant available after reassembly - recommended
+
+Test Needed
+Post Repair diags
+Camera diags
+  : 15 mins left`,
+        fr: `- Appareil photo remplacé
+Appareil photo ajouté aux pièces utilisées
+Repair Assistant disponible après remontage - recommandé
+
+Test Requis
+Diags post-réparation
+Diags caméra
+  : 15 min restantes`
+    },
+    'FaceTime Camera': {
+        en: `- FaceTime camera replaced
+Camera added to parts used
+Connector seated, no cable pinched
+
+Test Needed
+Post Repair diags
+Camera diags
+  : 15 mins left`,
+        fr: `- Caméra avant interne remplacée
+Caméra ajoutée aux pièces utilisées
+Connecteur enclenché, aucun câble pincé
+
+Test Requis
+Diags post-réparation
+Diags caméra
+  : 15 min restantes`
+    },
+    'Outer Front Camera': {
+        en: `- Outer front camera replaced
+Camera added to parts used
+Cover glass cleaned before closing
+
+Test Needed
+Post Repair diags
+Camera diags
+  : 10 mins left`,
+        fr: `- Caméra avant externe remplacée
+Caméra ajoutée aux pièces utilisées
+Verre de protection nettoyé avant fermeture
+
+Test Requis
+Diags post-réparation
+Diags caméra
+  : 10 min restantes`
+    },
+    'Input Output Board': {
+        en: `- I/O board replaced
+I/O board added to parts used
+System Configuration REQUIRED - diagnostics mode, Start Session
+One single attempt: an interruption means contacting Self Service Repair Store
+
+Test Needed
+Configuration system
+Post Repair diags
+  : 30 mins left`,
+        fr: `- Carte entrées-sorties remplacée
+Carte E/S ajoutée aux pièces utilisées
+Configuration système OBLIGATOIRE - mode diagnostics, Start Session
+Une seule tentative : une interruption impose de contacter le Self Service Repair Store
+
+Test Requis
+Configuration système
+Diags post-réparation
+  : 30 min restantes`
+    },
+    'USB C Connector': {
+        en: `- USB-C connector replaced
+Connector added to parts used
+Port cleared of debris
+
+Test Needed
+Post Repair diags
+Charging and data diags
+  : 10 mins left`,
+        fr: `- Connecteur USB-C remplacé
+Connecteur ajouté aux pièces utilisées
+Port nettoyé de tout débris
+
+Test Requis
+Diags post-réparation
+Diags charge et données
+  : 10 min restantes`
+    },
+    'Touch ID Control Buttons': {
+        en: `- Touch ID and camera control buttons replaced
+Buttons added to parts used
+Touch ID pairing checked
+
+Test Needed
+Post Repair diags
+Touch ID diags
+  : 15 mins left`,
+        fr: `- Boutons Touch ID et appareil photo remplacés
+Boutons ajoutés aux pièces utilisées
+Appairage Touch ID vérifié
+
+Test Requis
+Diags post-réparation
+Diags Touch ID
+  : 15 min restantes`
+    },
+    'Volume Buttons': {
+        en: `- Volume buttons replaced
+Buttons added to parts used
+Button travel checked
+
+Test Needed
+Post Repair diags
+Button diags
+  : 10 mins left`,
+        fr: `- Boutons de volume remplacés
+Boutons ajoutés aux pièces utilisées
+Course des boutons contrôlée
+
+Test Requis
+Diags post-réparation
+Diags boutons
+  : 10 min restantes`
+    },
+    'Cover Layer': {
+        en: `- Cover layer replaced
+Cover layer added to parts used
+Surface cleaned before fitting
+
+Test Needed
+Visual inspection
+  : 10 mins left`,
+        fr: `- Couche de protection remplacée
+Couche de protection ajoutée aux pièces utilisées
+Surface nettoyée avant pose
+
+Test Requis
+Inspection visuelle
+  : 10 min restantes`
     }
 };
 
@@ -486,7 +730,19 @@ const componentIcons = {
     'Mid System': getSquareIconPath('Mid_system.svg'),
     'Post Diags OK': getIconPath('Post_Diags_OK.svg'),
     'Post Diags Failed': getIconPath('Post_Diags_Failed.svg'),
-    'pSIM': getSquareIconPath('enclosure.svg')
+    'pSIM': getSquareIconPath('enclosure.svg'),
+    'Outer Display': getSquareIconPath('Display.svg'),
+    'Inner Display': getSquareIconPath('Display.svg'),
+    'Inner Display Assembly': getSquareIconPath('Display.svg'),
+    'Battery 1': getSquareIconPath('Battery.svg'),
+    'Battery 2': getSquareIconPath('Battery.svg'),
+    'FaceTime Camera': getSquareIconPath('Camera.svg'),
+    'Outer Front Camera': getSquareIconPath('Camera.svg'),
+    'Input Output Board': getSquareIconPath('Logic_Board.svg'),
+    'USB C Connector': getSquareIconPath('USB_C.svg'),
+    'Touch ID Control Buttons': getSquareIconPath('Touch_ID.svg'),
+    'Volume Buttons': getSquareIconPath('Volume_Buttons.svg'),
+    'Cover Layer': getSquareIconPath('Cover_Layer.svg')
 };
 
 // Large icons for overlay/main buttons (icons_repair/ root — full-size SVGs)
@@ -512,7 +768,19 @@ const componentIconsLarge = {
     'Mid System': getIconPath('Mid_system.svg'),
     'Post Diags OK': getIconPath('Post_Diags_OK.svg'),
     'Post Diags Failed': getIconPath('Post_Diags_Failed.svg'),
-    'pSIM': getIconPath('enclosure.svg')
+    'pSIM': getIconPath('enclosure.svg'),
+    'Outer Display': getIconPath('Display.svg'),
+    'Inner Display': getIconPath('Display.svg'),
+    'Inner Display Assembly': getIconPath('Display.svg'),
+    'Battery 1': getIconPath('Battery.svg'),
+    'Battery 2': getIconPath('Battery.svg'),
+    'FaceTime Camera': getIconPath('Camera.svg'),
+    'Outer Front Camera': getIconPath('Camera.svg'),
+    'Input Output Board': getIconPath('Logic_Board.svg'),
+    'USB C Connector': getIconPath('USB_C.svg'),
+    'Touch ID Control Buttons': getIconPath('Touch_ID.svg'),
+    'Volume Buttons': getIconPath('Volume_Buttons.svg'),
+    'Cover Layer': getIconPath('Cover_Layer.svg')
 };
 
 const notesModal = document.getElementById('notesModal');
@@ -572,7 +840,20 @@ function generateNotesCards() {
     const plusLabel = (typeof translations !== 'undefined' && translations[currentLanguage]) ? translations[currentLanguage].combineCardLabel : 'Combined note';
     plusCard.innerHTML = `<div class="combine-plus">+</div><div class="notes-card-title">${plusLabel}</div>`;
     notesGrid.appendChild(plusCard);
-    const componentsToShow = Object.keys(repairData);
+    // La grille doit refléter les pièces DU MODÈLE affiché. repairData est unique et
+    // partagé par les 30 modèles : une liste statique affichait les mêmes 15 notes sur
+    // toutes les pages, et jamais les pièces propres à l'appareil ouvert (les 20 pièces
+    // du Duo, par exemple, n'apparaissaient nulle part).
+    const ALWAYS_SHOWN = ['Rear System', 'Mid System', 'Post Diags OK', 'Post Diags Failed'];
+    const pageParts = Object.keys(window.repairDependencyData || {});
+    let componentsToShow = Object.keys(repairData);
+    if (pageParts.length) {
+        const duModele = pageParts.filter(n => repairData[n]);
+        const toujours = ALWAYS_SHOWN.filter(n => repairData[n] && !duModele.includes(n));
+        componentsToShow = duModele.concat(toujours);
+        // garde-fou : jamais de grille vide si aucun nom de pièce ne correspond
+        if (!duModele.length) componentsToShow = Object.keys(repairData);
+    }
     componentsToShow.forEach(componentName => {
         const card = document.createElement('div');
         card.className = 'notes-card';
