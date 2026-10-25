@@ -568,8 +568,25 @@ Surface nettoyée avant pose
 Test Requis
 Inspection visuelle
   : 10 min restantes`
-    }
+    },
+    'Rear System Module': {
+        en: `- Rear System Module replaced\nRear System Module added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 40 mins left`,
+        fr: `- Module système arrière remplacé\nModule ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 40 min restantes`
+    },
+    'Mid System Module': {
+        en: `- Mid System Module replaced\nMid System Module added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\nSystem restore for configuration preparation in progress\n\nTest Needed\nConfiguration system\nPost Repair diags\n  : 40 mins left`,
+        fr: `- Module système central remplacé\nModule ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\nRestauration du système pour la préparation de la configuration du système en cours\n\nTest Requis\nConfiguration système\nDiags post-réparation\n  : 40 min restantes`
+    },
+    'Main Mic': {
+        en: `- Main Mic replaced\nMic added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\n\nTest Needed\nConfiguration system\nAudio Diags\nPost Repair diags\n  : 20 mins left`,
+        fr: `- Micro principal remplacé\nMicro ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\n\nTest Requis\nConfiguration système\nDiags audio\nDiags post-réparation\n  : 20 min restantes`
+    },
+    'Aux Mic': {
+        en: `- Aux Mic replaced\nMic added to parts used\nNew adhesive pressed\nDevice closed and pressed\nScrewed security screws\n\nTest Needed\nConfiguration system\nAudio Diags\nPost Repair diags\n  : 20 mins left`,
+        fr: `- Micro auxiliaire remplacé\nMicro ajouté aux pièces utilisées\nNouvel adhésif posé\nAppareil fermé et pressé\nVis de sécurité vissées\n\nTest Requis\nConfiguration système\nDiags audio\nDiags post-réparation\n  : 20 min restantes`
+    },
 };
+
 
 const translations = {
     en: {
@@ -666,6 +683,7 @@ const componentIcons = {
     'Rear System': getSquareIconPath('Rear_system.svg'),
     'Rear System Module': getSquareIconPath('Rear_system.svg'),
     'Mid System': getSquareIconPath('Mid_system.svg'),
+    'Mid System Module': getSquareIconPath('Mid_system.svg'),
     'Post Diags OK': getIconPath('Post_Diags_OK.svg'),
     'Post Diags Failed': getIconPath('Post_Diags_Failed.svg'),
     'pSIM': getSquareIconPath('enclosure.svg'),
@@ -704,6 +722,7 @@ const componentIconsLarge = {
     'Rear System': getIconPath('Rear_system.svg'),
     'Rear System Module': getIconPath('Rear_system.svg'),
     'Mid System': getIconPath('Mid_system.svg'),
+    'Mid System Module': getIconPath('Mid_system.svg'),
     'Post Diags OK': getIconPath('Post_Diags_OK.svg'),
     'Post Diags Failed': getIconPath('Post_Diags_Failed.svg'),
     'pSIM': getIconPath('enclosure.svg'),
