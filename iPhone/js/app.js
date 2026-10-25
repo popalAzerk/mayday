@@ -678,7 +678,7 @@ const componentIcons = {
     'Outer Front Camera': getSquareIconPath('Camera.svg'),
     'Input Output Board': getSquareIconPath('Logic_Board.svg'),
     'USB C Connector': getSquareIconPath('USB_C_round.png'),
-    'Touch ID Control Buttons': getSquareIconPath('Touch_ID_round.png'),
+    'Touch ID Control Buttons': getSquareIconPath('Touch_ID_round.png?v=2'),
     'Volume Buttons': getSquareIconPath('Volume_Buttons_round.png'),
     'Cover Layer': getSquareIconPath('Cover_Layer_round.png')
 };
@@ -716,7 +716,7 @@ const componentIconsLarge = {
     'Outer Front Camera': getIconPath('Camera.svg'),
     'Input Output Board': getIconPath('Logic_Board.svg'),
     'USB C Connector': getSquareIconPath('USB_C_round.png'),
-    'Touch ID Control Buttons': getSquareIconPath('Touch_ID_round.png'),
+    'Touch ID Control Buttons': getSquareIconPath('Touch_ID_round.png?v=2'),
     'Volume Buttons': getSquareIconPath('Volume_Buttons_round.png'),
     'Cover Layer': getSquareIconPath('Cover_Layer_round.png')
 };
