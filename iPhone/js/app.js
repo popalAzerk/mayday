@@ -766,6 +766,30 @@ function updateCombineUI() {
     }
 }
 
+// Libellés français des pièces pour la fenêtre Notes. Priorité : le name_fr de la page
+// (window.repairDependencyData, renseigné pour les modèles récents), puis ce dictionnaire
+// commun aux 30 modèles, puis le nom anglais.
+const componentLabelsFr = {
+    'Display': 'Écran', 'Back Glass': 'Vitre arrière', 'Battery': 'Batterie',
+    'Camera': 'Appareil photo', 'Rear Camera': 'Appareil photo arrière',
+    'TrueDepth Camera': 'Caméra TrueDepth', 'True Depth': 'Caméra TrueDepth',
+    'Top Speaker': 'Haut-parleur supérieur', 'Bottom Speaker': 'Haut-parleur inférieur',
+    'Speaker': 'Haut-parleur', 'Main Microphone': 'Microphone principal',
+    'Main Mic': 'Microphone principal', 'Aux Mic': 'Microphone auxiliaire',
+    'Taptic Engine': 'Moteur Taptic', 'Logic Board': 'Carte logique',
+    'Enclosure': 'Châssis', 'Rear System': 'Système arrière', 'Mid System': 'Système central',
+    'Rear System Module': 'Module système arrière',
+    'Post Diags OK': 'Diags OK', 'Post Diags Failed': 'Diags en échec'
+};
+
+function labelPour(componentName) {
+    const brut = componentName.replace(/_/g, ' ');
+    if (currentLanguage !== 'fr') return brut;
+    const pageData = window.repairDependencyData || {};
+    const nomPage = pageData[componentName] && pageData[componentName].name_fr;
+    return nomPage || componentLabelsFr[brut] || componentLabelsFr[componentName] || brut;
+}
+
 function generateNotesCards() {
     if (!notesGrid) return;
     notesGrid.innerHTML = '';
@@ -801,7 +825,7 @@ function generateNotesCards() {
             else { copyRepairText(componentName); }
         };
         const iconPath = componentIcons[componentName] || getSquareIconPath('enclosure.svg');
-        const displayLabel = componentName.replace(/_/g, ' ');
+        const displayLabel = labelPour(componentName);
         card.innerHTML = `<img src="${iconPath}" alt="${displayLabel}" class="notes-card-icon"><div class="notes-card-title">${displayLabel}</div>`;
         notesGrid.appendChild(card);
     });
