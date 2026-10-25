@@ -2439,6 +2439,7 @@ body.view-active .component-grid {
     min-width: 38px;
     border-radius: 50% !important;
 }
+.smart-repair-btn img, #smart-repair-container img { border-radius: 22.5%; }
 
 .smart-repair-btn .repair-toggle-icon {
     width: 24px;
