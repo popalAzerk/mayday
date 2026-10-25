@@ -665,7 +665,7 @@ const getIconPath = (path) => {
 // Springboard icons — square format (icons_repair/square/)
 const componentIcons = {
     'Display': getSquareIconPath('Display.svg'),
-    'Back Glass': getSquareIconPath('Back_Glass.png?v=1'),
+    'Back Glass': getSquareIconPath('Back_Glass.png?v=2'),
     'Battery': getSquareIconPath('Battery.svg'),
     'Camera': getSquareIconPath('Camera.svg'),
     'Rear Camera': getSquareIconPath('Camera.svg'),
@@ -704,7 +704,7 @@ const componentIcons = {
 // Large icons for overlay/main buttons (icons_repair/ root — full-size SVGs)
 const componentIconsLarge = {
     'Display': getIconPath('Display.svg'),
-    'Back Glass': getSquareIconPath('Back_Glass.png?v=1'),
+    'Back Glass': getSquareIconPath('Back_Glass.png?v=2'),
     'Battery': getIconPath('Battery.svg'),
     'Camera': getIconPath('Camera.svg'),
     'Rear Camera': getIconPath('Camera.svg'),
