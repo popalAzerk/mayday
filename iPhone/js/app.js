@@ -825,7 +825,11 @@ function generateNotesCards() {
     // partagé par les 30 modèles : une liste statique affichait les mêmes 15 notes sur
     // toutes les pages, et jamais les pièces propres à l'appareil ouvert (les 20 pièces
     // du Duo, par exemple, n'apparaissaient nulle part).
-    const ALWAYS_SHOWN = ['Rear System', 'Mid System', 'Post Diags OK', 'Post Diags Failed'];
+    // Seuls les deux verdicts de diagnostics sont génériques : ils closent une réparation
+    // sur n'importe quel modèle. Les notes « système » (Rear/Mid System) ne doivent
+    // apparaître que sur les modèles qui possèdent réellement cette pièce : le Duo
+    // n'en a aucune, et les iPhone 12 à 17e déclarent eux-mêmes leur module système.
+    const ALWAYS_SHOWN = ['Post Diags OK', 'Post Diags Failed'];
     const pageParts = Object.keys(window.repairDependencyData || {});
     let componentsToShow = Object.keys(repairData);
     if (pageParts.length) {
