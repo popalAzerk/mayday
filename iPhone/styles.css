@@ -1109,7 +1109,7 @@ footer p {
 .notes-card {
     background: var(--card-bg);
     border: 0.5px solid var(--border-color, rgba(0,0,0,0.08));
-    border-radius: 18px;
+    border-radius: 12px;   /* cartes de notes : moins arrondies */
     /* Aspect ratio removed to allow uniform grid height */
     min-height: 114px; 
     height: 100%;
