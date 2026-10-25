@@ -677,10 +677,10 @@ const componentIcons = {
     'FaceTime Camera': getSquareIconPath('Camera.svg'),
     'Outer Front Camera': getSquareIconPath('Camera.svg'),
     'Input Output Board': getSquareIconPath('Logic_Board.svg'),
-    'USB C Connector': getSquareIconPath('USB_C.svg'),
-    'Touch ID Control Buttons': getSquareIconPath('Touch_ID.svg'),
-    'Volume Buttons': getSquareIconPath('Volume_Buttons.svg'),
-    'Cover Layer': getSquareIconPath('Cover_Layer.svg')
+    'USB C Connector': getSquareIconPath('USB_C.png'),
+    'Touch ID Control Buttons': getSquareIconPath('Touch_ID.png'),
+    'Volume Buttons': getSquareIconPath('Volume_Buttons.png'),
+    'Cover Layer': getSquareIconPath('Cover_Layer.png')
 };
 
 // Large icons for overlay/main buttons (icons_repair/ root — full-size SVGs)
@@ -715,10 +715,10 @@ const componentIconsLarge = {
     'FaceTime Camera': getIconPath('Camera.svg'),
     'Outer Front Camera': getIconPath('Camera.svg'),
     'Input Output Board': getIconPath('Logic_Board.svg'),
-    'USB C Connector': getIconPath('USB_C.svg'),
-    'Touch ID Control Buttons': getIconPath('Touch_ID.svg'),
-    'Volume Buttons': getIconPath('Volume_Buttons.svg'),
-    'Cover Layer': getIconPath('Cover_Layer.svg')
+    'USB C Connector': getSquareIconPath('USB_C.png'),
+    'Touch ID Control Buttons': getSquareIconPath('Touch_ID.png'),
+    'Volume Buttons': getSquareIconPath('Volume_Buttons.png'),
+    'Cover Layer': getSquareIconPath('Cover_Layer.png')
 };
 
 const notesModal = document.getElementById('notesModal');
