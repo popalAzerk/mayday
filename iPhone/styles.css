@@ -1118,7 +1118,7 @@ footer p {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: center;   /* le titre réserve 2 lignes : le bloc icône+titre a la même hauteur partout */
     padding: 12px 6px 10px;
     gap: 8px;
     box-shadow: 0 1px 4px rgba(0,0,0,0.06);
@@ -1149,6 +1149,7 @@ footer p {
     height: 48px;
     object-fit: contain;
     border-radius: 12px;
+    flex: 0 0 auto;      /* l'icône garde sa taille : c'est elle qui donne le rythme de la grille */
 }
 
 /* Small screens: slightly smaller icons to fit columns */
@@ -1174,9 +1175,15 @@ footer p {
     line-height: 1.1;
     letter-spacing: -0.1px;
     width: 100%;
-    /* Extra safety for long labels on mobile */
-    overflow-wrap: anywhere;
-    word-break: break-word;
+    overflow-wrap: break-word;
+    word-break: normal;
+    /* deux lignes maximum, puis points de suspension */
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    min-height: 2.3em;   /* hauteur réservée à 2 lignes : les titres s'alignent entre eux */
 }
 
 /* Hidden elements */
