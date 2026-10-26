@@ -698,7 +698,7 @@ const componentIcons = {
     'USB C Connector': getSquareIconPath('USB_C.png?v=5'),
     'Touch ID Control Buttons': getSquareIconPath('Touch_ID.png?v=5'),
     'Volume Buttons': getSquareIconPath('Volume_Buttons.png?v=5'),
-    'Cover Layer': getSquareIconPath('Cover_Layer.png?v=5')
+    'Cover Layer': getSquareIconPath('Cover_Layer.png?v=7')
 };
 
 // Large icons for overlay/main buttons (icons_repair/ root — full-size SVGs)
@@ -737,7 +737,7 @@ const componentIconsLarge = {
     'USB C Connector': getSquareIconPath('USB_C_round.png?v=5'),
     'Touch ID Control Buttons': getSquareIconPath('Touch_ID_round.png?v=5'),
     'Volume Buttons': getSquareIconPath('Volume_Buttons_round.png?v=5'),
-    'Cover Layer': getSquareIconPath('Cover_Layer_round.png?v=5')
+    'Cover Layer': getSquareIconPath('Cover_Layer_round.png?v=3')
 };
 
 const notesModal = document.getElementById('notesModal');
