@@ -562,7 +562,7 @@
             ]
         },
         "Mid System Module": {
-            "name_fr": "Module Systeme Centrale",
+            "name_fr": "Module Système Central",
             "prerequisites": [
                 "Back Glass",
                 "Display",
@@ -625,7 +625,7 @@
             ]
         },
         "Mid System Module": {
-            "name_fr": "Module Systeme Centrale",
+            "name_fr": "Module Système Central",
             "prerequisites": [
                 "Back Glass",
                 "Display",
@@ -690,7 +690,7 @@
             ]
         },
         "Mid System Module": {
-            "name_fr": "Module Systeme Centrale",
+            "name_fr": "Module Système Central",
             "prerequisites": [
                 "Back Glass",
                 "Display",
@@ -748,7 +748,7 @@
             ]
         },
         "Mid System Module": {
-            "name_fr": "Module Systeme Centrale",
+            "name_fr": "Module Système Central",
             "prerequisites": [
                 "Back Glass",
                 "Display",
@@ -864,7 +864,7 @@
             ]
         },
         "Mid System Module": {
-            "name_fr": "Module Systeme Centrale",
+            "name_fr": "Module Système Central",
             "prerequisites": [
                 "Back Glass",
                 "Display",
@@ -929,7 +929,7 @@
             ]
         },
         "Mid System Module": {
-            "name_fr": "Module Systeme Centrale",
+            "name_fr": "Module Système Central",
             "prerequisites": [
                 "Back Glass",
                 "Display",
@@ -1093,7 +1093,7 @@
             ]
         },
         "Mid System Module": {
-            "name_fr": "Module Systeme Centrale",
+            "name_fr": "Module Système Central",
             "prerequisites": [
                 "Display",
                 "Back Glass",
@@ -1147,7 +1147,7 @@
             ]
         },
         "Mid System Module": {
-            "name_fr": "Module Systeme Centrale",
+            "name_fr": "Module Système Central",
             "prerequisites": [
                 "Display",
                 "Back Glass",
