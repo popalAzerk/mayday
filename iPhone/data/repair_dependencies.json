@@ -388,6 +388,14 @@
                 "Display",
                 "Logic Board"
             ]
+        },
+        "Mid System Module": {
+            "name_fr": "Module Système Central",
+            "prerequisites": [
+                "Back Glass",
+                "Display",
+                "Camera"
+            ]
         }
     },
     "iPhone 16 Pro Max": {
