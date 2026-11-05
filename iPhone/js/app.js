@@ -1596,3 +1596,35 @@ function closeAllToolRows() {
     document.querySelectorAll('.tools-row').forEach(row => row.classList.remove('active'));
     document.querySelector('.overlay-buttons')?.classList.remove('security-mode', 'tools-mode', 'screws-mode', 'repair-mode');
 }
+
+
+// ---- Langue des cartes de réparation : FR par défaut, choix mémorisé par appareil
+const LANGUE_CARTES_CLE = 'mayday-cartes-langue';
+function appliquerLangueCartes(langue) {
+    const l = langue === 'en' ? 'en' : 'fr';
+    document.querySelectorAll('[data-fr][data-en]').forEach(el => {
+        el.textContent = l === 'en' ? el.dataset.en : el.dataset.fr;
+    });
+    document.querySelectorAll('#cardsLang [data-lang]').forEach(b => {
+        b.classList.toggle('active', b.dataset.lang === l);
+    });
+    document.documentElement.lang = l;
+}
+function initLangueCartes() {
+    const groupe = document.getElementById('cardsLang');
+    if (!groupe) return;
+    groupe.querySelectorAll('[data-lang]').forEach(b => {
+        b.addEventListener('click', () => {
+            appliquerLangueCartes(b.dataset.lang);
+            try { localStorage.setItem(LANGUE_CARTES_CLE, b.dataset.lang); } catch (e) {}
+        });
+    });
+    let memorisee = 'fr';
+    try { memorisee = localStorage.getItem(LANGUE_CARTES_CLE) || 'fr'; } catch (e) { memorisee = 'fr'; }
+    appliquerLangueCartes(memorisee);
+}
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initLangueCartes);
+} else {
+    initLangueCartes();
+}
