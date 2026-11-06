@@ -368,27 +368,6 @@
                 "Taptic Engine"
             ]
         },
-        "Logic Board": {
-            "name_fr": "Carte logique",
-            "prerequisites": [
-                "Back Glass",
-                "TrueDepth Camera",
-                "Camera",
-                "Top Speaker"
-            ]
-        },
-        "Enclosure": {
-            "name_fr": "Boîtier",
-            "prerequisites": [
-                "Back Glass",
-                "TrueDepth Camera",
-                "Camera",
-                "Top Speaker",
-                "Battery",
-                "Display",
-                "Logic Board"
-            ]
-        },
         "Mid System Module": {
             "name_fr": "Module Système Central",
             "prerequisites": [
@@ -995,7 +974,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"
@@ -1048,7 +1027,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"
@@ -1203,7 +1182,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"
@@ -1262,7 +1241,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"
@@ -1314,7 +1293,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"
@@ -1367,7 +1346,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"
@@ -1413,7 +1392,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"
@@ -1459,7 +1438,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"
@@ -1505,7 +1484,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"
@@ -1550,7 +1529,7 @@
             ]
         },
         "Rear System Module": {
-            "name_fr": "Module Systeme Arriere",
+            "name_fr": "Module Système Arrière",
             "prerequisites": [
                 "Display",
                 "Camera"

@@ -692,18 +692,9 @@
                         <span class="tool-btn-label">Main Microphone</span>
                     </button>
         
-                    <button class="overlay-button repair-btn" onclick="selectRepairPart('Logic Board'); event.stopPropagation();" aria-label="Logic Board">
-                        <img src="../icons_repair/square/Logic_Board.svg" alt="Logic Board" class="repair-icon">
-                        <span class="tool-btn-label">Logic Board</span>
-                    </button>
-        
                     <button class="overlay-button repair-btn" onclick="selectRepairPart('Mid System Module'); event.stopPropagation();" aria-label="Mid System Module">
                         <img src="../icons_repair/square/Mid_system.svg" alt="Mid System Module" class="repair-icon">
                         <span class="tool-btn-label">Mid System Module</span>
-                    </button>
-                    <button class="overlay-button repair-btn" onclick="selectRepairPart('Enclosure'); event.stopPropagation();" aria-label="Enclosure">
-                        <img src="../icons_repair/square/enclosure.svg" alt="Enclosure" class="repair-icon">
-                        <span class="tool-btn-label">Enclosure</span>
                     </button>
         
                 </div>
@@ -942,33 +933,12 @@
             "Taptic Engine"
         ]
     },
-    "Logic Board": {
-        "name_fr": "Carte logique",
-        "prerequisites": [
-            "Back Glass",
-            "TrueDepth Camera",
-            "Camera",
-            "Top Speaker"
-        ]
-    },
     "Mid System Module": {
         "name_fr": "Module Système Central",
         "prerequisites": [
             "Back Glass",
             "Display",
             "Camera"
-        ]
-    },
-    "Enclosure": {
-        "name_fr": "Boîtier",
-        "prerequisites": [
-            "Back Glass",
-            "TrueDepth Camera",
-            "Camera",
-            "Top Speaker",
-            "Battery",
-            "Display",
-            "Logic Board"
         ]
     }
 };
